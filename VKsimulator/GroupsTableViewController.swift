@@ -13,7 +13,7 @@ class GroupsTableViewController: UITableViewController {
     let groups:[String] = ["Animals"
                            ,"Rock Musick"
                            ,"Naturals"
-                           ,"Citys of the world"
+                           ,"Citys of the world dfd fdf df df dfdfdfdfdfdfdfdfdffff"
                            ,"Burito Club"
                            ,"RHorsessssss"].sorted()
     
