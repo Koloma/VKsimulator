@@ -15,6 +15,8 @@
 		844A5CC9258FB1BC00DB145E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844A5CC8258FB1BC00DB145E /* LoginViewController.swift */; };
 		84A26E7E2596EBBA00299CCA /* GroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A26E7D2596EBBA00299CCA /* GroupsTableViewController.swift */; };
 		84A26E832596F0BC00299CCA /* GroupsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A26E822596F0BC00299CCA /* GroupsTableViewCell.swift */; };
+		84A3334025978CE800E7424E /* FrendsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A3333F25978CE800E7424E /* FrendsCollectionViewController.swift */; };
+		84A3334325978FAD00E7424E /* FrendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A3334225978FAD00E7424E /* FrendCollectionViewCell.swift */; };
 		84CFD10C259747E0007C99FC /* MyGroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CFD10B259747E0007C99FC /* MyGroupsTableViewController.swift */; };
 		84CFD11025975060007C99FC /* MyGroupsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CFD10F25975060007C99FC /* MyGroupsTableViewCell.swift */; };
 		84DA54482592490800E7364A /* SecondScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DA54472592490800E7364A /* SecondScreenViewController.swift */; };
@@ -31,6 +33,8 @@
 		844A5CC8258FB1BC00DB145E /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		84A26E7D2596EBBA00299CCA /* GroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsTableViewController.swift; sourceTree = "<group>"; };
 		84A26E822596F0BC00299CCA /* GroupsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsTableViewCell.swift; sourceTree = "<group>"; };
+		84A3333F25978CE800E7424E /* FrendsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrendsCollectionViewController.swift; sourceTree = "<group>"; };
+		84A3334225978FAD00E7424E /* FrendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrendCollectionViewCell.swift; sourceTree = "<group>"; };
 		84CFD10B259747E0007C99FC /* MyGroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupsTableViewController.swift; sourceTree = "<group>"; };
 		84CFD10F25975060007C99FC /* MyGroupsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupsTableViewCell.swift; sourceTree = "<group>"; };
 		84DA54472592490800E7364A /* SecondScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondScreenViewController.swift; sourceTree = "<group>"; };
@@ -77,6 +81,7 @@
 				844A5CB9258FAF7400DB145E /* LaunchScreen.storyboard */,
 				844A5CBC258FAF7400DB145E /* Info.plist */,
 				84DA54472592490800E7364A /* SecondScreenViewController.swift */,
+				84A3333F25978CE800E7424E /* FrendsCollectionViewController.swift */,
 			);
 			path = VKsimulator;
 			sourceTree = "<group>";
@@ -86,6 +91,7 @@
 			children = (
 				84A26E822596F0BC00299CCA /* GroupsTableViewCell.swift */,
 				84CFD10F25975060007C99FC /* MyGroupsTableViewCell.swift */,
+				84A3334225978FAD00E7424E /* FrendCollectionViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -160,8 +166,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84A3334325978FAD00E7424E /* FrendCollectionViewCell.swift in Sources */,
 				84DA54482592490800E7364A /* SecondScreenViewController.swift in Sources */,
 				84A26E832596F0BC00299CCA /* GroupsTableViewCell.swift in Sources */,
+				84A3334025978CE800E7424E /* FrendsCollectionViewController.swift in Sources */,
 				84CFD10C259747E0007C99FC /* MyGroupsTableViewController.swift in Sources */,
 				84A26E7E2596EBBA00299CCA /* GroupsTableViewController.swift in Sources */,
 				844A5CC9258FB1BC00DB145E /* LoginViewController.swift in Sources */,
