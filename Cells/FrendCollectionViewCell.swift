@@ -10,7 +10,11 @@ import UIKit
 class FrendCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var labelTop: UILabel!
+    @IBOutlet weak var containerImageView: UIView!
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var labelBottom: UILabel!
+    
+    @IBOutlet weak var stackViewLike: UIStackView!
+    @IBOutlet weak var labelLikeCount: UILabel!
+    @IBOutlet weak var imageLikeHeart: UIImageView!
     
 }

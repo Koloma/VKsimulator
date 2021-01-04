@@ -10,6 +10,7 @@ import UIKit
 class NetworkService{
     
     let randomUsersURLtemplate = "https://randomuser.me/api/?results=%d&seed=vksimulator"
+    let randomImageURL = "https://source.unsplash.com/random/100x100"
     
     /// Запрашиваетс с сайта randomuser.me массив пользователей
     /// (т.к. в запросе используется параметр seed, массив не случайнеый)
@@ -20,6 +21,16 @@ class NetworkService{
         let randomUsersURL = String(format: randomUsersURLtemplate, userCount)
         guard let data = getData(url: randomUsersURL) else { return [] }
         return parseJSON(userData: data)
+    }
+    
+    func GetImages(imageCount: Int) ->[userImage]{
+        var array:[userImage] = []
+        for _ in 1...imageCount{
+            if let image = getImage(fromURL: randomImageURL){
+                array.append(userImage(image: image, description: "No descr", likeCount: 0, isLikeSet: false))
+            }
+        }
+        return array
     }
     
     private func parseJSON(userData: Data) -> [VKUser]{
@@ -36,7 +47,7 @@ class NetworkService{
                 }
                 let description = item.gender
                 let avatar = getImage(fromURL: item.picture.thumbnail)
-                usersClear.append(VKUser(id: index, nicName: item.login.username, fio: fio, description: description, avatar: avatar))
+                usersClear.append(VKUser(id: index, nicName: item.login.username, fio: fio, description: description, avatar: avatar, likeCount: 0, setLike: false))
             }
             return usersClear
         }catch{

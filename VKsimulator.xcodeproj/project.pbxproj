@@ -15,6 +15,8 @@
 		844A5CB8258FAF7400DB145E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 844A5CB7258FAF7400DB145E /* Assets.xcassets */; };
 		844A5CBB258FAF7400DB145E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 844A5CB9258FAF7400DB145E /* LaunchScreen.storyboard */; };
 		844A5CC9258FB1BC00DB145E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844A5CC8258FB1BC00DB145E /* LoginViewController.swift */; };
+		8461A28C25A2F7510080C9CF /* ImageView+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8461A28B25A2F7510080C9CF /* ImageView+ext.swift */; };
+		8461A29825A35E020080C9CF /* UserImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8461A29725A35E020080C9CF /* UserImage.swift */; };
 		846E01A9259849F5007554E0 /* VKGroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846E01A7259849F5007554E0 /* VKGroupTableViewCell.swift */; };
 		846E01AA259849F5007554E0 /* VKGroupTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 846E01A8259849F5007554E0 /* VKGroupTableViewCell.xib */; };
 		846E01AF25985BE7007554E0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846E01AE25985BE7007554E0 /* User.swift */; };
@@ -42,6 +44,8 @@
 		844A5CBA258FAF7400DB145E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		844A5CBC258FAF7400DB145E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		844A5CC8258FB1BC00DB145E /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		8461A28B25A2F7510080C9CF /* ImageView+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageView+ext.swift"; sourceTree = "<group>"; };
+		8461A29725A35E020080C9CF /* UserImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserImage.swift; sourceTree = "<group>"; };
 		846E01A7259849F5007554E0 /* VKGroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKGroupTableViewCell.swift; sourceTree = "<group>"; };
 		846E01A8259849F5007554E0 /* VKGroupTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VKGroupTableViewCell.xib; sourceTree = "<group>"; };
 		846E01AE25985BE7007554E0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -81,6 +85,7 @@
 		844A5CA2258FAF7300DB145E = {
 			isa = PBXGroup;
 			children = (
+				8461A28A25A2F72F0080C9CF /* Extrensions */,
 				8445D28B25A21DE20047E59B /* Service */,
 				846E01BC259897E7007554E0 /* Test */,
 				846E01AD25985BC4007554E0 /* Model */,
@@ -117,6 +122,14 @@
 			path = VKsimulator;
 			sourceTree = "<group>";
 		};
+		8461A28A25A2F72F0080C9CF /* Extrensions */ = {
+			isa = PBXGroup;
+			children = (
+				8461A28B25A2F7510080C9CF /* ImageView+ext.swift */,
+			);
+			path = Extrensions;
+			sourceTree = "<group>";
+		};
 		846E01A6259849A8007554E0 /* CellsXib */ = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +144,7 @@
 			children = (
 				846E01AE25985BE7007554E0 /* User.swift */,
 				846E01B125985BF6007554E0 /* Group.swift */,
+				8461A29725A35E020080C9CF /* UserImage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -234,6 +248,7 @@
 				84CFD10C259747E0007C99FC /* MyGroupsTableViewController.swift in Sources */,
 				8445D29025A21E7E0047E59B /* NetworkService.swift in Sources */,
 				84A26E7E2596EBBA00299CCA /* GroupsTableViewController.swift in Sources */,
+				8461A29825A35E020080C9CF /* UserImage.swift in Sources */,
 				846E01B225985BF6007554E0 /* Group.swift in Sources */,
 				846E01BA25988216007554E0 /* MyFrendsTableViewCell.swift in Sources */,
 				8445D28F25A21E7E0047E59B /* Users.swift in Sources */,
@@ -243,6 +258,7 @@
 				846E01AF25985BE7007554E0 /* User.swift in Sources */,
 				844A5CAF258FAF7300DB145E /* AppDelegate.swift in Sources */,
 				844A5CB1258FAF7300DB145E /* SceneDelegate.swift in Sources */,
+				8461A28C25A2F7510080C9CF /* ImageView+ext.swift in Sources */,
 				84CFD11025975060007C99FC /* MyGroupsTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

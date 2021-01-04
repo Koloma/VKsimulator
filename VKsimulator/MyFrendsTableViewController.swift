@@ -112,9 +112,3 @@ extension Array where Element : Hashable {
         return Array(Set(self))
     }
 }
-
-extension UIImageView{
-    func rounded(){
-        self.layer.cornerRadius = self.frame.height / 2
-    }
-}

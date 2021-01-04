@@ -7,13 +7,14 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
+private let cellIdentifier = "Cell"
 
 class FrendsCollectionViewController: UICollectionViewController {
 
-    private var frends:[VKUser] = []
-    
+    private let imageCount = 15
+    private var images:[userImage] = []
     private var actiIndicatorView = UIActivityIndicatorView()
+//    private let gestureRecognizerHeartTouch = UIGestureRecognizer(target: self, action: #selector(didTouchHeart))
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,15 +29,29 @@ class FrendsCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
-        return frends.count
+        return images.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? FrendCollectionViewCell{
-            cell.imageView.image = frends[indexPath.row].avatar
-            cell.imageView.rounded()
-            cell.labelTop.text = frends[indexPath.row].nicName
-            cell.labelBottom.text = frends[indexPath.row].fio ?? ""
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? FrendCollectionViewCell{
+            cell.imageView.image = images[indexPath.row].image
+            //cell.imageView.rounded()
+            cell.imageView.applyshadowWithCorner(containerView: cell.containerImageView)
+            cell.labelTop.text = "Description"
+            
+            let gesture = CustomTapGestureRecognizer(target: self, action: #selector(didTouchHeart))
+            gesture.indexPath = indexPath
+            cell.imageLikeHeart.addGestureRecognizer(gesture)
+            cell.imageLikeHeart.isUserInteractionEnabled = true
+            cell.labelLikeCount.text = String(images[indexPath.row].likeCount)
+            if images[indexPath.row].isLikeSet {
+                cell.imageLikeHeart.image = UIImage(systemName: "heart.fill")
+                cell.imageLikeHeart.tintColor = UIColor.red
+            }
+            else {
+                cell.imageLikeHeart.image = UIImage(systemName: "heart")
+                cell.imageLikeHeart.tintColor = UIColor.white
+            }
             return cell
         }
         return UICollectionViewCell()
@@ -55,7 +70,7 @@ class FrendsCollectionViewController: UICollectionViewController {
         let networkService = NetworkService()
         let queue = DispatchQueue.global(qos: .userInitiated)
         queue.async{
-            self.frends = networkService.GetUsers(userCount: 5)
+            self.images = networkService.GetImages(imageCount: self.imageCount)
 
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
@@ -63,5 +78,24 @@ class FrendsCollectionViewController: UICollectionViewController {
             }
         }
     }
+    
+    @objc func didTouchHeart(_ sender: CustomTapGestureRecognizer){
+        if let indexPath = sender.indexPath {
+            if !images[indexPath.row].isLikeSet{
+                images[indexPath.row].isLikeSet = true;
+                images[indexPath.row].likeCount += 1
+            }
+            else{
+                images[indexPath.row].isLikeSet = false;
+                images[indexPath.row].likeCount -= 1
+            }
+            
+            self.collectionView.reloadData()
+        }
+    }
 
+}
+
+class CustomTapGestureRecognizer: UITapGestureRecognizer {
+    var indexPath: IndexPath?
 }

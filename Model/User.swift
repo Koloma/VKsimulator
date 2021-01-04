@@ -13,5 +13,7 @@ struct VKUser {
     let fio: String?
     let description: String?
     let avatar: UIImage?
+    var likeCount: Int
+    var setLike: Bool
 }
 
