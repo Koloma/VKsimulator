@@ -7,7 +7,7 @@
 
 import UIKit
     
-var myGroups:[String] = []
+private var myGroups:[String] = []
 
 class MyGroupsTableViewController: UITableViewController {
 

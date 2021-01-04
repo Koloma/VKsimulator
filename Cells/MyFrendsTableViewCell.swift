@@ -10,6 +10,7 @@ import UIKit
 class MyFrendsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var nicNameLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var userImage: UIImageView!
     
 }

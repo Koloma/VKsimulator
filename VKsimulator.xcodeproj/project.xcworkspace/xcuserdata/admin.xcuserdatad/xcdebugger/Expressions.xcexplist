@@ -3,6 +3,17 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "MyFrendsTableViewController.tableView(_:commit:forRowAt:):MyFrendsTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "firstLetters">
+            </PersistentString>
+            <PersistentString
+               value = "groupsLetterUser">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "MyFrendsTableViewController.tableView(_:cellForRowAt:):MyFrendsTableViewController.swift">
          <PersistentStrings>
             <PersistentString

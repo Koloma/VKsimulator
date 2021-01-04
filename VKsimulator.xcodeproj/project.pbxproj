@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8445D28F25A21E7E0047E59B /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8445D28D25A21E7E0047E59B /* Users.swift */; };
+		8445D29025A21E7E0047E59B /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8445D28E25A21E7E0047E59B /* NetworkService.swift */; };
 		844A5CAF258FAF7300DB145E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844A5CAE258FAF7300DB145E /* AppDelegate.swift */; };
 		844A5CB1258FAF7300DB145E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844A5CB0258FAF7300DB145E /* SceneDelegate.swift */; };
 		844A5CB6258FAF7300DB145E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 844A5CB4258FAF7300DB145E /* Main.storyboard */; };
@@ -30,6 +32,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8445D28D25A21E7E0047E59B /* Users.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
+		8445D28E25A21E7E0047E59B /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		844A5CAB258FAF7300DB145E /* VKsimulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VKsimulator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		844A5CAE258FAF7300DB145E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		844A5CB0258FAF7300DB145E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,9 +69,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8445D28B25A21DE20047E59B /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				8445D28E25A21E7E0047E59B /* NetworkService.swift */,
+				8445D28D25A21E7E0047E59B /* Users.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		844A5CA2258FAF7300DB145E = {
 			isa = PBXGroup;
 			children = (
+				8445D28B25A21DE20047E59B /* Service */,
 				846E01BC259897E7007554E0 /* Test */,
 				846E01AD25985BC4007554E0 /* Model */,
 				846E01A6259849A8007554E0 /* CellsXib */,
@@ -218,9 +232,11 @@
 				84A3334025978CE800E7424E /* FrendsCollectionViewController.swift in Sources */,
 				846E01B725987CB7007554E0 /* MyFrendsTableViewController.swift in Sources */,
 				84CFD10C259747E0007C99FC /* MyGroupsTableViewController.swift in Sources */,
+				8445D29025A21E7E0047E59B /* NetworkService.swift in Sources */,
 				84A26E7E2596EBBA00299CCA /* GroupsTableViewController.swift in Sources */,
 				846E01B225985BF6007554E0 /* Group.swift in Sources */,
 				846E01BA25988216007554E0 /* MyFrendsTableViewCell.swift in Sources */,
+				8445D28F25A21E7E0047E59B /* Users.swift in Sources */,
 				846E01A9259849F5007554E0 /* VKGroupTableViewCell.swift in Sources */,
 				844A5CC9258FB1BC00DB145E /* LoginViewController.swift in Sources */,
 				846E01BE25989814007554E0 /* TestViewController.swift in Sources */,

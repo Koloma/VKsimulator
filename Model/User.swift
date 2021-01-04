@@ -11,5 +11,7 @@ struct VKUser {
     let id: Int
     let nicName:String
     let fio: String?
-    let avatarImage: UIImage?
+    let description: String?
+    let avatar: UIImage?
 }
+
