@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina3_5" orientation="portrait" appearance="light"/>
+    <device id="retina3_5" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Login View Controller-->
+        <!--Item-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="VKsimulator" customModuleProvider="target" sceneMemberID="viewController">
@@ -127,6 +127,8 @@ simulator</string>
                             <constraint firstItem="i3z-hT-luk" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="hes-eE-mg9"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="izh-1a-N1T"/>
+                    <navigationItem key="navigationItem" id="Vqp-Mq-c4V"/>
                     <connections>
                         <outlet property="buttonsStackView" destination="V0G-O7-smD" id="Vcf-KG-AIR"/>
                         <outlet property="loginStackView" destination="uvC-eH-WiB" id="Rxg-Uw-Ima"/>
@@ -138,7 +140,7 @@ simulator</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3079" y="-576"/>
+            <point key="canvasLocation" x="-2083.125" y="-576.25"/>
         </scene>
         <!--My Frends-->
         <scene sceneID="2SU-Zv-el0">
@@ -215,6 +217,11 @@ simulator</string>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="My Frends" id="7OM-Cf-8uQ">
+                        <barButtonItem key="leftBarButtonItem" title="Log out" id="eoL-KK-hep">
+                            <connections>
+                                <action selector="tapLogOutButton:" destination="R5Q-eW-ru4" id="znn-Hr-3is"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="anH-AH-y97">
                             <color key="tintColor" systemColor="systemFillColor"/>
                             <connections>
@@ -225,7 +232,7 @@ simulator</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nWP-6C-Dxr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-480" y="-186.25"/>
+            <point key="canvasLocation" x="517.5" y="-186.25"/>
         </scene>
         <!--My groups-->
         <scene sceneID="CNK-qN-BOQ">
@@ -278,6 +285,11 @@ simulator</string>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="My groups" id="Nzp-1I-USt">
+                        <barButtonItem key="leftBarButtonItem" title="Log out" id="gKS-N7-ePN">
+                            <connections>
+                                <action selector="logOutButton:" destination="EKE-QA-fwF" id="Iwd-gI-bXN"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="I8w-xF-3Pj">
                             <connections>
                                 <segue destination="xUd-UF-thp" kind="show" id="tto-Oe-CJF"/>
@@ -287,7 +299,7 @@ simulator</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kN3-Hz-MEk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-474.375" y="-1060"/>
+            <point key="canvasLocation" x="523.125" y="-1060"/>
         </scene>
         <!--Groups-->
         <scene sceneID="keH-i2-c1f">
@@ -345,7 +357,7 @@ simulator</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r49-ea-Rok" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="D3f-FT-LqN" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="361.875" y="-1060"/>
+            <point key="canvasLocation" x="1359.375" y="-1060"/>
         </scene>
         <!--Frends photo gallery-->
         <scene sceneID="ije-ZC-aOO">
@@ -445,7 +457,7 @@ simulator</string>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aWg-fn-7qQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="294.375" y="-186.25"/>
+            <point key="canvasLocation" x="1291.875" y="-186.25"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Z5Y-BA-kKM">
@@ -464,7 +476,7 @@ simulator</string>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="99F-cr-ahO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2269" y="-575"/>
+            <point key="canvasLocation" x="-1273.125" y="-575"/>
         </scene>
         <!--Frends-->
         <scene sceneID="qFC-il-b0X">
@@ -483,7 +495,7 @@ simulator</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A1P-eT-UMg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1243" y="-186"/>
+            <point key="canvasLocation" x="-245.625" y="-186.25"/>
         </scene>
         <!--Groups-->
         <scene sceneID="bm1-cw-JXx">
@@ -502,7 +514,7 @@ simulator</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ueu-P0-wc8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1238" y="-1060"/>
+            <point key="canvasLocation" x="-241.875" y="-1060"/>
         </scene>
     </scenes>
     <resources>

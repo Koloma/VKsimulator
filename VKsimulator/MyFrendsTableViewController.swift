@@ -9,6 +9,11 @@ import UIKit
 
 class MyFrendsTableViewController: UITableViewController {
     
+    @IBAction private func tapLogOutButton(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
     private var myFrends:[VKUser] = []
     private var firstLetters:[String] = []
     private var groupsLetterUser:[[VKUser]] = [[]]
@@ -22,7 +27,7 @@ class MyFrendsTableViewController: UITableViewController {
         //loadUsersData()
         
         refreshControl = UIRefreshControl()
-        refreshControl?.attributedTitle = NSAttributedString(string: "Идет обновление...")
+        refreshControl?.attributedTitle = NSAttributedString(string: "Updating frends...")
         refreshControl?.addTarget(self, action: #selector(refreshTableView), for: UIControl.Event.valueChanged)
         refreshControl?.beginRefreshing()
         loadUsersData()
@@ -33,7 +38,6 @@ class MyFrendsTableViewController: UITableViewController {
     }
 
     @objc func refreshTableView(_ sender: AnyObject){
-        print(#function)
         loadUsersData()
     }
     
@@ -83,7 +87,6 @@ class MyFrendsTableViewController: UITableViewController {
             let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
             if  let frendsCollectionViewController = storyBoard.instantiateViewController(withIdentifier: "FrendsCollectionViewController") as? FrendsCollectionViewController{
                 //Здесь передаем данные в frendsCollectionViewController
-                //frendsCollectionViewController.frend = myFrends[indexPath.row]
                 navigationController?.pushViewController(frendsCollectionViewController, animated: true)
             }
             print("Selected cell row: \(indexPath.row)")

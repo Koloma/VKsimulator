@@ -9,7 +9,8 @@ import UIKit
 
 class NetworkService{
     
-    let randomUsersURLtemplate = "https://randomuser.me/api/?results=%d&seed=vksimulator"
+    let randomUsersURLtemplate = "https://randomuser.me/api/?results=%d"
+    let notRandomUsersURLtemplate = "https://randomuser.me/api/?results=%d&seed=vksimulator"
     let randomImageURL = "https://source.unsplash.com/random/100x100"
     
     /// Запрашиваетс с сайта randomuser.me массив пользователей
