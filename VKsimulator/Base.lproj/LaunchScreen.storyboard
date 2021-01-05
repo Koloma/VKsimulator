@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IaS-aW-93v">
-                                <rect key="frame" x="106.5" y="246" width="201.5" height="104"/>
+                                <rect key="frame" x="106.33333333333333" y="246" width="201.33333333333337" height="104"/>
                                 <string key="text">VK
 simulator</string>
                                 <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="40"/>
@@ -33,14 +33,23 @@ simulator</string>
                                     <constraint firstAttribute="width" secondItem="Dhc-Zd-myI" secondAttribute="height" multiplier="1:1" id="gxh-Dk-V2n"/>
                                 </constraints>
                             </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mylogo" translatesAutoresizingMaskIntoConstraints="NO" id="eEp-3M-8cY">
+                                <rect key="frame" x="162" y="752" width="90" height="90"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="90" id="F13-Yi-juN"/>
+                                    <constraint firstAttribute="height" constant="90" id="Jtp-R3-LKr"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Dhc-Zd-myI" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="0E3-Fv-p3p"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="eEp-3M-8cY" secondAttribute="bottom" constant="20" id="4Hw-dd-eTQ"/>
                             <constraint firstItem="Dhc-Zd-myI" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="8JY-HQ-PAX"/>
                             <constraint firstItem="IaS-aW-93v" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Gg1-xK-jWf"/>
                             <constraint firstItem="Dhc-Zd-myI" firstAttribute="top" secondItem="IaS-aW-93v" secondAttribute="bottom" constant="8" symbolic="YES" id="W5L-MX-gHO"/>
+                            <constraint firstItem="eEp-3M-8cY" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="v1R-ms-h8o"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -50,7 +59,8 @@ simulator</string>
         </scene>
     </scenes>
     <resources>
-        <image name="logoImage" width="256" height="256"/>
+        <image name="logoImage" width="170.66667175292969" height="170.66667175292969"/>
+        <image name="mylogo" width="60" height="60"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

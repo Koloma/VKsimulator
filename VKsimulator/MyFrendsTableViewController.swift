@@ -19,6 +19,12 @@ class MyFrendsTableViewController: UITableViewController {
         super.viewDidLoad()
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         self.navigationItem.rightBarButtonItem = self.editButtonItem
+        //loadUsersData()
+        
+        refreshControl = UIRefreshControl()
+        refreshControl?.attributedTitle = NSAttributedString(string: "Идет обновление...")
+        refreshControl?.addTarget(self, action: #selector(refreshTableView), for: UIControl.Event.valueChanged)
+        refreshControl?.beginRefreshing()
         loadUsersData()
     }
 
@@ -26,6 +32,11 @@ class MyFrendsTableViewController: UITableViewController {
         return groupsLetterUser.count
     }
 
+    @objc func refreshTableView(_ sender: AnyObject){
+        print(#function)
+        loadUsersData()
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return groupsLetterUser[section].count
     }
@@ -79,7 +90,7 @@ class MyFrendsTableViewController: UITableViewController {
     }
     
     
-    func showIndicator(){
+    private func showIndicator(){
         actiIndicatorView.center = self.view.center
         actiIndicatorView.hidesWhenStopped = true
         actiIndicatorView.style = UIActivityIndicatorView.Style.large
@@ -88,8 +99,8 @@ class MyFrendsTableViewController: UITableViewController {
     }
     
     
-    func loadUsersData() {
-        showIndicator()
+    private func loadUsersData() {
+        //showIndicator()
         let networkService = NetworkService()
         let queue = DispatchQueue.global(qos: .userInitiated)
         queue.async{
@@ -100,7 +111,8 @@ class MyFrendsTableViewController: UITableViewController {
 
             DispatchQueue.main.async {
                 self.tableView.reloadData()
-                self.actiIndicatorView.stopAnimating()
+                self.refreshControl?.endRefreshing()
+                //self.actiIndicatorView.stopAnimating()
             }
         }
     }
