@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IaS-aW-93v">
-                                <rect key="frame" x="106.5" y="134" width="201.5" height="104"/>
+                                <rect key="frame" x="106.5" y="246" width="201.5" height="104"/>
                                 <string key="text">VK
 simulator</string>
                                 <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="40"/>
@@ -40,7 +40,7 @@ simulator</string>
                             <constraint firstItem="Dhc-Zd-myI" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="0E3-Fv-p3p"/>
                             <constraint firstItem="Dhc-Zd-myI" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="8JY-HQ-PAX"/>
                             <constraint firstItem="IaS-aW-93v" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Gg1-xK-jWf"/>
-                            <constraint firstItem="IaS-aW-93v" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="90" id="PrZ-yv-PEa"/>
+                            <constraint firstItem="Dhc-Zd-myI" firstAttribute="top" secondItem="IaS-aW-93v" secondAttribute="bottom" constant="8" symbolic="YES" id="W5L-MX-gHO"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -50,7 +50,7 @@ simulator</string>
         </scene>
     </scenes>
     <resources>
-        <image name="logoImage" width="40" height="40"/>
+        <image name="logoImage" width="256" height="256"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

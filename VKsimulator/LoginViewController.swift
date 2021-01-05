@@ -1,13 +1,15 @@
 import UIKit
 
-class FirstViewController: UIViewController{
+class LoginViewController: UIViewController{
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var loginTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
     @IBOutlet weak var passwordStackView: UIStackView!
+    @IBOutlet weak var buttonsStackView: UIStackView!
     @IBOutlet weak var loginStackView: UIStackView!
+    
     var alertControler: UIAlertController!
 
     
@@ -53,7 +55,7 @@ class FirstViewController: UIViewController{
             showAllert(title: "Ошибка авторизации", message: "Неправильный логин")
             return false
         }
-        guard password == "12345" else {
+        guard password == "123" else {
             showAllert(title: "Ошибка авторизации", message: "Неправильный пароль")
             return false
         }
@@ -87,9 +89,11 @@ class FirstViewController: UIViewController{
         if UIDevice.current.orientation.isLandscape{
             passwordStackView.axis = .horizontal
             loginStackView.axis = .horizontal
+            buttonsStackView.axis = .horizontal
         }else{
             passwordStackView.axis = .vertical
             loginStackView.axis = .vertical
+            buttonsStackView.axis = .vertical
         }
     }
     
