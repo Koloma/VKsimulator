@@ -58,16 +58,23 @@ class NetworkService{
     }
     
     private func getImage(fromURL: String)->UIImage?{
-        guard let data = getData(url: fromURL) else { return nil }
-        guard let image = UIImage(data: data) else { return nil }
+        guard let data = getData(url: fromURL) else { fatalError("Error getData(url: fromURL)") }
+        guard let image = UIImage(data: data) else { fatalError("Error UIImage(data: data)") }
         return image
     }
     
     private func getData(url: String)->Data?{
-        guard let url = URL(string: url) else { return nil }
-        guard let data = try? Data(contentsOf: url) else { return nil }
-        return data
+        guard let url = URL(string: url) else { fatalError("Error URL(string: url)") }
+        do {
+             let data = try Data(contentsOf: url)
+            return data
+        } catch {
+            print(error)
+        }
+        //guard let data = try? Data(contentsOf: url) else { fatalError("Error Data(contentsOf: url)") }
+        return nil
+        
+        
     }
     
-
 }

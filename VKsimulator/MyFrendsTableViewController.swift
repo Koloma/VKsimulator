@@ -24,14 +24,15 @@ class MyFrendsTableViewController: UITableViewController {
         super.viewDidLoad()
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         self.navigationItem.rightBarButtonItem = self.editButtonItem
-        //loadUsersData()
         
         refreshControl = UIRefreshControl()
         refreshControl?.attributedTitle = NSAttributedString(string: "Updating frends...")
         refreshControl?.addTarget(self, action: #selector(refreshTableView), for: UIControl.Event.valueChanged)
         refreshControl?.beginRefreshing()
+        
         loadUsersData()
     }
+    
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return groupsLetterUser.count
@@ -120,10 +121,4 @@ class MyFrendsTableViewController: UITableViewController {
         }
     }
         
-}
-
-extension Array where Element : Hashable {
-    var unique: [Element] {
-        return Array(Set(self))
-    }
 }
