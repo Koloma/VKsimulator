@@ -9,18 +9,22 @@ import UIKit
 
 class VKGroupTableViewCell: UITableViewCell {
 
+    static let nib = UINib(nibName: "VKGroupTableViewCell", bundle: nil)
+    static let identifier = "CellGroup"
+    
     @IBOutlet weak var groupImageView: UIImageView!
     @IBOutlet weak var groupNameLable: UILabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    func configur(groupName: String){
+        groupNameLable.text = groupName
+        
+        if let image = UIImage(named: "Group"){
+            groupImageView.image = image
+        }else{
+            groupImageView.image = UIImage(systemName: "person.3")
+        }
+        
+        groupImageView.rounded()
     }
     
 }

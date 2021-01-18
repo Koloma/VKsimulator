@@ -7,11 +7,10 @@
 
 import UIKit
 
-class MyFrendsTableViewController: UITableViewController {
+class MyFrendsTableViewController: UITableViewController, UISearchBarDelegate {
     
-    @IBAction private func tapLogOutButton(_ sender: UIBarButtonItem) {
-        self.dismiss(animated: true, completion: nil)
-    }
+
+    @IBOutlet weak var searchBarView: UISearchBar!
     
     
     private var myFrends:[VKUser] = []
@@ -29,10 +28,20 @@ class MyFrendsTableViewController: UITableViewController {
         refreshControl?.attributedTitle = NSAttributedString(string: "Updating frends...")
         refreshControl?.addTarget(self, action: #selector(refreshTableView), for: UIControl.Event.valueChanged)
         refreshControl?.beginRefreshing()
-        
+  
+        searchBarView.delegate = self
         loadUsersData()
     }
     
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        //print(searchText)
+        let filteredData = searchText.isEmpty ? myFrends : myFrends.filter({(vkuser: VKUser) -> Bool in
+            //if vkuser.nicName.contains(searchText)
+            return vkuser.nicName.range(of: searchText, options: .caseInsensitive) != nil
+        })
+        print(filteredData.count)
+        //tableView.reloadData()
+    }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return groupsLetterUser.count
@@ -50,11 +59,37 @@ class MyFrendsTableViewController: UITableViewController {
         return firstLetters
     }
     
+    override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        return "FOOter title!"
+    }
+    
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if firstLetters.count > 0{
             return firstLetters[section].uppercased()
         }
         else { return nil }
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let label = UILabel()
+        label.textColor = .red
+        if firstLetters.count > 0{
+            label.text = firstLetters[section].uppercased()
+        }
+        else {
+            label.text = ""
+        }
+        
+        let uiView = UIView()
+        uiView.backgroundColor = .blue
+        uiView.addSubview(label)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            label.centerYAnchor.constraint(equalTo: uiView.centerYAnchor),
+            label.centerXAnchor.constraint(equalTo: uiView.centerXAnchor)
+        ])
+        
+        return uiView
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -120,5 +155,7 @@ class MyFrendsTableViewController: UITableViewController {
             }
         }
     }
-        
+    @IBAction private func tapLogOutButton(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
+    }
 }
