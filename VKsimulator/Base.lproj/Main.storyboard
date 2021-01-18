@@ -64,7 +64,10 @@ simulator</string>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="123" borderStyle="roundedRect" placeholder="Password 123" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gdG-7l-akQ">
                                                                 <rect key="frame" x="0.0" y="30.5" width="160" height="34"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                                                <textInputTraits key="textInputTraits" returnKeyType="go" secureTextEntry="YES" textContentType="password"/>
+                                                                <connections>
+                                                                    <action selector="primaryActionTriger:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="1Uo-1W-9Xn"/>
+                                                                </connections>
                                                             </textField>
                                                         </subviews>
                                                     </stackView>
@@ -153,9 +156,14 @@ simulator</string>
                         <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="ugF-oA-yf9">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="y0X-Po-2aR" customClass="MyFrendsTableViewCell" customModule="VKsimulator" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="320" height="65.5"/>
+                                <rect key="frame" x="0.0" y="72" width="320" height="65.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="y0X-Po-2aR" id="rVT-Lz-ovC">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="65.5"/>
@@ -232,6 +240,9 @@ simulator</string>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="searchBarView" destination="ugF-oA-yf9" id="NYb-hm-9B7"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nWP-6C-Dxr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -378,7 +389,7 @@ simulator</string>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="Cell" id="X4c-rb-ZfB" customClass="FrendCollectionViewCell" customModule="VKsimulator" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="Cell" id="X4c-rb-ZfB" customClass="FrendCollectionViewCell" customModule="VKsimulator" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="7fm-hu-Wcj">
@@ -482,30 +493,33 @@ simulator</string>
             </objects>
             <point key="canvasLocation" x="-1273.125" y="-575"/>
         </scene>
-        <!--View Controller-->
+        <!--Hello View Controller-->
         <scene sceneID="waQ-Z5-pEy">
             <objects>
-                <viewController id="XsT-ae-Ecv" sceneMemberID="viewController">
+                <viewController id="XsT-ae-Ecv" customClass="HelloViewController" customModule="VKsimulator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JaW-zi-bTZ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZXo-du-GjP">
-                                <rect key="frame" x="106" y="211" width="108" height="58"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="38"/>
-                                <color key="tintColor" name="ColorButtonLabel"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleColor" name="ColorButtonLabel"/>
-                                </state>
-                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="btE-zS-jOH" customClass="HelloView" customModule="VKsimulator" customModuleProvider="target">
+                                <rect key="frame" x="60" y="140" width="200" height="200"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="1Ov-cs-9Vc"/>
+                                    <constraint firstAttribute="height" constant="200" id="4c0-UT-MnH"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="rwm-vU-KqY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="ZXo-du-GjP" firstAttribute="centerX" secondItem="JaW-zi-bTZ" secondAttribute="centerX" id="cdY-ws-dVI"/>
-                            <constraint firstItem="ZXo-du-GjP" firstAttribute="centerY" secondItem="JaW-zi-bTZ" secondAttribute="centerY" id="gNf-gT-vs5"/>
+                            <constraint firstItem="btE-zS-jOH" firstAttribute="centerY" secondItem="JaW-zi-bTZ" secondAttribute="centerY" id="TTp-Gr-75q"/>
+                            <constraint firstItem="btE-zS-jOH" firstAttribute="centerX" secondItem="JaW-zi-bTZ" secondAttribute="centerX" id="jcW-QS-cCs"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="helloView" destination="btE-zS-jOH" id="5Wv-l9-1PW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qsm-al-pH2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -559,7 +573,7 @@ simulator</string>
         <image name="square.grid.3x2" catalog="system" width="128" height="80"/>
         <image name="square.grid.3x2.fill" catalog="system" width="128" height="80"/>
         <namedColor name="ColorButtonLabel">
-            <color red="0.25132375959999997" green="0.482873261" blue="0.73405641320000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.25099998712539673" green="0.4830000102519989" blue="0.73400002717971802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -569,6 +583,9 @@ simulator</string>
         </systemColor>
         <systemColor name="systemFillColor">
             <color red="0.47058823529411764" green="0.47058823529411764" blue="0.50196078431372548" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemIndigoColor">
             <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

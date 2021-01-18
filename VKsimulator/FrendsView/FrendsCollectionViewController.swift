@@ -9,7 +9,7 @@ import UIKit
 
 private let cellIdentifier = "Cell"
 
-class FrendsCollectionViewController: UICollectionViewController {
+class FrendsCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
     private let imageCount = 10
     private var images:[userImage] = []
@@ -19,6 +19,8 @@ class FrendsCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadUsersData()
+        collectionView.register(UINib(nibName: "CollectionHeaderView", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "CollectionHeaderView")
+        
     }
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -26,7 +28,25 @@ class FrendsCollectionViewController: UICollectionViewController {
         return 1
     }
 
-
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: 100, height: 30)
+    }
+        
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 150, height: 150)
+            
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if kind == UICollectionView.elementKindSectionHeader{
+            if let view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "CollectionHeaderView", for: indexPath) as? CollectionHeaderView{
+                view.label.text = "My CollectionHeader!"
+                return view
+            }
+        }
+        return UICollectionReusableView()
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
         return images.count
@@ -99,3 +119,4 @@ class FrendsCollectionViewController: UICollectionViewController {
 class CustomTapGestureRecognizer: UITapGestureRecognizer {
     var indexPath: IndexPath?
 }
+

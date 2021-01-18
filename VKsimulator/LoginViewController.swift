@@ -34,15 +34,20 @@ class LoginViewController: UIViewController{
         NotificationCenter.default.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: nil )
     }
     
+    @IBAction func primaryActionTriger(_ sender: UITextField) {
+        print(#function)
+        //TODO Изменить логику проверки credentials и перехода на следующий экранн,
+        //чтобы вариант с телефонной клавиатурой заработал
+        loginButton(UIButton())
+    }
+    
     @IBAction func loginButton(_ sender: UIButton) {
 
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        if  let frendsCollectionViewController = storyBoard.instantiateViewController(withIdentifier: "FrendsCollectionViewController") as? FrendsCollectionViewController{
-            //Здесь передаем данные в frendsCollectionViewController
-            navigationController?.pushViewController(frendsCollectionViewController, animated: true)
-        }
-        
-            
+//        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+//        if  let frendsCollectionViewController = storyBoard.instantiateViewController(withIdentifier: "FrendsCollectionViewController") as? FrendsCollectionViewController{
+//            //Здесь передаем данные в frendsCollectionViewController
+//            navigationController?.pushViewController(frendsCollectionViewController, animated: true)
+//        }
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
