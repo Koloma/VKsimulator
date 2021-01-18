@@ -9,6 +9,11 @@ import UIKit
 
 class MyFrendsTableViewController: UITableViewController {
     
+    @IBAction private func tapLogOutButton(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
     private var myFrends:[VKUser] = []
     private var firstLetters:[String] = []
     private var groupsLetterUser:[[VKUser]] = [[]]
@@ -19,13 +24,24 @@ class MyFrendsTableViewController: UITableViewController {
         super.viewDidLoad()
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        refreshControl = UIRefreshControl()
+        refreshControl?.attributedTitle = NSAttributedString(string: "Updating frends...")
+        refreshControl?.addTarget(self, action: #selector(refreshTableView), for: UIControl.Event.valueChanged)
+        refreshControl?.beginRefreshing()
+        
         loadUsersData()
     }
+    
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return groupsLetterUser.count
     }
 
+    @objc func refreshTableView(_ sender: AnyObject){
+        loadUsersData()
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return groupsLetterUser[section].count
     }
@@ -72,14 +88,13 @@ class MyFrendsTableViewController: UITableViewController {
             let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
             if  let frendsCollectionViewController = storyBoard.instantiateViewController(withIdentifier: "FrendsCollectionViewController") as? FrendsCollectionViewController{
                 //Здесь передаем данные в frendsCollectionViewController
-                //frendsCollectionViewController.frend = myFrends[indexPath.row]
                 navigationController?.pushViewController(frendsCollectionViewController, animated: true)
             }
             print("Selected cell row: \(indexPath.row)")
     }
     
     
-    func showIndicator(){
+    private func showIndicator(){
         actiIndicatorView.center = self.view.center
         actiIndicatorView.hidesWhenStopped = true
         actiIndicatorView.style = UIActivityIndicatorView.Style.large
@@ -88,8 +103,8 @@ class MyFrendsTableViewController: UITableViewController {
     }
     
     
-    func loadUsersData() {
-        showIndicator()
+    private func loadUsersData() {
+        //showIndicator()
         let networkService = NetworkService()
         let queue = DispatchQueue.global(qos: .userInitiated)
         queue.async{
@@ -100,15 +115,10 @@ class MyFrendsTableViewController: UITableViewController {
 
             DispatchQueue.main.async {
                 self.tableView.reloadData()
-                self.actiIndicatorView.stopAnimating()
+                self.refreshControl?.endRefreshing()
+                //self.actiIndicatorView.stopAnimating()
             }
         }
     }
         
-}
-
-extension Array where Element : Hashable {
-    var unique: [Element] {
-        return Array(Set(self))
-    }
 }

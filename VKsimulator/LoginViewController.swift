@@ -36,6 +36,12 @@ class LoginViewController: UIViewController{
     
     @IBAction func loginButton(_ sender: UIButton) {
 
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        if  let frendsCollectionViewController = storyBoard.instantiateViewController(withIdentifier: "FrendsCollectionViewController") as? FrendsCollectionViewController{
+            //Здесь передаем данные в frendsCollectionViewController
+            navigationController?.pushViewController(frendsCollectionViewController, animated: true)
+        }
+        
             
     }
     
@@ -84,8 +90,6 @@ class LoginViewController: UIViewController{
     }
     
     @objc func orientationDidChange(notification: Notification){
-        //guard let orientation = notification.userInfo?[UIDevice.current.orientation] else {return};
-
         if UIDevice.current.orientation.isLandscape{
             passwordStackView.axis = .horizontal
             loginStackView.axis = .horizontal

@@ -11,7 +11,7 @@ private let cellIdentifier = "Cell"
 
 class FrendsCollectionViewController: UICollectionViewController {
 
-    private let imageCount = 15
+    private let imageCount = 10
     private var images:[userImage] = []
     private var actiIndicatorView = UIActivityIndicatorView()
 //    private let gestureRecognizerHeartTouch = UIGestureRecognizer(target: self, action: #selector(didTouchHeart))
@@ -36,7 +36,7 @@ class FrendsCollectionViewController: UICollectionViewController {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? FrendCollectionViewCell{
             cell.imageView.image = images[indexPath.row].image
             //cell.imageView.rounded()
-            cell.imageView.applyshadowWithCorner(containerView: cell.containerImageView)
+            //cell.imageView.applyshadowWithCorner(containerView: cell.containerImageView)
             cell.labelTop.text = "Description"
             
             let gesture = CustomTapGestureRecognizer(target: self, action: #selector(didTouchHeart))
@@ -65,7 +65,7 @@ class FrendsCollectionViewController: UICollectionViewController {
         actiIndicatorView.startAnimating()
     }
     
-    func loadUsersData() {
+    private func loadUsersData() {
         showIndicator()
         let networkService = NetworkService()
         let queue = DispatchQueue.global(qos: .userInitiated)

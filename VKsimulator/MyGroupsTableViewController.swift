@@ -11,6 +11,10 @@ private var myGroups:[String] = []
 
 class MyGroupsTableViewController: UITableViewController {
 
+    @IBAction private func logOutButton(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
