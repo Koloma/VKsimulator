@@ -10,13 +10,17 @@ import UIKit
 class NewsFeedViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var collectionLayout: UICollectionViewFlowLayout!{
+        didSet{
+            collectionLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        }
+    }
     
     
     var userNewsFeed: VKUser?{
         didSet{
             //Call function to find Users News
-            print(userNewsFeed!)
-            
+            print(userNewsFeed!)           
         }
     }
     
@@ -33,13 +37,17 @@ class NewsFeedViewController: UIViewController {
 
 extension NewsFeedViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return 2
         
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewsFeedCollectionViewCell.identifier, for: indexPath) as? NewsFeedCollectionViewCell, let vkUser = userNewsFeed{
-            cell.configur(vkUser: vkUser, newsText: "Big NEWS LLLL", newsImage: [UIImage(named: "pic1")!,UIImage(named: "pic2")!])
+            cell.configur(vkUser: vkUser, newsText: "Big NEWS LLLL fgcf gdbbcvxbcxvbcxvbcxvbcxvb fvbv ", newsImage: [UIImage(named: "pic1")!,UIImage(named: "pic2")!])
+
+            cell.width =  collectionView.bounds.width
+            //-NewsFeedCollectionViewCell.spacing
+            print("collectionView.bounds.width \(collectionView.bounds.width)")
             return cell
         }
         

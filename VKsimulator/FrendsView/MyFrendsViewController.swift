@@ -35,10 +35,23 @@ class MyFrendsViewController: UIViewController {
         searchBarView.delegate = self;
         loadUsersData(count: VKuserCount)
       
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        setGradientBackground(colorTop: K.Gradient.colorBottom, colorBottom: K.Gradient.colorTop)
         navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    func setGradientBackground(colorTop: CGColor, colorBottom: CGColor) {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [colorBottom, colorTop]
+        gradientLayer.startPoint = CGPoint(x: 0.5, y: 1.0)
+        gradientLayer.endPoint = CGPoint(x: 0.5, y: 0.0)
+        gradientLayer.locations = [0, 1]
+        gradientLayer.frame = headerView.bounds
+        headerView.layer.insertSublayer(gradientLayer, at: 0)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

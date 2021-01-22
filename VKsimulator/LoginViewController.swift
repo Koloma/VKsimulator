@@ -36,8 +36,6 @@ class LoginViewController: UIViewController{
     
     @IBAction func primaryActionTriger(_ sender: UITextField) {
         print(#function)
-        //TODO Изменить логику проверки credentials и перехода на следующий экранн,
-        //чтобы вариант с телефонной клавиатурой заработал
         loginButton(UIButton())
     }
     

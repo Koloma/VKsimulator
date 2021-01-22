@@ -283,13 +283,16 @@ simulator</string>
                         <subviews>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="8Cr-9k-onn">
                                 <rect key="frame" x="0.0" y="106" width="320" height="56"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4gw-JK-tbY">
                                 <rect key="frame" x="0.0" y="56" width="320" height="50"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LabelHeader" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dz7-L2-hB7">
-                                        <rect key="frame" x="10" y="14.5" width="97.5" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label Header" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dz7-L2-hB7">
+                                        <rect key="frame" x="109.5" y="14.5" width="101.5" height="21"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -297,9 +300,9 @@ simulator</string>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="Dz7-L2-hB7" firstAttribute="centerY" secondItem="4gw-JK-tbY" secondAttribute="centerY" id="10f-Vz-KhX"/>
-                                    <constraint firstItem="Dz7-L2-hB7" firstAttribute="leading" secondItem="4gw-JK-tbY" secondAttribute="leading" constant="10" id="Wrx-Jz-xhh"/>
+                                    <constraint firstItem="Dz7-L2-hB7" firstAttribute="centerX" secondItem="4gw-JK-tbY" secondAttribute="centerX" id="5Pt-Nk-0E9"/>
                                     <constraint firstAttribute="height" constant="50" id="fKd-pI-sx0"/>
+                                    <constraint firstItem="Dz7-L2-hB7" firstAttribute="centerY" secondItem="4gw-JK-tbY" secondAttribute="centerY" id="op5-iN-EJ5"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MZu-yQ-wcT">
@@ -312,14 +315,15 @@ simulator</string>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="8Cr-9k-onn" firstAttribute="top" secondItem="4gw-JK-tbY" secondAttribute="bottom" id="24m-1F-M2S"/>
+                            <constraint firstItem="4gw-JK-tbY" firstAttribute="top" secondItem="En2-tR-Xcf" secondAttribute="top" id="85e-Ex-glq"/>
+                            <constraint firstItem="4gw-JK-tbY" firstAttribute="trailing" secondItem="En2-tR-Xcf" secondAttribute="trailing" id="AU3-eD-f7J"/>
+                            <constraint firstItem="8Cr-9k-onn" firstAttribute="top" secondItem="4gw-JK-tbY" secondAttribute="bottom" id="Jes-uA-psf"/>
                             <constraint firstItem="8Cr-9k-onn" firstAttribute="trailing" secondItem="En2-tR-Xcf" secondAttribute="trailing" id="TNO-uL-E35"/>
                             <constraint firstItem="MZu-yQ-wcT" firstAttribute="top" secondItem="8Cr-9k-onn" secondAttribute="bottom" id="VYP-9E-Hbr"/>
                             <constraint firstItem="8Cr-9k-onn" firstAttribute="leading" secondItem="En2-tR-Xcf" secondAttribute="leading" id="X4q-oQ-Gb9"/>
-                            <constraint firstItem="4gw-JK-tbY" firstAttribute="top" secondItem="En2-tR-Xcf" secondAttribute="top" id="XS8-Rd-QdG"/>
                             <constraint firstItem="En2-tR-Xcf" firstAttribute="bottom" secondItem="MZu-yQ-wcT" secondAttribute="bottom" id="dBt-bQ-AKc"/>
                             <constraint firstItem="MZu-yQ-wcT" firstAttribute="leading" secondItem="En2-tR-Xcf" secondAttribute="leading" id="jTg-FE-cBS"/>
-                            <constraint firstItem="En2-tR-Xcf" firstAttribute="trailing" secondItem="4gw-JK-tbY" secondAttribute="trailing" id="pJH-te-63s"/>
-                            <constraint firstItem="4gw-JK-tbY" firstAttribute="leading" secondItem="En2-tR-Xcf" secondAttribute="leading" id="rgp-Y9-3GE"/>
+                            <constraint firstItem="4gw-JK-tbY" firstAttribute="leading" secondItem="En2-tR-Xcf" secondAttribute="leading" id="vTf-uF-db2"/>
                             <constraint firstItem="En2-tR-Xcf" firstAttribute="trailing" secondItem="MZu-yQ-wcT" secondAttribute="trailing" id="vXi-EZ-czS"/>
                         </constraints>
                     </view>
@@ -448,7 +452,12 @@ simulator</string>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="MV3-CM-nPW">
                                 <rect key="frame" x="0.0" y="56" width="320" height="355"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewLayout key="collectionViewLayout" id="6o5-Dh-G9Y" customClass="NewsCollectionViewLayout" customModule="VKsimulator" customModuleProvider="target"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Q44-bd-Csg">
+                                    <size key="itemSize" width="150" height="150"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
                         </subviews>
@@ -463,6 +472,7 @@ simulator</string>
                     </view>
                     <navigationItem key="navigationItem" title="News feed" id="inF-K6-HhZ"/>
                     <connections>
+                        <outlet property="collectionLayout" destination="Q44-bd-Csg" id="Zwk-FW-bau"/>
                         <outlet property="collectionView" destination="MV3-CM-nPW" id="k0Y-dx-9So"/>
                     </connections>
                 </viewController>

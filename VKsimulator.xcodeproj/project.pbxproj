@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8402AECF25B9CE10000C617C /* NewsCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8402AECE25B9CE10000C617C /* NewsCollectionViewLayout.swift */; };
 		843D9A1225B95EE8007F0B1F /* RefreshControl+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843D9A1125B95EE8007F0B1F /* RefreshControl+ext.swift */; };
 		8445D28F25A21E7E0047E59B /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8445D28D25A21E7E0047E59B /* Users.swift */; };
 		8445D29025A21E7E0047E59B /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8445D28E25A21E7E0047E59B /* NetworkService.swift */; };
@@ -51,7 +50,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8402AECE25B9CE10000C617C /* NewsCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCollectionViewLayout.swift; sourceTree = "<group>"; };
 		843D9A1125B95EE8007F0B1F /* RefreshControl+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RefreshControl+ext.swift"; sourceTree = "<group>"; };
 		8445D28D25A21E7E0047E59B /* Users.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
 		8445D28E25A21E7E0047E59B /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
@@ -170,7 +168,6 @@
 				84A3333F25978CE800E7424E /* ImageGalleryCollectionViewController.swift */,
 				84A18BF825B7240100063FA7 /* NewsFeedViewController.swift */,
 				8448263E25B921FC00425D5A /* MyFrendsViewController.swift */,
-				8402AECE25B9CE10000C617C /* NewsCollectionViewLayout.swift */,
 			);
 			path = FrendsView;
 			sourceTree = "<group>";
@@ -364,7 +361,6 @@
 				8448263A25B917DC00425D5A /* NewsFeedCollectionViewCell.swift in Sources */,
 				849F10A525BA819900CF9B38 /* K.swift in Sources */,
 				84A18BF925B7240100063FA7 /* NewsFeedViewController.swift in Sources */,
-				8402AECF25B9CE10000C617C /* NewsCollectionViewLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
