@@ -7,8 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8402AECF25B9CE10000C617C /* NewsCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8402AECE25B9CE10000C617C /* NewsCollectionViewLayout.swift */; };
+		843D9A1225B95EE8007F0B1F /* RefreshControl+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843D9A1125B95EE8007F0B1F /* RefreshControl+ext.swift */; };
 		8445D28F25A21E7E0047E59B /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8445D28D25A21E7E0047E59B /* Users.swift */; };
 		8445D29025A21E7E0047E59B /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8445D28E25A21E7E0047E59B /* NetworkService.swift */; };
+		8448263A25B917DC00425D5A /* NewsFeedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448263825B917DC00425D5A /* NewsFeedCollectionViewCell.swift */; };
+		8448263B25B917DC00425D5A /* NewsFeedCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8448263925B917DC00425D5A /* NewsFeedCollectionViewCell.xib */; };
+		8448263F25B921FC00425D5A /* MyFrendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448263E25B921FC00425D5A /* MyFrendsViewController.swift */; };
+		8448264325B9318800425D5A /* VKUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448264125B9318800425D5A /* VKUserTableViewCell.swift */; };
+		8448264425B9318800425D5A /* VKUserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8448264225B9318800425D5A /* VKUserTableViewCell.xib */; };
 		844A5CAF258FAF7300DB145E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844A5CAE258FAF7300DB145E /* AppDelegate.swift */; };
 		844A5CB1258FAF7300DB145E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844A5CB0258FAF7300DB145E /* SceneDelegate.swift */; };
 		844A5CB6258FAF7300DB145E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 844A5CB4258FAF7300DB145E /* Main.storyboard */; };
@@ -23,13 +30,16 @@
 		846E01AA259849F5007554E0 /* VKGroupTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 846E01A8259849F5007554E0 /* VKGroupTableViewCell.xib */; };
 		846E01AF25985BE7007554E0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846E01AE25985BE7007554E0 /* User.swift */; };
 		846E01B225985BF6007554E0 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846E01B125985BF6007554E0 /* Group.swift */; };
-		846E01B725987CB7007554E0 /* MyFrendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846E01B625987CB7007554E0 /* MyFrendsTableViewController.swift */; };
 		846E01BA25988216007554E0 /* MyFrendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846E01B925988216007554E0 /* MyFrendsTableViewCell.swift */; };
 		848FDAA725A6B886001A6ABE /* ControlView+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848FDAA625A6B886001A6ABE /* ControlView+ext.swift */; };
 		848FDABA25A761AB001A6ABE /* Array+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848FDAB925A761AB001A6ABE /* Array+ext.swift */; };
+		849F10A525BA819900CF9B38 /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F10A425BA819900CF9B38 /* K.swift */; };
+		849F10A925BA87B500CF9B38 /* FrendsTableViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849F10A825BA87B500CF9B38 /* FrendsTableViewHeader.xib */; };
+		849F10AC25BA87D400CF9B38 /* FrendsTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F10AB25BA87D400CF9B38 /* FrendsTableViewHeader.swift */; };
+		84A18BF925B7240100063FA7 /* NewsFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A18BF825B7240100063FA7 /* NewsFeedViewController.swift */; };
 		84A26E7E2596EBBA00299CCA /* GroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A26E7D2596EBBA00299CCA /* GroupsTableViewController.swift */; };
 		84A26E832596F0BC00299CCA /* GroupsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A26E822596F0BC00299CCA /* GroupsTableViewCell.swift */; };
-		84A3334025978CE800E7424E /* FrendsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A3333F25978CE800E7424E /* FrendsCollectionViewController.swift */; };
+		84A3334025978CE800E7424E /* ImageGalleryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A3333F25978CE800E7424E /* ImageGalleryCollectionViewController.swift */; };
 		84A3334325978FAD00E7424E /* FrendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A3334225978FAD00E7424E /* FrendCollectionViewCell.swift */; };
 		84CFD10C259747E0007C99FC /* MyGroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CFD10B259747E0007C99FC /* MyGroupsTableViewController.swift */; };
 		84CFD11025975060007C99FC /* MyGroupsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CFD10F25975060007C99FC /* MyGroupsTableViewCell.swift */; };
@@ -41,8 +51,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8402AECE25B9CE10000C617C /* NewsCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCollectionViewLayout.swift; sourceTree = "<group>"; };
+		843D9A1125B95EE8007F0B1F /* RefreshControl+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RefreshControl+ext.swift"; sourceTree = "<group>"; };
 		8445D28D25A21E7E0047E59B /* Users.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
 		8445D28E25A21E7E0047E59B /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		8448263825B917DC00425D5A /* NewsFeedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedCollectionViewCell.swift; sourceTree = "<group>"; };
+		8448263925B917DC00425D5A /* NewsFeedCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsFeedCollectionViewCell.xib; sourceTree = "<group>"; };
+		8448263E25B921FC00425D5A /* MyFrendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFrendsViewController.swift; sourceTree = "<group>"; };
+		8448264125B9318800425D5A /* VKUserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKUserTableViewCell.swift; sourceTree = "<group>"; };
+		8448264225B9318800425D5A /* VKUserTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VKUserTableViewCell.xib; sourceTree = "<group>"; };
 		844A5CAB258FAF7300DB145E /* VKsimulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VKsimulator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		844A5CAE258FAF7300DB145E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		844A5CB0258FAF7300DB145E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,13 +76,16 @@
 		846E01A8259849F5007554E0 /* VKGroupTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VKGroupTableViewCell.xib; sourceTree = "<group>"; };
 		846E01AE25985BE7007554E0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		846E01B125985BF6007554E0 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
-		846E01B625987CB7007554E0 /* MyFrendsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFrendsTableViewController.swift; sourceTree = "<group>"; };
 		846E01B925988216007554E0 /* MyFrendsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFrendsTableViewCell.swift; sourceTree = "<group>"; };
 		848FDAA625A6B886001A6ABE /* ControlView+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ControlView+ext.swift"; sourceTree = "<group>"; };
 		848FDAB925A761AB001A6ABE /* Array+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+ext.swift"; sourceTree = "<group>"; };
+		849F10A425BA819900CF9B38 /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
+		849F10A825BA87B500CF9B38 /* FrendsTableViewHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FrendsTableViewHeader.xib; sourceTree = "<group>"; };
+		849F10AB25BA87D400CF9B38 /* FrendsTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrendsTableViewHeader.swift; sourceTree = "<group>"; };
+		84A18BF825B7240100063FA7 /* NewsFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedViewController.swift; sourceTree = "<group>"; };
 		84A26E7D2596EBBA00299CCA /* GroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsTableViewController.swift; sourceTree = "<group>"; };
 		84A26E822596F0BC00299CCA /* GroupsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsTableViewCell.swift; sourceTree = "<group>"; };
-		84A3333F25978CE800E7424E /* FrendsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrendsCollectionViewController.swift; sourceTree = "<group>"; };
+		84A3333F25978CE800E7424E /* ImageGalleryCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageGalleryCollectionViewController.swift; sourceTree = "<group>"; };
 		84A3334225978FAD00E7424E /* FrendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrendCollectionViewCell.swift; sourceTree = "<group>"; };
 		84CFD10B259747E0007C99FC /* MyGroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupsTableViewController.swift; sourceTree = "<group>"; };
 		84CFD10F25975060007C99FC /* MyGroupsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupsTableViewCell.swift; sourceTree = "<group>"; };
@@ -99,6 +119,7 @@
 		844A5CA2258FAF7300DB145E = {
 			isa = PBXGroup;
 			children = (
+				849F10A425BA819900CF9B38 /* K.swift */,
 				84D4755E25B40B2C00A4705A /* CustomViewXIB */,
 				8461A28A25A2F72F0080C9CF /* Extrensions */,
 				8445D28B25A21DE20047E59B /* Service */,
@@ -146,8 +167,10 @@
 		84547F8525B5B68D00B67D86 /* FrendsView */ = {
 			isa = PBXGroup;
 			children = (
-				84A3333F25978CE800E7424E /* FrendsCollectionViewController.swift */,
-				846E01B625987CB7007554E0 /* MyFrendsTableViewController.swift */,
+				84A3333F25978CE800E7424E /* ImageGalleryCollectionViewController.swift */,
+				84A18BF825B7240100063FA7 /* NewsFeedViewController.swift */,
+				8448263E25B921FC00425D5A /* MyFrendsViewController.swift */,
+				8402AECE25B9CE10000C617C /* NewsCollectionViewLayout.swift */,
 			);
 			path = FrendsView;
 			sourceTree = "<group>";
@@ -158,6 +181,7 @@
 				8461A28B25A2F7510080C9CF /* ImageView+ext.swift */,
 				848FDAA625A6B886001A6ABE /* ControlView+ext.swift */,
 				848FDAB925A761AB001A6ABE /* Array+ext.swift */,
+				843D9A1125B95EE8007F0B1F /* RefreshControl+ext.swift */,
 			);
 			path = Extrensions;
 			sourceTree = "<group>";
@@ -167,6 +191,10 @@
 			children = (
 				846E01A7259849F5007554E0 /* VKGroupTableViewCell.swift */,
 				846E01A8259849F5007554E0 /* VKGroupTableViewCell.xib */,
+				8448263825B917DC00425D5A /* NewsFeedCollectionViewCell.swift */,
+				8448263925B917DC00425D5A /* NewsFeedCollectionViewCell.xib */,
+				8448264125B9318800425D5A /* VKUserTableViewCell.swift */,
+				8448264225B9318800425D5A /* VKUserTableViewCell.xib */,
 			);
 			path = CellsXib;
 			sourceTree = "<group>";
@@ -202,6 +230,8 @@
 				84D4756D25B475AE00A4705A /* HeaderTableView.xib */,
 				84547F8C25B5C08B00B67D86 /* CollectionHeaderView.xib */,
 				84547F8F25B5C0C500B67D86 /* CollectionHeaderView.swift */,
+				849F10A825BA87B500CF9B38 /* FrendsTableViewHeader.xib */,
+				849F10AB25BA87D400CF9B38 /* FrendsTableViewHeader.swift */,
 			);
 			path = CustomViewXIB;
 			sourceTree = "<group>";
@@ -216,6 +246,7 @@
 				844A5CA7258FAF7300DB145E /* Sources */,
 				844A5CA8258FAF7300DB145E /* Frameworks */,
 				844A5CA9258FAF7300DB145E /* Resources */,
+				84A18BF625B7228800063FA7 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -265,8 +296,11 @@
 			files = (
 				844A5CBB258FAF7400DB145E /* LaunchScreen.storyboard in Resources */,
 				844A5CB8258FAF7400DB145E /* Assets.xcassets in Resources */,
+				849F10A925BA87B500CF9B38 /* FrendsTableViewHeader.xib in Resources */,
 				84D4756025B4421600A4705A /* HelloView.xib in Resources */,
+				8448263B25B917DC00425D5A /* NewsFeedCollectionViewCell.xib in Resources */,
 				84547F8D25B5C08B00B67D86 /* CollectionHeaderView.xib in Resources */,
+				8448264425B9318800425D5A /* VKUserTableViewCell.xib in Resources */,
 				846E01AA259849F5007554E0 /* VKGroupTableViewCell.xib in Resources */,
 				84D4756E25B475AE00A4705A /* HeaderTableView.xib in Resources */,
 				844A5CB6258FAF7300DB145E /* Main.storyboard in Resources */,
@@ -275,6 +309,26 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		84A18BF625B7228800063FA7 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "TAGS=\"TODO|FIXME\"\nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.swift\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		844A5CA7258FAF7300DB145E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -282,9 +336,9 @@
 			files = (
 				84A3334325978FAD00E7424E /* FrendCollectionViewCell.swift in Sources */,
 				84A26E832596F0BC00299CCA /* GroupsTableViewCell.swift in Sources */,
-				84A3334025978CE800E7424E /* FrendsCollectionViewController.swift in Sources */,
+				84A3334025978CE800E7424E /* ImageGalleryCollectionViewController.swift in Sources */,
 				84D4756B25B4757100A4705A /* HeaderTableView.swift in Sources */,
-				846E01B725987CB7007554E0 /* MyFrendsTableViewController.swift in Sources */,
+				843D9A1225B95EE8007F0B1F /* RefreshControl+ext.swift in Sources */,
 				84CFD10C259747E0007C99FC /* MyGroupsTableViewController.swift in Sources */,
 				8445D29025A21E7E0047E59B /* NetworkService.swift in Sources */,
 				84A26E7E2596EBBA00299CCA /* GroupsTableViewController.swift in Sources */,
@@ -293,6 +347,9 @@
 				846E01BA25988216007554E0 /* MyFrendsTableViewCell.swift in Sources */,
 				8445D28F25A21E7E0047E59B /* Users.swift in Sources */,
 				846E01A9259849F5007554E0 /* VKGroupTableViewCell.swift in Sources */,
+				8448264325B9318800425D5A /* VKUserTableViewCell.swift in Sources */,
+				8448263F25B921FC00425D5A /* MyFrendsViewController.swift in Sources */,
+				849F10AC25BA87D400CF9B38 /* FrendsTableViewHeader.swift in Sources */,
 				844A5CC9258FB1BC00DB145E /* LoginViewController.swift in Sources */,
 				846E01AF25985BE7007554E0 /* User.swift in Sources */,
 				844A5CAF258FAF7300DB145E /* AppDelegate.swift in Sources */,
@@ -304,6 +361,10 @@
 				84547F9025B5C0C500B67D86 /* CollectionHeaderView.swift in Sources */,
 				848FDAA725A6B886001A6ABE /* ControlView+ext.swift in Sources */,
 				84D4756825B446EC00A4705A /* HelloViewController.swift in Sources */,
+				8448263A25B917DC00425D5A /* NewsFeedCollectionViewCell.swift in Sources */,
+				849F10A525BA819900CF9B38 /* K.swift in Sources */,
+				84A18BF925B7240100063FA7 /* NewsFeedViewController.swift in Sources */,
+				8402AECF25B9CE10000C617C /* NewsCollectionViewLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,6 +444,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
+				NEW_SETTING = "";
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -438,6 +500,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				NEW_SETTING = "";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
