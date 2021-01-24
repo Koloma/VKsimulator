@@ -11,7 +11,7 @@ class LoginViewController: UIViewController{
     @IBOutlet weak var loginStackView: UIStackView!
     
     var alertControler: UIAlertController!
-
+    var myWaitIndicatorView = MyWaitIndicatorView()
     
     override func viewDidLoad() {
         super .viewDidLoad()
@@ -26,6 +26,9 @@ class LoginViewController: UIViewController{
         
         let hideKeyboardGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         scrollView?.addGestureRecognizer(hideKeyboardGesture)
+        
+        myWaitIndicatorView.createIndicatorWait(ownerView: self.view)
+        myWaitIndicatorView.isHid = false
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -36,8 +39,6 @@ class LoginViewController: UIViewController{
     
     @IBAction func primaryActionTriger(_ sender: UITextField) {
         print(#function)
-        //TODO Изменить логику проверки credentials и перехода на следующий экранн,
-        //чтобы вариант с телефонной клавиатурой заработал
         loginButton(UIButton())
     }
     

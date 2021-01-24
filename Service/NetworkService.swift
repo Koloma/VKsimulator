@@ -9,7 +9,7 @@ import UIKit
 
 class NetworkService{
     
-    let randomUsersURLtemplate = "https://randomuser.me/api/?results=%d"
+    //let randomUsersURLtemplate = "https://randomuser.me/api/?results=%d"
     let notRandomUsersURLtemplate = "https://randomuser.me/api/?results=%d&seed=vksimulator"
     let randomImageURL = "https://source.unsplash.com/random/100x100"
     
@@ -19,7 +19,7 @@ class NetworkService{
     /// - Returns: Возвращает массив пользователей
     func GetUsers(userCount:Int) ->[VKUser] {
         //performRequest(url: randomUsersURL)
-        let randomUsersURL = String(format: randomUsersURLtemplate, userCount)
+        let randomUsersURL = String(format: notRandomUsersURLtemplate, userCount)
         guard let data = getData(url: randomUsersURL) else { return [] }
         return parseJSON(userData: data)
     }
@@ -58,23 +58,20 @@ class NetworkService{
     }
     
     private func getImage(fromURL: String)->UIImage?{
-        guard let data = getData(url: fromURL) else { fatalError("Error getData(url: fromURL)") }
-        guard let image = UIImage(data: data) else { fatalError("Error UIImage(data: data)") }
+        guard let data = getData(url: fromURL) else { print ("Error getData(url: fromURL): \(fromURL)"); return nil }
+        guard let image = UIImage(data: data) else { print ("Error UIImage(data: data)"); return nil }
         return image
     }
     
     private func getData(url: String)->Data?{
-        guard let url = URL(string: url) else { fatalError("Error URL(string: url)") }
+        guard let url = URL(string: url) else { print("Error URL(string: url)"); return nil }
         do {
              let data = try Data(contentsOf: url)
             return data
         } catch {
-            print(error)
+            print("getData: \(error)")
         }
-        //guard let data = try? Data(contentsOf: url) else { fatalError("Error Data(contentsOf: url)") }
         return nil
-        
-        
     }
     
 }

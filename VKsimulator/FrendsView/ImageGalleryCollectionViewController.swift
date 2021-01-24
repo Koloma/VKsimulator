@@ -9,7 +9,7 @@ import UIKit
 
 private let cellIdentifier = "Cell"
 
-class FrendsCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class ImageGalleryCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
     private let imageCount = 10
     private var images:[userImage] = []

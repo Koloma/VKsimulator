@@ -47,7 +47,7 @@
                 <outlet property="groupImageView" destination="1LG-Vx-KBv" id="Pp7-xa-5Uk"/>
                 <outlet property="groupNameLable" destination="XRX-qu-BgX" id="Eiw-ei-kYf"/>
             </connections>
-            <point key="canvasLocation" x="704.34782608695662" y="113.83928571428571"/>
+            <point key="canvasLocation" x="-425" y="-4"/>
         </tableViewCell>
     </objects>
     <resources>
