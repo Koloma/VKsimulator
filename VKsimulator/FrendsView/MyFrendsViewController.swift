@@ -23,6 +23,7 @@ class MyFrendsViewController: UIViewController {
     private var filteredVkUsersForTable = VKUsersForTable()
     private let networkService = NetworkService()
     
+    private var myWaitIndicatorView = MyWaitIndicatorView()
     
     func logOut() {
         self.dismiss(animated: true, completion: nil)
@@ -34,7 +35,6 @@ class MyFrendsViewController: UIViewController {
         setupTableView();
         searchBarView.delegate = self;
         loadUsersData(count: VKuserCount)
-      
         
     }
     
@@ -62,7 +62,7 @@ class MyFrendsViewController: UIViewController {
     private func setupTableView(){
         tableView.dataSource = self;
         tableView.delegate = self;
-        
+
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.attributedTitle = NSAttributedString(string: "Updating frends...")
         tableView.refreshControl?.addTarget(self, action: #selector(refreshTableView), for: UIControl.Event.valueChanged)
@@ -81,6 +81,7 @@ class MyFrendsViewController: UIViewController {
     }
  
     private func loadUsersData(count userCount:Int) {
+        myWaitIndicatorView.isHid = false
         tableView.refreshControl?.myBeginRefreshing(in: tableView)
         let queue = DispatchQueue.global(qos: .userInitiated)
         queue.async{
@@ -89,6 +90,7 @@ class MyFrendsViewController: UIViewController {
 
             DispatchQueue.main.async {
                 self.tableView.reloadData()
+                self.myWaitIndicatorView.isHid = true
                 self.tableView.refreshControl?.endRefreshing()
             }
         }
@@ -135,7 +137,7 @@ extension MyFrendsViewController: UITableViewDataSource, UITableViewDelegate{
         }
         return UITableViewCell()
     }
-    
+
     
     func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         return filteredVkUsersForTable.firstLetter
@@ -173,10 +175,6 @@ extension MyFrendsViewController: UITableViewDataSource, UITableViewDelegate{
             tableView.endUpdates()
         }
     }
-    
-    //    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-    //        return filteredVkUsersForTable.firstLetter[section]
-    //    }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: FrendsTableViewHeader.identifier) as? FrendsTableViewHeader{

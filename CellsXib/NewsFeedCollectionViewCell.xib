@@ -24,11 +24,9 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="300" verticalCompressionResistancePriority="800" editable="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="vrT-gn-Lqz">
                                 <rect key="frame" x="5" y="55" width="340" height="248"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <string key="text">Все виды (включая те, которые не содержат изображений) имеют режим содержимого, который влияет на то, как они рисуют свое содержимое. По умолчанию используется Масштаб Для заполнения, потому что он самый быстрый: содержимое представления просто растягивается вверх (или вниз), чтобы соответствовать доступному пространству. Но есть еще два других, которые вы будете часто использовать: Aspect Fit и Aspect Fill.
+                                <mutableString key="text">Все виды (включая те, которые не содержат изображений) имеют режим содержимого, который влияет на то, как они рисуют свое содержимое. По умолчанию используется Масштаб Для заполнения, потому что он самый быстрый: содержимое представления просто растягивается вверх (или вниз), чтобы соответствовать доступному пространству. Но есть еще два других, которые вы будете часто использовать: Aspect Fit и Aspect Fill.
 
-"Aspect Fit" означает "растянуть это изображение настолько, насколько это возможно, но убедитесь, что все изображение видно, сохраняя его первоначальное соотношение сторон." Это полезно, когда вы хотите, чтобы изображение было как можно больше, не растягивая его пропорции, и это, вероятно, наиболее часто используемый режим контента.
-
-"Заливка аспекта” означает "растянуть это изображение как можно больше, обрезая любые части, которые не подходят, сохраняя при этом его первоначальное соотношение сторон." Это полезно, когда вы хотите, чтобы изображение заполнило свой вид изображения, даже если это означает потерю горизонтальных или вертикальных краев. Если вы хотите, чтобы изображение заполняло определенное пространство, но вы хотите сохранить его соотношение сторон, это то, что вы должны использовать.</string>
+"Aspect Fit" означает "растянуть это изображение настолько, насколько это возможно, но убедитесь, что все изображение видно, сохраняя его первоначальное соотношение сторон." Это полезно, когда вы хотите, чтобы изображение было как можно больше, не растягивая его пропорции, и это, вероятно, наиболее часто используемый режим контента.</mutableString>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -73,44 +71,6 @@
                                     <constraint firstAttribute="bottom" secondItem="bw2-9J-MDA" secondAttribute="bottom" id="xZ0-Bc-DPm"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RsJ-S9-Cze" userLabel="View for like">
-                                <rect key="frame" x="8" y="653" width="334" height="40"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="mWU-su-zK4">
-                                        <rect key="frame" x="84.5" y="0.0" width="165" height="40"/>
-                                        <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="BOo-aR-OfC">
-                                                <rect key="frame" x="0.0" y="4" width="35" height="32.5"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" secondItem="BOo-aR-OfC" secondAttribute="height" multiplier="1:1" id="Flw-9C-zIL"/>
-                                                    <constraint firstAttribute="height" constant="35" id="j8C-hH-8Gh"/>
-                                                    <constraint firstAttribute="width" constant="35" id="uZa-yl-lSn"/>
-                                                </constraints>
-                                            </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rectangle.and.pencil.and.ellipsis.rtl" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="c7M-l1-D4W">
-                                                <rect key="frame" x="65" y="2.5" width="35" height="33.5"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" secondItem="c7M-l1-D4W" secondAttribute="height" multiplier="1:1" id="3c3-HU-KGd"/>
-                                                </constraints>
-                                            </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowshape.turn.up.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Yak-28-URb">
-                                                <rect key="frame" x="130" y="3.5" width="35" height="32.5"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" secondItem="Yak-28-URb" secondAttribute="height" multiplier="1:1" id="8Xa-P2-Kjo"/>
-                                                </constraints>
-                                            </imageView>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="4z4-SA-4Zq"/>
-                                    <constraint firstItem="mWU-su-zK4" firstAttribute="centerX" secondItem="RsJ-S9-Cze" secondAttribute="centerX" id="4zD-uy-fOq"/>
-                                    <constraint firstItem="mWU-su-zK4" firstAttribute="centerY" secondItem="RsJ-S9-Cze" secondAttribute="centerY" id="9fm-r4-3aq"/>
-                                    <constraint firstItem="mWU-su-zK4" firstAttribute="top" secondItem="RsJ-S9-Cze" secondAttribute="top" id="Q4A-af-wju"/>
-                                    <constraint firstAttribute="bottom" secondItem="mWU-su-zK4" secondAttribute="bottom" id="dTj-4I-ctH"/>
-                                </constraints>
-                            </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" image="pic1" translatesAutoresizingMaskIntoConstraints="NO" id="qrg-t8-nV7">
                                 <rect key="frame" x="5" y="308" width="340" height="340"/>
                                 <constraints>
@@ -118,6 +78,47 @@
                                     <constraint firstAttribute="width" secondItem="qrg-t8-nV7" secondAttribute="height" multiplier="1:1" id="qtr-sp-EyV"/>
                                 </constraints>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RsJ-S9-Cze" userLabel="View for like">
+                                <rect key="frame" x="8" y="653" width="334" height="40"/>
+                                <subviews>
+                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Efg-Xr-dUt">
+                                        <rect key="frame" x="87" y="5" width="57.5" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="BOo-aR-OfC">
+                                        <rect key="frame" x="149.5" y="4" width="35" height="32.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="BOo-aR-OfC" secondAttribute="height" multiplier="1:1" id="Flw-9C-zIL"/>
+                                            <constraint firstAttribute="height" constant="35" id="j8C-hH-8Gh"/>
+                                            <constraint firstAttribute="width" constant="35" id="uZa-yl-lSn"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowshape.turn.up.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Yak-28-URb">
+                                        <rect key="frame" x="204.5" y="3.5" width="35" height="32.5"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rectangle.and.pencil.and.ellipsis.rtl" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="c7M-l1-D4W">
+                                        <rect key="frame" x="259.5" y="2.5" width="35" height="33.5"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="4z4-SA-4Zq"/>
+                                    <constraint firstItem="c7M-l1-D4W" firstAttribute="width" secondItem="BOo-aR-OfC" secondAttribute="width" id="ChP-mQ-5nq"/>
+                                    <constraint firstItem="Efg-Xr-dUt" firstAttribute="centerY" secondItem="RsJ-S9-Cze" secondAttribute="centerY" id="FA7-OH-e8g"/>
+                                    <constraint firstItem="BOo-aR-OfC" firstAttribute="leading" secondItem="Efg-Xr-dUt" secondAttribute="trailing" constant="5" id="MN0-TF-RdR"/>
+                                    <constraint firstItem="Yak-28-URb" firstAttribute="centerY" secondItem="RsJ-S9-Cze" secondAttribute="centerY" id="S3Z-MW-BBA"/>
+                                    <constraint firstItem="BOo-aR-OfC" firstAttribute="centerY" secondItem="RsJ-S9-Cze" secondAttribute="centerY" id="Wwe-J0-khL"/>
+                                    <constraint firstItem="Yak-28-URb" firstAttribute="leading" secondItem="BOo-aR-OfC" secondAttribute="trailing" constant="20" id="dSu-4j-oPF"/>
+                                    <constraint firstItem="Yak-28-URb" firstAttribute="height" secondItem="BOo-aR-OfC" secondAttribute="height" id="ecZ-a6-qnF"/>
+                                    <constraint firstItem="c7M-l1-D4W" firstAttribute="centerY" secondItem="RsJ-S9-Cze" secondAttribute="centerY" id="kfL-ze-78g"/>
+                                    <constraint firstItem="c7M-l1-D4W" firstAttribute="leading" secondItem="Yak-28-URb" secondAttribute="trailing" constant="20" id="lBZ-Wc-Cgb"/>
+                                    <constraint firstItem="BOo-aR-OfC" firstAttribute="centerX" secondItem="RsJ-S9-Cze" secondAttribute="centerX" id="mDc-MT-yd8"/>
+                                    <constraint firstItem="Yak-28-URb" firstAttribute="width" secondItem="BOo-aR-OfC" secondAttribute="width" id="rvV-6V-1jr"/>
+                                    <constraint firstItem="c7M-l1-D4W" firstAttribute="height" secondItem="BOo-aR-OfC" secondAttribute="height" id="ydU-3H-UH6"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
@@ -147,14 +148,18 @@
             </constraints>
             <size key="customSize" width="407" height="701"/>
             <connections>
+                <outlet property="commentImageView" destination="c7M-l1-D4W" id="n0p-5Y-Kik"/>
                 <outlet property="dateLable" destination="SL2-DU-fHJ" id="z1T-V4-27M"/>
+                <outlet property="heartImageView" destination="BOo-aR-OfC" id="lJ9-ci-WAw"/>
+                <outlet property="likeCountLable" destination="Efg-Xr-dUt" id="DQF-8M-dHn"/>
                 <outlet property="newsImageView" destination="qrg-t8-nV7" id="SO3-X1-bj6"/>
                 <outlet property="newsTextView" destination="vrT-gn-Lqz" id="DZy-QD-gB8"/>
+                <outlet property="sendImageView" destination="Yak-28-URb" id="An9-s9-UQV"/>
                 <outlet property="userImageView" destination="bw2-9J-MDA" id="Qs7-5D-2Zu"/>
                 <outlet property="userNameLable" destination="4lU-6F-aLb" id="hXO-ey-XlT"/>
                 <outlet property="widthConstraint" destination="3D9-vW-anw" id="m55-4K-6Nb"/>
             </connections>
-            <point key="canvasLocation" x="-270" y="-266"/>
+            <point key="canvasLocation" x="-271.01449275362319" y="-266.18303571428572"/>
         </collectionViewCell>
     </objects>
     <resources>

@@ -69,7 +69,7 @@ class NetworkService{
              let data = try Data(contentsOf: url)
             return data
         } catch {
-            print(error)
+            print("getData: \(error)")
         }
         return nil
     }

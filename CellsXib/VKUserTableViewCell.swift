@@ -13,6 +13,7 @@ class VKUserTableViewCell: UITableViewCell {
     @IBOutlet weak var userNicLable: UILabel!
     @IBOutlet weak var userDescrLabel: UILabel!
 
+    
 
     
     static let nib = UINib(nibName: "VKUserTableViewCell", bundle: nil)
@@ -24,7 +25,18 @@ class VKUserTableViewCell: UITableViewCell {
         userImageView.image = userImage
         userImageView.rounded()
         backgroundColor = UIColor.clear
-        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
+        tapGesture.numberOfTapsRequired = 1
+        tapGesture.numberOfTouchesRequired = 1
+        userImageView.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func imageTapped(_ sender: UIImage) {
+        print(#function)
+        let bounds = self.userImageView.bounds.size
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1.0, options: [], animations: {
+            self.userImageView.bounds.size = CGSize(width: bounds.width + bounds.width / 4, height: bounds.height + bounds.height / 4)
+        })
     }
     
     override func draw(_ rect: CGRect) {
