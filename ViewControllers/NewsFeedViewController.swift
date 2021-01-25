@@ -54,5 +54,8 @@ extension NewsFeedViewController: UICollectionViewDelegate, UICollectionViewData
         return UICollectionViewCell()
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 370, height: 700)
+    }
     
 }

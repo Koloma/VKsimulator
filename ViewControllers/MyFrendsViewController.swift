@@ -167,6 +167,10 @@ extension MyFrendsViewController: UITableViewDataSource, UITableViewDelegate{
         return filteredVkUsersForTable.firstLetter.count
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: VKUserTableViewCell.identifier, for: indexPath) as? VKUserTableViewCell{
             let vkUser = filteredVkUsersForTable.vkUsers[indexPath.section][indexPath.row]
