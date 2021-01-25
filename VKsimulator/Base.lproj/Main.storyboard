@@ -281,46 +281,64 @@ simulator</string>
                         <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="8Cr-9k-onn">
-                                <rect key="frame" x="0.0" y="106" width="320" height="56"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4gw-JK-tbY">
-                                <rect key="frame" x="0.0" y="56" width="320" height="50"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label Header" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dz7-L2-hB7">
-                                        <rect key="frame" x="109.5" y="14.5" width="101.5" height="21"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="Dz7-L2-hB7" firstAttribute="centerX" secondItem="4gw-JK-tbY" secondAttribute="centerX" id="5Pt-Nk-0E9"/>
-                                    <constraint firstAttribute="height" constant="50" id="fKd-pI-sx0"/>
-                                    <constraint firstItem="Dz7-L2-hB7" firstAttribute="centerY" secondItem="4gw-JK-tbY" secondAttribute="centerY" id="op5-iN-EJ5"/>
-                                </constraints>
-                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MZu-yQ-wcT">
-                                <rect key="frame" x="0.0" y="162" width="320" height="249"/>
+                                <rect key="frame" x="0.0" y="106" width="320" height="305"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4gw-JK-tbY">
+                                <rect key="frame" x="0.0" y="56" width="320" height="50"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="magnifyingglass" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="zRE-Rf-CMe">
+                                        <rect key="frame" x="5" y="11" width="30" height="28"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="zRE-Rf-CMe" secondAttribute="height" multiplier="1:1" id="51D-CT-w8U"/>
+                                            <constraint firstAttribute="height" constant="30" id="7bR-UX-Iz0"/>
+                                            <constraint firstAttribute="width" constant="30" id="pKV-hz-KPe"/>
+                                        </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="GNJ-Wl-mmD" appends="YES" id="OrS-4w-kUQ"/>
+                                        </connections>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="multiply.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="lDk-zT-cZ4">
+                                        <rect key="frame" x="285" y="10.5" width="30" height="29"/>
+                                        <color key="tintColor" systemColor="systemPinkColor"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="lDk-zT-cZ4" secondAttribute="height" multiplier="1:1" id="UP3-AY-322"/>
+                                            <constraint firstAttribute="height" constant="30" id="Wm7-11-06e"/>
+                                            <constraint firstAttribute="width" constant="30" id="i4g-yt-4d0"/>
+                                        </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="adp-GU-Fwu" appends="YES" id="bKe-27-Nn4"/>
+                                        </connections>
+                                    </imageView>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0oi-G4-sfo">
+                                        <rect key="frame" x="42" y="8" width="240" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="search"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="zRE-Rf-CMe" firstAttribute="leading" secondItem="4gw-JK-tbY" secondAttribute="leading" constant="5" id="5gU-TR-ADY"/>
+                                    <constraint firstItem="0oi-G4-sfo" firstAttribute="leading" secondItem="zRE-Rf-CMe" secondAttribute="trailing" constant="7" id="Cfa-nE-ieZ"/>
+                                    <constraint firstItem="lDk-zT-cZ4" firstAttribute="centerY" secondItem="4gw-JK-tbY" secondAttribute="centerY" id="Hhz-qB-bWx"/>
+                                    <constraint firstItem="zRE-Rf-CMe" firstAttribute="centerY" secondItem="4gw-JK-tbY" secondAttribute="centerY" id="Hqb-mh-J9u"/>
+                                    <constraint firstAttribute="trailing" secondItem="lDk-zT-cZ4" secondAttribute="trailing" constant="5" id="dTD-eL-a1A"/>
+                                    <constraint firstAttribute="height" constant="50" id="fKd-pI-sx0"/>
+                                    <constraint firstItem="0oi-G4-sfo" firstAttribute="centerY" secondItem="4gw-JK-tbY" secondAttribute="centerY" id="qU2-AQ-hTZ"/>
+                                    <constraint firstItem="lDk-zT-cZ4" firstAttribute="leading" secondItem="0oi-G4-sfo" secondAttribute="trailing" constant="3" id="tJM-Rr-SGJ"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="En2-tR-Xcf"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="8Cr-9k-onn" firstAttribute="top" secondItem="4gw-JK-tbY" secondAttribute="bottom" id="24m-1F-M2S"/>
                             <constraint firstItem="4gw-JK-tbY" firstAttribute="top" secondItem="En2-tR-Xcf" secondAttribute="top" id="85e-Ex-glq"/>
                             <constraint firstItem="4gw-JK-tbY" firstAttribute="trailing" secondItem="En2-tR-Xcf" secondAttribute="trailing" id="AU3-eD-f7J"/>
-                            <constraint firstItem="8Cr-9k-onn" firstAttribute="top" secondItem="4gw-JK-tbY" secondAttribute="bottom" id="Jes-uA-psf"/>
-                            <constraint firstItem="8Cr-9k-onn" firstAttribute="trailing" secondItem="En2-tR-Xcf" secondAttribute="trailing" id="TNO-uL-E35"/>
-                            <constraint firstItem="MZu-yQ-wcT" firstAttribute="top" secondItem="8Cr-9k-onn" secondAttribute="bottom" id="VYP-9E-Hbr"/>
-                            <constraint firstItem="8Cr-9k-onn" firstAttribute="leading" secondItem="En2-tR-Xcf" secondAttribute="leading" id="X4q-oQ-Gb9"/>
+                            <constraint firstItem="MZu-yQ-wcT" firstAttribute="top" secondItem="4gw-JK-tbY" secondAttribute="bottom" id="OOP-7R-fdm"/>
                             <constraint firstItem="En2-tR-Xcf" firstAttribute="bottom" secondItem="MZu-yQ-wcT" secondAttribute="bottom" id="dBt-bQ-AKc"/>
                             <constraint firstItem="MZu-yQ-wcT" firstAttribute="leading" secondItem="En2-tR-Xcf" secondAttribute="leading" id="jTg-FE-cBS"/>
                             <constraint firstItem="4gw-JK-tbY" firstAttribute="leading" secondItem="En2-tR-Xcf" secondAttribute="leading" id="vTf-uF-db2"/>
@@ -329,16 +347,28 @@ simulator</string>
                     </view>
                     <navigationItem key="navigationItem" id="Ph5-IS-QrF"/>
                     <connections>
-                        <outlet property="headerView" destination="4gw-JK-tbY" id="47D-RN-VUE"/>
-                        <outlet property="searchBarView" destination="8Cr-9k-onn" id="CoL-RK-LLq"/>
+                        <outlet property="cancelImageView" destination="lDk-zT-cZ4" id="GR0-tP-aG2"/>
+                        <outlet property="searchImageView" destination="zRE-Rf-CMe" id="obt-ub-xms"/>
+                        <outlet property="searchTextField" destination="0oi-G4-sfo" id="Lna-uF-EQ2"/>
+                        <outlet property="searchView" destination="4gw-JK-tbY" id="47D-RN-VUE"/>
                         <outlet property="tableView" destination="MZu-yQ-wcT" id="4uF-wN-VyD"/>
                         <segue destination="yPh-6f-xkg" kind="show" identifier="NewsFeed" id="CHb-00-tta"/>
                         <segue destination="e83-4f-S0C" kind="show" identifier="ImageGallery" id="Tsa-KR-acZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X4Y-Gx-OVD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="GNJ-Wl-mmD" userLabel="Tap Gesture Recognizer Search Button">
+                    <connections>
+                        <action selector="searchTapped:" destination="E5S-vi-alR" id="BZ0-GB-xyl"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="adp-GU-Fwu" userLabel="Tap Gesture Recognizer Cancel Button">
+                    <connections>
+                        <action selector="cancelTapped:" destination="E5S-vi-alR" id="Na7-mT-brE"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1518.75" y="-145"/>
+            <point key="canvasLocation" x="1588" y="-145"/>
         </scene>
         <!--Image gallery-->
         <scene sceneID="ije-ZC-aOO">
@@ -691,6 +721,8 @@ simulator</string>
         <image name="circle.fill" catalog="system" width="128" height="121"/>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="logoImage" width="256" height="256"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <image name="multiply.circle" catalog="system" width="128" height="121"/>
         <image name="person.3" catalog="system" width="128" height="62"/>
         <image name="square.and.arrow.down.fill" catalog="system" width="121" height="128"/>
         <image name="square.and.pencil" catalog="system" width="128" height="115"/>
