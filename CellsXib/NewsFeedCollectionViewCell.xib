@@ -24,9 +24,9 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="300" verticalCompressionResistancePriority="800" editable="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="vrT-gn-Lqz">
                                 <rect key="frame" x="5" y="55" width="340" height="248"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <mutableString key="text">Все виды (включая те, которые не содержат изображений) имеют режим содержимого, который влияет на то, как они рисуют свое содержимое. По умолчанию используется Масштаб Для заполнения, потому что он самый быстрый: содержимое представления просто растягивается вверх (или вниз), чтобы соответствовать доступному пространству. Но есть еще два других, которые вы будете часто использовать: Aspect Fit и Aspect Fill.
+                                <string key="text">Все виды (включая те, которые не содержат изображений) имеют режим содержимого, который влияет на то, как они рисуют свое содержимое. По умолчанию используется Масштаб Для заполнения, потому что он самый быстрый: содержимое представления просто растягивается вверх (или вниз), чтобы соответствовать доступному пространству. Но есть еще два других, которые вы будете часто использовать: Aspect Fit и Aspect Fill.
 
-"Aspect Fit" означает "растянуть это изображение настолько, насколько это возможно, но убедитесь, что все изображение видно, сохраняя его первоначальное соотношение сторон." Это полезно, когда вы хотите, чтобы изображение было как можно больше, не растягивая его пропорции, и это, вероятно, наиболее часто используемый режим контента.</mutableString>
+"Aspect Fit" означает "растянуть это изображение настолько, насколько это возможно, но убедитесь, что все изображение видно, сохраняя его первоначальное соотношение сторон." Это полезно, когда вы хотите, чтобы изображение было как можно больше, не растягивая его пропорции, и это, вероятно, наиболее часто используемый режим контента.</string>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -95,11 +95,11 @@
                                             <constraint firstAttribute="width" constant="35" id="uZa-yl-lSn"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowshape.turn.up.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Yak-28-URb">
-                                        <rect key="frame" x="204.5" y="3.5" width="35" height="32.5"/>
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowshape" translatesAutoresizingMaskIntoConstraints="NO" id="Yak-28-URb">
+                                        <rect key="frame" x="204.5" y="2.5" width="35" height="35"/>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rectangle.and.pencil.and.ellipsis.rtl" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="c7M-l1-D4W">
-                                        <rect key="frame" x="259.5" y="2.5" width="35" height="33.5"/>
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pencil" translatesAutoresizingMaskIntoConstraints="NO" id="c7M-l1-D4W">
+                                        <rect key="frame" x="259.5" y="2.5" width="35" height="35"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -163,10 +163,10 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="arrowshape.turn.up.right" catalog="system" width="128" height="106"/>
+        <image name="arrowshape" width="14" height="12"/>
         <image name="heart" catalog="system" width="128" height="109"/>
+        <image name="pencil" width="19" height="13"/>
         <image name="pic1" width="640" height="704"/>
-        <image name="rectangle.and.pencil.and.ellipsis.rtl" catalog="system" width="128" height="92"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
