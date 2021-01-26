@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zmE-gT-0uB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -625,7 +625,7 @@ simulator</string>
             </objects>
             <point key="canvasLocation" x="-242" y="-304"/>
         </scene>
-        <!--Item-->
+        <!--Cloud animation-->
         <scene sceneID="gmw-H3-oRH">
             <objects>
                 <viewController id="zmE-gT-0uB" customClass="BezierViewController" customModule="VKsimulator" customModuleProvider="target" sceneMemberID="viewController">
@@ -658,7 +658,7 @@ simulator</string>
                             <constraint firstItem="CKI-Pw-Aad" firstAttribute="centerX" secondItem="xdP-oU-b24" secondAttribute="centerX" id="YxV-om-1bg"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" selectedImage="pencil.slash" catalog="system" id="9aK-JG-Pgs"/>
+                    <tabBarItem key="tabBarItem" title="Cloud animation" selectedImage="pencil.slash" catalog="system" id="9aK-JG-Pgs"/>
                     <connections>
                         <outlet property="greenView" destination="4Kg-Kr-ZAY" id="ylK-Ky-y6s"/>
                     </connections>

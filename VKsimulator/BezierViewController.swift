@@ -37,19 +37,35 @@ class BezierViewController: UIViewController {
         //greenView.layer.mask = layer
         
         
-        let circleLayer = CAShapeLayer()
-        circleLayer.backgroundColor = UIColor.red.cgColor
-        circleLayer.bounds = CGRect(x: 0, y: 0, width: 20, height: 20)
-        circleLayer.position = CGPoint(x: 40, y: 20)
-        circleLayer.cornerRadius = 10
+        let circleLayer1 = CAShapeLayer()
+        circleLayer1.backgroundColor = UIColor.red.cgColor
+        circleLayer1.bounds = CGRect(x: 0, y: 0, width: 10, height: 10)
+        circleLayer1.position = CGPoint(x: 40, y: 20)
+        circleLayer1.cornerRadius = 5
+       
+        let circleLayer2 = CAShapeLayer()
+        circleLayer2.backgroundColor =  UIColor.red.cgColor
+        circleLayer2.bounds = CGRect(x: 0, y: 0, width: 10, height: 10)
+        circleLayer2.position = CGPoint(x: 40, y: 20)
+        circleLayer2.cornerRadius = 5
         
-        let followPathAnimation = CAKeyframeAnimation(keyPath: "position")
-        followPathAnimation.path = shape.cgPath
-        followPathAnimation.calculationMode = CAAnimationCalculationMode.paced
-        followPathAnimation.speed = 0.05
-        followPathAnimation.repeatCount = Float.infinity
 
-        circleLayer.add(followPathAnimation, forKey: nil)
+        let followPathAnimation1 = CAKeyframeAnimation(keyPath: "position")
+        followPathAnimation1.beginTime  = 0.001
+        followPathAnimation1.path = shape.cgPath
+        followPathAnimation1.calculationMode = CAAnimationCalculationMode.paced
+        followPathAnimation1.speed = 0.05
+        followPathAnimation1.repeatCount = Float.infinity
+        
+        let followPathAnimation2 = CAKeyframeAnimation(keyPath: "position")
+        followPathAnimation2.beginTime = 0.0
+        followPathAnimation2.path = shape.cgPath
+        followPathAnimation2.calculationMode = CAAnimationCalculationMode.paced
+        followPathAnimation2.speed = 0.05
+        followPathAnimation2.repeatCount = Float.infinity
+        
+        circleLayer1.add(followPathAnimation1, forKey: nil)
+        circleLayer2.add(followPathAnimation2, forKey: nil)
         
         let strokeStartAnimation = CABasicAnimation(keyPath: "strokeStart")
         strokeStartAnimation.fromValue = 0.0
@@ -59,7 +75,7 @@ class BezierViewController: UIViewController {
         let strokeEndAnimation = CABasicAnimation(keyPath: "strokeEnd")
         strokeEndAnimation.fromValue = 0.1
         strokeEndAnimation.toValue = 1.0
-        strokeStartAnimation.repeatDuration = .infinity
+        strokeEndAnimation.repeatDuration = .infinity
 
         let animationGroup = CAAnimationGroup()
         animationGroup.duration = 5
@@ -68,7 +84,10 @@ class BezierViewController: UIViewController {
         
         layer.add(animationGroup, forKey: nil)
         greenView.layer.addSublayer(layer)
-        greenView.layer.addSublayer(circleLayer)
+        
+        greenView.layer.addSublayer(circleLayer1)
+        greenView.layer.addSublayer(circleLayer2)
+
         
         
     }
