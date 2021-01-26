@@ -21,6 +21,7 @@
 		844A5CB8258FAF7400DB145E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 844A5CB7258FAF7400DB145E /* Assets.xcassets */; };
 		844A5CBB258FAF7400DB145E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 844A5CB9258FAF7400DB145E /* LaunchScreen.storyboard */; };
 		844A5CC9258FB1BC00DB145E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844A5CC8258FB1BC00DB145E /* LoginViewController.swift */; };
+		8450262125C008FA0026B63F /* BezierViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8450262025C008FA0026B63F /* BezierViewController.swift */; };
 		84547F8D25B5C08B00B67D86 /* CollectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84547F8C25B5C08B00B67D86 /* CollectionHeaderView.xib */; };
 		84547F9025B5C0C500B67D86 /* CollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84547F8F25B5C0C500B67D86 /* CollectionHeaderView.swift */; };
 		8461A28C25A2F7510080C9CF /* ImageView+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8461A28B25A2F7510080C9CF /* ImageView+ext.swift */; };
@@ -68,6 +69,7 @@
 		844A5CBA258FAF7400DB145E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		844A5CBC258FAF7400DB145E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		844A5CC8258FB1BC00DB145E /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		8450262025C008FA0026B63F /* BezierViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BezierViewController.swift; sourceTree = "<group>"; };
 		84547F8C25B5C08B00B67D86 /* CollectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionHeaderView.xib; sourceTree = "<group>"; };
 		84547F8F25B5C0C500B67D86 /* CollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionHeaderView.swift; sourceTree = "<group>"; };
 		8461A28B25A2F7510080C9CF /* ImageView+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageView+ext.swift"; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				844A5CBC258FAF7400DB145E /* Info.plist */,
 				84EF01A225BE78CD00F49415 /* Animator.swift */,
 				84EF01A525BEB9FD00F49415 /* SearchBarAnimator.swift */,
+				8450262025C008FA0026B63F /* BezierViewController.swift */,
 			);
 			path = VKsimulator;
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 				849F10AC25BA87D400CF9B38 /* FrendsTableViewHeader.swift in Sources */,
 				844A5CC9258FB1BC00DB145E /* LoginViewController.swift in Sources */,
 				846E01AF25985BE7007554E0 /* User.swift in Sources */,
+				8450262125C008FA0026B63F /* BezierViewController.swift in Sources */,
 				844A5CAF258FAF7300DB145E /* AppDelegate.swift in Sources */,
 				844A5CB1258FAF7300DB145E /* SceneDelegate.swift in Sources */,
 				8461A28C25A2F7510080C9CF /* ImageView+ext.swift in Sources */,

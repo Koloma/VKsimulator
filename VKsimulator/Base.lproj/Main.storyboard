@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zmE-gT-0uB">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -368,7 +368,7 @@ simulator</string>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1588" y="-145"/>
+            <point key="canvasLocation" x="591" y="-304"/>
         </scene>
         <!--Image gallery-->
         <scene sceneID="ije-ZC-aOO">
@@ -469,7 +469,7 @@ simulator</string>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aWg-fn-7qQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2647.5" y="670"/>
+            <point key="canvasLocation" x="2100" y="251"/>
         </scene>
         <!--News feed-->
         <scene sceneID="fTU-C4-BzA">
@@ -508,7 +508,7 @@ simulator</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e5d-RV-DRO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2383.125" y="-145"/>
+            <point key="canvasLocation" x="2100" y="-491"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Z5Y-BA-kKM">
@@ -524,6 +524,7 @@ simulator</string>
                         <segue destination="9mj-c2-xKf" kind="relationship" relationship="viewControllers" id="Wmn-0v-PCt"/>
                         <segue destination="x1e-hR-e0H" kind="relationship" relationship="viewControllers" destinationCreationSelector="Groups" id="Sun-O1-kSU"/>
                         <segue destination="QOe-j9-0aC" kind="relationship" relationship="viewControllers" id="1yA-IR-Hll"/>
+                        <segue destination="zmE-gT-0uB" kind="relationship" relationship="viewControllers" id="Oi4-W6-oiz"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="99F-cr-ahO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -582,7 +583,7 @@ simulator</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sWa-0E-AV7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-928.125" y="365"/>
+            <point key="canvasLocation" x="522" y="470"/>
         </scene>
         <!--Groups-->
         <scene sceneID="bm1-cw-JXx">
@@ -622,7 +623,49 @@ simulator</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kFl-zC-yoC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="753.75" y="-145"/>
+            <point key="canvasLocation" x="-242" y="-304"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="gmw-H3-oRH">
+            <objects>
+                <viewController id="zmE-gT-0uB" customClass="BezierViewController" customModule="VKsimulator" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xdP-oU-b24">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Kg-Kr-ZAY">
+                                <rect key="frame" x="82" y="233" width="250" height="250"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="McV-lw-Yj3"/>
+                                    <constraint firstAttribute="width" constant="250" id="b16-b1-fFs"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CKI-Pw-Aad">
+                                <rect key="frame" x="184" y="503" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="buttonTap:" destination="zmE-gT-0uB" eventType="touchUpInside" id="oJ7-OD-wds"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="CXL-Jb-byS"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="4Kg-Kr-ZAY" firstAttribute="centerY" secondItem="xdP-oU-b24" secondAttribute="centerY" id="18L-vS-pQY"/>
+                            <constraint firstItem="CKI-Pw-Aad" firstAttribute="top" secondItem="4Kg-Kr-ZAY" secondAttribute="bottom" constant="20" id="LzR-Gy-VxT"/>
+                            <constraint firstItem="4Kg-Kr-ZAY" firstAttribute="centerX" secondItem="xdP-oU-b24" secondAttribute="centerX" id="Wzq-ss-obT"/>
+                            <constraint firstItem="CKI-Pw-Aad" firstAttribute="centerX" secondItem="xdP-oU-b24" secondAttribute="centerX" id="YxV-om-1bg"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" selectedImage="pencil.slash" catalog="system" id="9aK-JG-Pgs"/>
+                    <connections>
+                        <outlet property="greenView" destination="4Kg-Kr-ZAY" id="ylK-Ky-y6s"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R8P-Gt-0it" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1265" y="-1339"/>
         </scene>
         <!--Animation-->
         <scene sceneID="678-g0-Z2M">
@@ -641,7 +684,7 @@ simulator</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qxf-n3-n2D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1727" y="366"/>
+            <point key="canvasLocation" x="-278" y="470"/>
         </scene>
     </scenes>
     <resources>
@@ -649,6 +692,7 @@ simulator</string>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="multiply.circle" catalog="system" width="128" height="121"/>
+        <image name="pencil.slash" catalog="system" width="128" height="113"/>
         <image name="person.3" catalog="system" width="128" height="62"/>
         <image name="pic1" width="640" height="704"/>
         <image name="square.and.arrow.down.fill" catalog="system" width="121" height="128"/>
@@ -663,6 +707,9 @@ simulator</string>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemIndigoColor">
             <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
