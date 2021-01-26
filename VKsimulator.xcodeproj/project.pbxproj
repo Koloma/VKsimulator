@@ -44,7 +44,7 @@
 		84A5BD8325BD2F1E008FC5D1 /* MyWaitIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A5BD8225BD2F1E008FC5D1 /* MyWaitIndicatorView.swift */; };
 		84CFD10C259747E0007C99FC /* MyGroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CFD10B259747E0007C99FC /* MyGroupsTableViewController.swift */; };
 		84CFD11025975060007C99FC /* MyGroupsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CFD10F25975060007C99FC /* MyGroupsTableViewCell.swift */; };
-		84D4756825B446EC00A4705A /* HelloViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D4756725B446EC00A4705A /* HelloViewController.swift */; };
+		84D4756825B446EC00A4705A /* AnimationDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D4756725B446EC00A4705A /* AnimationDemoViewController.swift */; };
 		84D4756B25B4757100A4705A /* HeaderTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D4756A25B4757100A4705A /* HeaderTableView.swift */; };
 		84D4756E25B475AE00A4705A /* HeaderTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D4756D25B475AE00A4705A /* HeaderTableView.xib */; };
 		84EF01A325BE78CD00F49415 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EF01A225BE78CD00F49415 /* Animator.swift */; };
@@ -91,7 +91,7 @@
 		84A5BD8225BD2F1E008FC5D1 /* MyWaitIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWaitIndicatorView.swift; sourceTree = "<group>"; };
 		84CFD10B259747E0007C99FC /* MyGroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupsTableViewController.swift; sourceTree = "<group>"; };
 		84CFD10F25975060007C99FC /* MyGroupsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupsTableViewCell.swift; sourceTree = "<group>"; };
-		84D4756725B446EC00A4705A /* HelloViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloViewController.swift; sourceTree = "<group>"; };
+		84D4756725B446EC00A4705A /* AnimationDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationDemoViewController.swift; sourceTree = "<group>"; };
 		84D4756A25B4757100A4705A /* HeaderTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTableView.swift; sourceTree = "<group>"; };
 		84D4756D25B475AE00A4705A /* HeaderTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderTableView.xib; sourceTree = "<group>"; };
 		84EF01A225BE78CD00F49415 /* Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
@@ -215,7 +215,6 @@
 			children = (
 				84A5BD7E25BD2E72008FC5D1 /* MyWaitIndicatorView.xib */,
 				84A5BD8225BD2F1E008FC5D1 /* MyWaitIndicatorView.swift */,
-				84D4756725B446EC00A4705A /* HelloViewController.swift */,
 				84D4756A25B4757100A4705A /* HeaderTableView.swift */,
 				84D4756D25B475AE00A4705A /* HeaderTableView.xib */,
 				84547F8C25B5C08B00B67D86 /* CollectionHeaderView.xib */,
@@ -229,6 +228,7 @@
 		84EF019925BE724400F49415 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				84D4756725B446EC00A4705A /* AnimationDemoViewController.swift */,
 				844A5CC8258FB1BC00DB145E /* LoginViewController.swift */,
 				84A26E7D2596EBBA00299CCA /* GroupsTableViewController.swift */,
 				84CFD10B259747E0007C99FC /* MyGroupsTableViewController.swift */,
@@ -365,7 +365,7 @@
 				84CFD11025975060007C99FC /* MyGroupsTableViewCell.swift in Sources */,
 				84547F9025B5C0C500B67D86 /* CollectionHeaderView.swift in Sources */,
 				848FDAA725A6B886001A6ABE /* ControlView+ext.swift in Sources */,
-				84D4756825B446EC00A4705A /* HelloViewController.swift in Sources */,
+				84D4756825B446EC00A4705A /* AnimationDemoViewController.swift in Sources */,
 				8448263A25B917DC00425D5A /* NewsFeedCollectionViewCell.swift in Sources */,
 				849F10A525BA819900CF9B38 /* K.swift in Sources */,
 				84A18BF925B7240100063FA7 /* NewsFeedViewController.swift in Sources */,

@@ -11,28 +11,9 @@ class MyWaitIndicatorView: UIView {
 
 
     @IBOutlet var containerView: UIView!
-    @IBOutlet var circleImage1: UIImageView!
-    @IBOutlet var circleImage2: UIImageView!
-    @IBOutlet var circleImage3: UIImageView!
-
-    private var ownerView: UIView?
-    private var myView: UIView = UIView()
-    
-    var isHid : Bool = true{
-        didSet{
-            if !isHid {
-                myView.isHidden = false
-                //ownerView?.isUserInteractionEnabled = false
-                ownerView?.bringSubviewToFront(myView)
-            }else{
-                myView.isHidden = true
-                //ownerView?.isUserInteractionEnabled = true
-            }
-        }
-    }
-    
-    var text : String = "Demo wait..."
-    
+    @IBOutlet weak var circleImage1: UIImageView!
+    @IBOutlet weak var circleImage2: UIImageView!
+    @IBOutlet weak var circleImage3: UIImageView!
     
     var indicatorTintColor: UIColor = UIColor.systemPink {
         didSet{
@@ -73,22 +54,10 @@ class MyWaitIndicatorView: UIView {
     }
     
     func createIndicatorWait(ownerView: UIView){
-        self.ownerView = ownerView
-        let label = UILabel.init(frame: CGRect(x: 5, y: 60, width: 90, height: 20))
-        label.textColor = UIColor.white
-        label.font = UIFont.boldSystemFont(ofSize: 14.0)
-        label.textAlignment = NSTextAlignment.center
-        label.text = text
-
-        myView.frame = CGRect(x: (UIScreen.main.bounds.size.width - 100)/2, y: (UIScreen.main.bounds.size.height - 100)/2 + 150, width: 100, height: 100)
-
-        myView.backgroundColor = UIColor.init(white: 0.0, alpha: 0.7)
-        myView.layer.cornerRadius = 5
-        containerView.center = CGPoint(x: myView.frame.size.width/2, y:  myView.frame.size.height/2 - 10)
-        myView.addSubview(containerView)
-        myView.addSubview(label)
-
-        myView.isHidden = false
-        ownerView.addSubview(myView)
+        frame = CGRect(x: (UIScreen.main.bounds.size.width - 100)/2, y: (UIScreen.main.bounds.size.height - 100)/2 + 150, width: 100, height: 100)
+        addSubview(containerView)
+        isHidden = true
+        ownerView.addSubview(self)
+        ownerView.bringSubviewToFront(self)
     }
 }

@@ -120,7 +120,7 @@ class MyFrendsViewController: UIViewController {
     }
  
     private func loadUsersData(count userCount:Int) {
-        myWaitIndicatorView.isHid = false
+        myWaitIndicatorView.isHidden = false
         tableView.refreshControl?.myBeginRefreshing(in: tableView)
         let queue = DispatchQueue.global(qos: .userInitiated)
         queue.async{
@@ -129,7 +129,7 @@ class MyFrendsViewController: UIViewController {
 
             DispatchQueue.main.async {
                 self.tableView.reloadData()
-                self.myWaitIndicatorView.isHid = true
+                self.myWaitIndicatorView.isHidden = true
                 self.tableView.refreshControl?.endRefreshing()
             }
         }

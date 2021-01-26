@@ -23,8 +23,8 @@ final class SBAnimator{
 
 private func prepereView(_ searchImage: UIImageView,_ textField: UITextField, _ cancelImage: UIImageView, in view: UIView){
     searchImage.transform = CGAffineTransform(translationX: view.bounds.width / 2 - searchImage.frame.width / 2, y: 0)
-    textField.transform = CGAffineTransform(translationX: view.bounds.width  + 50, y: 0)
-    cancelImage.transform = CGAffineTransform(translationX: view.bounds.width  + 50, y: 0)
+    textField.transform = CGAffineTransform(translationX: view.bounds.width  + 100, y: 0)
+    cancelImage.transform = CGAffineTransform(translationX: view.bounds.width  + 100, y: 0)
 }
 
 enum SBAnimationFactory {

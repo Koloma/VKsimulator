@@ -28,7 +28,7 @@ class LoginViewController: UIViewController{
         scrollView?.addGestureRecognizer(hideKeyboardGesture)
         
         myWaitIndicatorView.createIndicatorWait(ownerView: self.view)
-        myWaitIndicatorView.isHid = false
+        myWaitIndicatorView.isHidden = false
     }
     
     override func viewWillDisappear(_ animated: Bool) {
