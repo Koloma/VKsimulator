@@ -13,17 +13,20 @@ class MyFrendsViewController: UIViewController {
         var firstLetter:[String] = []
         var vkUsers:[[VKUser]] = [[]]
     }
-    private let VKuserCount = 10
+    private let VKuserCount = 20
     
-    @IBOutlet weak var headerView: UIView!
-    @IBOutlet weak var searchBarView: UISearchBar!
+    @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchImageView: UIImageView!
+    @IBOutlet weak var cancelImageView: UIImageView!
+    @IBOutlet weak var searchTextField: UITextField!
     
     private var dataVkUsers:[VKUser] = []
     private var filteredVkUsersForTable = VKUsersForTable()
     private let networkService = NetworkService()
     
     private var myWaitIndicatorView = MyWaitIndicatorView()
+    
     
     func logOut() {
         self.dismiss(animated: true, completion: nil)
@@ -32,10 +35,33 @@ class MyFrendsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupTableView();
-        searchBarView.delegate = self;
+        setupView();
         loadUsersData(count: VKuserCount)
+        let sbAnimation = SBAnimationFactory.prepearSearchBar()
+        let sbAnimator = SBAnimator(animation: sbAnimation)
+        sbAnimator.animate(searchImage: searchImageView, textField: searchTextField, cancelImage: cancelImageView, in: searchView)
         
+    }
+    @IBAction func searchTapped(_ sender: UITapGestureRecognizer) {
+        let sbAnimation = SBAnimationFactory.makeAnimation()
+        let sbAnimator = SBAnimator(animation: sbAnimation)
+        sbAnimator.animate(searchImage: searchImageView, textField: searchTextField, cancelImage: cancelImageView, in: searchView)
+    }
+    
+    @IBAction func cancelTapped(_ sender: UITapGestureRecognizer) {
+        if !searchTextField.text!.isEmpty{
+            searchTextField.text = ""
+            textFieldDidChange(searchTextField)
+        }
+        searchTextField.endEditing(true)
+        
+        let sbAnimation = SBAnimationFactory.clearAnimation()
+        let sbAnimator = SBAnimator(animation: sbAnimation)
+        sbAnimator.animate(searchImage: searchImageView, textField: searchTextField, cancelImage: cancelImageView, in: searchView)
+    }
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        filteringTableData(by: textField.text!)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -44,14 +70,23 @@ class MyFrendsViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
+    func filteringTableData(by filterText : String){
+        let filteredData = filterText.isEmpty ? dataVkUsers : dataVkUsers.filter({(vkUser: VKUser) -> Bool in
+            return vkUser.nicName.range(of: filterText, options: .caseInsensitive) != nil
+            
+        })
+        filteredVkUsersForTable = prepareVKusersData(filteredData)
+        tableView.reloadData()
+    }
+    
     func setGradientBackground(colorTop: CGColor, colorBottom: CGColor) {
         let gradientLayer = CAGradientLayer()
         gradientLayer.colors = [colorBottom, colorTop]
         gradientLayer.startPoint = CGPoint(x: 0.5, y: 1.0)
         gradientLayer.endPoint = CGPoint(x: 0.5, y: 0.0)
         gradientLayer.locations = [0, 1]
-        gradientLayer.frame = headerView.bounds
-        headerView.layer.insertSublayer(gradientLayer, at: 0)
+        gradientLayer.frame = searchView.bounds
+        searchView.layer.insertSublayer(gradientLayer, at: 0)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -59,12 +94,16 @@ class MyFrendsViewController: UIViewController {
     }
     
     
-    private func setupTableView(){
+    private func setupView(){
+        
+        searchTextField.delegate = self;
+        searchTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        
         tableView.dataSource = self;
         tableView.delegate = self;
 
         tableView.refreshControl = UIRefreshControl()
-        tableView.refreshControl?.attributedTitle = NSAttributedString(string: "Updating frends...")
+        tableView.refreshControl?.attributedTitle = NSAttributedString(string: "Loading frends...")
         tableView.refreshControl?.addTarget(self, action: #selector(refreshTableView), for: UIControl.Event.valueChanged)
         
         tableView.register(VKUserTableViewCell.nib, forCellReuseIdentifier: VKUserTableViewCell.identifier)
@@ -81,7 +120,7 @@ class MyFrendsViewController: UIViewController {
     }
  
     private func loadUsersData(count userCount:Int) {
-        myWaitIndicatorView.isHid = false
+        myWaitIndicatorView.isHidden = false
         tableView.refreshControl?.myBeginRefreshing(in: tableView)
         let queue = DispatchQueue.global(qos: .userInitiated)
         queue.async{
@@ -90,7 +129,7 @@ class MyFrendsViewController: UIViewController {
 
             DispatchQueue.main.async {
                 self.tableView.reloadData()
-                self.myWaitIndicatorView.isHid = true
+                self.myWaitIndicatorView.isHidden = true
                 self.tableView.refreshControl?.endRefreshing()
             }
         }
@@ -108,14 +147,13 @@ class MyFrendsViewController: UIViewController {
     }
 }
 
-extension MyFrendsViewController: UISearchBarDelegate{
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        let filteredData = searchText.isEmpty ? dataVkUsers : dataVkUsers.filter({(vkUser: VKUser) -> Bool in
-            return vkUser.nicName.range(of: searchText, options: .caseInsensitive) != nil
-            
-        })
-        filteredVkUsersForTable = prepareVKusersData(filteredData)
-        tableView.reloadData()
+// MARK: - UITextField
+extension MyFrendsViewController: UITextFieldDelegate{
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        print(textField.text!)
+        searchTextField.endEditing(true)
+        return true
     }
 }
 
@@ -129,6 +167,10 @@ extension MyFrendsViewController: UITableViewDataSource, UITableViewDelegate{
         return filteredVkUsersForTable.firstLetter.count
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: VKUserTableViewCell.identifier, for: indexPath) as? VKUserTableViewCell{
             let vkUser = filteredVkUsersForTable.vkUsers[indexPath.section][indexPath.row]
@@ -137,7 +179,17 @@ extension MyFrendsViewController: UITableViewDataSource, UITableViewDelegate{
         }
         return UITableViewCell()
     }
-
+  
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let animation = AnimationFactory.makeAnimation()
+        let animator = Animator(animation: animation)
+        animator.animate(cell: cell, at: indexPath, in: tableView)
+    }
+    
+    
+    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.alpha = 0.1
+    }
     
     func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         return filteredVkUsersForTable.firstLetter
