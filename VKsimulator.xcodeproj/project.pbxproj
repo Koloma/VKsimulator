@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		843D1F6E25C19BFE00437D18 /* AnimatorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843D1F6D25C19BFE00437D18 /* AnimatorVC.swift */; };
+		843D1F7425C1A6DB00437D18 /* MySegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843D1F7325C1A6DB00437D18 /* MySegue.swift */; };
+		843D1F7925C1B3AB00437D18 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843D1F7825C1B3AB00437D18 /* CustomNavigationController.swift */; };
+		843D1F7C25C1B4A900437D18 /* CustomPushAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843D1F7B25C1B4A900437D18 /* CustomPushAnimator.swift */; };
 		843D9A1225B95EE8007F0B1F /* RefreshControl+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843D9A1125B95EE8007F0B1F /* RefreshControl+ext.swift */; };
 		8445D28F25A21E7E0047E59B /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8445D28D25A21E7E0047E59B /* Users.swift */; };
 		8445D29025A21E7E0047E59B /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8445D28E25A21E7E0047E59B /* NetworkService.swift */; };
@@ -55,6 +58,9 @@
 
 /* Begin PBXFileReference section */
 		843D1F6D25C19BFE00437D18 /* AnimatorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatorVC.swift; sourceTree = "<group>"; };
+		843D1F7325C1A6DB00437D18 /* MySegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySegue.swift; sourceTree = "<group>"; };
+		843D1F7825C1B3AB00437D18 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
+		843D1F7B25C1B4A900437D18 /* CustomPushAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPushAnimator.swift; sourceTree = "<group>"; };
 		843D9A1125B95EE8007F0B1F /* RefreshControl+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RefreshControl+ext.swift"; sourceTree = "<group>"; };
 		8445D28D25A21E7E0047E59B /* Users.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
 		8445D28E25A21E7E0047E59B /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
@@ -124,6 +130,23 @@
 			path = Animators;
 			sourceTree = "<group>";
 		};
+		843D1F7225C1A69E00437D18 /* CustomSeguae */ = {
+			isa = PBXGroup;
+			children = (
+				843D1F7325C1A6DB00437D18 /* MySegue.swift */,
+			);
+			path = CustomSeguae;
+			sourceTree = "<group>";
+		};
+		843D1F7725C1B37700437D18 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				843D1F7825C1B3AB00437D18 /* CustomNavigationController.swift */,
+				843D1F7B25C1B4A900437D18 /* CustomPushAnimator.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		8445D28B25A21DE20047E59B /* Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -136,9 +159,11 @@
 		844A5CA2258FAF7300DB145E = {
 			isa = PBXGroup;
 			children = (
+				843D1F7725C1B37700437D18 /* Helper */,
 				843D1F6825C1994700437D18 /* Animators */,
 				84A26E812596F06B00299CCA /* Cells */,
 				846E01A6259849A8007554E0 /* CellsXib */,
+				843D1F7225C1A69E00437D18 /* CustomSeguae */,
 				84D4755E25B40B2C00A4705A /* CustomViewXIB */,
 				8461A28A25A2F72F0080C9CF /* Extrensions */,
 				8445D28B25A21DE20047E59B /* Service */,
@@ -363,6 +388,7 @@
 				84A26E7E2596EBBA00299CCA /* GroupsTableViewController.swift in Sources */,
 				8461A29825A35E020080C9CF /* UserImage.swift in Sources */,
 				846E01B225985BF6007554E0 /* Group.swift in Sources */,
+				843D1F7925C1B3AB00437D18 /* CustomNavigationController.swift in Sources */,
 				846E01BA25988216007554E0 /* MyFrendsTableViewCell.swift in Sources */,
 				8445D28F25A21E7E0047E59B /* Users.swift in Sources */,
 				846E01A9259849F5007554E0 /* VKGroupTableViewCell.swift in Sources */,
@@ -373,6 +399,7 @@
 				844A5CC9258FB1BC00DB145E /* LoginViewController.swift in Sources */,
 				846E01AF25985BE7007554E0 /* User.swift in Sources */,
 				8450262125C008FA0026B63F /* BezierViewController.swift in Sources */,
+				843D1F7C25C1B4A900437D18 /* CustomPushAnimator.swift in Sources */,
 				844A5CAF258FAF7300DB145E /* AppDelegate.swift in Sources */,
 				844A5CB1258FAF7300DB145E /* SceneDelegate.swift in Sources */,
 				8461A28C25A2F7510080C9CF /* ImageView+ext.swift in Sources */,
@@ -383,6 +410,7 @@
 				848FDAA725A6B886001A6ABE /* ControlView+ext.swift in Sources */,
 				84D4756825B446EC00A4705A /* AnimationDemoViewController.swift in Sources */,
 				8448263A25B917DC00425D5A /* NewsFeedCollectionViewCell.swift in Sources */,
+				843D1F7425C1A6DB00437D18 /* MySegue.swift in Sources */,
 				849F10A525BA819900CF9B38 /* K.swift in Sources */,
 				84A18BF925B7240100063FA7 /* NewsFeedViewController.swift in Sources */,
 			);
