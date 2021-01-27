@@ -30,7 +30,7 @@ enum AnimationFactory {
             
             UIView.animate(
                 withDuration: 0.3,
-                delay: 0.05 * Double(indexPath.row),
+                delay: 0.05, //* Double(indexPath.row),
                 animations: {
                     cell.alpha = 1
                 })
@@ -39,7 +39,7 @@ enum AnimationFactory {
             
             UIView.animate(
                 withDuration: 0.8,
-                delay: 0.05 * Double(indexPath.row),
+                delay: 0.05, //* Double(indexPath.row),
                 usingSpringWithDamping: 0.6,
                 initialSpringVelocity: 0.4,
                 options: [.curveEaseInOut],

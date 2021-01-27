@@ -92,7 +92,6 @@ simulator</string>
                                                                 <rect key="frame" x="0.0" y="50.000000000000014" width="149" height="30"/>
                                                                 <state key="normal" title="Зарегистрироваться"/>
                                                                 <connections>
-                                                                    <action selector="loginButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lyC-f7-A3z"/>
                                                                     <action selector="registerButtonTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kJ0-ky-huj"/>
                                                                 </connections>
                                                             </button>
@@ -214,7 +213,7 @@ simulator</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kN3-Hz-MEk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="523.125" y="-1060"/>
+            <point key="canvasLocation" x="1428.985507246377" y="-1060.5978260869565"/>
         </scene>
         <!--Groups-->
         <scene sceneID="keH-i2-c1f">
@@ -272,7 +271,7 @@ simulator</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r49-ea-Rok" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="D3f-FT-LqN" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1359.375" y="-1060"/>
+            <point key="canvasLocation" x="2265.217391304348" y="-1060.5978260869565"/>
         </scene>
         <!--My Frends View Controller-->
         <scene sceneID="kju-3y-HBk">
@@ -525,7 +524,7 @@ simulator</string>
                         <segue destination="9mj-c2-xKf" kind="relationship" relationship="viewControllers" id="Wmn-0v-PCt"/>
                         <segue destination="x1e-hR-e0H" kind="relationship" relationship="viewControllers" destinationCreationSelector="Groups" id="Sun-O1-kSU"/>
                         <segue destination="QOe-j9-0aC" kind="relationship" relationship="viewControllers" id="1yA-IR-Hll"/>
-                        <segue destination="zmE-gT-0uB" kind="relationship" relationship="viewControllers" id="Oi4-W6-oiz"/>
+                        <segue destination="seR-bW-fu7" kind="relationship" relationship="viewControllers" id="Oi4-W6-oiz"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="99F-cr-ahO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -604,7 +603,7 @@ simulator</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ueu-P0-wc8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-241.875" y="-1060"/>
+            <point key="canvasLocation" x="665.21739130434787" y="-1060.5978260869565"/>
         </scene>
         <!--Frends-->
         <scene sceneID="5AG-XE-rYL">
@@ -626,7 +625,7 @@ simulator</string>
             </objects>
             <point key="canvasLocation" x="-242" y="-304"/>
         </scene>
-        <!--Cloud animation-->
+        <!--Bezier View Controller-->
         <scene sceneID="gmw-H3-oRH">
             <objects>
                 <viewController storyboardIdentifier="BezierViewController" id="zmE-gT-0uB" customClass="BezierViewController" customModule="VKsimulator" customModuleProvider="target" sceneMemberID="viewController">
@@ -652,24 +651,36 @@ simulator</string>
                                     <action selector="buttonTap:" destination="zmE-gT-0uB" eventType="touchUpInside" id="oJ7-OD-wds"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hnw-kd-5Cc">
+                                <rect key="frame" x="171" y="169" width="72" height="39"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="Log out">
+                                    <color key="titleColor" systemColor="systemGreenColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="logOutButtonTap:" destination="zmE-gT-0uB" eventType="touchUpInside" id="c8h-sX-3he"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="CXL-Jb-byS"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="4Kg-Kr-ZAY" firstAttribute="centerY" secondItem="xdP-oU-b24" secondAttribute="centerY" id="18L-vS-pQY"/>
+                            <constraint firstItem="4Kg-Kr-ZAY" firstAttribute="top" secondItem="hnw-kd-5Cc" secondAttribute="bottom" constant="25" id="HD4-Fy-syw"/>
                             <constraint firstItem="CKI-Pw-Aad" firstAttribute="top" secondItem="4Kg-Kr-ZAY" secondAttribute="bottom" constant="20" id="LzR-Gy-VxT"/>
                             <constraint firstItem="4Kg-Kr-ZAY" firstAttribute="centerX" secondItem="xdP-oU-b24" secondAttribute="centerX" id="Wzq-ss-obT"/>
                             <constraint firstItem="CKI-Pw-Aad" firstAttribute="centerX" secondItem="xdP-oU-b24" secondAttribute="centerX" id="YxV-om-1bg"/>
+                            <constraint firstItem="hnw-kd-5Cc" firstAttribute="centerX" secondItem="xdP-oU-b24" secondAttribute="centerX" id="gRb-QP-KlD"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Cloud animation" image="cloud" catalog="system" id="9aK-JG-Pgs"/>
+                    <navigationItem key="navigationItem" id="Oid-h5-t5f"/>
                     <connections>
                         <outlet property="greenView" destination="4Kg-Kr-ZAY" id="ylK-Ky-y6s"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R8P-Gt-0it" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1265" y="-1339"/>
+            <point key="canvasLocation" x="-357.97101449275362" y="-1339.4021739130435"/>
         </scene>
         <!--Image Gallery-->
         <scene sceneID="678-g0-Z2M">
@@ -689,6 +700,25 @@ simulator</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qxf-n3-n2D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-278" y="470"/>
+        </scene>
+        <!--Cloud animation-->
+        <scene sceneID="HlA-kb-Ptw">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="seR-bW-fu7" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Cloud animation" image="cloud" catalog="system" id="9aK-JG-Pgs"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ce2-UN-pIF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="zmE-gT-0uB" kind="relationship" relationship="rootViewController" id="B3m-Z9-86w"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DOm-Gx-ehj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1265.217391304348" y="-1339.4021739130435"/>
         </scene>
     </scenes>
     <resources>

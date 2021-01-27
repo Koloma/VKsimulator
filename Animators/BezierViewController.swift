@@ -20,6 +20,9 @@ class BezierViewController: UIViewController {
         animateCloud()
     }
     
+    @IBAction func logOutButtonTap(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     func animateCloud() {
         let layer = CAShapeLayer()
