@@ -93,6 +93,7 @@ simulator</string>
                                                                 <state key="normal" title="Зарегистрироваться"/>
                                                                 <connections>
                                                                     <action selector="loginButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lyC-f7-A3z"/>
+                                                                    <action selector="registerButtonTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kJ0-ky-huj"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
@@ -515,7 +516,7 @@ simulator</string>
             <objects>
                 <tabBarController modalPresentationStyle="fullScreen" id="d70-Z4-NOF" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="i3D-1x-U2V"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionIndicatorImage="person.3" catalog="system" id="01j-iw-OaP">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="01j-iw-OaP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" systemColor="systemIndigoColor"/>
@@ -589,7 +590,7 @@ simulator</string>
         <scene sceneID="bm1-cw-JXx">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="x1e-hR-e0H" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Groups" image="square.grid.3x2" catalog="system" id="pzt-mt-avD"/>
+                    <tabBarItem key="tabBarItem" title="Groups" image="rectangle.grid.3x2" catalog="system" id="pzt-mt-avD"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="eWt-m1-P00">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
@@ -609,7 +610,7 @@ simulator</string>
         <scene sceneID="5AG-XE-rYL">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QOe-j9-0aC" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Frends" id="3qH-jj-3KP"/>
+                    <tabBarItem key="tabBarItem" title="Frends" image="person.3" catalog="system" id="3qH-jj-3KP"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="e53-R4-9C1"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="eMK-EL-O05">
@@ -628,7 +629,7 @@ simulator</string>
         <!--Cloud animation-->
         <scene sceneID="gmw-H3-oRH">
             <objects>
-                <viewController id="zmE-gT-0uB" customClass="BezierViewController" customModule="VKsimulator" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BezierViewController" id="zmE-gT-0uB" customClass="BezierViewController" customModule="VKsimulator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xdP-oU-b24">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -642,8 +643,11 @@ simulator</string>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CKI-Pw-Aad">
-                                <rect key="frame" x="184" y="503" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                                <rect key="frame" x="176.66666666666666" y="503" width="61" height="38"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" systemColor="systemRedColor"/>
+                                </state>
                                 <connections>
                                     <action selector="buttonTap:" destination="zmE-gT-0uB" eventType="touchUpInside" id="oJ7-OD-wds"/>
                                 </connections>
@@ -658,7 +662,7 @@ simulator</string>
                             <constraint firstItem="CKI-Pw-Aad" firstAttribute="centerX" secondItem="xdP-oU-b24" secondAttribute="centerX" id="YxV-om-1bg"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Cloud animation" selectedImage="pencil.slash" catalog="system" id="9aK-JG-Pgs"/>
+                    <tabBarItem key="tabBarItem" title="Cloud animation" image="cloud" catalog="system" id="9aK-JG-Pgs"/>
                     <connections>
                         <outlet property="greenView" destination="4Kg-Kr-ZAY" id="ylK-Ky-y6s"/>
                     </connections>
@@ -667,11 +671,11 @@ simulator</string>
             </objects>
             <point key="canvasLocation" x="-1265" y="-1339"/>
         </scene>
-        <!--Animation-->
+        <!--Image Gallery-->
         <scene sceneID="678-g0-Z2M">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9mj-c2-xKf" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Animation" image="escape" catalog="system" id="sv6-NI-fCh"/>
+                    <tabBarItem key="tabBarItem" title="Image Gallery" image="pencil" id="sv6-NI-fCh"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="DqH-Go-QMz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
@@ -688,16 +692,16 @@ simulator</string>
         </scene>
     </scenes>
     <resources>
-        <image name="escape" catalog="system" width="128" height="121"/>
+        <image name="cloud" catalog="system" width="128" height="87"/>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="multiply.circle" catalog="system" width="128" height="121"/>
-        <image name="pencil.slash" catalog="system" width="128" height="113"/>
+        <image name="pencil" width="19" height="13"/>
         <image name="person.3" catalog="system" width="128" height="62"/>
         <image name="pic1" width="640" height="704"/>
+        <image name="rectangle.grid.3x2" catalog="system" width="128" height="101"/>
         <image name="square.and.arrow.down.fill" catalog="system" width="121" height="128"/>
         <image name="square.and.pencil" catalog="system" width="128" height="115"/>
-        <image name="square.grid.3x2" catalog="system" width="128" height="80"/>
         <image name="square.grid.3x2.fill" catalog="system" width="128" height="80"/>
         <namedColor name="ColorButtonLabel">
             <color red="0.25099998712539673" green="0.4830000102519989" blue="0.73400002717971802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

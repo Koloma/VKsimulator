@@ -31,12 +31,6 @@ class LoginViewController: UIViewController{
         myWaitIndicatorView.isHidden = false
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil )
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil )
-        NotificationCenter.default.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: nil )
-    }
-    
     @IBAction func primaryActionTriger(_ sender: UITextField) {
         print(#function)
         loginButton(UIButton())
@@ -51,6 +45,22 @@ class LoginViewController: UIViewController{
 //        }
     }
     
+    @IBAction func registerButtonTap ( _ sender : UIButton){
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyBoard.instantiateViewController(identifier: "BezierViewController")
+
+            viewController.modalPresentationStyle = .fullScreen
+            viewController.transitioningDelegate = self
+
+            present(viewController, animated: true, completion: nil)
+         
+//        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+//        let viewController = storyBoard.instantiateViewController(identifier: "FotoGalleryViewController")
+//
+//        navigationController?.delegate = self
+//        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         guard let login = loginTextField.text?.lowercased() else { return false}
         guard let password = passwordTextField.text else { return false}
@@ -62,6 +72,16 @@ class LoginViewController: UIViewController{
         }
         }
 
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil )
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil )
+        NotificationCenter.default.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: nil )
+    }
+    
     func isLoginCredentialsCorrect(login:String, password: String)->Bool{
         guard login == "admin" else {
             showAllert(title: "Ошибка авторизации", message: "Неправильный логин")
@@ -107,4 +127,26 @@ class LoginViewController: UIViewController{
         }
     }
     
+}
+
+extension LoginViewController: UINavigationControllerDelegate {
+ 
+    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning?{
+        
+        guard operation == .none else { return nil}
+        
+        return AnimatorVC(isDismissing: operation == .pop)
+    }
+    
+    
+}
+
+extension LoginViewController: UIViewControllerTransitioningDelegate{
+    private func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return AnimatorVC(isDismissing: false)
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return AnimatorVC(isDismissing: true)
+    }
 }

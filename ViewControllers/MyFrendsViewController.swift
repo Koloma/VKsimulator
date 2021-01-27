@@ -63,11 +63,16 @@ class MyFrendsViewController: UIViewController {
     @objc func textFieldDidChange(_ textField: UITextField) {
         filteringTableData(by: textField.text!)
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         setGradientBackground(colorTop: K.Gradient.colorBottom, colorBottom: K.Gradient.colorTop)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     func filteringTableData(by filterText : String){
@@ -88,11 +93,6 @@ class MyFrendsViewController: UIViewController {
         gradientLayer.frame = searchView.bounds
         searchView.layer.insertSublayer(gradientLayer, at: 0)
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(false, animated: animated)
-    }
-    
     
     private func setupView(){
         
