@@ -55,6 +55,7 @@
 		84EF01A325BE78CD00F49415 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EF01A225BE78CD00F49415 /* Animator.swift */; };
 		84EF01A625BEB9FD00F49415 /* SearchBarAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EF01A525BEB9FD00F49415 /* SearchBarAnimator.swift */; };
 		84F099AE25C26355000300A6 /* CustomPopAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F099AD25C26355000300A6 /* CustomPopAnimator.swift */; };
+		84F099B125C26909000300A6 /* MyIteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F099B025C26909000300A6 /* MyIteractiveTransition.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -108,6 +109,7 @@
 		84EF01A225BE78CD00F49415 /* Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
 		84EF01A525BEB9FD00F49415 /* SearchBarAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarAnimator.swift; sourceTree = "<group>"; };
 		84F099AD25C26355000300A6 /* CustomPopAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopAnimator.swift; sourceTree = "<group>"; };
+		84F099B025C26909000300A6 /* MyIteractiveTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyIteractiveTransition.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 				843D1F7825C1B3AB00437D18 /* CustomNavigationController.swift */,
 				843D1F7B25C1B4A900437D18 /* CustomPushAnimator.swift */,
 				84F099AD25C26355000300A6 /* CustomPopAnimator.swift */,
+				84F099B025C26909000300A6 /* MyIteractiveTransition.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 				84A26E832596F0BC00299CCA /* GroupsTableViewCell.swift in Sources */,
 				84A3334025978CE800E7424E /* ImageGalleryCollectionViewController.swift in Sources */,
 				84D4756B25B4757100A4705A /* HeaderTableView.swift in Sources */,
+				84F099B125C26909000300A6 /* MyIteractiveTransition.swift in Sources */,
 				843D9A1225B95EE8007F0B1F /* RefreshControl+ext.swift in Sources */,
 				84CFD10C259747E0007C99FC /* MyGroupsTableViewController.swift in Sources */,
 				8445D29025A21E7E0047E59B /* NetworkService.swift in Sources */,

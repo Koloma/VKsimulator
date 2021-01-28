@@ -80,17 +80,6 @@ class NewsFeedCollectionViewCell: UICollectionViewCell {
         arg.isScrollEnabled = false
     }
     
-    var width: CGFloat? = nil {
-        didSet {
-            guard let width = width else {
-                return
-            }
-            widthConstraint.isActive = true
-            widthConstraint.constant = width
-            
-        }
-    }
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         

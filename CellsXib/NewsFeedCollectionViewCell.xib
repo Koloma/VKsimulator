@@ -21,7 +21,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7hl-MZ-FiS" userLabel="Contein View">
                         <rect key="frame" x="0.0" y="0.0" width="350" height="701"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="300" verticalCompressionResistancePriority="800" editable="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="vrT-gn-Lqz">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="300" verticalCompressionResistancePriority="800" contentInsetAdjustmentBehavior="always" editable="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="vrT-gn-Lqz">
                                 <rect key="frame" x="5" y="55" width="340" height="248"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <string key="text">Все виды (включая те, которые не содержат изображений) имеют режим содержимого, который влияет на то, как они рисуют свое содержимое. По умолчанию используется Масштаб Для заполнения, потому что он самый быстрый: содержимое представления просто растягивается вверх (или вниз), чтобы соответствовать доступному пространству. Но есть еще два других, которые вы будете часто использовать: Aspect Fit и Aspect Fill.
@@ -74,7 +74,6 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" image="pic1" translatesAutoresizingMaskIntoConstraints="NO" id="qrg-t8-nV7">
                                 <rect key="frame" x="5" y="308" width="340" height="340"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="290" id="3D9-vW-anw"/>
                                     <constraint firstAttribute="width" secondItem="qrg-t8-nV7" secondAttribute="height" multiplier="1:1" id="qtr-sp-EyV"/>
                                 </constraints>
                             </imageView>
@@ -157,7 +156,6 @@
                 <outlet property="sendImageView" destination="Yak-28-URb" id="An9-s9-UQV"/>
                 <outlet property="userImageView" destination="bw2-9J-MDA" id="Qs7-5D-2Zu"/>
                 <outlet property="userNameLable" destination="4lU-6F-aLb" id="hXO-ey-XlT"/>
-                <outlet property="widthConstraint" destination="3D9-vW-anw" id="m55-4K-6Nb"/>
             </connections>
             <point key="canvasLocation" x="-271.01449275362319" y="-266.18303571428572"/>
         </collectionViewCell>
