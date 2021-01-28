@@ -539,35 +539,17 @@ simulator</string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6lC-EG-gcE">
-                                <rect key="frame" x="0.0" y="56" width="414" height="414"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pic1" translatesAutoresizingMaskIntoConstraints="NO" id="p9q-PV-N94">
-                                        <rect key="frame" x="5" y="5" width="404" height="404"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="p9q-PV-N94" secondAttribute="height" multiplier="1:1" id="FUN-Q7-lSZ"/>
-                                            <constraint firstAttribute="width" secondItem="p9q-PV-N94" secondAttribute="height" multiplier="1:1" id="w7e-Yc-UHm"/>
-                                        </constraints>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstItem="p9q-PV-N94" firstAttribute="centerY" secondItem="6lC-EG-gcE" secondAttribute="centerY" id="0mc-LG-kMP"/>
-                                    <constraint firstAttribute="trailing" secondItem="p9q-PV-N94" secondAttribute="trailing" constant="5" id="I26-uB-MUD"/>
-                                    <constraint firstItem="p9q-PV-N94" firstAttribute="top" secondItem="6lC-EG-gcE" secondAttribute="top" constant="5" id="d79-jR-hG7"/>
-                                    <constraint firstItem="p9q-PV-N94" firstAttribute="leading" secondItem="6lC-EG-gcE" secondAttribute="leading" constant="5" id="qcJ-fq-yOg"/>
-                                    <constraint firstAttribute="bottom" secondItem="p9q-PV-N94" secondAttribute="bottom" constant="5" id="tFD-w7-TFo"/>
-                                    <constraint firstItem="p9q-PV-N94" firstAttribute="centerX" secondItem="6lC-EG-gcE" secondAttribute="centerX" id="y5y-Pb-INb"/>
-                                </constraints>
-                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pic1" translatesAutoresizingMaskIntoConstraints="NO" id="p9q-PV-N94">
+                                <rect key="frame" x="25" y="61" width="364" height="601"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bDy-fW-0GT"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6lC-EG-gcE" firstAttribute="leading" secondItem="bDy-fW-0GT" secondAttribute="leading" id="4vX-h4-DSE"/>
-                            <constraint firstItem="6lC-EG-gcE" firstAttribute="bottom" secondItem="bDy-fW-0GT" secondAttribute="bottom" id="GV3-Ue-atR"/>
-                            <constraint firstItem="6lC-EG-gcE" firstAttribute="top" secondItem="eV4-RJ-7Nx" secondAttribute="topMargin" id="qN8-FW-iLb"/>
-                            <constraint firstItem="6lC-EG-gcE" firstAttribute="trailing" secondItem="bDy-fW-0GT" secondAttribute="trailing" id="tjl-nQ-MHM"/>
+                            <constraint firstItem="p9q-PV-N94" firstAttribute="leading" secondItem="eV4-RJ-7Nx" secondAttribute="leadingMargin" constant="5" id="Fxe-8d-i1E"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="p9q-PV-N94" secondAttribute="bottom" constant="5" id="K0n-HV-RBc"/>
+                            <constraint firstItem="p9q-PV-N94" firstAttribute="top" secondItem="eV4-RJ-7Nx" secondAttribute="topMargin" constant="5" id="cBe-2D-aYn"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="p9q-PV-N94" secondAttribute="trailing" constant="5" id="v6F-sn-baw"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Animations" id="MXf-pD-esJ">
