@@ -54,6 +54,7 @@
 		84D4756E25B475AE00A4705A /* HeaderTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D4756D25B475AE00A4705A /* HeaderTableView.xib */; };
 		84EF01A325BE78CD00F49415 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EF01A225BE78CD00F49415 /* Animator.swift */; };
 		84EF01A625BEB9FD00F49415 /* SearchBarAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EF01A525BEB9FD00F49415 /* SearchBarAnimator.swift */; };
+		84F099AE25C26355000300A6 /* CustomPopAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F099AD25C26355000300A6 /* CustomPopAnimator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -106,6 +107,7 @@
 		84D4756D25B475AE00A4705A /* HeaderTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderTableView.xib; sourceTree = "<group>"; };
 		84EF01A225BE78CD00F49415 /* Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
 		84EF01A525BEB9FD00F49415 /* SearchBarAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarAnimator.swift; sourceTree = "<group>"; };
+		84F099AD25C26355000300A6 /* CustomPopAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopAnimator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 			children = (
 				843D1F7825C1B3AB00437D18 /* CustomNavigationController.swift */,
 				843D1F7B25C1B4A900437D18 /* CustomPushAnimator.swift */,
+				84F099AD25C26355000300A6 /* CustomPopAnimator.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -399,6 +402,7 @@
 				844A5CC9258FB1BC00DB145E /* LoginViewController.swift in Sources */,
 				846E01AF25985BE7007554E0 /* User.swift in Sources */,
 				8450262125C008FA0026B63F /* BezierViewController.swift in Sources */,
+				84F099AE25C26355000300A6 /* CustomPopAnimator.swift in Sources */,
 				843D1F7C25C1B4A900437D18 /* CustomPushAnimator.swift in Sources */,
 				844A5CAF258FAF7300DB145E /* AppDelegate.swift in Sources */,
 				844A5CB1258FAF7300DB145E /* SceneDelegate.swift in Sources */,

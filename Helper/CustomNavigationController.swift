@@ -19,9 +19,9 @@ class CustomNavigationController: UINavigationController, UINavigationController
         
         switch operation {
         case .pop:
-        
-        case: .push:
-            
+            return CustomPopAnimator()
+        case .push:
+            return CustomPushAnimator()
         default:
             return nil
         }
