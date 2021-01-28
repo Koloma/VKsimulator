@@ -28,11 +28,11 @@ class CustomNavigationController: UINavigationController, UINavigationController
                 interactiveTransition.viewController = toVC
             }
             
-            return CustomPopAnimator()
+            return CustomPopAnimator(animationType: .new)
         case .push:
             interactiveTransition.viewController = toVC
             print("PUSH")
-            return CustomPushAnimator()
+            return CustomPushAnimator(animationType: .new)
         default:
             return nil
         }
