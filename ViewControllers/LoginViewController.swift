@@ -11,7 +11,7 @@ class LoginViewController: UIViewController{
     @IBOutlet weak var loginStackView: UIStackView!
     
     var alertControler: UIAlertController!
-    var myWaitIndicatorView = MyWaitIndicatorView()
+    //var myWaitIndicatorView = MyWaitIndicatorView()
     
     override func viewDidLoad() {
         super .viewDidLoad()
@@ -27,38 +27,18 @@ class LoginViewController: UIViewController{
         let hideKeyboardGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         scrollView?.addGestureRecognizer(hideKeyboardGesture)
         
-        myWaitIndicatorView.createIndicatorWait(ownerView: self.view)
-        myWaitIndicatorView.isHidden = false
-    }
-    
-    @IBAction func primaryActionTriger(_ sender: UITextField) {
-        print(#function)
-        loginButton(UIButton())
-    }
-    
-    @IBAction func loginButton(_ sender: UIButton) {
-
-//        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-//        if  let frendsCollectionViewController = storyBoard.instantiateViewController(withIdentifier: "FrendsCollectionViewController") as? FrendsCollectionViewController{
-//            //Здесь передаем данные в frendsCollectionViewController
-//            navigationController?.pushViewController(frendsCollectionViewController, animated: true)
-//        }
+//        myWaitIndicatorView.createIndicatorWait(ownerView: self.view)
+//        myWaitIndicatorView.isHidden = false
     }
     
     @IBAction func registerButtonTap ( _ sender : UIButton){
-        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = storyBoard.instantiateViewController(identifier: "BezierViewController")
-
-            viewController.modalPresentationStyle = .fullScreen
-            viewController.transitioningDelegate = self
-
-            present(viewController, animated: true, completion: nil)
-         
 //        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-//        let viewController = storyBoard.instantiateViewController(identifier: "FotoGalleryViewController")
+//        let viewController = storyBoard.instantiateViewController(identifier: "BezierViewController")
 //
-//        navigationController?.delegate = self
-//        navigationController?.pushViewController(viewController, animated: true)
+//            viewController.modalPresentationStyle = .fullScreen
+//            viewController.transitioningDelegate = self
+//
+//            present(viewController, animated: true, completion: nil)
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
@@ -129,24 +109,24 @@ class LoginViewController: UIViewController{
     
 }
 
-extension LoginViewController: UINavigationControllerDelegate {
- 
-    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning?{
-        
-        guard operation == .none else { return nil}
-        
-        return AnimatorVC(isDismissing: operation == .pop)
-    }
-    
-    
-}
+//extension LoginViewController: UINavigationControllerDelegate {
+// 
+//    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning?{
+//
+//        guard operation == .none else { return nil}
+//        
+//        return AnimatorVC(isDismissing: operation == .pop)
+//    }
+//    
+//    
+//}
 
-extension LoginViewController: UIViewControllerTransitioningDelegate{
-    private func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return AnimatorVC(isDismissing: false)
-    }
-    
-    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return AnimatorVC(isDismissing: true)
-    }
-}
+//extension LoginViewController: UIViewControllerTransitioningDelegate{
+//    private func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+//        return AnimatorVC(isDismissing: false)
+//    }
+//
+//    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+//        return AnimatorVC(isDismissing: true)
+//    }
+//}

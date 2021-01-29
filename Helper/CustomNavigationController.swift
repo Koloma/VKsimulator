@@ -23,7 +23,7 @@ class CustomNavigationController: UINavigationController, UINavigationController
         
         switch operation {
         case .pop:
-            print("POP")
+            //print("POP")
             if navigationController.viewControllers.first != toVC {
                 interactiveTransition.viewController = toVC
             }
@@ -31,7 +31,7 @@ class CustomNavigationController: UINavigationController, UINavigationController
             return CustomPopAnimator(animationType: .new)
         case .push:
             interactiveTransition.viewController = toVC
-            print("PUSH")
+            //print("PUSH")
             return CustomPushAnimator(animationType: .new)
         default:
             return nil

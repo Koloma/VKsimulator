@@ -20,7 +20,7 @@ class NewsFeedViewController: UIViewController {
     var userNewsFeed: VKUser?{
         didSet{
             //Call function to find Users News
-            print(userNewsFeed!)           
+            //print(userNewsFeed!)           
         }
     }
     

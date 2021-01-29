@@ -11,10 +11,10 @@ final class MyIteractiveTransition: UIPercentDrivenInteractiveTransition{
 
     var viewController : UIViewController?{
         didSet{
-            let recognizer = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(handleScreenPan))
+            let recognizerLeft = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(handleScreenPan))
             //L9 01:57:00
-            recognizer.edges = [.left, .right]
-            viewController?.view.addGestureRecognizer(recognizer)
+            recognizerLeft.edges = .left
+            viewController?.view.addGestureRecognizer(recognizerLeft)
         }
     }
  

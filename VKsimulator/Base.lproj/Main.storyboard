@@ -65,9 +65,6 @@ simulator</string>
                                                                 <rect key="frame" x="0.0" y="30.333333333333336" width="207" height="34.000000000000007"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" returnKeyType="go" secureTextEntry="YES" textContentType="password"/>
-                                                                <connections>
-                                                                    <action selector="primaryActionTriger:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="1Uo-1W-9Xn"/>
-                                                                </connections>
                                                             </textField>
                                                         </subviews>
                                                     </stackView>
@@ -84,16 +81,12 @@ simulator</string>
                                                                     <color key="titleColor" systemColor="labelColor"/>
                                                                 </state>
                                                                 <connections>
-                                                                    <action selector="loginButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xs4-7k-yhC"/>
                                                                     <segue destination="d70-Z4-NOF" kind="show" identifier="to_first_screen" id="eMs-dt-NXi"/>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nTP-ZZ-ux8">
                                                                 <rect key="frame" x="0.0" y="50.000000000000014" width="149" height="30"/>
                                                                 <state key="normal" title="Зарегистрироваться"/>
-                                                                <connections>
-                                                                    <action selector="registerButtonTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kJ0-ky-huj"/>
-                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                     </stackView>
@@ -353,7 +346,6 @@ simulator</string>
                         <outlet property="searchView" destination="4gw-JK-tbY" id="47D-RN-VUE"/>
                         <outlet property="tableView" destination="MZu-yQ-wcT" id="4uF-wN-VyD"/>
                         <segue destination="yPh-6f-xkg" kind="show" identifier="NewsFeed" id="CHb-00-tta"/>
-                        <segue destination="e83-4f-S0C" kind="show" identifier="ImageGallery" id="Tsa-KR-acZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X4Y-Gx-OVD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -465,16 +457,22 @@ simulator</string>
                             <outlet property="delegate" destination="e83-4f-S0C" id="NoZ-Bz-WRt"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Image gallery" id="72y-eb-A43"/>
+                    <navigationItem key="navigationItem" title="Image gallery" id="72y-eb-A43">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="nak-Yb-0x3">
+                            <connections>
+                                <segue destination="lNy-wI-DXw" kind="show" id="ETH-IC-zBu"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aWg-fn-7qQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2100" y="251"/>
+            <point key="canvasLocation" x="2265" y="-304"/>
         </scene>
         <!--News feed-->
         <scene sceneID="fTU-C4-BzA">
             <objects>
-                <viewController storyboardIdentifier="NewsFeed" id="yPh-6f-xkg" customClass="NewsFeedViewController" customModule="VKsimulator" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewsFeedViewController" id="yPh-6f-xkg" customClass="NewsFeedViewController" customModule="VKsimulator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zmG-Il-jiS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -500,7 +498,13 @@ simulator</string>
                             <constraint firstItem="MV3-CM-nPW" firstAttribute="leading" secondItem="moO-Ng-Nh8" secondAttribute="leading" id="qK4-zr-Nf3"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="News feed" id="inF-K6-HhZ"/>
+                    <navigationItem key="navigationItem" title="News feed" id="inF-K6-HhZ">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="O6G-e6-K5g">
+                            <connections>
+                                <segue destination="e83-4f-S0C" kind="show" id="69k-x8-1ie"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionLayout" destination="Q44-bd-Csg" id="Zwk-FW-bau"/>
                         <outlet property="collectionView" destination="MV3-CM-nPW" id="k0Y-dx-9So"/>
@@ -508,7 +512,7 @@ simulator</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e5d-RV-DRO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2100" y="-491"/>
+            <point key="canvasLocation" x="1429" y="-304"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Z5Y-BA-kKM">
@@ -523,7 +527,6 @@ simulator</string>
                     <connections>
                         <segue destination="QOe-j9-0aC" kind="relationship" relationship="viewControllers" id="1yA-IR-Hll"/>
                         <segue destination="x1e-hR-e0H" kind="relationship" relationship="viewControllers" destinationCreationSelector="Groups" id="Sun-O1-kSU"/>
-                        <segue destination="9mj-c2-xKf" kind="relationship" relationship="viewControllers" id="Wmn-0v-PCt"/>
                         <segue destination="seR-bW-fu7" kind="relationship" relationship="viewControllers" id="Oi4-W6-oiz"/>
                     </connections>
                 </tabBarController>
@@ -565,12 +568,12 @@ simulator</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sWa-0E-AV7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="522" y="470"/>
+            <point key="canvasLocation" x="3126" y="-304"/>
         </scene>
         <!--Groups-->
         <scene sceneID="bm1-cw-JXx">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="x1e-hR-e0H" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="x1e-hR-e0H" customClass="CustomNavigationController" customModule="VKsimulator" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Groups" image="rectangle.grid.3x2" catalog="system" id="pzt-mt-avD"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="eWt-m1-P00">
@@ -624,9 +627,9 @@ simulator</string>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CKI-Pw-Aad">
-                                <rect key="frame" x="176.66666666666666" y="503" width="61" height="38"/>
+                                <rect key="frame" x="169" y="503" width="76" height="38"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <state key="normal" title="Button">
+                                <state key="normal" title="Animate">
                                     <color key="titleColor" systemColor="systemRedColor"/>
                                 </state>
                                 <connections>
@@ -664,25 +667,6 @@ simulator</string>
             </objects>
             <point key="canvasLocation" x="-357.97101449275362" y="-1339.4021739130435"/>
         </scene>
-        <!--Image Gallery-->
-        <scene sceneID="678-g0-Z2M">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9mj-c2-xKf" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Image Gallery" image="pencil" id="sv6-NI-fCh"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DqH-Go-QMz">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="lNy-wI-DXw" kind="relationship" relationship="rootViewController" id="m5Z-Md-dg3"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qxf-n3-n2D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-278" y="470"/>
-        </scene>
         <!--Cloud animation-->
         <scene sceneID="HlA-kb-Ptw">
             <objects>
@@ -708,7 +692,6 @@ simulator</string>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="multiply.circle" catalog="system" width="128" height="121"/>
-        <image name="pencil" width="19" height="13"/>
         <image name="person.3" catalog="system" width="128" height="62"/>
         <image name="pic1" width="640" height="704"/>
         <image name="rectangle.grid.3x2" catalog="system" width="128" height="101"/>

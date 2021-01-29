@@ -196,13 +196,13 @@ extension MyFrendsViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath)
+        //print(indexPath)
         let vkUser = filteredVkUsersForTable.vkUsers[indexPath.section][indexPath.row]
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        if  let newsFeed = storyBoard.instantiateViewController(withIdentifier: "NewsFeed") as? NewsFeedViewController{
+        if  let newsFeed = storyBoard.instantiateViewController(withIdentifier: "NewsFeedViewController") as? NewsFeedViewController{
             //Здесь передаем данные в NewsFeedViewController
             newsFeed.userNewsFeed = vkUser
-            navigationController?.pushViewController(newsFeed, animated: true)
+            navigationController!.pushViewController(newsFeed, animated: true)
         }
     }
     
