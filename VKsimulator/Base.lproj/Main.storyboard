@@ -458,7 +458,7 @@ simulator</string>
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Image gallery" id="72y-eb-A43">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="nak-Yb-0x3">
+                        <barButtonItem key="rightBarButtonItem" title="Images viewer" id="nak-Yb-0x3">
                             <connections>
                                 <segue destination="lNy-wI-DXw" kind="show" id="ETH-IC-zBu"/>
                             </connections>
@@ -499,7 +499,7 @@ simulator</string>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="News feed" id="inF-K6-HhZ">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="O6G-e6-K5g">
+                        <barButtonItem key="rightBarButtonItem" title="Image gallery" id="O6G-e6-K5g">
                             <connections>
                                 <segue destination="e83-4f-S0C" kind="show" id="69k-x8-1ie"/>
                             </connections>
@@ -534,7 +534,7 @@ simulator</string>
             </objects>
             <point key="canvasLocation" x="-1273.125" y="-575"/>
         </scene>
-        <!--Animations-->
+        <!--Image viewer-->
         <scene sceneID="7dN-je-PKX">
             <objects>
                 <viewController id="lNy-wI-DXw" customClass="AnimationDemoViewController" customModule="VKsimulator" customModuleProvider="target" sceneMemberID="viewController">
@@ -555,13 +555,7 @@ simulator</string>
                             <constraint firstAttribute="trailingMargin" secondItem="p9q-PV-N94" secondAttribute="trailing" constant="5" id="v6F-sn-baw"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Animations" id="MXf-pD-esJ">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="square.and.arrow.down.fill" catalog="system" id="dZn-B0-hc7">
-                            <connections>
-                                <action selector="doActionButtonTaped:" destination="lNy-wI-DXw" id="my6-A3-XGz"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Image viewer" id="MXf-pD-esJ"/>
                     <connections>
                         <outlet property="imageView" destination="p9q-PV-N94" id="34U-eO-Xdb"/>
                     </connections>
@@ -695,7 +689,6 @@ simulator</string>
         <image name="person.3" catalog="system" width="128" height="62"/>
         <image name="pic1" width="640" height="704"/>
         <image name="rectangle.grid.3x2" catalog="system" width="128" height="101"/>
-        <image name="square.and.arrow.down.fill" catalog="system" width="121" height="128"/>
         <image name="square.and.pencil" catalog="system" width="128" height="115"/>
         <image name="square.grid.3x2.fill" catalog="system" width="128" height="80"/>
         <namedColor name="ColorButtonLabel">

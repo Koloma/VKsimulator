@@ -27,11 +27,7 @@ class AnimationDemoViewController: UIViewController {
       
         imageView.image = imageArray[currentImageIndex]
     }
-       
-    @IBAction func doActionButtonTaped(_ sender: UIBarButtonItem) {
-
-    }
-    
+          
     @objc func imageOnPan (_ recognizer: UIPanGestureRecognizer ){
         
         let translationX: CGFloat = 150.0
@@ -39,11 +35,7 @@ class AnimationDemoViewController: UIViewController {
         let transformLeft = CGAffineTransform(translationX: -translationX, y: 0)
         
         let transformZoomRight = CGAffineTransform(scaleX: 0.8, y: 0.8)
-        let  transformZoomLeft = CGAffineTransform(scaleX: 0.8, y: 0.8)
-        //transformZoomRight = transformZoomRight.translatedBy(x: 500, y: 0)
-        //transformZoomLeft = transformZoomRight.translatedBy(x: 500, y: 0)
-        //let transformZoomRight = transformRight.scaledBy(x: 0.8, y: 0.8 )
-        //let transformZoomLeft = transformLeft.scaledBy(x: 0.8, y: 0.8 )
+        let transformZoomLeft = CGAffineTransform(scaleX: 0.8, y: 0.8)
 
         switch recognizer.state {
         case .began:

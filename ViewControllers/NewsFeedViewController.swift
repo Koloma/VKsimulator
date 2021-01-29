@@ -47,7 +47,7 @@ extension NewsFeedViewController: UICollectionViewDelegate, UICollectionViewData
 
             //cell.width =  collectionView.bounds.width
             //-NewsFeedCollectionViewCell.spacing
-            print("collectionView.bounds.width \(collectionView.bounds.width)")
+            //print("collectionView.bounds.width \(collectionView.bounds.width)")
             return cell
         }
         
