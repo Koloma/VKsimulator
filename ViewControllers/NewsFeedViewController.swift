@@ -9,13 +9,7 @@ import UIKit
 
 class NewsFeedViewController: UIViewController {
 
-    @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var collectionLayout: UICollectionViewFlowLayout!{
-        didSet{
-            collectionLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-        }
-    }
-    
+    @IBOutlet weak var newsTableView: UITableView!
     
     var userNewsFeed: VKUser?{
         didSet{
@@ -27,22 +21,22 @@ class NewsFeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        collectionView.register( NewsFeedCollectionViewCell.nib, forCellWithReuseIdentifier: NewsFeedCollectionViewCell.identifier)
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        
+        newsTableView.delegate = self
+        newsTableView.dataSource = self
+        newsTableView.register(NewsFeedTableViewCell.nib, forCellReuseIdentifier: NewsFeedTableViewCell.identifier)
+       
     }
 
 }
 
-extension NewsFeedViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
-        
+extension NewsFeedViewController: UITableViewDelegate, UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        3
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewsFeedCollectionViewCell.identifier, for: indexPath) as? NewsFeedCollectionViewCell, let vkUser = userNewsFeed{
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = newsTableView.dequeueReusableCell(withIdentifier: NewsFeedTableViewCell.identifier, for: indexPath) as? NewsFeedTableViewCell,
+           let vkUser = userNewsFeed{
             cell.configur(vkUser: vkUser, newsText: "Big NEWS LLLL fgcf gdbbcvxbcxvbcxvbcxvbcxvb fvbv ", newsImage: [UIImage(named: "pic1")!,UIImage(named: "pic2")!])
 
             //cell.width =  collectionView.bounds.width
@@ -50,12 +44,13 @@ extension NewsFeedViewController: UICollectionViewDelegate, UICollectionViewData
             //print("collectionView.bounds.width \(collectionView.bounds.width)")
             return cell
         }
-        
-        return UICollectionViewCell()
+        return UITableViewCell()
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 370, height: 700)
-    }
     
 }
+
+
+    
+
+    

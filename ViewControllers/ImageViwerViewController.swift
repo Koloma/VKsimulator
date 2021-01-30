@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AnimationDemoViewController: UIViewController {
+class ImageViwerViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
    

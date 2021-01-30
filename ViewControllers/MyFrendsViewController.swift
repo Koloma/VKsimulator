@@ -21,6 +21,7 @@ class MyFrendsViewController: UIViewController {
     @IBOutlet weak var cancelImageView: UIImageView!
     @IBOutlet weak var searchTextField: UITextField!
     
+    
     private var dataVkUsers:[VKUser] = []
     private var filteredVkUsersForTable = VKUsersForTable()
     private let networkService = NetworkService()
@@ -96,11 +97,11 @@ class MyFrendsViewController: UIViewController {
     
     private func setupView(){
         
-        searchTextField.delegate = self;
+        searchTextField.delegate = self
         searchTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         
-        tableView.dataSource = self;
-        tableView.delegate = self;
+        tableView.dataSource = self
+        tableView.delegate = self
 
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.attributedTitle = NSAttributedString(string: "Loading frends...")
