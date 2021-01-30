@@ -51,10 +51,11 @@ class NewsFeedTableViewCell: UITableViewCell {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
         dateLable.text = dateFormatter.string(from: date)
-        //newsTextView.text = newsText
-        newsImageView.image = newsImage[0]
+        newsTextView.text = newsText
+        let random = Int.random(in: 0...1)
+        newsImageView.image = newsImage[random]
         
-        newsTextView.adjustHeight()
+        //newsTextView.adjustHeight()
         
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(likeTapped))
@@ -71,7 +72,7 @@ class NewsFeedTableViewCell: UITableViewCell {
     
     @objc func likeTapped(_ sender: UIView) {
         numberOfLike += 1
-        UIView.transition(with: numberOfViewsLable, duration: 0.5, options: [.transitionFlipFromLeft], animations: {
+        UIView.transition(with: numberOfLikeLable, duration: 0.5, options: [.transitionFlipFromLeft], animations: {
             self.numberOfViewsLable.text = String(self.numberOfLike)
         })
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1.0, options: [], animations: {

@@ -16,7 +16,7 @@ class CustomNavigationController: UINavigationController, UINavigationController
         //L9 01:26:30
         delegate = self
         
-        view.backgroundColor = UIColor.yellow
+        //view.backgroundColor = UIColor.yellow
     }
     
     func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {

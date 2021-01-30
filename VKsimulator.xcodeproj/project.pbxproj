@@ -18,6 +18,7 @@
 		8446CA3625C56DC000FC62F2 /* NewsFeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8446CA3425C56DC000FC62F2 /* NewsFeedTableViewCell.swift */; };
 		8446CA3725C56DC000FC62F2 /* NewsFeedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8446CA3525C56DC000FC62F2 /* NewsFeedTableViewCell.xib */; };
 		8446CA3B25C5893A00FC62F2 /* TextView+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8446CA3A25C5893A00FC62F2 /* TextView+ext.swift */; };
+		8446CA4325C5A35000FC62F2 /* String+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8446CA4225C5A35000FC62F2 /* String+ext.swift */; };
 		8448263A25B917DC00425D5A /* DelllNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448263825B917DC00425D5A /* DelllNews.swift */; };
 		8448263F25B921FC00425D5A /* MyFrendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448263E25B921FC00425D5A /* MyFrendsViewController.swift */; };
 		8448264325B9318800425D5A /* VKUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448264125B9318800425D5A /* VKUserTableViewCell.swift */; };
@@ -74,6 +75,7 @@
 		8446CA3425C56DC000FC62F2 /* NewsFeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedTableViewCell.swift; sourceTree = "<group>"; };
 		8446CA3525C56DC000FC62F2 /* NewsFeedTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsFeedTableViewCell.xib; sourceTree = "<group>"; };
 		8446CA3A25C5893A00FC62F2 /* TextView+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextView+ext.swift"; sourceTree = "<group>"; };
+		8446CA4225C5A35000FC62F2 /* String+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+ext.swift"; sourceTree = "<group>"; };
 		8448263825B917DC00425D5A /* DelllNews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelllNews.swift; sourceTree = "<group>"; };
 		8448263E25B921FC00425D5A /* MyFrendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFrendsViewController.swift; sourceTree = "<group>"; };
 		8448264125B9318800425D5A /* VKUserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKUserTableViewCell.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 				843D9A1125B95EE8007F0B1F /* RefreshControl+ext.swift */,
 				84A256D125C462E800F372A0 /* View+ext.swift */,
 				8446CA3A25C5893A00FC62F2 /* TextView+ext.swift */,
+				8446CA4225C5A35000FC62F2 /* String+ext.swift */,
 			);
 			path = Extrensions;
 			sourceTree = "<group>";
@@ -392,6 +395,7 @@
 				84A26E832596F0BC00299CCA /* GroupsTableViewCell.swift in Sources */,
 				84A3334025978CE800E7424E /* ImageGalleryCollectionViewController.swift in Sources */,
 				84D4756B25B4757100A4705A /* HeaderTableView.swift in Sources */,
+				8446CA4325C5A35000FC62F2 /* String+ext.swift in Sources */,
 				84F099B125C26909000300A6 /* MyIteractiveTransition.swift in Sources */,
 				843D9A1225B95EE8007F0B1F /* RefreshControl+ext.swift in Sources */,
 				84CFD10C259747E0007C99FC /* MyGroupsTableViewController.swift in Sources */,
