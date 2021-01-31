@@ -31,7 +31,7 @@ final class MyIteractiveTransition: UIPercentDrivenInteractiveTransition{
             let translation = recognizer.translation(in: recognizer.view)
             let relativeTranslation = translation.x / (recognizer.view?.bounds.width ?? 1)
             let progress = max(0, min(1,relativeTranslation))
-            print("progress \(progress)")
+            //print("progress \(progress)")
             //L9 02:03:00
             shouldFinished = progress > 0.33
             update(progress)

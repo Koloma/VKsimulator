@@ -24,15 +24,15 @@ class NetworkService{
         return parseJSON(userData: data)
     }
     
-    func GetImages(imageCount: Int) ->[userImage]{
-        var array:[userImage] = []
-        for _ in 1...imageCount{
-            if let image = getImage(fromURL: randomImageURL){
-                array.append(userImage(image: image, description: "No descr", likeCount: 0, isLikeSet: false))
-            }
-        }
-        return array
-    }
+//    func GetImages(imageCount: Int) ->[UserImage]{
+//        var array:[UserImage] = []
+//        for _ in 1...imageCount{
+//            if let image = getImage(fromURL: randomImageURL){
+//                array.append(UserImage(image: image, description: "No descr", likeCount: 0, isLikeSet: false))
+//            }
+//        }
+//        return array
+//    }
     
     private func parseJSON(userData: Data) -> [VKUser]{
         var usersClear:[VKUser] = []

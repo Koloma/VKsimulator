@@ -7,9 +7,13 @@
 
 import UIKit
 
-struct userImage{
+struct UserImage{
     var image: UIImage
-    var description: String
-    var likeCount: Int
-    var isLikeSet: Bool
+    var description: String = "Описание"
+    var likeCount: Int = 3
+    var isLikeSet: Bool = false
+    
+    init(image: UIImage) {
+        self.image = image
+    }
 }

@@ -12,7 +12,14 @@ private let cellIdentifier = "Cell"
 class ImageGalleryCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
     private let imageCount = 10
-    private var images:[userImage] = []
+    private var images:[UserImage] = [UserImage(image: UIImage(named: "pic1")!),
+                                      UserImage(image: UIImage(named: "pic2")!),
+                                      UserImage(image: UIImage(named: "pic3")!),
+                                      UserImage(image: UIImage(named: "pic4")!),
+                                      UserImage(image: UIImage(named: "pic1")!),
+                                      UserImage(image: UIImage(named: "pic2")!),
+                                      UserImage(image: UIImage(named: "pic3")!)]
+        
     private var actiIndicatorView = UIActivityIndicatorView()
     
     override func viewDidLoad() {
@@ -29,10 +36,10 @@ class ImageGalleryCollectionViewController: UICollectionViewController, UICollec
         return CGSize(width: 100, height: 30)
     }
         
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        return CGSize(width: 200, height: 210)
-//            
-//    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 170, height: 215)
+            
+    }
  
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionView.elementKindSectionHeader{
@@ -85,17 +92,18 @@ class ImageGalleryCollectionViewController: UICollectionViewController, UICollec
     }
     
     private func loadUsersData() {
-        showIndicator()
-        let networkService = NetworkService()
-        let queue = DispatchQueue.global(qos: .userInitiated)
-        queue.async{
-            self.images = networkService.GetImages(imageCount: self.imageCount)
+        //showIndicator()
+        //let networkService = NetworkService()
+        //let queue = DispatchQueue.global(qos: .userInitiated)
+        //queue.async{
+        //    self.images = networkService.GetImages(imageCount: self.imageCount)
 
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-                self.actiIndicatorView.stopAnimating()
-            }
-        }
+        //    DispatchQueue.main.async {
+        //        self.collectionView.reloadData()
+        //        self.actiIndicatorView.stopAnimating()
+        //    }
+        //}
+
     }
     
     func didTouchHeart(indexPath : IndexPath){
@@ -125,30 +133,25 @@ class ImageGalleryCollectionViewController: UICollectionViewController, UICollec
             toAvatarView.transform  = CGAffineTransform(scaleX: 2.0, y: 2.0)
             toAvatarView.isHidden = true
             
-            //guard let fromAvatarViewCopy = fromAvatarView.snapshotView(afterScreenUpdates: false) else { return }
-            //let fromFrame = cell.imageView.positionIn(view: view)
-            let toFrame = toAvatarView.positionIn(view: view)
             
-            //fromAvatarViewCopy.frame = fromFrame
-            //toAvatarView.frame = toFrame
-            //let imageView = UIImageView(frame: cell.imageView.frame)
-            
-            //let imagePosition = cell.imageView.convert(cell.imageView.frame.origin, to: self.view)
-            //let imagePosition = cell.imageView.positionIn(view: view)
-            //print("imagePosition \(imagePosition)")
-            //imageView.frame = imagePosition
-            //imageView.image = images[indexPath.row].image
-            //view.addSubview(imageView)
+            let imageView = UIImageView(frame: cell.imageView.frame)
+            let imagePosition = cell.imageView.positionIn(view: view)
+            print("imagePosition \(imagePosition)")
+            imageView.frame = imagePosition
+            imageView.image = images[indexPath.row].image
+            view.addSubview(imageView)
             //view.bringSubviewToFront(imageView)
             
             UIView.animateKeyframes(withDuration: 0.8, delay: 0, options: [], animations: {
-                cell.imageView.transform  = CGAffineTransform(scaleX: 2.0, y: 2.0)
-                cell.imageView.frame = toFrame
+                imageView.transform  = CGAffineTransform(scaleX: 2.0, y: 2.0)
+                imageView.center = self.view.frame.center
+            },completion: { _ in
+                imageView.removeFromSuperview()
+                self.performSegue(withIdentifier: "toImageViewer", sender: self)
             })
             
-
         }
-        //performSegue(withIdentifier: "ToImageViewer", sender: self)
+
     }
 }
 
