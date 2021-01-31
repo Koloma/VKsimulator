@@ -27,8 +27,7 @@ class NewsFeedCollectionViewCell: UICollectionViewCell {
     
     static let nib = UINib(nibName: "NewsFeedCollectionViewCell", bundle: nil)
     static let identifier = "CellNews"
-    static let spacing: CGFloat = 16
-    static let borderWidth: CGFloat = 0.5
+
     
     var likeCount = 1000
     
@@ -45,8 +44,8 @@ class NewsFeedCollectionViewCell: UICollectionViewCell {
         
         adjustUITextViewHeight(arg: newsTextView)
         
-        layer.borderWidth = NewsFeedCollectionViewCell.borderWidth
-        layer.borderColor = UIColor.lightGray.cgColor
+//        layer.borderWidth = NewsFeedCollectionViewCell.borderWidth
+//        layer.borderColor = UIColor.lightGray.cgColor
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(likeTapped))
         let tapGesture2 = UITapGestureRecognizer(target: self, action: #selector(likeTapped))
@@ -78,17 +77,6 @@ class NewsFeedCollectionViewCell: UICollectionViewCell {
         arg.translatesAutoresizingMaskIntoConstraints = true
         arg.sizeToFit()
         arg.isScrollEnabled = false
-    }
-    
-    var width: CGFloat? = nil {
-        didSet {
-            guard let width = width else {
-                return
-            }
-            widthConstraint.isActive = true
-            widthConstraint.constant = width
-            
-        }
     }
     
     override func awakeFromNib() {

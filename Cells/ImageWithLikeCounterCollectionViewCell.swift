@@ -7,10 +7,9 @@
 
 import UIKit
 
-class FrendCollectionViewCell: UICollectionViewCell {
+class ImageWithLikeCounterCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var labelTop: UILabel!
-    @IBOutlet weak var containerImageView: UIView!
     @IBOutlet weak var imageView: UIImageView!
     
     @IBOutlet weak var stackViewLike: UIStackView!

@@ -21,6 +21,7 @@ class MyFrendsViewController: UIViewController {
     @IBOutlet weak var cancelImageView: UIImageView!
     @IBOutlet weak var searchTextField: UITextField!
     
+    
     private var dataVkUsers:[VKUser] = []
     private var filteredVkUsersForTable = VKUsersForTable()
     private let networkService = NetworkService()
@@ -63,11 +64,16 @@ class MyFrendsViewController: UIViewController {
     @objc func textFieldDidChange(_ textField: UITextField) {
         filteringTableData(by: textField.text!)
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         setGradientBackground(colorTop: K.Gradient.colorBottom, colorBottom: K.Gradient.colorTop)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     func filteringTableData(by filterText : String){
@@ -89,18 +95,13 @@ class MyFrendsViewController: UIViewController {
         searchView.layer.insertSublayer(gradientLayer, at: 0)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(false, animated: animated)
-    }
-    
-    
     private func setupView(){
         
-        searchTextField.delegate = self;
+        searchTextField.delegate = self
         searchTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         
-        tableView.dataSource = self;
-        tableView.delegate = self;
+        tableView.dataSource = self
+        tableView.delegate = self
 
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.attributedTitle = NSAttributedString(string: "Loading frends...")
@@ -196,13 +197,12 @@ extension MyFrendsViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath)
         let vkUser = filteredVkUsersForTable.vkUsers[indexPath.section][indexPath.row]
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        if  let newsFeed = storyBoard.instantiateViewController(withIdentifier: "NewsFeed") as? NewsFeedViewController{
+        if  let newsFeed = storyBoard.instantiateViewController(withIdentifier: "NewsFeedViewController") as? NewsFeedViewController{
             //Здесь передаем данные в NewsFeedViewController
             newsFeed.userNewsFeed = vkUser
-            navigationController?.pushViewController(newsFeed, animated: true)
+            navigationController!.pushViewController(newsFeed, animated: true)
         }
     }
     

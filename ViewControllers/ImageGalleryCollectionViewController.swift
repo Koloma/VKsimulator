@@ -12,19 +12,23 @@ private let cellIdentifier = "Cell"
 class ImageGalleryCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
     private let imageCount = 10
-    private var images:[userImage] = []
+    private var images:[UserImage] = [UserImage(image: UIImage(named: "pic1")!),
+                                      UserImage(image: UIImage(named: "pic2")!),
+                                      UserImage(image: UIImage(named: "pic3")!),
+                                      UserImage(image: UIImage(named: "pic4")!),
+                                      UserImage(image: UIImage(named: "pic1")!),
+                                      UserImage(image: UIImage(named: "pic2")!),
+                                      UserImage(image: UIImage(named: "pic3")!)]
+        
     private var actiIndicatorView = UIActivityIndicatorView()
-//    private let gestureRecognizerHeartTouch = UIGestureRecognizer(target: self, action: #selector(didTouchHeart))
     
     override func viewDidLoad() {
         super.viewDidLoad()
         loadUsersData()
         collectionView.register(UINib(nibName: "CollectionHeaderView", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "CollectionHeaderView")
-        
     }
-
+    
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-
         return 1
     }
 
@@ -33,10 +37,10 @@ class ImageGalleryCollectionViewController: UICollectionViewController, UICollec
     }
         
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 150, height: 150)
+        return CGSize(width: 170, height: 215)
             
     }
-    
+ 
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionView.elementKindSectionHeader{
             if let view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "CollectionHeaderView", for: indexPath) as? CollectionHeaderView{
@@ -53,17 +57,19 @@ class ImageGalleryCollectionViewController: UICollectionViewController, UICollec
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? FrendCollectionViewCell{
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? ImageWithLikeCounterCollectionViewCell{
             cell.imageView.image = images[indexPath.row].image
-            //cell.imageView.rounded()
-            //cell.imageView.applyshadowWithCorner(containerView: cell.containerImageView)
+            print(indexPath.row)
             cell.labelTop.text = "Description"
             
-            let gesture = CustomTapGestureRecognizer(target: self, action: #selector(didTouchHeart))
-            gesture.indexPath = indexPath
-            cell.imageLikeHeart.addGestureRecognizer(gesture)
-            cell.imageLikeHeart.isUserInteractionEnabled = true
+            let imageGesture = CustomTapGestureRecognizer(indexPath: indexPath, callback: didImageTap)
+            cell.imageView.addGestureRecognizer(imageGesture)
+            
+            let gesture = CustomTapGestureRecognizer(indexPath: indexPath, callback: didTouchHeart)
+            cell.stackViewLike.addGestureRecognizer(gesture)
+            
             cell.labelLikeCount.text = String(images[indexPath.row].likeCount)
+            
             if images[indexPath.row].isLikeSet {
                 cell.imageLikeHeart.image = UIImage(systemName: "heart.fill")
                 cell.imageLikeHeart.tintColor = UIColor.red
@@ -86,21 +92,21 @@ class ImageGalleryCollectionViewController: UICollectionViewController, UICollec
     }
     
     private func loadUsersData() {
-        showIndicator()
-        let networkService = NetworkService()
-        let queue = DispatchQueue.global(qos: .userInitiated)
-        queue.async{
-            self.images = networkService.GetImages(imageCount: self.imageCount)
+        //showIndicator()
+        //let networkService = NetworkService()
+        //let queue = DispatchQueue.global(qos: .userInitiated)
+        //queue.async{
+        //    self.images = networkService.GetImages(imageCount: self.imageCount)
 
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-                self.actiIndicatorView.stopAnimating()
-            }
-        }
+        //    DispatchQueue.main.async {
+        //        self.collectionView.reloadData()
+        //        self.actiIndicatorView.stopAnimating()
+        //    }
+        //}
+
     }
     
-    @objc func didTouchHeart(_ sender: CustomTapGestureRecognizer){
-        if let indexPath = sender.indexPath {
+    func didTouchHeart(indexPath : IndexPath){
             if !images[indexPath.row].isLikeSet{
                 images[indexPath.row].isLikeSet = true;
                 images[indexPath.row].likeCount += 1
@@ -109,14 +115,60 @@ class ImageGalleryCollectionViewController: UICollectionViewController, UICollec
                 images[indexPath.row].isLikeSet = false;
                 images[indexPath.row].likeCount -= 1
             }
-            
-            self.collectionView.reloadData()
-        }
+            self.collectionView.reloadItems(at: [indexPath])
     }
+    
+    func didImageTap(indexPath : IndexPath){
+        print("Image Taped \(indexPath)")
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? ImageWithLikeCounterCollectionViewCell{
+            
+            //let fromAvatarView: UIImageView = cell.imageView
+            let toAvatarView: UIImageView = UIImageView()
+            toAvatarView.image = cell.imageView.image
+            
+            toAvatarView.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(toAvatarView)
+            toAvatarView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+            toAvatarView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+            toAvatarView.transform  = CGAffineTransform(scaleX: 2.0, y: 2.0)
+            toAvatarView.isHidden = true
+            
+            
+            let imageView = UIImageView(frame: cell.imageView.frame)
+            let imagePosition = cell.imageView.positionIn(view: view)
+            print("imagePosition \(imagePosition)")
+            imageView.frame = imagePosition
+            imageView.image = images[indexPath.row].image
+            view.addSubview(imageView)
+            //view.bringSubviewToFront(imageView)
+            
+            UIView.animateKeyframes(withDuration: 0.8, delay: 0, options: [], animations: {
+                imageView.transform  = CGAffineTransform(scaleX: 2.0, y: 2.0)
+                imageView.center = self.view.frame.center
+            },completion: { _ in
+                imageView.removeFromSuperview()
+                self.performSegue(withIdentifier: "toImageViewer", sender: self)
+            })
+            
+        }
 
+    }
 }
 
-class CustomTapGestureRecognizer: UITapGestureRecognizer {
-    var indexPath: IndexPath?
+final class CustomTapGestureRecognizer: UITapGestureRecognizer {
+    private let callback: (_ indexPath : IndexPath) -> Void
+    var indexPath: IndexPath
+    
+    public init(indexPath: IndexPath, callback: @escaping (_ indexPath : IndexPath) -> Void) {
+        self.callback = callback
+        self.indexPath = indexPath
+        super.init(target: nil, action: nil)
+        
+        addTarget(self, action: #selector(invokeCallback))
+    }
+    
+    @objc private func invokeCallback() {
+        callback(indexPath)
+    }
 }
 

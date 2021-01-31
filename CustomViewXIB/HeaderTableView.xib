@@ -48,7 +48,6 @@
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="mjB-9N-XMy" secondAttribute="trailing" id="ONX-34-KJa"/>
                 <constraint firstAttribute="bottom" secondItem="mjB-9N-XMy" secondAttribute="bottom" id="P6a-sE-eqn"/>
@@ -65,9 +64,6 @@
     </objects>
     <resources>
         <image name="logoImage" width="256" height="256"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemPurpleColor">
             <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

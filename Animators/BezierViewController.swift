@@ -13,7 +13,18 @@ class BezierViewController: UIViewController {
     @IBOutlet weak var greenView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+     
+    }
+    
+    @IBAction func buttonTap(_ sender: UIButton) {
+        animateCloud()
+    }
+    
+    @IBAction func logOutButtonTap(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func animateCloud() {
         let layer = CAShapeLayer()
         
         layer.strokeColor = UIColor.blue.cgColor
@@ -87,17 +98,7 @@ class BezierViewController: UIViewController {
         
         greenView.layer.addSublayer(circleLayer1)
         greenView.layer.addSublayer(circleLayer2)
-
-        
-        
     }
-    
-    @IBAction func buttonTap(_ sender: UIButton) {
-
-    }
-    
-
-
 }
 
 
@@ -120,13 +121,13 @@ extension UIBezierPath{
         let zeroedTo = CGPoint(x: to.x-bound.origin.x, y: to.y-bound.origin.y)
         let vector = center.vector(to: zeroedTo)
         
-        offset(to: CGSize(width: vector.dx, height: vector.dy))
+        _ = offset(to: CGSize(width: vector.dx, height: vector.dy))
         return self
     }
     
     func offset(to offset:CGSize) -> Self{
         let t = CGAffineTransform(translationX: offset.width, y: offset.height)
-        applyCentered(transform: t)
+        _ = applyCentered(transform: t)
         return self
     }
     
@@ -142,7 +143,7 @@ extension UIBezierPath{
     
     func scale(x:CGFloat, y:CGFloat) -> Self{
         let scale = CGAffineTransform(scaleX: x, y: y)
-        applyCentered(transform: scale)
+        _ = applyCentered(transform: scale)
         return self
     }
     
@@ -159,4 +160,5 @@ extension UIBezierPath{
         
         return self
     }
+    
 }
