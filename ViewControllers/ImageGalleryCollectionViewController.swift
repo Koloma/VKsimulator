@@ -137,13 +137,21 @@ class ImageGalleryCollectionViewController: UICollectionViewController, UICollec
             let imageView = UIImageView(frame: cell.imageView.frame)
             let imagePosition = cell.imageView.positionIn(view: view)
             print("imagePosition \(imagePosition)")
+            view.addSubview(imageView)
             imageView.frame = imagePosition
             imageView.image = images[indexPath.row].image
-            view.addSubview(imageView)
+            imageView.translatesAutoresizingMaskIntoConstraints = false
+            imageView.contentMode = .scaleAspectFit
+            
             //view.bringSubviewToFront(imageView)
             
             UIView.animateKeyframes(withDuration: 0.8, delay: 0, options: [], animations: {
-                imageView.transform  = CGAffineTransform(scaleX: 2.0, y: 2.0)
+                imageView.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor, constant: 20).isActive = true
+                imageView.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor, constant: -20).isActive = true
+                imageView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
+                imageView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -20).isActive = true
+                
+                //imageView.transform  = CGAffineTransform(scaleX: 2.0, y: 2.0)
                 imageView.center = self.view.frame.center
             },completion: { _ in
                 imageView.removeFromSuperview()
