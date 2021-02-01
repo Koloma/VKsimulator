@@ -26,6 +26,13 @@ class ImageGalleryCollectionViewController: UICollectionViewController, UICollec
         super.viewDidLoad()
         loadUsersData()
         collectionView.register(UINib(nibName: "CollectionHeaderView", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "CollectionHeaderView")
+        
+//        if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+//            let itemWidth = view.bounds.width / 2.0
+//            let itemHeight = layout.itemSize.height
+//            layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
+//            layout.invalidateLayout()
+//        }
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -33,12 +40,14 @@ class ImageGalleryCollectionViewController: UICollectionViewController, UICollec
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: 100, height: 30)
+        return CGSize(width: collectionView.bounds.size.width, height: 30)
     }
         
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 170, height: 215)
-            
+        let height = 215
+        return CGSize(width: collectionView.bounds.size.width / 2, height: CGFloat(height))
+        //return CGSize(width: 170, height: 215)
+
     }
  
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {

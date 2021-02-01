@@ -27,9 +27,7 @@ class BezierViewController: UIViewController {
     func animateCloud() {
         let layer = CAShapeLayer()
         
-        layer.strokeColor = UIColor.blue.cgColor
-        layer.lineWidth = 10
-        layer.fillColor = UIColor.gray.cgColor
+
         
         let shape = UIBezierPath()
         shape.move(to: CGPoint(x: 45.12, y: 16.99))
@@ -44,60 +42,54 @@ class BezierViewController: UIViewController {
         //shape.stroke()
         
         shape.fit(into: greenView.bounds).moveCenter(to: greenView.bounds.center).fill()
+        
+        layer.strokeColor = UIColor.blue.cgColor
         layer.path = shape.cgPath
+        
+        layer.lineWidth = 10
+        layer.fillColor = UIColor.gray.cgColor
+        layer.lineCap = .round
+        //layer.strokeEnd = 0
         //greenView.layer.mask = layer
-        
-        
-        let circleLayer1 = CAShapeLayer()
-        circleLayer1.backgroundColor = UIColor.red.cgColor
-        circleLayer1.bounds = CGRect(x: 0, y: 0, width: 10, height: 10)
-        circleLayer1.position = CGPoint(x: 40, y: 20)
-        circleLayer1.cornerRadius = 5
-       
-        let circleLayer2 = CAShapeLayer()
-        circleLayer2.backgroundColor =  UIColor.red.cgColor
-        circleLayer2.bounds = CGRect(x: 0, y: 0, width: 10, height: 10)
-        circleLayer2.position = CGPoint(x: 40, y: 20)
-        circleLayer2.cornerRadius = 5
-        
-
-        let followPathAnimation1 = CAKeyframeAnimation(keyPath: "position")
-        followPathAnimation1.beginTime  = 0.001
-        followPathAnimation1.path = shape.cgPath
-        followPathAnimation1.calculationMode = CAAnimationCalculationMode.paced
-        followPathAnimation1.speed = 0.05
-        followPathAnimation1.repeatCount = Float.infinity
-        
-        let followPathAnimation2 = CAKeyframeAnimation(keyPath: "position")
-        followPathAnimation2.beginTime = 0.0
-        followPathAnimation2.path = shape.cgPath
-        followPathAnimation2.calculationMode = CAAnimationCalculationMode.paced
-        followPathAnimation2.speed = 0.05
-        followPathAnimation2.repeatCount = Float.infinity
-        
-        circleLayer1.add(followPathAnimation1, forKey: nil)
-        circleLayer2.add(followPathAnimation2, forKey: nil)
+                
+//        let circleLayer1 = CAShapeLayer()
+//        circleLayer1.backgroundColor = UIColor.red.cgColor
+//        circleLayer1.bounds = CGRect(x: 0, y: 0, width: 10, height: 10)
+//        circleLayer1.position = CGPoint(x: 40, y: 20)
+//        circleLayer1.cornerRadius = 5
+//        let followPathAnimation1 = CAKeyframeAnimation(keyPath: "position")
+//        followPathAnimation1.beginTime  = 0.001
+//        followPathAnimation1.path = shape.cgPath
+//        followPathAnimation1.calculationMode = CAAnimationCalculationMode.paced
+//        followPathAnimation1.speed = 0.05
+//        followPathAnimation1.repeatCount = Float.infinity
+//        circleLayer1.add(followPathAnimation1, forKey: nil)
+        let duration = CFTimeInterval(5)
         
         let strokeStartAnimation = CABasicAnimation(keyPath: "strokeStart")
         strokeStartAnimation.fromValue = 0.0
-        strokeStartAnimation.toValue = 0.8
-        strokeStartAnimation.repeatDuration = .infinity
+        strokeStartAnimation.toValue = 1.0
+        strokeStartAnimation.duration = duration
+        strokeStartAnimation.fillMode = .both
+        //strokeStartAnimation.beginTime = 0.5
 
         let strokeEndAnimation = CABasicAnimation(keyPath: "strokeEnd")
         strokeEndAnimation.fromValue = 0.1
-        strokeEndAnimation.toValue = 1.0
-        strokeEndAnimation.repeatDuration = .infinity
+        strokeEndAnimation.toValue = 1.1
+        strokeEndAnimation.duration = duration
+        strokeEndAnimation.fillMode = .both
 
         let animationGroup = CAAnimationGroup()
-        animationGroup.duration = 5
+        animationGroup.duration = duration
+        animationGroup.fillMode = CAMediaTimingFillMode.both// backwards
         animationGroup.repeatDuration = .infinity
         animationGroup.animations = [strokeStartAnimation, strokeEndAnimation]
         
         layer.add(animationGroup, forKey: nil)
         greenView.layer.addSublayer(layer)
         
-        greenView.layer.addSublayer(circleLayer1)
-        greenView.layer.addSublayer(circleLayer2)
+//        greenView.layer.addSublayer(circleLayer1)
+
     }
 }
 
