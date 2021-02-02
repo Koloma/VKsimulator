@@ -26,6 +26,13 @@ class ImageGalleryCollectionViewController: UICollectionViewController, UICollec
         super.viewDidLoad()
         loadUsersData()
         collectionView.register(UINib(nibName: "CollectionHeaderView", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "CollectionHeaderView")
+        
+//        if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+//            let itemWidth = view.bounds.width / 2.0
+//            let itemHeight = layout.itemSize.height
+//            layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
+//            layout.invalidateLayout()
+//        }
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -33,12 +40,14 @@ class ImageGalleryCollectionViewController: UICollectionViewController, UICollec
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: 100, height: 30)
+        return CGSize(width: collectionView.bounds.size.width, height: 30)
     }
         
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 170, height: 215)
-            
+        let height = 215
+        return CGSize(width: collectionView.bounds.size.width / 2, height: CGFloat(height))
+        //return CGSize(width: 170, height: 215)
+
     }
  
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -137,13 +146,21 @@ class ImageGalleryCollectionViewController: UICollectionViewController, UICollec
             let imageView = UIImageView(frame: cell.imageView.frame)
             let imagePosition = cell.imageView.positionIn(view: view)
             print("imagePosition \(imagePosition)")
+            view.addSubview(imageView)
             imageView.frame = imagePosition
             imageView.image = images[indexPath.row].image
-            view.addSubview(imageView)
+            imageView.translatesAutoresizingMaskIntoConstraints = false
+            imageView.contentMode = .scaleAspectFit
+            
             //view.bringSubviewToFront(imageView)
             
             UIView.animateKeyframes(withDuration: 0.8, delay: 0, options: [], animations: {
-                imageView.transform  = CGAffineTransform(scaleX: 2.0, y: 2.0)
+                imageView.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor, constant: 20).isActive = true
+                imageView.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor, constant: -20).isActive = true
+                imageView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
+                imageView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -20).isActive = true
+                
+                //imageView.transform  = CGAffineTransform(scaleX: 2.0, y: 2.0)
                 imageView.center = self.view.frame.center
             },completion: { _ in
                 imageView.removeFromSuperview()
