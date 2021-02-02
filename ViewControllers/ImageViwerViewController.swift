@@ -34,8 +34,7 @@ class ImageViwerViewController: UIViewController {
         let transformRight = CGAffineTransform(translationX: translationX, y: 0)
         let transformLeft = CGAffineTransform(translationX: -translationX, y: 0)
         
-        let transformZoomRight = CGAffineTransform(scaleX: 0.8, y: 0.8)
-        let transformZoomLeft = CGAffineTransform(scaleX: 0.8, y: 0.8)
+        let transformZoom = CGAffineTransform(scaleX: 0.8, y: 0.8)
 
         switch recognizer.state {
         case .began:
@@ -66,17 +65,58 @@ class ImageViwerViewController: UIViewController {
         case .ended:
             interactiveAnimator.stopAnimation(true)
             
+            func animate1(left: Bool){
+                let mult = left ? -1 : 1
+
+                UIView.animateKeyframes(withDuration: 1,
+                                        delay: 0,
+                                        options: [.calculationModeLinear]){
+                    UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.5){
+                        self.view.layoutIfNeeded()
+                        self.imageView.transform = CGAffineTransform(translationX: CGFloat(mult) * self.view.frame.width, y: 0)
+                    }
+                    UIView.addKeyframe(withRelativeStartTime: 0.6, relativeDuration: 0.0){
+                        self.view.layoutIfNeeded()
+                        self.imageView.transform = .identity
+                        self.imageView.transform = transformZoom
+                    }
+                    UIView.addKeyframe(withRelativeStartTime: 0.61, relativeDuration: 0.5){
+                        self.view.layoutIfNeeded()
+                        self.imageView.transform = .identity
+                        self.imageView.image = self.imageArray[self.currentImageIndex]
+                    }
+                }
+            }
+            
+            func animate(left: Bool){
+                let mult = left ? 1 : -1
+
+                let animation = CABasicAnimation(keyPath: "position.x")
+                animation.fromValue = imageView.layer.position.x
+                animation.fromValue = imageView.layer.position.x + CGFloat(mult) * 500
+                animation.duration = 1
+                imageView.layer.add(animation, forKey: nil)
+                self.imageView.image = self.imageArray[self.currentImageIndex]
+            }
+            
+            func animate(){
+
+                imageView.image = imageArray[currentImageIndex]
+                self.imageView.transform = transformZoom
+                interactiveAnimator = UIViewPropertyAnimator(duration: 1.0,
+                                                             dampingRatio: 1.0,
+                                                             animations: {
+                                                                self.imageView.transform = .identity
+                                                             })
+            }
+            
+            //showHideTransitionViews
             let translation = recognizer.translation(in: self.view)
             if translation.x > translationX {
                 if currentImageIndex > 0{
                     currentImageIndex -= 1
-                    imageView.image = imageArray[currentImageIndex]
-                    self.imageView.transform = transformZoomRight
-                    interactiveAnimator = UIViewPropertyAnimator(duration: 1.0,
-                                                                 dampingRatio: 1.0,
-                                                                 animations: {
-                                                                    self.imageView.transform = .identity
-                                                                 })
+                    
+                    animate()
                 }
                 //print("right ended")
             }else{
@@ -87,13 +127,9 @@ class ImageViwerViewController: UIViewController {
             if translation.x < -translationX {
                 if currentImageIndex < imageArray.count-1{
                     currentImageIndex += 1
-                    imageView.image = imageArray[currentImageIndex]
-                    self.imageView.transform = transformZoomLeft
-                    interactiveAnimator = UIViewPropertyAnimator(duration: 1.0,
-                                                                 dampingRatio: 1.0,
-                                                                 animations: {
-                                                                    self.imageView.transform = .identity
-                                                                 })
+                    
+                    animate()
+
                 }
                 
                 //print("left ended")
@@ -107,6 +143,6 @@ class ImageViwerViewController: UIViewController {
         default:
             return
         }
+
     }
-    
 }
