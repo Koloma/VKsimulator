@@ -40,7 +40,7 @@ extension NewsFeedViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        //TOD доделать расчет высоты ячейки, перенести логику расчета внуьрь класса ячейки
+        //TOD доделать расчет высоты ячейки, перенести логику расчета внутрь класса ячейки
         let heightForRowAt = 550 + arrayNews[indexPath.row].height(withConstrainedWidth: newsTableView.frame.width - 20, font: UIFont.systemFont(ofSize: 14.0))
         //print ("\(indexPath)  \(heightForRowAt)")
         return heightForRowAt

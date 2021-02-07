@@ -74,4 +74,9 @@ class NetworkService{
         return nil
     }
     
+    func getSessionCredentials(login: String, password: String) -> Session.Credential? {
+        
+        return Session.Credential(token: UUID().uuidString, userId: Int.random(in: 100000000...999999999))
+    }
+    
 }

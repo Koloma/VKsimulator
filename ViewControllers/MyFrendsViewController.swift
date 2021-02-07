@@ -42,6 +42,10 @@ class MyFrendsViewController: UIViewController {
         let sbAnimator = SBAnimator(animation: sbAnimation)
         sbAnimator.animate(searchImage: searchImageView, textField: searchTextField, cancelImage: cancelImageView, in: searchView)
         
+        if let credential = Session.shared.getCredential() {
+            print(credential)
+        }
+        
     }
     @IBAction func searchTapped(_ sender: UITapGestureRecognizer) {
         let sbAnimation = SBAnimationFactory.makeAnimation()
