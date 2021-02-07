@@ -11,6 +11,7 @@ class LoginViewController: UIViewController{
     @IBOutlet weak var loginStackView: UIStackView!
     
     var alertControler: UIAlertController!
+ 
     //var myWaitIndicatorView = MyWaitIndicatorView()
     
     override func viewDidLoad() {
@@ -27,6 +28,7 @@ class LoginViewController: UIViewController{
         let hideKeyboardGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         scrollView?.addGestureRecognizer(hideKeyboardGesture)
         
+                
 //        myWaitIndicatorView.createIndicatorWait(ownerView: self.view)
 //        myWaitIndicatorView.isHidden = false
     }
@@ -64,14 +66,21 @@ class LoginViewController: UIViewController{
     }
     
     func isLoginCredentialsCorrect(login:String, password: String)->Bool{
-        guard login == "admin" else {
-            showAllert(title: "Ошибка авторизации", message: "Неправильный логин")
+        
+//        guard login == "admin" else {
+//            showAllert(title: "Ошибка авторизации", message: "Неправильный логин")
+//            return false
+//        }
+//        guard password == "123" else {
+//            showAllert(title: "Ошибка авторизации", message: "Неправильный пароль")
+//            return false
+//        }
+        
+        guard let credential = NetworkService().getSessionCredentials(login: login, password: password) else {
             return false
         }
-        guard password == "123" else {
-            showAllert(title: "Ошибка авторизации", message: "Неправильный пароль")
-            return false
-        }
+        Session.shared.setCredential(credential: credential)
+        print(credential)
         return true
     }
     
