@@ -11,26 +11,12 @@ class Session{
     
     static let shared = Session()
     
-    struct Credential{
-        var token: String
-        var userId: Int
-    }
+    var token: String = ""
+    var userId: Int = Int()
 
-    private var credential:Credential?
-    
+   
     private init() {
     }
     
-    func setCredential(token: String, userId: Int){
-        self.credential = Credential(token: token, userId: userId)
-    }
-
-    func setCredential(credential: Credential){
-        self.credential = credential
-    }
-    
-    func getCredential() -> Credential?{
-        return credential
-    }
 }
 
