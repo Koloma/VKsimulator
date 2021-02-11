@@ -34,7 +34,7 @@ class VKWebViewController: UIViewController {
             URLQueryItem(name: "redirect_uri", value: "https://oauth.vk.com/blank.html"),
             URLQueryItem(name: "scope", value: "262150"),
             URLQueryItem(name: "response_type", value: "token"),
-            URLQueryItem(name: "v", value: "5.92")
+            URLQueryItem(name: "v", value: K.ApiVK.v)
         ]
             
         if let url = urlComponents.url{
@@ -83,6 +83,9 @@ extension VKWebViewController: WKNavigationDelegate{
         Session.shared.userId = Int.init(userId)!
         
         VKNetService.shared.loadGroups(token: token)
+        VKNetService.shared.loadFriends(token: token)
+        VKNetService.shared.loadUserImages(token: token, userId: Session.shared.userId )
+        VKNetService.shared.groupsSearch(token: token, textQuery: "GeekBrains")
         
         decisionHandler(.cancel)
         

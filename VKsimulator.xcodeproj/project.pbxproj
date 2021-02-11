@@ -33,6 +33,8 @@
 		8450262125C008FA0026B63F /* BezierViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8450262025C008FA0026B63F /* BezierViewController.swift */; };
 		8453618D25D4CFD900AC609C /* VKWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8453618C25D4CFD900AC609C /* VKWebViewController.swift */; };
 		8453619025D4E3C800AC609C /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8453618F25D4E3C800AC609C /* WebKit.framework */; };
+		8453619325D51D9D00AC609C /* UserImagesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8453619225D51D9D00AC609C /* UserImagesData.swift */; };
+		8453619625D51EAE00AC609C /* UserFrendsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8453619525D51EAE00AC609C /* UserFrendsData.swift */; };
 		84547F8D25B5C08B00B67D86 /* CollectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84547F8C25B5C08B00B67D86 /* CollectionHeaderView.xib */; };
 		84547F9025B5C0C500B67D86 /* CollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84547F8F25B5C0C500B67D86 /* CollectionHeaderView.swift */; };
 		8461A28C25A2F7510080C9CF /* ImageView+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8461A28B25A2F7510080C9CF /* ImageView+ext.swift */; };
@@ -98,6 +100,8 @@
 		8450262025C008FA0026B63F /* BezierViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BezierViewController.swift; sourceTree = "<group>"; };
 		8453618C25D4CFD900AC609C /* VKWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKWebViewController.swift; sourceTree = "<group>"; };
 		8453618F25D4E3C800AC609C /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		8453619225D51D9D00AC609C /* UserImagesData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserImagesData.swift; sourceTree = "<group>"; };
+		8453619525D51EAE00AC609C /* UserFrendsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFrendsData.swift; sourceTree = "<group>"; };
 		84547F8C25B5C08B00B67D86 /* CollectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionHeaderView.xib; sourceTree = "<group>"; };
 		84547F8F25B5C0C500B67D86 /* CollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionHeaderView.swift; sourceTree = "<group>"; };
 		8461A28B25A2F7510080C9CF /* ImageView+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageView+ext.swift"; sourceTree = "<group>"; };
@@ -187,6 +191,8 @@
 				8445D28D25A21E7E0047E59B /* Users.swift */,
 				840C11DF25D0199300E7BE7B /* Session.swift */,
 				84DCF44825D3931D006B3DCB /* VKNetService.swift */,
+				8453619225D51D9D00AC609C /* UserImagesData.swift */,
+				8453619525D51EAE00AC609C /* UserFrendsData.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -467,6 +473,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8453619325D51D9D00AC609C /* UserImagesData.swift in Sources */,
 				84EF01A325BE78CD00F49415 /* Animator.swift in Sources */,
 				843D1F6E25C19BFE00437D18 /* AnimatorVC.swift in Sources */,
 				84A3334325978FAD00E7424E /* ImageWithLikeCounterCollectionViewCell.swift in Sources */,
@@ -484,6 +491,7 @@
 				846E01B225985BF6007554E0 /* Group.swift in Sources */,
 				8446CA3B25C5893A00FC62F2 /* TextView+ext.swift in Sources */,
 				843D1F7925C1B3AB00437D18 /* CustomNavigationController.swift in Sources */,
+				8453619625D51EAE00AC609C /* UserFrendsData.swift in Sources */,
 				8446CA3625C56DC000FC62F2 /* NewsFeedTableViewCell.swift in Sources */,
 				846E01BA25988216007554E0 /* MyFrendsTableViewCell.swift in Sources */,
 				8445D28F25A21E7E0047E59B /* Users.swift in Sources */,
