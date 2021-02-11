@@ -76,12 +76,8 @@ class LoginViewController: UIViewController{
 //            return false
 //        }
         
-        guard let credential = NetworkService().getSessionCredentials(login: login, password: password) else {
-            return false
-        }
-        Session.shared.setCredential(credential: credential)
-        print(credential)
-        return true
+        return NetworkService().setSessionCredentials(login: login, password: password) 
+            
     }
     
     func showAllert(title: String, message: String){
