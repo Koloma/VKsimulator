@@ -24,9 +24,6 @@ class MyFrendsViewController: UIViewController {
     private var friends:[VKUser.User] = []
     private var filteredFriendsForTable = FriendsForTable()
     
-    private var myWaitIndicatorView = MyWaitIndicatorView()
-    
-    
     func logOut() {
         self.dismiss(animated: true, completion: nil)
     }
@@ -119,7 +116,6 @@ class MyFrendsViewController: UIViewController {
     }
  
     private func loadUsersData() {
-        myWaitIndicatorView.isHidden = false
         tableView.refreshControl?.myBeginRefreshing(in: tableView)
 
         NetService.shared.loadUsers(token: Session.shared.token){[weak self] users in
@@ -129,7 +125,6 @@ class MyFrendsViewController: UIViewController {
 
             DispatchQueue.main.async {
                 self.tableView.reloadData()
-                self.myWaitIndicatorView.isHidden = true
                 self.tableView.refreshControl?.endRefreshing()
             }
         }

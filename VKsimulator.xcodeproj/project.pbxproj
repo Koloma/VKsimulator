@@ -50,8 +50,6 @@
 		84A26E7E2596EBBA00299CCA /* GroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A26E7D2596EBBA00299CCA /* GroupsTableViewController.swift */; };
 		84A3334025978CE800E7424E /* ImageGalleryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A3333F25978CE800E7424E /* ImageGalleryCollectionViewController.swift */; };
 		84A3334325978FAD00E7424E /* ImageWithLikeCounterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A3334225978FAD00E7424E /* ImageWithLikeCounterCollectionViewCell.swift */; };
-		84A5BD7F25BD2E72008FC5D1 /* MyWaitIndicatorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A5BD7E25BD2E72008FC5D1 /* MyWaitIndicatorView.xib */; };
-		84A5BD8325BD2F1E008FC5D1 /* MyWaitIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A5BD8225BD2F1E008FC5D1 /* MyWaitIndicatorView.swift */; };
 		84CFD10C259747E0007C99FC /* MyGroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CFD10B259747E0007C99FC /* MyGroupsTableViewController.swift */; };
 		84D4756825B446EC00A4705A /* ImageViwerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D4756725B446EC00A4705A /* ImageViwerViewController.swift */; };
 		84D4756B25B4757100A4705A /* HeaderTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D4756A25B4757100A4705A /* HeaderTableView.swift */; };
@@ -111,8 +109,6 @@
 		84A26E7D2596EBBA00299CCA /* GroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsTableViewController.swift; sourceTree = "<group>"; };
 		84A3333F25978CE800E7424E /* ImageGalleryCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageGalleryCollectionViewController.swift; sourceTree = "<group>"; };
 		84A3334225978FAD00E7424E /* ImageWithLikeCounterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageWithLikeCounterCollectionViewCell.swift; sourceTree = "<group>"; };
-		84A5BD7E25BD2E72008FC5D1 /* MyWaitIndicatorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyWaitIndicatorView.xib; sourceTree = "<group>"; };
-		84A5BD8225BD2F1E008FC5D1 /* MyWaitIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWaitIndicatorView.swift; sourceTree = "<group>"; };
 		84CFD10B259747E0007C99FC /* MyGroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupsTableViewController.swift; sourceTree = "<group>"; };
 		84D4756725B446EC00A4705A /* ImageViwerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViwerViewController.swift; sourceTree = "<group>"; };
 		84D4756A25B4757100A4705A /* HeaderTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTableView.swift; sourceTree = "<group>"; };
@@ -280,14 +276,12 @@
 		84D4755E25B40B2C00A4705A /* CustomViewXIB */ = {
 			isa = PBXGroup;
 			children = (
-				84A5BD7E25BD2E72008FC5D1 /* MyWaitIndicatorView.xib */,
-				84A5BD8225BD2F1E008FC5D1 /* MyWaitIndicatorView.swift */,
 				84D4756A25B4757100A4705A /* HeaderTableView.swift */,
 				84D4756D25B475AE00A4705A /* HeaderTableView.xib */,
-				84547F8C25B5C08B00B67D86 /* CollectionHeaderView.xib */,
 				84547F8F25B5C0C500B67D86 /* CollectionHeaderView.swift */,
-				849F10A825BA87B500CF9B38 /* FrendsTableViewHeader.xib */,
+				84547F8C25B5C08B00B67D86 /* CollectionHeaderView.xib */,
 				849F10AB25BA87D400CF9B38 /* FrendsTableViewHeader.swift */,
+				849F10A825BA87B500CF9B38 /* FrendsTableViewHeader.xib */,
 			);
 			path = CustomViewXIB;
 			sourceTree = "<group>";
@@ -382,7 +376,6 @@
 				84547F8D25B5C08B00B67D86 /* CollectionHeaderView.xib in Resources */,
 				8448264425B9318800425D5A /* VKUserTableViewCell.xib in Resources */,
 				846E01AA259849F5007554E0 /* VKGroupTableViewCell.xib in Resources */,
-				84A5BD7F25BD2E72008FC5D1 /* MyWaitIndicatorView.xib in Resources */,
 				84D4756E25B475AE00A4705A /* HeaderTableView.xib in Resources */,
 				844A5CB6258FAF7300DB145E /* Main.storyboard in Resources */,
 			);
@@ -452,7 +445,6 @@
 				843D1F7925C1B3AB00437D18 /* CustomNavigationController.swift in Sources */,
 				8446CA3625C56DC000FC62F2 /* NewsFeedTableViewCell.swift in Sources */,
 				846E01A9259849F5007554E0 /* VKGroupTableViewCell.swift in Sources */,
-				84A5BD8325BD2F1E008FC5D1 /* MyWaitIndicatorView.swift in Sources */,
 				8448264325B9318800425D5A /* VKUserTableViewCell.swift in Sources */,
 				8448263F25B921FC00425D5A /* MyFrendsViewController.swift in Sources */,
 				849F10AC25BA87D400CF9B38 /* FrendsTableViewHeader.swift in Sources */,

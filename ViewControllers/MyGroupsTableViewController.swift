@@ -29,7 +29,7 @@ class MyGroupsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+        return VKGroupTableViewCell.height
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -41,7 +41,6 @@ class MyGroupsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return myGroups.count
     }
 
@@ -52,15 +51,15 @@ class MyGroupsTableViewController: UITableViewController {
         }
     }
     @IBAction func unwindFromTableViewController(_ segue: UIStoryboardSegue){
-//        guard let tableVC = segue.source as? GroupsTableViewController,
-//              let index = tableVC.tableView.indexPathForSelectedRow else { return }
-//        print ("\(index)")
-//        let group = tableVC.groups[index.row]
-//        if !myGroups.contains(group){
-//            myGroups.append(group)
-//            myGroups.sort()
-//            tableView.reloadData()
-//        }
+        guard let tableVC = segue.source as? GroupsTableViewController,
+              let index = tableVC.tableView.indexPathForSelectedRow else { return }
+        print ("\(index)")
+        let group = tableVC.groups[index.row]
+        if !myGroups.contains(group){
+            myGroups.append(group)
+            myGroups.sort()
+            tableView.reloadData()
+        }
 
     }
 

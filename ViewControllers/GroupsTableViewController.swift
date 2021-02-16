@@ -26,6 +26,10 @@ class GroupsTableViewController: UITableViewController {
         }
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "unwindFromTableViewController", sender: self)
+    }
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -35,7 +39,7 @@ class GroupsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+        return VKGroupTableViewCell.height
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -55,7 +55,8 @@ class VKGroup{
         }        
         
     }
-    
+
+    // MARK: - GroupRAW
     struct GroupRAW: Codable {
         let response: Response
     }
@@ -89,4 +90,19 @@ class VKGroup{
         }
     }
 
+}
+
+// MARK: - extension
+extension VKGroup.Group: Equatable, Comparable {
+    static func < (lhs: VKGroup.Group, rhs: VKGroup.Group) -> Bool {
+        return lhs.name < rhs.name
+    }
+}
+
+func ==(lhs: VKGroup.Group, rhs: VKGroup.Group) -> Bool {
+    let areEqual = lhs.id == rhs.id &&
+        lhs.name == rhs.name &&
+        lhs.screenName == rhs.screenName
+
+    return areEqual
 }

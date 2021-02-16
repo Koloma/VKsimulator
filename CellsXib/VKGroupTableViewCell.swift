@@ -11,6 +11,7 @@ class VKGroupTableViewCell: UITableViewCell {
 
     static let nib = UINib(nibName: "VKGroupTableViewCell", bundle: nil)
     static let identifier = "CellGroup"
+    static let height : CGFloat = 60
     
     @IBOutlet weak var groupImageView: UIImageView!
     @IBOutlet weak var groupNameLable: UILabel!

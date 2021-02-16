@@ -197,7 +197,7 @@ simulator</string>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="I8w-xF-3Pj">
                             <connections>
-                                <segue destination="xUd-UF-thp" kind="show" id="tto-Oe-CJF"/>
+                                <segue destination="xUd-UF-thp" kind="show" identifier="toGroups" id="tto-Oe-CJF"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -220,8 +220,12 @@ simulator</string>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Groups" id="sFq-69-mp1"/>
+                    <connections>
+                        <segue destination="kYm-pA-4Rh" kind="unwind" identifier="unwindFromTableViewController" unwindAction="unwindFromTableViewController:" id="cQI-Sn-hXC"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r49-ea-Rok" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="kYm-pA-4Rh" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1429" y="-1061"/>
         </scene>
@@ -456,7 +460,7 @@ simulator</string>
                         <color key="backgroundColor" systemColor="systemIndigoColor"/>
                     </tabBar>
                     <connections>
-                        <segue destination="QOe-j9-0aC" kind="relationship" relationship="viewControllers" id="1yA-IR-Hll"/>
+                        <segue destination="QOe-j9-0aC" kind="relationship" relationship="viewControllers" destinationCreationSelector="Frends" id="1yA-IR-Hll"/>
                         <segue destination="x1e-hR-e0H" kind="relationship" relationship="viewControllers" destinationCreationSelector="Groups" id="Sun-O1-kSU"/>
                     </connections>
                 </tabBarController>
@@ -507,7 +511,7 @@ simulator</string>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="EKE-QA-fwF" kind="relationship" relationship="rootViewController" id="PgK-z9-sNh"/>
+                        <segue destination="EKE-QA-fwF" kind="relationship" relationship="rootViewController" destinationCreationSelector="toMyGroups" id="PgK-z9-sNh"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ueu-P0-wc8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -527,7 +531,7 @@ simulator</string>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="E5S-vi-alR" kind="relationship" relationship="rootViewController" id="b5W-wa-cEt"/>
+                        <segue destination="E5S-vi-alR" kind="relationship" relationship="rootViewController" destinationCreationSelector="toMyFrendsViewController" id="b5W-wa-cEt"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kFl-zC-yoC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
