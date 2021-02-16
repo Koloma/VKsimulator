@@ -39,11 +39,12 @@
                     </view>
                     <connections>
                         <outlet property="webView" destination="ebI-Zg-4BI" id="dIC-N7-NxR"/>
+                        <segue destination="d70-Z4-NOF" kind="show" identifier="to_first_screen" id="mMz-8K-kE3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hi2-Jm-R8y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2920" y="-576"/>
+            <point key="canvasLocation" x="-2900" y="-971"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -173,7 +174,7 @@ simulator</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2083.125" y="-576.25"/>
+            <point key="canvasLocation" x="-2899" y="-304"/>
         </scene>
         <!--My groups-->
         <scene sceneID="CNK-qN-BOQ">
@@ -687,6 +688,9 @@ simulator</string>
             <point key="canvasLocation" x="-1265.217391304348" y="-1339.4021739130435"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="eMs-dt-NXi"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="cloud" catalog="system" width="128" height="87"/>
         <image name="heart.fill" catalog="system" width="128" height="109"/>

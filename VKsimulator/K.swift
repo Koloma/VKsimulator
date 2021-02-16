@@ -16,7 +16,7 @@ struct K {
         static let colorBottomAlpha = UIColor(red: 255.0/255.0, green: 149.0/255.0, blue: 0.0/255.0, alpha: 0.5).cgColor
     }
     struct ApiVK {
-        static let v = "5.92"
+        static let v = "5.130"
         static let baseUrl = "https://api.vk.com"
         static let pathGetGroups = "/method/groups.get"
         static let pathGroupsSearch = "/method/groups.search"

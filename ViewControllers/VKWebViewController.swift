@@ -66,11 +66,11 @@ extension VKWebViewController: WKNavigationDelegate{
                 var dict = result
                 let key = param[0]
                 let value = param[1]
-                print("\(key)  \(value)")
+                //print("\(key)  \(value)")
                 dict[key] = value
                 return dict
             }
-        print("params: \(params)")
+        //print("params: \(params)")
         guard let token = params["access_token"]
               ,let userId = params["user_id"]
         else {
@@ -79,15 +79,19 @@ extension VKWebViewController: WKNavigationDelegate{
         }
         
         Session.shared.token = token
-        //print("UserId: \(userId)")
         Session.shared.userId = Int.init(userId)!
-        
-        VKNetService.shared.loadGroups(token: token)
-        VKNetService.shared.loadFriends(token: token)
-        VKNetService.shared.loadUserImages(token: token, userId: Session.shared.userId )
-        VKNetService.shared.groupsSearch(token: token, textQuery: "GeekBrains")
-        
+        performSegue(withIdentifier: "to_first_screen", sender: self)
+        //VKNetService.shared.loadFriends(token: token)
+//        VKNetService.shared.loadFriends(token: token){ friends in
+//
+//        }
         decisionHandler(.cancel)
+        
+
+        //VKNetService.shared.loadUserImages(token: token, userId: Session.shared.userId )
+        //VKNetService.shared.groupsSearch(token: token, textQuery: "GeekBrains")
+        
+        //decisionHandler(.cancel)
         
     }
 }

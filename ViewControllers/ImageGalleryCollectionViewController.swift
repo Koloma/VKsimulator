@@ -11,15 +11,15 @@ private let cellIdentifier = "Cell"
 
 class ImageGalleryCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
-    private let imageCount = 10
-    private var images:[UserImage] = [UserImage(image: UIImage(named: "pic1")!),
-                                      UserImage(image: UIImage(named: "pic2")!),
-                                      UserImage(image: UIImage(named: "pic3")!),
-                                      UserImage(image: UIImage(named: "pic4")!),
-                                      UserImage(image: UIImage(named: "pic1")!),
-                                      UserImage(image: UIImage(named: "pic2")!),
-                                      UserImage(image: UIImage(named: "pic3")!)]
-        
+    private var images:[VKPhoto.Photo] = []
+//    private var images:[VKPhoto] = [UserImage(image: UIImage(named: "pic1")!),
+//                                      UserImage(image: UIImage(named: "pic2")!),
+//                                      UserImage(image: UIImage(named: "pic3")!),
+//                                      UserImage(image: UIImage(named: "pic4")!),
+//                                      UserImage(image: UIImage(named: "pic1")!),
+//                                      UserImage(image: UIImage(named: "pic2")!),
+//                                      UserImage(image: UIImage(named: "pic3")!)]
+
     private var actiIndicatorView = UIActivityIndicatorView()
     
     override func viewDidLoad() {
@@ -67,7 +67,7 @@ class ImageGalleryCollectionViewController: UICollectionViewController, UICollec
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? ImageWithLikeCounterCollectionViewCell{
-            cell.imageView.image = images[indexPath.row].image
+            cell.imageView.image = images[indexPath.row].getImage(imageType: .imageBig)
             print(indexPath.row)
             cell.labelTop.text = "Description"
             
@@ -148,7 +148,7 @@ class ImageGalleryCollectionViewController: UICollectionViewController, UICollec
             print("imagePosition \(imagePosition)")
             view.addSubview(imageView)
             imageView.frame = imagePosition
-            imageView.image = images[indexPath.row].image
+            imageView.image = images[indexPath.row].getImage(imageType: .imageBig)
             imageView.translatesAutoresizingMaskIntoConstraints = false
             imageView.contentMode = .scaleAspectFit
             

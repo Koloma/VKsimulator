@@ -7,21 +7,30 @@
 
 import UIKit
     
-private var myGroups:[String] = []
-
 class MyGroupsTableViewController: UITableViewController {
 
+    private var myGroups:[VKGroup.Group] = []
+    
     @IBAction private func logOutButton(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        VKNetService.shared.loadGroups(token: Session.shared.token){[weak self] groups in
+            guard let self = self else { return }
+            self.myGroups = groups
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? MyGroupsTableViewCell {
-            cell.groupLabel.text = "\(myGroups[indexPath.row])"
+            cell.groupLabel.text = myGroups[indexPath.row].name
             cell.groupImageView.image = .add
             return cell
         }
@@ -40,15 +49,15 @@ class MyGroupsTableViewController: UITableViewController {
         }
     }
     @IBAction func unwindFromTableViewController(_ segue: UIStoryboardSegue){
-        guard let tableVC = segue.source as? GroupsTableViewController,
-              let index = tableVC.tableView.indexPathForSelectedRow else { return }
-        print ("\(index)")
-        let group = tableVC.groups[index.row]
-        if !myGroups.contains(group){
-            myGroups.append(group)
-            myGroups.sort()
-            tableView.reloadData()
-        }
+//        guard let tableVC = segue.source as? GroupsTableViewController,
+//              let index = tableVC.tableView.indexPathForSelectedRow else { return }
+//        print ("\(index)")
+//        let group = tableVC.groups[index.row]
+//        if !myGroups.contains(group){
+//            myGroups.append(group)
+//            myGroups.sort()
+//            tableView.reloadData()
+//        }
 
     }
 

@@ -9,9 +9,9 @@ import UIKit
 
 class MyFrendsViewController: UIViewController {
 
-    struct VKUsersForTable{
+    private struct FriendsForTable{
         var firstLetter:[String] = []
-        var vkUsers:[[VKUser]] = [[]]
+        var friends:[[VKUser.User]] = [[]]
     }
     private let VKuserCount = 20
     
@@ -22,9 +22,8 @@ class MyFrendsViewController: UIViewController {
     @IBOutlet weak var searchTextField: UITextField!
     
     
-    private var dataVkUsers:[VKUser] = []
-    private var filteredVkUsersForTable = VKUsersForTable()
-    private let networkService = NetworkService()
+    private var friends:[VKUser.User] = []
+    private var filteredFriendsForTable = FriendsForTable()
     
     private var myWaitIndicatorView = MyWaitIndicatorView()
     
@@ -79,11 +78,11 @@ class MyFrendsViewController: UIViewController {
     }
     
     func filteringTableData(by filterText : String){
-        let filteredData = filterText.isEmpty ? dataVkUsers : dataVkUsers.filter({(vkUser: VKUser) -> Bool in
-            return vkUser.nicName.range(of: filterText, options: .caseInsensitive) != nil
+        let filteredData = filterText.isEmpty ? friends : friends.filter({(friend: VKUser.User) -> Bool in
+            return friend.firstName.range(of: filterText, options: .caseInsensitive) != nil
             
         })
-        filteredVkUsersForTable = prepareVKusersData(filteredData)
+        filteredFriendsForTable = prepareFrendsData(filteredData)
         tableView.reloadData()
     }
     
@@ -125,10 +124,11 @@ class MyFrendsViewController: UIViewController {
     private func loadUsersData(count userCount:Int) {
         myWaitIndicatorView.isHidden = false
         tableView.refreshControl?.myBeginRefreshing(in: tableView)
-        let queue = DispatchQueue.global(qos: .userInitiated)
-        queue.async{
-            self.dataVkUsers = self.networkService.GetUsers(userCount: userCount)
-            self.filteredVkUsersForTable = self.prepareVKusersData(self.dataVkUsers)
+
+        VKNetService.shared.loadUsers(token: Session.shared.token){[weak self] users in
+            guard let self = self else { return }
+            self.friends = users
+            self.filteredFriendsForTable = self.prepareFrendsData(self.friends)
 
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -136,17 +136,18 @@ class MyFrendsViewController: UIViewController {
                 self.tableView.refreshControl?.endRefreshing()
             }
         }
+        
     }
     
     /// Подготавливает данные для отображения в таблице (разбивка на секции, сортировка)
     /// - Parameter data: Исходные данные
     /// - Returns: Данные для отображения в таблице
-    private func prepareVKusersData(_ data:[VKUser])->VKUsersForTable{
-        var vkUsersForTable:VKUsersForTable = VKUsersForTable()
-        vkUsersForTable.firstLetter = data.map( {String($0.nicName.uppercased().prefix(1)) }).unique.sorted()
-        vkUsersForTable.vkUsers = Array(Dictionary(grouping:data){$0.nicName.uppercased().prefix(1)}.values)
-        vkUsersForTable.vkUsers.sort{ $0[0].nicName.uppercased().prefix(1) < $1[0].nicName.uppercased().prefix(1)}
-        return vkUsersForTable
+    private func prepareFrendsData(_ data:[VKUser.User]) -> FriendsForTable{
+        var friendsForTable:FriendsForTable = FriendsForTable()
+        friendsForTable.firstLetter = data.map( {String($0.firstName.uppercased().prefix(1)) }).unique.sorted()
+        friendsForTable.friends = Array(Dictionary(grouping:data){$0.firstName.uppercased().prefix(1)}.values)
+        friendsForTable.friends.sort{ $0[0].firstName.uppercased().prefix(1) < $1[0].firstName.uppercased().prefix(1)}
+        return friendsForTable
     }
 }
 
@@ -163,11 +164,11 @@ extension MyFrendsViewController: UITextFieldDelegate{
 // MARK: - UITableViewDataSource, UITableViewDelegate
 extension MyFrendsViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filteredVkUsersForTable.vkUsers[section].count
+        return filteredFriendsForTable.friends[section].count
     }
  
     func numberOfSections(in tableView: UITableView) -> Int {
-        return filteredVkUsersForTable.firstLetter.count
+        return filteredFriendsForTable.firstLetter.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -176,8 +177,8 @@ extension MyFrendsViewController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: VKUserTableViewCell.identifier, for: indexPath) as? VKUserTableViewCell{
-            let vkUser = filteredVkUsersForTable.vkUsers[indexPath.section][indexPath.row]
-            cell.configur(nicName: vkUser.nicName, description: vkUser.description, userImage: vkUser.avatar)
+            let friend = filteredFriendsForTable.friends[indexPath.section][indexPath.row]
+            cell.configur(user: friend)
             return cell
         }
         return UITableViewCell()
@@ -195,11 +196,11 @@ extension MyFrendsViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        return filteredVkUsersForTable.firstLetter
+        return filteredFriendsForTable.firstLetter
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vkUser = filteredVkUsersForTable.vkUsers[indexPath.section][indexPath.row]
+        let vkUser = filteredFriendsForTable.friends[indexPath.section][indexPath.row]
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         if  let newsFeed = storyBoard.instantiateViewController(withIdentifier: "NewsFeedViewController") as? NewsFeedViewController{
             //Здесь передаем данные в NewsFeedViewController
@@ -212,19 +213,19 @@ extension MyFrendsViewController: UITableViewDataSource, UITableViewDelegate{
         if editingStyle == .delete{
             tableView.beginUpdates()
             
-            let delVkUser = filteredVkUsersForTable.vkUsers[indexPath.section].remove(at: indexPath.row)
+            let delFriend = filteredFriendsForTable.friends[indexPath.section].remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
             
-            if filteredVkUsersForTable.vkUsers[indexPath.section].count == 0{
-                filteredVkUsersForTable.firstLetter.remove(at: indexPath.section)
-                filteredVkUsersForTable.vkUsers.remove(at: indexPath.section)
+            if filteredFriendsForTable.friends[indexPath.section].count == 0{
+                filteredFriendsForTable.firstLetter.remove(at: indexPath.section)
+                filteredFriendsForTable.friends.remove(at: indexPath.section)
                 tableView.deleteSections( [indexPath.section], with: .automatic)
             }
             
-            if let index = dataVkUsers.firstIndex (where: { (vkUser:VKUser ) -> Bool in
-                return vkUser.nicName == delVkUser.nicName && vkUser.description == delVkUser.description
+            if let index = friends.firstIndex (where: { (friend) -> Bool in
+                return friend.firstName == delFriend.firstName && friend.lastName == delFriend.lastName
             }){
-                dataVkUsers.remove(at: index)
+                friends.remove(at: index)
             }
             tableView.endUpdates()
         }
@@ -232,7 +233,7 @@ extension MyFrendsViewController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: FrendsTableViewHeader.identifier) as? FrendsTableViewHeader{
-            header.textL = filteredVkUsersForTable.firstLetter[section]
+            header.textL = filteredFriendsForTable.firstLetter[section]
             return header
         }
         return nil

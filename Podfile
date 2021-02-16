@@ -7,6 +7,7 @@ target 'VKsimulator' do
 
   # Pods for VKsimulator
 
-  pod 'Alamofire', '~>5.4.1'
+#  pod 'Alamofire', '~> 5.4.1'
+#  pod 'SwiftyJSON', '~> 5.0'
 
 end
