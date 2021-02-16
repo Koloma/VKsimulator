@@ -12,27 +12,29 @@ private let cellIdentifier = "Cell"
 class ImageGalleryCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
     private var images:[VKPhoto.Photo] = []
-//    private var images:[VKPhoto] = [UserImage(image: UIImage(named: "pic1")!),
-//                                      UserImage(image: UIImage(named: "pic2")!),
-//                                      UserImage(image: UIImage(named: "pic3")!),
-//                                      UserImage(image: UIImage(named: "pic4")!),
-//                                      UserImage(image: UIImage(named: "pic1")!),
-//                                      UserImage(image: UIImage(named: "pic2")!),
-//                                      UserImage(image: UIImage(named: "pic3")!)]
 
     private var actiIndicatorView = UIActivityIndicatorView()
+    //private var myWaitIndicatorView = MyWaitIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadUsersData()
         collectionView.register(UINib(nibName: "CollectionHeaderView", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "CollectionHeaderView")
-        
-//        if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-//            let itemWidth = view.bounds.width / 2.0
-//            let itemHeight = layout.itemSize.height
-//            layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
-//            layout.invalidateLayout()
-//        }
+        loadImages()
+    }
+
+    
+    private func loadImages() {
+        showIndicator()
+
+        NetService.shared.loadUserImages(token: Session.shared.token, userId: Session.shared.userId){[weak self] photos in
+            guard let self = self else { return }
+            self.images = photos
+
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+                self.actiIndicatorView.stopAnimating()
+            }
+        }
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -67,9 +69,7 @@ class ImageGalleryCollectionViewController: UICollectionViewController, UICollec
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? ImageWithLikeCounterCollectionViewCell{
-            cell.imageView.image = images[indexPath.row].getImage(imageType: .imageBig)
-            print(indexPath.row)
-            cell.labelTop.text = "Description"
+            cell.configur(photo: images[indexPath.row])
             
             let imageGesture = CustomTapGestureRecognizer(indexPath: indexPath, callback: didImageTap)
             cell.imageView.addGestureRecognizer(imageGesture)
@@ -77,16 +77,6 @@ class ImageGalleryCollectionViewController: UICollectionViewController, UICollec
             let gesture = CustomTapGestureRecognizer(indexPath: indexPath, callback: didTouchHeart)
             cell.stackViewLike.addGestureRecognizer(gesture)
             
-            cell.labelLikeCount.text = String(images[indexPath.row].likeCount)
-            
-            if images[indexPath.row].isLikeSet {
-                cell.imageLikeHeart.image = UIImage(systemName: "heart.fill")
-                cell.imageLikeHeart.tintColor = UIColor.red
-            }
-            else {
-                cell.imageLikeHeart.image = UIImage(systemName: "heart")
-                cell.imageLikeHeart.tintColor = UIColor.white
-            }
             return cell
         }
         return UICollectionViewCell()
@@ -99,30 +89,15 @@ class ImageGalleryCollectionViewController: UICollectionViewController, UICollec
         view.addSubview(actiIndicatorView)
         actiIndicatorView.startAnimating()
     }
-    
-    private func loadUsersData() {
-        //showIndicator()
-        //let networkService = NetworkService()
-        //let queue = DispatchQueue.global(qos: .userInitiated)
-        //queue.async{
-        //    self.images = networkService.GetImages(imageCount: self.imageCount)
 
-        //    DispatchQueue.main.async {
-        //        self.collectionView.reloadData()
-        //        self.actiIndicatorView.stopAnimating()
-        //    }
-        //}
-
-    }
-    
     func didTouchHeart(indexPath : IndexPath){
             if !images[indexPath.row].isLikeSet{
                 images[indexPath.row].isLikeSet = true;
-                images[indexPath.row].likeCount += 1
+                images[indexPath.row].likesCount += 1
             }
             else{
                 images[indexPath.row].isLikeSet = false;
-                images[indexPath.row].likeCount -= 1
+                images[indexPath.row].likesCount -= 1
             }
             self.collectionView.reloadItems(at: [indexPath])
     }
@@ -148,7 +123,12 @@ class ImageGalleryCollectionViewController: UICollectionViewController, UICollec
             print("imagePosition \(imagePosition)")
             view.addSubview(imageView)
             imageView.frame = imagePosition
-            imageView.image = images[indexPath.row].getImage(imageType: .imageBig)
+            images[indexPath.row].getImage(imageType: .x604px){ image in
+                DispatchQueue.main.async {
+                    imageView.image = image
+                }
+            }
+
             imageView.translatesAutoresizingMaskIntoConstraints = false
             imageView.contentMode = .scaleAspectFit
             

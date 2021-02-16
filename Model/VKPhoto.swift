@@ -11,14 +11,12 @@ class VKPhoto{
     
     struct Photo {
         var isLikeSet = false
-        var likeCount = 0
-
+        
+        var likesCount = 0
         let albumID, date, id, ownerID: Int
-        let hasTags: Bool
-        //let sizes: [Size]
+        var sizes: [Size]
         let text: String
-        //let likes: Likes
-        //let reposts: Reposts
+        let repostsCount: Int
         let realOffset: Int
         
         
@@ -27,38 +25,77 @@ class VKPhoto{
             self.date = item.date ?? 0
             self.id = item.id ?? -1
             self.ownerID = item.ownerID ?? -1
-            self.hasTags = item.hasTags ?? false
-            //self.sizes = Size(item.sizes?.count ?? 0) e()]
             self.text = item.text ?? ""
-            //self.likes = item.likes ?? ""
-            //self.reposts = item.reposts ?? Reposts()
+            self.repostsCount = item.reposts?.count ?? 0
             self.realOffset = item.realOffset ?? -1
+            self.likesCount = item.likes?.count ?? 0
+            
+            self.sizes = []
+            if let sizes  = item.sizes{
+                var mySizes : [Size] = []
+                for size in sizes{
+                    mySizes.append(Size(height: size.height ?? 0,
+                                           url: size.url ?? "",
+                                           type: size.type ?? "",
+                                           width: size.width ?? 0)
+                    )
+                    self.sizes = mySizes
+                }
+            }
+            
         }
         
         enum ImageType{
-            case imageSmall
-            case imageMedium
-            case imageBig
+            case s75px
+            case m130px
+            case x604px
+            case z1080
+            case w2560
         }
-        
-        func getImage(imageType: ImageType) -> UIImage?{
+               
+        func getImage(imageType: ImageType, completion: @escaping (UIImage) -> ()){
+            var url:URL?
             switch imageType {
-            case .imageMedium:
-                return nil
-            default:
-                return nil
+            case .s75px:
+                if let index = sizes.firstIndex(where: { $0.type == "s" }){
+                    url = URL(string: sizes[index].url)
+                }
+            case .m130px:
+                if let index = sizes.firstIndex(where: { $0.type == "m" }){
+                    url = URL(string: sizes[index].url)
+                }
+            case .x604px:
+                if let index = sizes.firstIndex(where: { $0.type == "x" }){
+                    url = URL(string: sizes[index].url)
+                }
+            case .z1080:
+                if let index = sizes.firstIndex(where: { $0.type == "z" }){
+                    url = URL(string: sizes[index].url)
+                }
+            case .w2560:
+                if let index = sizes.firstIndex(where: { $0.type == "w" }){
+                    url = URL(string: sizes[index].url)
+                }
+            }
+            
+            if let url = url {
+                ImageCache.shared.load(url: url as NSURL){ image in
+                    completion(image)
+                }
+            }else{
+                completion(ImageCache.placeholderImage)
             }
         }
         
         struct Reposts {
-            let count: Int = 0
+            let count: Int
         }
 
         struct Size {
-            let height: Int = 0
-            let url: String = ""
-            let type: String = ""
-            let width: Int = 0
+            let height: Int
+            let url: String
+            let type: String
+            let width: Int
         }
     }
 
@@ -76,7 +113,6 @@ class VKPhoto{
     // MARK: - Item
     struct Item: Codable {
         let albumID, date, id, ownerID: Int?
-        let hasTags: Bool?
         let sizes: [Size]?
         let text: String?
         let likes: Likes?
@@ -84,12 +120,11 @@ class VKPhoto{
         let realOffset: Int?
 
         enum CodingKeys: String, CodingKey {
-            case albumID
+            case albumID = "album_id"
             case date, id
-            case ownerID
-            case hasTags
+            case ownerID = "owner_id"
             case sizes, text, likes, reposts
-            case realOffset
+            case realOffset = "real_offset"
         }
     }
 
@@ -98,7 +133,7 @@ class VKPhoto{
         let userLikes, count: Int?
 
         enum CodingKeys: String, CodingKey {
-            case userLikes
+            case userLikes = "user_likes"
             case count
         }
     }

@@ -13,7 +13,6 @@ class MyFrendsViewController: UIViewController {
         var firstLetter:[String] = []
         var friends:[[VKUser.User]] = [[]]
     }
-    private let VKuserCount = 20
     
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var tableView: UITableView!
@@ -36,7 +35,7 @@ class MyFrendsViewController: UIViewController {
         super.viewDidLoad()
         
         setupView();
-        loadUsersData(count: VKuserCount)
+        loadUsersData()
         let sbAnimation = SBAnimationFactory.prepearSearchBar()
         let sbAnimator = SBAnimator(animation: sbAnimation)
         sbAnimator.animate(searchImage: searchImageView, textField: searchTextField, cancelImage: cancelImageView, in: searchView)
@@ -116,10 +115,10 @@ class MyFrendsViewController: UIViewController {
     }
 
     @objc func refreshTableView(_ sender: AnyObject){
-        loadUsersData(count: VKuserCount)
+        loadUsersData()
     }
  
-    private func loadUsersData(count userCount:Int) {
+    private func loadUsersData() {
         myWaitIndicatorView.isHidden = false
         tableView.refreshControl?.myBeginRefreshing(in: tableView)
 
@@ -134,7 +133,6 @@ class MyFrendsViewController: UIViewController {
                 self.tableView.refreshControl?.endRefreshing()
             }
         }
-        
     }
     
     /// Подготавливает данные для отображения в таблице (разбивка на секции, сортировка)

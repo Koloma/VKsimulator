@@ -40,7 +40,6 @@
 		8461A28C25A2F7510080C9CF /* ImageView+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8461A28B25A2F7510080C9CF /* ImageView+ext.swift */; };
 		846E01A9259849F5007554E0 /* VKGroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846E01A7259849F5007554E0 /* VKGroupTableViewCell.swift */; };
 		846E01AA259849F5007554E0 /* VKGroupTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 846E01A8259849F5007554E0 /* VKGroupTableViewCell.xib */; };
-		846E01BA25988216007554E0 /* MyFrendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846E01B925988216007554E0 /* MyFrendsTableViewCell.swift */; };
 		848FDAA725A6B886001A6ABE /* ControlView+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848FDAA625A6B886001A6ABE /* ControlView+ext.swift */; };
 		848FDABA25A761AB001A6ABE /* Array+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848FDAB925A761AB001A6ABE /* Array+ext.swift */; };
 		849F10A525BA819900CF9B38 /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F10A425BA819900CF9B38 /* K.swift */; };
@@ -102,7 +101,6 @@
 		8461A28B25A2F7510080C9CF /* ImageView+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageView+ext.swift"; sourceTree = "<group>"; };
 		846E01A7259849F5007554E0 /* VKGroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKGroupTableViewCell.swift; sourceTree = "<group>"; };
 		846E01A8259849F5007554E0 /* VKGroupTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VKGroupTableViewCell.xib; sourceTree = "<group>"; };
-		846E01B925988216007554E0 /* MyFrendsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFrendsTableViewCell.swift; sourceTree = "<group>"; };
 		848FDAA625A6B886001A6ABE /* ControlView+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ControlView+ext.swift"; sourceTree = "<group>"; };
 		848FDAB925A761AB001A6ABE /* Array+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+ext.swift"; sourceTree = "<group>"; };
 		849F10A425BA819900CF9B38 /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
@@ -275,7 +273,6 @@
 			isa = PBXGroup;
 			children = (
 				84A3334225978FAD00E7424E /* ImageWithLikeCounterCollectionViewCell.swift */,
-				846E01B925988216007554E0 /* MyFrendsTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -454,7 +451,6 @@
 				8446CA3B25C5893A00FC62F2 /* TextView+ext.swift in Sources */,
 				843D1F7925C1B3AB00437D18 /* CustomNavigationController.swift in Sources */,
 				8446CA3625C56DC000FC62F2 /* NewsFeedTableViewCell.swift in Sources */,
-				846E01BA25988216007554E0 /* MyFrendsTableViewCell.swift in Sources */,
 				846E01A9259849F5007554E0 /* VKGroupTableViewCell.swift in Sources */,
 				84A5BD8325BD2F1E008FC5D1 /* MyWaitIndicatorView.swift in Sources */,
 				8448264325B9318800425D5A /* VKUserTableViewCell.swift in Sources */,
