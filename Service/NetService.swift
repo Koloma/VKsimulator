@@ -9,23 +9,14 @@ import UIKit
 
 class NetService{
     
-//    private static let sessionAF : Alamofire.Session = {
-//        let configuration = URLSessionConfiguration.default
-//        configuration.allowsCellularAccess = true
-//        let session = Alamofire.Session(configuration: configuration)
-//        return session
-//    }()
-    
     static let shared = NetService()
     
     private init(){
-        
     }
     
-  
     func loadGroups(token: String, completion: @escaping ([VKGroup.Group]) -> () ) {
         let baseURL = K.ApiVK.baseUrl
-        let path = K.ApiVK.pathGetGroups// "/method/groups.get"
+        let path = K.ApiVK.pathGetGroups
         
         let queryItems = [
             URLQueryItem(name: "access_token", value: token),
@@ -52,7 +43,6 @@ class NetService{
                 print(error)
             }
         }
-
     }
     
     func loadUsers(token: String, completion: @escaping ([VKUser.User]) -> () ) {
@@ -85,12 +75,11 @@ class NetService{
             }
         }
     }
-    
 //    verified,photo_50, photo_100, photo_200_orig, photo_200, photo_400_orig,last_seen, followers_count, common_count, occupation, nickname
 
     func groupsSearch(token: String, textQuery:String, completion: @escaping ([VKGroup.Group]) -> () ) {
         let baseURL = K.ApiVK.baseUrl
-        let path = K.ApiVK.pathGroupsSearch// "/method/groups.get"
+        let path = K.ApiVK.pathGroupsSearch
         
         let queryItems = [
             URLQueryItem(name: "access_token", value: token),
@@ -120,9 +109,6 @@ class NetService{
             }
         }
     }
-        
-
-    
     
     func loadUserImages(token: String, userId: Int, completion: @escaping ([VKPhoto.Photo]) -> () ) {
         let baseURL = K.ApiVK.baseUrl
@@ -157,7 +143,6 @@ class NetService{
                 print(error)
             }
         }
-
     }
     
     func sharedDataTask(url: URL, completion: @escaping (Data) -> () ) {

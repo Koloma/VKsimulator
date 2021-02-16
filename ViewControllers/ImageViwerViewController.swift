@@ -13,10 +13,7 @@ class ImageViwerViewController: UIViewController {
    
     var interactiveAnimator: UIViewPropertyAnimator!
    
-    let imageArray:[UIImage] = [UIImage(named: "pic1")!,
-                                UIImage(named: "pic2")!,
-                                UIImage(named: "pic3")!,
-                                UIImage(named: "pic4")!]
+    var imageArray:[VKPhoto.Photo] = []
     var currentImageIndex = 0
     
     override func viewDidLoad() {
@@ -25,7 +22,15 @@ class ImageViwerViewController: UIViewController {
         let panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(imageOnPan(_:)))
         self.view.addGestureRecognizer(panRecognizer)
       
-        imageView.image = imageArray[currentImageIndex]
+        NetService.shared.loadUserImages(token: Session.shared.token, userId: Session.shared.userId){photos in
+            self.imageArray = photos
+            
+            self.imageArray[self.currentImageIndex].getImage(imageType: .x604px){ image in
+                DispatchQueue.main.async {
+                    self.imageView.image = image
+                }
+            }
+        }
     }
           
     @objc func imageOnPan (_ recognizer: UIPanGestureRecognizer ){
@@ -83,7 +88,11 @@ class ImageViwerViewController: UIViewController {
                     UIView.addKeyframe(withRelativeStartTime: 0.61, relativeDuration: 0.5){
                         self.view.layoutIfNeeded()
                         self.imageView.transform = .identity
-                        self.imageView.image = self.imageArray[self.currentImageIndex]
+                        self.imageArray[self.currentImageIndex].getImage(imageType: .x604px){ image in
+                            DispatchQueue.main.async {
+                                self.imageView.image = image
+                            }
+                        }
                     }
                 }
             }
@@ -96,12 +105,20 @@ class ImageViwerViewController: UIViewController {
                 animation.fromValue = imageView.layer.position.x + CGFloat(mult) * 500
                 animation.duration = 1
                 imageView.layer.add(animation, forKey: nil)
-                self.imageView.image = self.imageArray[self.currentImageIndex]
+                self.imageArray[self.currentImageIndex].getImage(imageType: .x604px){ image in
+                    DispatchQueue.main.async {
+                        self.imageView.image = image
+                    }
+                }
             }
             
             func animate(){
 
-                imageView.image = imageArray[currentImageIndex]
+                self.imageArray[self.currentImageIndex].getImage(imageType: .x604px){ image in
+                    DispatchQueue.main.async {
+                        self.imageView.image = image
+                    }
+                }
                 self.imageView.transform = transformZoom
                 interactiveAnimator = UIViewPropertyAnimator(duration: 1.0,
                                                              dampingRatio: 1.0,

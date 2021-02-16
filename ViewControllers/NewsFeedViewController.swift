@@ -17,7 +17,7 @@ class NewsFeedViewController: UIViewController {
     "Начало ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Конец"
     ]
     
-    var userNewsFeed: VKUser?{
+    var userNewsFeed: VKUser.User?{
         didSet{
             
         }
@@ -57,7 +57,7 @@ extension NewsFeedViewController: UITableViewDelegate, UITableViewDataSource{
         return UITableViewCell()
     }
     
-    func imageViewTap(_ vkUser: VKUser){
+    func imageViewTap(_ vkUser: VKUser.User){
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         if  let ImageGalleryVC = storyBoard.instantiateViewController(withIdentifier: "ImageGalleryCollectionViewController") as? ImageGalleryCollectionViewController{
             //Здесь передаем данные в NewsFeedViewController

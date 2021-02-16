@@ -31,9 +31,9 @@ class NewsFeedTableViewCell: UITableViewCell {
     var numberOfLike = 99
     var numberOfViews = 32
     
-    typealias ImageViewTapFunc =  (VKUser) -> Void
+    typealias ImageViewTapFunc =  (VKUser.User) -> Void
     private var newsImageViewTap : ImageViewTapFunc?
-    private var vkUser: VKUser?
+    private var vkUser: VKUser.User?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -46,11 +46,15 @@ class NewsFeedTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    func configur(vkUser: VKUser, newsText: String, newsImage: [UIImage],imageTapFunc: @escaping ImageViewTapFunc){
+    func configur(vkUser: VKUser.User, newsText: String, newsImage: [UIImage],imageTapFunc: @escaping ImageViewTapFunc){
         newsImageViewTap = imageTapFunc
         self.vkUser = vkUser
-        userNicLable.text = vkUser.fio
-        userImageView.image = vkUser.avatar
+        userNicLable.text = vkUser.firstName + " " + vkUser.lastName
+        vkUser.getImage(imageType: .image50){ image in
+            DispatchQueue.main.async {
+                self.userImageView.image = image
+            }
+        }
         numberOfLikeLable.text = String(numberOfLike)
         numberOfViewsLable.text = String(numberOfViews)
         let date = Date()

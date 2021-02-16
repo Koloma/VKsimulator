@@ -67,17 +67,15 @@ class LoginViewController: UIViewController{
     
     func isLoginCredentialsCorrect(login:String, password: String)->Bool{
         
-//        guard login == "admin" else {
-//            showAllert(title: "Ошибка авторизации", message: "Неправильный логин")
-//            return false
-//        }
-//        guard password == "123" else {
-//            showAllert(title: "Ошибка авторизации", message: "Неправильный пароль")
-//            return false
-//        }
-        
-        return NetworkService().setSessionCredentials(login: login, password: password) 
-            
+        guard login == "admin" else {
+            showAllert(title: "Ошибка авторизации", message: "Неправильный логин")
+            return false
+        }
+        guard password == "123" else {
+            showAllert(title: "Ошибка авторизации", message: "Неправильный пароль")
+            return false
+        }
+        return true
     }
     
     func showAllert(title: String, message: String){
