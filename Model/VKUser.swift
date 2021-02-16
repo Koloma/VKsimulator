@@ -58,12 +58,22 @@ class VKUser{
             case image200
         }
         
-        func getImage(imageType: ImageType) -> UIImage?{
+        func getImage(imageType: ImageType, completion: @escaping (UIImage) -> ()){
+            var url:URL?
             switch imageType {
             case .image50:
-                return nil
-            default:
-                return nil
+                url = URL(string: photo50)
+            case .image100:
+                url = URL(string: photo100)
+            case .image200:
+                url = URL(string: photo200_Orig)
+            }
+            if let url = url {
+                ImageCache.shared.load(url: url as NSURL){ image in
+                    completion(image)
+                }
+            }else{
+                completion(ImageCache.placeholderImage)
             }
         }
     }

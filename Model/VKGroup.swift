@@ -5,7 +5,7 @@
 //  Created by Admin on 15.02.2021.
 //
 
-import Foundation
+import UIKit
 
 class VKGroup{
     
@@ -27,6 +27,33 @@ class VKGroup{
             self.photo100 = item.photo100 ?? ""
             self.photo200 = item.photo200 ?? ""
         }
+        
+        
+        enum ImageType{
+            case image50
+            case image100
+            case image200
+        }
+        
+        func getImage(imageType: ImageType, completion: @escaping (UIImage) -> ()){
+            var url:URL?
+            switch imageType {
+            case .image50:
+                url = URL(string: photo50)
+            case .image100:
+                url = URL(string: photo100)
+            case .image200:
+                url = URL(string: photo200)
+            }
+            if let url = url {
+                ImageCache.shared.load(url: url as NSURL){ image in
+                    completion(image)
+                }
+            }else{
+                completion(ImageCache.placeholderImage)
+            }
+        }        
+        
     }
     
     struct GroupRAW: Codable {

@@ -22,7 +22,11 @@ class VKUserTableViewCell: UITableViewCell {
     func configur(user: VKUser.User){
         userNicLable.text = user.nickname
         userDescrLabel.text = user.fio
-        userImageView.image = user.getImage(imageType: .image50)
+        user.getImage(imageType: .image50){ image in
+            DispatchQueue.main.async {
+                self.userImageView.image = image
+            }
+        }
         userImageView.rounded()
         backgroundColor = UIColor.clear
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped))

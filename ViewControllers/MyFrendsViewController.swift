@@ -41,8 +41,6 @@ class MyFrendsViewController: UIViewController {
         let sbAnimator = SBAnimator(animation: sbAnimation)
         sbAnimator.animate(searchImage: searchImageView, textField: searchTextField, cancelImage: cancelImageView, in: searchView)
         
-        print(Session.shared)
-        
     }
     @IBAction func searchTapped(_ sender: UITapGestureRecognizer) {
         let sbAnimation = SBAnimationFactory.makeAnimation()
@@ -125,7 +123,7 @@ class MyFrendsViewController: UIViewController {
         myWaitIndicatorView.isHidden = false
         tableView.refreshControl?.myBeginRefreshing(in: tableView)
 
-        VKNetService.shared.loadUsers(token: Session.shared.token){[weak self] users in
+        NetService.shared.loadUsers(token: Session.shared.token){[weak self] users in
             guard let self = self else { return }
             self.friends = users
             self.filteredFriendsForTable = self.prepareFrendsData(self.friends)

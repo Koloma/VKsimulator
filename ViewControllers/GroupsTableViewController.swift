@@ -9,18 +9,21 @@ import UIKit
 
 class GroupsTableViewController: UITableViewController {
 
-    //let groupsDemo:[String] = (1...50).map{String($0)}
-    let groups:[String] = ["Animals"
-                           ,"Rock Musick"
-                           ,"Naturals"
-                           ,"Wheri long grop nicName Citys of the world Moscow, Stambul?"
-                           ,"Burito Club"
-                           ,"RHorsessssss"].sorted()
+    var groups:[VKGroup.Group] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(VKGroupTableViewCell.nib, forCellReuseIdentifier: VKGroupTableViewCell.identifier)
         tableView.register(UINib(nibName: "HeaderTableView", bundle: nil), forHeaderFooterViewReuseIdentifier: "HeaderTableView")
+        
+        NetService.shared.groupsSearch(token: Session.shared.token, textQuery:"GeekBrains"){[weak self] groups in
+            guard let self = self else { return }
+            self.groups = groups
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -37,7 +40,7 @@ class GroupsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: VKGroupTableViewCell.identifier, for: indexPath) as? VKGroupTableViewCell {
-            cell.configur(groupName: groups[indexPath.row])
+            cell.configur(group: groups[indexPath.row])
             return cell
         }
         return UITableViewCell()

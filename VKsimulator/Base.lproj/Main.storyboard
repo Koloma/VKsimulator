@@ -184,43 +184,6 @@ simulator</string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" indentationWidth="10" reuseIdentifier="Cell" rowHeight="82" id="Wzo-Lw-ogZ" customClass="MyGroupsTableViewCell" customModule="VKsimulator" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="82"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Wzo-Lw-ogZ" id="Nfo-dH-hYQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="82"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.and.pencil" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="a9P-wR-q6W">
-                                            <rect key="frame" x="20" y="21.333333333333332" width="40" height="38.333333333333343"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="40" id="QFC-7v-teB"/>
-                                                <constraint firstAttribute="height" constant="40" id="YfJ-Tf-bya"/>
-                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="oTO-CT-PXn"/>
-                                            </constraints>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G4f-JT-Nmv">
-                                            <rect key="frame" x="68" y="30.666666666666671" width="326" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="a9P-wR-q6W" firstAttribute="centerY" secondItem="Nfo-dH-hYQ" secondAttribute="centerY" id="48Z-yp-qqU"/>
-                                        <constraint firstAttribute="trailing" secondItem="G4f-JT-Nmv" secondAttribute="trailing" constant="20" symbolic="YES" id="Ig1-1K-Ew4"/>
-                                        <constraint firstItem="a9P-wR-q6W" firstAttribute="leading" secondItem="Nfo-dH-hYQ" secondAttribute="leading" constant="20" symbolic="YES" id="SO1-OB-zWJ"/>
-                                        <constraint firstItem="G4f-JT-Nmv" firstAttribute="centerY" secondItem="Nfo-dH-hYQ" secondAttribute="centerY" id="Z4t-bj-xcS"/>
-                                        <constraint firstItem="G4f-JT-Nmv" firstAttribute="leading" secondItem="a9P-wR-q6W" secondAttribute="trailing" constant="8" symbolic="YES" id="vWJ-px-1lc"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="groupImageView" destination="a9P-wR-q6W" id="mLv-Zj-f3L"/>
-                                    <outlet property="groupLabel" destination="G4f-JT-Nmv" id="7hy-9S-fBR"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="EKE-QA-fwF" id="4jU-9C-dYp"/>
                             <outlet property="delegate" destination="EKE-QA-fwF" id="GYu-1L-qrE"/>
@@ -251,44 +214,6 @@ simulator</string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="82" id="rOC-Sr-Rcr" customClass="GroupsTableViewCell" customModule="VKsimulator" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="82"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rOC-Sr-Rcr" id="PlX-wd-6Rq">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="82"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.grid.3x2.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="GwR-gD-vy4">
-                                            <rect key="frame" x="20" y="22.666666666666664" width="40" height="37"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" secondItem="GwR-gD-vy4" secondAttribute="height" multiplier="1:1" id="HVd-KB-c84"/>
-                                                <constraint firstAttribute="height" constant="40" id="fxc-e8-1mR"/>
-                                                <constraint firstAttribute="width" constant="40" id="rTg-p7-wwF"/>
-                                            </constraints>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J2L-Ot-uUd">
-                                            <rect key="frame" x="68" y="30.666666666666671" width="326" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="J2L-Ot-uUd" firstAttribute="leading" secondItem="GwR-gD-vy4" secondAttribute="trailing" constant="8" symbolic="YES" id="7Wd-IN-xIm"/>
-                                        <constraint firstAttribute="trailing" secondItem="J2L-Ot-uUd" secondAttribute="trailing" constant="20" symbolic="YES" id="C11-4w-GYy"/>
-                                        <constraint firstItem="GwR-gD-vy4" firstAttribute="centerY" secondItem="PlX-wd-6Rq" secondAttribute="centerY" id="Uyk-op-fCC"/>
-                                        <constraint firstItem="GwR-gD-vy4" firstAttribute="leading" secondItem="PlX-wd-6Rq" secondAttribute="leading" constant="20" symbolic="YES" id="eRD-tv-2Uu"/>
-                                        <constraint firstItem="J2L-Ot-uUd" firstAttribute="centerY" secondItem="PlX-wd-6Rq" secondAttribute="centerY" id="feS-wP-69L"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="groupImageView" destination="GwR-gD-vy4" id="DHS-EF-Uvr"/>
-                                    <outlet property="groupsLabel" destination="J2L-Ot-uUd" id="gJd-fV-gDe"/>
-                                    <segue destination="D3f-FT-LqN" kind="unwind" unwindAction="unwindFromTableViewController:" id="fhV-fY-DCJ"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="xUd-UF-thp" id="0JC-aG-JnX"/>
                             <outlet property="delegate" destination="xUd-UF-thp" id="xgr-Ln-rbL"/>
@@ -297,7 +222,6 @@ simulator</string>
                     <navigationItem key="navigationItem" title="Groups" id="sFq-69-mp1"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r49-ea-Rok" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="D3f-FT-LqN" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2265.217391304348" y="-1060.5978260869565"/>
         </scene>
@@ -699,8 +623,6 @@ simulator</string>
         <image name="person.3" catalog="system" width="128" height="62"/>
         <image name="pic1" width="640" height="704"/>
         <image name="rectangle.grid.3x2" catalog="system" width="128" height="101"/>
-        <image name="square.and.pencil" catalog="system" width="128" height="115"/>
-        <image name="square.grid.3x2.fill" catalog="system" width="128" height="80"/>
         <namedColor name="ColorButtonLabel">
             <color red="0.25099998712539673" green="0.4830000102519989" blue="0.73400002717971802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

@@ -50,7 +50,11 @@ class NewsFeedTableViewCell: UITableViewCell {
         newsImageViewTap = imageTapFunc
         self.vkUser = vkUser
         userNicLable.text = vkUser.firstName + " " + vkUser.lastName
-        userImageView.image = vkUser.getImage(imageType: .image50)
+        vkUser.getImage(imageType: .image50){ image in
+            DispatchQueue.main.async {
+                self.userImageView.image = image
+            }
+        }
         numberOfLikeLable.text = String(numberOfLike)
         numberOfViewsLable.text = String(numberOfViews)
         let date = Date()

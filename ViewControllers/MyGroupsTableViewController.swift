@@ -17,8 +17,8 @@ class MyGroupsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        VKNetService.shared.loadGroups(token: Session.shared.token){[weak self] groups in
+        tableView.register(VKGroupTableViewCell.nib, forCellReuseIdentifier: VKGroupTableViewCell.identifier)
+        NetService.shared.loadGroups(token: Session.shared.token){[weak self] groups in
             guard let self = self else { return }
             self.myGroups = groups
             
@@ -28,10 +28,13 @@ class MyGroupsTableViewController: UITableViewController {
         }
     }
 
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? MyGroupsTableViewCell {
-            cell.groupLabel.text = myGroups[indexPath.row].name
-            cell.groupImageView.image = .add
+        if let cell = tableView.dequeueReusableCell(withIdentifier: VKGroupTableViewCell.identifier, for: indexPath) as? VKGroupTableViewCell {
+            cell.configur(group: myGroups[indexPath.row])
             return cell
         }
         return UITableViewCell()
