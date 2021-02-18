@@ -118,14 +118,26 @@ class MyFrendsViewController: UIViewController {
     private func loadUsersData() {
         tableView.refreshControl?.myBeginRefreshing(in: tableView)
 
-        NetService.shared.loadUsers(token: Session.shared.token){[weak self] users in
+        NetService.shared.loadUsers(token: Session.shared.token){[weak self] results in
             guard let self = self else { return }
-            self.friends = users
-            self.filteredFriendsForTable = self.prepareFrendsData(self.friends)
-
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-                self.tableView.refreshControl?.endRefreshing()
+            
+            switch results{
+            case .success(let users):
+                self.friends = users
+                self.filteredFriendsForTable = self.prepareFrendsData(self.friends)
+                DispatchQueue.main.async {
+                    RealmService.shared.saveUsers(users)
+                    self.tableView.reloadData()
+                    self.tableView.refreshControl?.endRefreshing()
+                }
+            case .failure(let error):
+                print(error)
+                DispatchQueue.main.async {
+                    self.friends = RealmService.shared.loadUsers()
+                    self.filteredFriendsForTable = self.prepareFrendsData(self.friends)
+                    self.tableView.reloadData()
+                    self.tableView.refreshControl?.endRefreshing()
+                }         
             }
         }
     }

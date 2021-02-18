@@ -6,10 +6,11 @@
 //
 
 import UIKit
+import RealmSwift
 
 class VKGroup{
     
-    struct Group{
+    struct Group {
         let id: Int
         let name: String
         let screenName: String
@@ -27,7 +28,15 @@ class VKGroup{
             self.photo100 = item.photo100 ?? ""
             self.photo200 = item.photo200 ?? ""
         }
-        
+        internal init(id: Int, name: String, screenName: String, isClosed: Int, photo50: String, photo100: String, photo200: String) {
+            self.id = id
+            self.name = name
+            self.screenName = screenName
+            self.isClosed = isClosed
+            self.photo50 = photo50
+            self.photo100 = photo100
+            self.photo200 = photo200
+        }
         
         enum ImageType{
             case image50
@@ -106,3 +115,10 @@ func ==(lhs: VKGroup.Group, rhs: VKGroup.Group) -> Bool {
 
     return areEqual
 }
+
+extension VKGroup.Group{
+    func convertToRealm() -> RealmGroup{
+        return RealmGroup(id: self.id, name: self.name, screenName: self.screenName, isClosed: self.isClosed, photo50: self.photo50, photo100: self.photo100, photo200: self.photo200)
+    }
+}
+

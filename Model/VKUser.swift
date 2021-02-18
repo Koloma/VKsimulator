@@ -6,28 +6,26 @@
 //
 
 import UIKit
-
-protocol userMustHave {
-    
-}
+import RealmSwift
 
 class VKUser{
     
-    struct User {
+    struct User: ConvertToRealm {
         let id: Int
         let domain: String
         let firstName: String
         let lastName: String
         let sex: Int
-        let photo50, photo100: String
+        let photo50: String
+        let photo100: String
+        let photo200: String
         let online: Int
         let nickname: String
-        let country: Country
-        let photo200_Orig: String
+        let country: String
         let status: String
-        let lastSeen: LastSeen
+        let lastSeen: Int
         let birthdayDate: String
-        let city: City
+        let city: String
         var fio: String{
             get{
                 return self.firstName + " " + self.lastName
@@ -44,12 +42,30 @@ class VKUser{
             self.photo100 = item.photo100 ?? ""
             self.online = item.online ?? -1
             self.nickname = item.nickname ?? ""
-            self.country = Country(id: item.country?.id ?? -1, title: item.country?.title ?? "")
-            self.photo200_Orig = item.photo200_Orig ?? ""
+            self.country = item.country?.title ?? ""
+            self.photo200 = item.photo200_Orig ?? ""
             self.status = item.status ?? ""
-            self.lastSeen = LastSeen(platform: item.lastSeen?.platform ?? -1,time: item.lastSeen?.time ?? 0 )
+            self.lastSeen = item.lastSeen?.time ?? 0
             self.birthdayDate = item.birthdayDate ?? ""
-            self.city = City(id: item.city?.id ?? -1, title: item.city?.title ?? "")
+            self.city = item.city?.title ?? ""
+        }
+        
+        internal init(id: Int, domain: String, firstName: String, lastName: String, sex: Int, photo50: String, photo100: String, photo200: String, online: Int, nickname: String, country: String, status: String, lastSeen: Int, birthdayDate: String, city: String) {
+            self.id = id
+            self.domain = domain
+            self.firstName = firstName
+            self.lastName = lastName
+            self.sex = sex
+            self.photo50 = photo50
+            self.photo100 = photo100
+            self.photo200 = photo200
+            self.online = online
+            self.nickname = nickname
+            self.country = country
+            self.status = status
+            self.lastSeen = lastSeen
+            self.birthdayDate = birthdayDate
+            self.city = city
         }
         
         enum ImageType{
@@ -66,7 +82,7 @@ class VKUser{
             case .image100:
                 url = URL(string: photo100)
             case .image200:
-                url = URL(string: photo200_Orig)
+                url = URL(string: photo200)
             }
             if let url = url {
                 ImageCache.shared.load(url: url as NSURL){ image in
@@ -142,4 +158,14 @@ class VKUser{
         let platform, time: Int?
     }
     
+}
+
+extension VKUser.User{
+    func convertToRealm() -> RealmUser{
+        return RealmUser(id: self.id, domain: self.domain, firstName: self.firstName, lastName: self.lastName, sex: self.sex, photo50: self.photo50, photo100: self.photo100, photo200: self.photo200, online: self.online, nickname: self.nickname, country: self.country, status: self.status, lastSeen: self.lastSeen, birthdayDate: self.birthdayDate, city: self.city)
+    }
+    
+    func convertToRealm() -> Object {
+        return RealmUser(id: self.id, domain: self.domain, firstName: self.firstName, lastName: self.lastName, sex: self.sex, photo50: self.photo50, photo100: self.photo100, photo200: self.photo200, online: self.online, nickname: self.nickname, country: self.country, status: self.status, lastSeen: self.lastSeen, birthdayDate: self.birthdayDate, city: self.city)
+    }
 }

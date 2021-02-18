@@ -26,14 +26,26 @@ class ImageGalleryCollectionViewController: UICollectionViewController, UICollec
     private func loadImages() {
         showIndicator()
 
-        NetService.shared.loadUserImages(token: Session.shared.token, userId: Session.shared.userId){[weak self] photos in
+        NetService.shared.loadUserImages(token: Session.shared.token, userId: Session.shared.userId){[weak self] results in
             guard let self = self else { return }
-            self.images = photos
-
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-                self.actiIndicatorView.stopAnimating()
+            
+            switch results {
+            case .success(let photos):
+                self.images = photos
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                    RealmService.shared.savePhotos(photos)
+                    self.actiIndicatorView.stopAnimating()
+                }
+            case .failure(let error):
+                print(error)
+                DispatchQueue.main.async {
+                    self.images = RealmService.shared.loadPhotos()
+                    self.collectionView.reloadData()
+                    self.actiIndicatorView.stopAnimating()
+                }
             }
+
         }
     }
     

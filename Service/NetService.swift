@@ -14,7 +14,7 @@ class NetService{
     private init(){
     }
     
-    func loadGroups(token: String, completion: @escaping ([VKGroup.Group]) -> () ) {
+    func loadGroups(token: String, completion: ((Result<[VKGroup.Group],Error>) -> Void)? = nil) {
         let baseURL = K.ApiVK.baseUrl
         let path = K.ApiVK.pathGetGroups
         
@@ -36,16 +36,16 @@ class NetService{
                     for group in groups {
                         groupsClear.append(VKGroup.Group(item: group))
                     }
-                    completion(groupsClear)
+                    completion?(.success(groupsClear))
                 }
 
             }catch(let error){
-                print(error)
+                completion?(.failure(error))
             }
         }
     }
     
-    func loadUsers(token: String, completion: @escaping ([VKUser.User]) -> () ) {
+    func loadUsers(token: String, completion: ((Result<[VKUser.User],Error>) -> Void)? = nil) {
         let baseURL = K.ApiVK.baseUrl
         let path = K.ApiVK.pathGetFriends
                
@@ -67,17 +67,17 @@ class NetService{
                     for friend in friends {
                         groupsClear.append(VKUser.User(item: friend))
                     }
-                    completion(groupsClear)
+                    completion?(.success(groupsClear))
                 }
 
             }catch(let error){
-                print(error)
+                completion?(.failure(error))
             }
         }
     }
 //    verified,photo_50, photo_100, photo_200_orig, photo_200, photo_400_orig,last_seen, followers_count, common_count, occupation, nickname
 
-    func groupsSearch(token: String, textQuery:String, completion: @escaping ([VKGroup.Group]) -> () ) {
+    func groupsSearch(token: String, textQuery:String, completion: ((Result<[VKGroup.Group],Error>) -> Void)? = nil) {
         let baseURL = K.ApiVK.baseUrl
         let path = K.ApiVK.pathGroupsSearch
         
@@ -101,16 +101,16 @@ class NetService{
                     for group in groups {
                         groupsClear.append(VKGroup.Group(item: group))
                     }
-                    completion(groupsClear)
+                    completion?(.success(groupsClear))
                 }
 
             }catch(let error){
-                print(error)
+                completion?(.failure(error))
             }
         }
     }
     
-    func loadUserImages(token: String, userId: Int, completion: @escaping ([VKPhoto.Photo]) -> () ) {
+    func loadUserImages(token: String, userId: Int, completion: ((Result<[VKPhoto.Photo],Error>) -> Void)? = nil) {
         let baseURL = K.ApiVK.baseUrl
         let path = K.ApiVK.pathGetUserAllPhotos
         
@@ -136,11 +136,11 @@ class NetService{
                     for photo in photos {
                         photosClear.append(VKPhoto.Photo(item: photo))
                     }
-                    completion(photosClear)
+                    completion?(.success(photosClear))
                 }
 
             }catch(let error){
-                print(error)
+                completion?(.failure(error))
             }
         }
     }
@@ -150,11 +150,11 @@ class NetService{
             if let error = error {
                 print(error)
             }
-            if let response = response{
-                if let httpResponse = response as? HTTPURLResponse {
-                    print("httpResponse.statusCode: \(httpResponse.statusCode)")
-                }
-            }
+//            if let response = response{
+//                if let httpResponse = response as? HTTPURLResponse {
+//                    //print("httpResponse.statusCode: \(httpResponse.statusCode)")
+//                }
+//            }
             if let data = data{
                 completion(data)
             }

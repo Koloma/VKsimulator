@@ -27,7 +27,7 @@ class ImageWithLikeCounterCollectionViewCell: UICollectionViewCell {
         labelTop.text = photo.text
         labelLikeCount.text = "\(photo.likesCount)"
         
-        if photo.isLikeSet {
+        if  photo.isLikeSet {
             imageLikeHeart.image = UIImage(systemName: "heart.fill")
             imageLikeHeart.tintColor = UIColor.red
         }

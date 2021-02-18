@@ -460,8 +460,8 @@ simulator</string>
                         <color key="backgroundColor" systemColor="systemIndigoColor"/>
                     </tabBar>
                     <connections>
-                        <segue destination="QOe-j9-0aC" kind="relationship" relationship="viewControllers" destinationCreationSelector="Frends" id="1yA-IR-Hll"/>
-                        <segue destination="x1e-hR-e0H" kind="relationship" relationship="viewControllers" destinationCreationSelector="Groups" id="Sun-O1-kSU"/>
+                        <segue destination="QOe-j9-0aC" kind="relationship" relationship="viewControllers" id="1yA-IR-Hll"/>
+                        <segue destination="x1e-hR-e0H" kind="relationship" relationship="viewControllers" id="Sun-O1-kSU"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="99F-cr-ahO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -511,7 +511,7 @@ simulator</string>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="EKE-QA-fwF" kind="relationship" relationship="rootViewController" destinationCreationSelector="toMyGroups" id="PgK-z9-sNh"/>
+                        <segue destination="EKE-QA-fwF" kind="relationship" relationship="rootViewController" id="PgK-z9-sNh"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ueu-P0-wc8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -531,7 +531,7 @@ simulator</string>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="E5S-vi-alR" kind="relationship" relationship="rootViewController" destinationCreationSelector="toMyFrendsViewController" id="b5W-wa-cEt"/>
+                        <segue destination="E5S-vi-alR" kind="relationship" relationship="rootViewController" id="b5W-wa-cEt"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kFl-zC-yoC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
