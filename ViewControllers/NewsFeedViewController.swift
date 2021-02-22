@@ -50,7 +50,7 @@ extension NewsFeedViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = newsTableView.dequeueReusableCell(withIdentifier: NewsFeedTableViewCell.identifier, for: indexPath) as? NewsFeedTableViewCell,
            let vkUser = userNewsFeed{
-            cell.configur(vkUser: vkUser, newsText: arrayNews[indexPath.row], newsImage: [UIImage(named: "pic1")!,UIImage(named: "pic2")!], imageTapFunc: imageViewTap)
+            cell.configur(vkUser: vkUser, imageTapFunc: imageViewTap)
 
             return cell
         }

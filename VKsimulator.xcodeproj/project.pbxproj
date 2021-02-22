@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		840B0A9025E281D10001B50E /* UserPropertyVeiwController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840B0A8F25E281D10001B50E /* UserPropertyVeiwController.swift */; };
 		840C11E025D0199300E7BE7B /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840C11DF25D0199300E7BE7B /* Session.swift */; };
 		843D1F6E25C19BFE00437D18 /* AnimatorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843D1F6D25C19BFE00437D18 /* AnimatorVC.swift */; };
 		843D1F7425C1A6DB00437D18 /* CustomSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843D1F7325C1A6DB00437D18 /* CustomSegue.swift */; };
@@ -70,6 +71,7 @@
 
 /* Begin PBXFileReference section */
 		754C11B25A0C95C9CD13E0A7 /* Pods_VKsimulator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VKsimulator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		840B0A8F25E281D10001B50E /* UserPropertyVeiwController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPropertyVeiwController.swift; sourceTree = "<group>"; };
 		840C11DF25D0199300E7BE7B /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		843D1F6D25C19BFE00437D18 /* AnimatorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatorVC.swift; sourceTree = "<group>"; };
 		843D1F7325C1A6DB00437D18 /* CustomSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegue.swift; sourceTree = "<group>"; };
@@ -323,6 +325,7 @@
 				84A18BF825B7240100063FA7 /* NewsFeedViewController.swift */,
 				8448263E25B921FC00425D5A /* MyFrendsViewController.swift */,
 				8453618C25D4CFD900AC609C /* VKWebViewController.swift */,
+				840B0A8F25E281D10001B50E /* UserPropertyVeiwController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -501,6 +504,7 @@
 				8450262125C008FA0026B63F /* BezierViewController.swift in Sources */,
 				8449A33B25DA48AE00639315 /* VKPhoto.swift in Sources */,
 				84F099AE25C26355000300A6 /* CustomPopAnimator.swift in Sources */,
+				840B0A9025E281D10001B50E /* UserPropertyVeiwController.swift in Sources */,
 				843D1F7C25C1B4A900437D18 /* CustomPushAnimator.swift in Sources */,
 				844A5CAF258FAF7300DB145E /* AppDelegate.swift in Sources */,
 				844A5CB1258FAF7300DB145E /* SceneDelegate.swift in Sources */,

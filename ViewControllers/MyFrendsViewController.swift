@@ -32,12 +32,19 @@ class MyFrendsViewController: UIViewController {
         super.viewDidLoad()
         
         setupView();
-        loadUsersData()
         let sbAnimation = SBAnimationFactory.prepearSearchBar()
         let sbAnimator = SBAnimator(animation: sbAnimation)
         sbAnimator.animate(searchImage: searchImageView, textField: searchTextField, cancelImage: cancelImageView, in: searchView)
         
+        loadUsersData()
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+        
+    }
+    
     @IBAction func searchTapped(_ sender: UITapGestureRecognizer) {
         let sbAnimation = SBAnimationFactory.makeAnimation()
         let sbAnimator = SBAnimator(animation: sbAnimation)
@@ -59,9 +66,7 @@ class MyFrendsViewController: UIViewController {
     @objc func textFieldDidChange(_ textField: UITextField) {
         filteringTableData(by: textField.text!)
     }
-    override func viewWillAppear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
+
     override func viewWillDisappear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
@@ -175,13 +180,21 @@ extension MyFrendsViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+        return VKUserTableViewCell.cellHeight
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: VKUserTableViewCell.identifier, for: indexPath) as? VKUserTableViewCell{
             let friend = filteredFriendsForTable.friends[indexPath.section][indexPath.row]
-            cell.configur(user: friend)
+            cell.configur(user: friend){
+               
+                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+                if  let userProperty = storyBoard.instantiateViewController(withIdentifier: "UserPropertyVeiwController") as? UserPropertyVeiwController{
+                    userProperty.vkUser = friend
+                    self.navigationController!.pushViewController(userProperty, animated: true)
+                }
+              
+            }
             return cell
         }
         return UITableViewCell()

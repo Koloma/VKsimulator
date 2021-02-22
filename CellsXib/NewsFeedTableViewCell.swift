@@ -46,7 +46,7 @@ class NewsFeedTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    func configur(vkUser: VKUser.User, newsText: String, newsImage: [UIImage],imageTapFunc: @escaping ImageViewTapFunc){
+    func configur(vkUser: VKUser.User, imageTapFunc: @escaping ImageViewTapFunc){
         newsImageViewTap = imageTapFunc
         self.vkUser = vkUser
         userNicLable.text = vkUser.firstName + " " + vkUser.lastName
@@ -61,9 +61,8 @@ class NewsFeedTableViewCell: UITableViewCell {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
         dateLable.text = dateFormatter.string(from: date)
-        newsTextView.text = newsText
-        let random = Int.random(in: 0...1)
-        newsImageView.image = newsImage[random]
+        newsTextView.text = "news Text"
+        newsImageView.image = UIImage(named: "pic1")
         
         contentView.layer.borderWidth = 1
         contentView.layer.borderColor = UIColor.lightGray.cgColor
