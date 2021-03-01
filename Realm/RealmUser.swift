@@ -22,11 +22,12 @@ class RealmUser: Object, ConvertToClear {
     @objc dynamic var nickname: String = ""
     @objc dynamic var country: String = ""
     @objc dynamic var status: String = ""
-    @objc dynamic var lastSeen: Int = 0
+    @objc dynamic var lastSeen: Double = 0
     @objc dynamic var birthdayDate: String = ""
     @objc dynamic var city: String = ""
+    @objc dynamic var followersCount: Int = 0
  
-    convenience init(id: Int, domain: String, firstName: String, lastName: String, sex: Int, photo50: String, photo100: String, photo200: String, online: Int, nickname: String, country: String, status: String, lastSeen: Int, birthdayDate: String, city: String) {
+    convenience init(id: Int, domain: String, firstName: String, lastName: String, sex: Int, photo50: String, photo100: String, photo200: String, online: Int, nickname: String, country: String, status: String, lastSeen: Double, birthdayDate: String, city: String, followersCount: Int) {
         self.init()
         self.id = id
         self.domain = domain
@@ -43,6 +44,7 @@ class RealmUser: Object, ConvertToClear {
         self.lastSeen = lastSeen
         self.birthdayDate = birthdayDate
         self.city = city
+        self.followersCount = followersCount
     }
 }
 
@@ -53,6 +55,6 @@ extension RealmUser{
 //        return VKUser.User(id: self.id, domain: self.domain, firstName: self.firstName, lastName: self.lastName, sex: self.sex, photo50: self.photo50, photo100: self.photo100, photo200: self.photo200, online: self.online, nickname: self.nickname, country: self.country, status: self.status, lastSeen: self.lastSeen, birthdayDate: self.birthdayDate, city: self.city)
 //    }
     func convertToClear() -> Any {
-        return VKUser.User(id: self.id, domain: self.domain, firstName: self.firstName, lastName: self.lastName, sex: self.sex, photo50: self.photo50, photo100: self.photo100, photo200: self.photo200, online: self.online, nickname: self.nickname, country: self.country, status: self.status, lastSeen: self.lastSeen, birthdayDate: self.birthdayDate, city: self.city)
+        return VKUser.User(id: self.id, domain: self.domain, firstName: self.firstName, lastName: self.lastName, sex: self.sex, photo50: self.photo50, photo100: self.photo100, photo200: self.photo200, online: self.online, nickname: self.nickname, country: self.country, status: self.status, lastSeen: self.lastSeen, birthdayDate: self.birthdayDate, city: self.city, followersCount: self.followersCount)
     }
 }

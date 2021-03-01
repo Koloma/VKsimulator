@@ -23,9 +23,10 @@ class VKUser{
         let nickname: String
         let country: String
         let status: String
-        let lastSeen: Int
+        let lastSeen: Date
         let birthdayDate: String
         let city: String
+        let followersCount: Int
         var fio: String{
             get{
                 return self.firstName + " " + self.lastName
@@ -45,12 +46,18 @@ class VKUser{
             self.country = item.country?.title ?? ""
             self.photo200 = item.photo200_Orig ?? ""
             self.status = item.status ?? ""
-            self.lastSeen = item.lastSeen?.time ?? 0
+            if let date = item.lastSeen?.time{
+                self.lastSeen = Date.init(timeIntervalSince1970: date)
+            }
+            else{
+                self.lastSeen = Date.init(timeIntervalSince1970: 0)
+            }
             self.birthdayDate = item.birthdayDate ?? ""
             self.city = item.city?.title ?? ""
+            self.followersCount = item.followersCount ?? 0
         }
         
-        internal init(id: Int, domain: String, firstName: String, lastName: String, sex: Int, photo50: String, photo100: String, photo200: String, online: Int, nickname: String, country: String, status: String, lastSeen: Int, birthdayDate: String, city: String) {
+        internal init(id: Int, domain: String, firstName: String, lastName: String, sex: Int, photo50: String, photo100: String, photo200: String, online: Int, nickname: String, country: String, status: String, lastSeen: Double, birthdayDate: String, city: String, followersCount: Int) {
             self.id = id
             self.domain = domain
             self.firstName = firstName
@@ -63,9 +70,10 @@ class VKUser{
             self.nickname = nickname
             self.country = country
             self.status = status
-            self.lastSeen = lastSeen
+            self.lastSeen = Date.init(timeIntervalSince1970: lastSeen)
             self.birthdayDate = birthdayDate
             self.city = city
+            self.followersCount = followersCount
         }
         
         enum ImageType{
@@ -121,6 +129,7 @@ class VKUser{
         let lastSeen: LastSeen?
         let birthdayDate: String?
         let city: City?
+        let followersCount: Int?
 
         enum CodingKeys: String, CodingKey {
             case id
@@ -138,6 +147,7 @@ class VKUser{
             case lastSeen = "last_seen"
             case birthdayDate = "bdate"
             case city
+            case followersCount = "followers_count"
         }
     }
 
@@ -155,17 +165,18 @@ class VKUser{
 
     // MARK: - LastSeen
     struct LastSeen: Codable {
-        let platform, time: Int?
+        let platform: Int?
+        let time: Double?
     }
     
 }
 
 extension VKUser.User{
     func convertToRealm() -> RealmUser{
-        return RealmUser(id: self.id, domain: self.domain, firstName: self.firstName, lastName: self.lastName, sex: self.sex, photo50: self.photo50, photo100: self.photo100, photo200: self.photo200, online: self.online, nickname: self.nickname, country: self.country, status: self.status, lastSeen: self.lastSeen, birthdayDate: self.birthdayDate, city: self.city)
+        return RealmUser(id: self.id, domain: self.domain, firstName: self.firstName, lastName: self.lastName, sex: self.sex, photo50: self.photo50, photo100: self.photo100, photo200: self.photo200, online: self.online, nickname: self.nickname, country: self.country, status: self.status, lastSeen: Double(self.lastSeen.timeIntervalSince1970), birthdayDate: self.birthdayDate, city: self.city, followersCount: self.followersCount )
     }
     
     func convertToRealm() -> Object {
-        return RealmUser(id: self.id, domain: self.domain, firstName: self.firstName, lastName: self.lastName, sex: self.sex, photo50: self.photo50, photo100: self.photo100, photo200: self.photo200, online: self.online, nickname: self.nickname, country: self.country, status: self.status, lastSeen: self.lastSeen, birthdayDate: self.birthdayDate, city: self.city)
+        return RealmUser(id: self.id, domain: self.domain, firstName: self.firstName, lastName: self.lastName, sex: self.sex, photo50: self.photo50, photo100: self.photo100, photo200: self.photo200, online: self.online, nickname: self.nickname, country: self.country, status: self.status, lastSeen: Double(self.lastSeen.timeIntervalSince1970), birthdayDate: self.birthdayDate, city: self.city, followersCount: self.followersCount)
     }
 }

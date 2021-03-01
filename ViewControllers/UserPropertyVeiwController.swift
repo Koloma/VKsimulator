@@ -13,6 +13,10 @@ class UserPropertyVeiwController: UIViewController{
     @IBOutlet weak var userFio: UILabel!
     @IBOutlet weak var userDescription: UILabel!
     @IBOutlet weak var userOnLineStatus: UIImageView!
+    @IBOutlet weak var lastSeenLable: UILabel!
+    @IBOutlet weak var cityLabel: UILabel!
+    @IBOutlet weak var obrazovaneLable: UILabel!
+    @IBOutlet weak var followersCountLable: UILabel!
     
     
     var vkUser: VKUser.User?
@@ -34,8 +38,19 @@ class UserPropertyVeiwController: UIViewController{
             }
         }
         userFio.text = "\(user.firstName) \(user.lastName)"
-        userDescription.text = "\(user.domain) id:\(user.id)"
+        userDescription.text = "\(user.domain)"
         userOnLineStatus.tintColor = user.online == 1 ? UIColor.green: UIColor.gray
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy HH:mm:ss"
+        dateFormatter.timeZone = .current
+        let localDate = dateFormatter.string(from: user.lastSeen)
+        
+        lastSeenLable.text = "Last seen: \(localDate)"
+        
+        cityLabel.text = user.city
+        obrazovaneLable.text = user.birthdayDate
+        followersCountLable.text = "Followers \(user.followersCount)"
         
     }
     
