@@ -19,7 +19,7 @@ class VKGroup{
         let photo100: String
         let photo200: String
         
-        init(item : Item) {
+        init(item : Group2) {
             self.id = item.id ?? 0
             self.name = item.name ?? ""
             self.screenName = item.screenName ?? ""
@@ -73,11 +73,11 @@ class VKGroup{
     // MARK: - Response
     struct Response: Codable {
         let count: Int?
-        let items: [Item]?
+        let items: [Group2]?
     }
 
     // MARK: - Item
-    struct Item: Codable {
+    struct Group2: Codable {
         let id: Int?
         let name: String?
         let screenName: String?
