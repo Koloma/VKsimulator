@@ -11,7 +11,7 @@ class MyFrendsViewController: UIViewController {
 
     private struct FriendsForTable{
         var firstLetter:[String] = []
-        var friends:[[VKUser.User]] = [[]]
+        var friends:[[VKUser]] = [[]]
     }
     
     @IBOutlet weak var searchView: UIView!
@@ -21,7 +21,7 @@ class MyFrendsViewController: UIViewController {
     @IBOutlet weak var searchTextField: UITextField!
     
     
-    private var friends:[VKUser.User] = []
+    private var friends:[VKUser] = []
     private var filteredFriendsForTable = FriendsForTable()
     
     func logOut() {
@@ -77,7 +77,7 @@ class MyFrendsViewController: UIViewController {
     }
     
     func filteringTableData(by filterText : String){
-        let filteredData = filterText.isEmpty ? friends : friends.filter({(friend: VKUser.User) -> Bool in
+        let filteredData = filterText.isEmpty ? friends : friends.filter({(friend: VKUser) -> Bool in
             return friend.firstName.range(of: filterText, options: .caseInsensitive) != nil
             
         })
@@ -150,9 +150,9 @@ class MyFrendsViewController: UIViewController {
     /// Подготавливает данные для отображения в таблице (разбивка на секции, сортировка)
     /// - Parameter data: Исходные данные
     /// - Returns: Данные для отображения в таблице
-    private func prepareFrendsData(_ data:[VKUser.User]) -> FriendsForTable{
+    private func prepareFrendsData(_ data:[VKUser]) -> FriendsForTable{
         var friendsForTable:FriendsForTable = FriendsForTable()
-        friendsForTable.firstLetter = data.map( {String($0.firstName.uppercased().prefix(1)) }).unique.sorted()
+        friendsForTable.firstLetter = data.map( {String(($0.firstName.uppercased().prefix(1))) }).unique.sorted()
         friendsForTable.friends = Array(Dictionary(grouping:data){$0.firstName.uppercased().prefix(1)}.values)
         friendsForTable.friends.sort{ $0[0].firstName.uppercased().prefix(1) < $1[0].firstName.uppercased().prefix(1)}
         return friendsForTable

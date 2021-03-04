@@ -77,14 +77,9 @@ class RealmService{
         return clearArray
     }
     
-    func saveUsers(_ elements: [VKUser.User]){
-        var arrayRealm : [RealmUser] = []
-        for element in elements{
-            arrayRealm.append(element.convertToRealm())
-        }
-            
+    func saveUsers(_ elements: [VKUser]){
         do {
-            try add(objects: arrayRealm)
+            try add(objects: elements)
         } catch {
             print(error)
         }
@@ -93,28 +88,11 @@ class RealmService{
         #endif
     }
     
-    func loadUsers()->[VKUser.User]{
-        let realmArray = realm.objects(RealmUser.self)
-        var clearArray : [VKUser.User] = []
-        for item in realmArray{
-            clearArray.append(item.convertToClear() as! VKUser.User)
-        }
+    func loadUsers()->[VKUser]{
         #if DEBUG
             print("Groups loaded from realm")
         #endif
-        return clearArray
-    }
-    
-    func load<T1:Object,T2>(typeRealm: T1.Type)->[T2] where T1: ConvertToClear {
-        let realmArray = realm.objects(T1.self)
-        var clearArray : [T2] = []
-        for item in realmArray{
-            clearArray.append(item.convertToClear() as! T2)
-        }
-        #if DEBUG
-            print("Groups loaded from realm")
-        #endif
-        return clearArray
+        return Array(realm.objects(VKUser.self))
     }
     
     func save<T1:Object,T2:ConvertToRealm>(typeRealm: T1, _ elements: [T2]){

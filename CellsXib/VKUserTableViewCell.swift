@@ -24,7 +24,7 @@ class VKUserTableViewCell: UITableViewCell {
     static let nib = UINib(nibName: "VKUserTableViewCell", bundle: nil)
     static let identifier = "CellUser"
     
-    func configur(user: VKUser.User, imageTapClosure: ImageTapClosure = nil){
+    func configur(user: VKUser, imageTapClosure: ImageTapClosure = nil){
         self.imageTapClosure = imageTapClosure
         userNicLable.text = user.nickname
         userDescrLabel.text = user.fio

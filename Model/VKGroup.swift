@@ -10,16 +10,16 @@ import RealmSwift
 
 
 
-    // MARK: - GroupRAW
-    struct GroupRAW: Codable {
-        let response: Response
-    }
+// MARK: - GroupRAW
+struct GroupRAW: Codable {
+    let response: ResponseGroup
+}
 
-    // MARK: - Response
-    struct Response: Codable {
-        let count: Int?
-        let items: [VKGroup]?
-    }
+// MARK: - Response
+struct ResponseGroup: Codable {
+    let count: Int?
+    let items: [VKGroup]?
+}
 
 
 // MARK: - Group
@@ -43,10 +43,7 @@ class VKGroup: Object, Codable, Comparable {
         case photo200 = "photo_200"
     }
  
-    override class func ignoredProperties() -> [String] {
-        ["CodingKeys"]
-    }
-    
+   
     override class func indexedProperties() -> [String] {
         ["id"]
     }

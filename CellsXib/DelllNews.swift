@@ -31,8 +31,8 @@ class NewsFeedCollectionViewCell: UICollectionViewCell {
     
     var likeCount = 1000
     
-    func configur(user: VKUser.User, newsText: String, newsImage: [UIImage]){
-        userNameLable.text = user.firstName + " " + user.lastName
+    func configur(user: VKUser, newsText: String, newsImage: [UIImage]){
+        userNameLable.text = user.fio
         userImageView.image = nil
         likeCountLable.text = String(likeCount)
         let date = Date()

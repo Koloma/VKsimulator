@@ -41,7 +41,7 @@ class NetService{
         }
     }
     
-    func loadUsers(token: String, completion: ((Result<[VKUser.User],Error>) -> Void)? = nil) {
+    func loadUsers(token: String, completion: ((Result<[VKUser],Error>) -> Void)? = nil) {
         let baseURL = K.ApiVK.baseUrl
         let path = K.ApiVK.pathGetFriends
                
@@ -57,13 +57,9 @@ class NetService{
         sharedDataTask(url: url){ data in
             let decoder = JSONDecoder()
             do{
-                let responce = try decoder.decode(VKUser.UserRAW.self,from: data)
+                let responce = try decoder.decode(UserRAW.self,from: data)
                 if let friends = responce.response.items{
-                    var groupsClear : [VKUser.User] = []
-                    for friend in friends {
-                        groupsClear.append(VKUser.User(item: friend))
-                    }
-                    completion?(.success(groupsClear))
+                    completion?(.success(friends))
                 }
 
             }catch(let error){
