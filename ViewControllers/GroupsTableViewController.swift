@@ -9,7 +9,7 @@ import UIKit
 
 class GroupsTableViewController: UITableViewController {
 
-    var groups:[VKGroup.Group] = []
+    var groups:[VKGroup] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()

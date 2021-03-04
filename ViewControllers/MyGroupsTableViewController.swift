@@ -9,7 +9,7 @@ import UIKit
     
 class MyGroupsTableViewController: UITableViewController {
 
-    private var myGroups:[VKGroup.Group] = []
+    private var myGroups:[VKGroup] = []
     
     @IBAction private func logOutButton(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
@@ -25,13 +25,13 @@ class MyGroupsTableViewController: UITableViewController {
             case .success(let groups):
                 self.myGroups = groups
                 DispatchQueue.main.async {
-                    RealmService.shared.saveGroups(groups)
+                    RealmService.shared?.saveGroups(groups)
                     self.tableView.reloadData()
                 }
             case .failure(let error):
                 print(error)
                 DispatchQueue.main.async {
-                    self.myGroups = RealmService.shared.loadGroups()
+                    self.myGroups = RealmService.shared?.loadGroups() ?? []
                     self.tableView.reloadData()
                 }
             }

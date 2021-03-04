@@ -12,29 +12,23 @@ import RealmSwift
 class RealmService{
     
     static let shared = RealmService()
-    private lazy var realm : Realm? = {
+    private let realm : Realm
+    
+    private init?() {
+        let confgurator = Realm.Configuration(schemaVersion: 1, deleteRealmIfMigrationNeeded: true)
+        
+        guard let realm = try? Realm(configuration: confgurator) else { return nil }
+        self.realm = realm
         #if DEBUG
         print(Realm.Configuration.defaultConfiguration.fileURL ?? "Realm error")
         #endif
-        return try? Realm()
-    }()
-    
-    private init() {
     }
     
-    func saveGroups(_ groups: [VKGroup.Group]){
-        
-        guard let realm = realm else { return }
-        
-        var realmGroups : [RealmGroup] = []
-        for group in groups{
-            realmGroups.append(group.convertToRealm())
-        }
-            
+    func saveGroups(_ groups: [VKGroup]){
         do {
             realm.beginWrite()
             realm.deleteAll()
-            realm.add(realmGroups)
+            realm.add(groups)
             try realm.commitWrite()
         } catch {
             print(error)
@@ -44,25 +38,15 @@ class RealmService{
         #endif
     }
     
-    func loadGroups()->[VKGroup.Group]{
-        guard let realm = realm else { return [] }
-        let realmGroups = realm.objects(RealmGroup.self)
-        
-        
-        var clearGroups : [VKGroup.Group] = []
-        for realmGroup in realmGroups{
-            clearGroups.append(realmGroup.convertToClear())
-        }
+    func loadGroups()->[VKGroup]{
+        let groups = Array(realm.objects(VKGroup.self))
         #if DEBUG
             print("Groups loaded from realm")
         #endif
-        return clearGroups
+        return groups
     }
     
     func savePhotos(_ elements: [VKPhoto.Photo]){
-        
-        guard let realm = realm else { return }
-        
         var arrayRealm : [RealmPhoto] = []
         for element in elements{
             arrayRealm.append(element.convertToRealm())
@@ -82,10 +66,7 @@ class RealmService{
     }
     
     func loadPhotos()->[VKPhoto.Photo]{
-        guard let realm = realm else { return [] }
         let realmArray = realm.objects(RealmPhoto.self)
-        
-        
         var clearArray : [VKPhoto.Photo] = []
         for item in realmArray{
             clearArray.append(item.convertToClear())
@@ -97,19 +78,13 @@ class RealmService{
     }
     
     func saveUsers(_ elements: [VKUser.User]){
-        
-        guard let realm = realm else { return }
-        
         var arrayRealm : [RealmUser] = []
         for element in elements{
             arrayRealm.append(element.convertToRealm())
         }
             
         do {
-            realm.beginWrite()
-            realm.deleteAll()
-            realm.add(arrayRealm)
-            try realm.commitWrite()
+            try add(objects: arrayRealm)
         } catch {
             print(error)
         }
@@ -119,10 +94,7 @@ class RealmService{
     }
     
     func loadUsers()->[VKUser.User]{
-        guard let realm = realm else { return [] }
         let realmArray = realm.objects(RealmUser.self)
-        
-        
         var clearArray : [VKUser.User] = []
         for item in realmArray{
             clearArray.append(item.convertToClear() as! VKUser.User)
@@ -134,10 +106,7 @@ class RealmService{
     }
     
     func load<T1:Object,T2>(typeRealm: T1.Type)->[T2] where T1: ConvertToClear {
-        guard let realm = realm else { return [] }
         let realmArray = realm.objects(T1.self)
-        
-        
         var clearArray : [T2] = []
         for item in realmArray{
             clearArray.append(item.convertToClear() as! T2)
@@ -149,25 +118,35 @@ class RealmService{
     }
     
     func save<T1:Object,T2:ConvertToRealm>(typeRealm: T1, _ elements: [T2]){
-        
-        guard let realm = realm else { return }
-        
         var arrayRealm : [T1] = []
         for element in elements{
             arrayRealm.append(element.convertToRealm() as! T1)
         }
-            
         do {
-            realm.beginWrite()
-            realm.deleteAll()
-            realm.add(arrayRealm)
-            try realm.commitWrite()
+            try add(objects: arrayRealm)
         } catch {
             print(error)
         }
         #if DEBUG
         print("\(type(of: elements)) saved to realm")
         #endif
+    }
+    
+    
+    func add<T: Object>(objects:[T]) throws{
+        try realm.write{
+            realm.add(objects)
+        }
+    }
+    
+    func getObjects<T: Object>() -> Results<T>{
+        return realm.objects(T.self)
+    }
+    
+    func delete<T: Object>(object: T) throws{
+        try realm.write{
+            realm.delete(object)
+        }
     }
     
 //    func save<T1,T2>(_ groups: [T1],_ type2: T2.Type) where T2:Object {

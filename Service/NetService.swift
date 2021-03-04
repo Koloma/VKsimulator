@@ -14,7 +14,7 @@ class NetService{
     private init(){
     }
     
-    func loadGroups(token: String, completion: ((Result<[VKGroup.Group],Error>) -> Void)? = nil) {
+    func loadGroups(token: String, completion: ((Result<[VKGroup],Error>) -> Void)? = nil) {
         let baseURL = K.ApiVK.baseUrl
         let path = K.ApiVK.pathGetGroups
         
@@ -30,13 +30,9 @@ class NetService{
         sharedDataTask(url: url){ data in
             let decoder = JSONDecoder()
             do{
-                let responce = try decoder.decode(VKGroup.GroupRAW.self,from: data)
+                let responce = try decoder.decode(GroupRAW.self,from: data)
                 if let groups = responce.response.items{
-                    var groupsClear : [VKGroup.Group] = []
-                    for group in groups {
-                        groupsClear.append(VKGroup.Group(item: group))
-                    }
-                    completion?(.success(groupsClear))
+                    completion?(.success(groups))
                 }
 
             }catch(let error){
@@ -77,7 +73,7 @@ class NetService{
     }
 //    verified,photo_50, photo_100, photo_200_orig, photo_200, photo_400_orig,last_seen, followers_count, common_count, occupation, nickname
 
-    func groupsSearch(token: String, textQuery:String, completion: ((Result<[VKGroup.Group],Error>) -> Void)? = nil) {
+    func groupsSearch(token: String, textQuery:String, completion: ((Result<[VKGroup],Error>) -> Void)? = nil) {
         let baseURL = K.ApiVK.baseUrl
         let path = K.ApiVK.pathGroupsSearch
         
@@ -95,13 +91,9 @@ class NetService{
         sharedDataTask(url: url){ data in
             let decoder = JSONDecoder()
             do{
-                let responce = try decoder.decode(VKGroup.GroupRAW.self,from: data)
+                let responce = try decoder.decode(GroupRAW.self,from: data)
                 if let groups = responce.response.items{
-                    var groupsClear : [VKGroup.Group] = []
-                    for group in groups {
-                        groupsClear.append(VKGroup.Group(item: group))
-                    }
-                    completion?(.success(groupsClear))
+                   completion?(.success(groups))
                 }
 
             }catch(let error){

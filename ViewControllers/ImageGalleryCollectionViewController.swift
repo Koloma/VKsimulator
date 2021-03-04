@@ -34,13 +34,13 @@ class ImageGalleryCollectionViewController: UICollectionViewController, UICollec
                 self.images = photos
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
-                    RealmService.shared.savePhotos(photos)
+                    RealmService.shared?.savePhotos(photos)
                     self.actiIndicatorView.stopAnimating()
                 }
             case .failure(let error):
                 print(error)
                 DispatchQueue.main.async {
-                    self.images = RealmService.shared.loadPhotos()
+                    self.images = RealmService.shared?.loadPhotos() ?? []
                     self.collectionView.reloadData()
                     self.actiIndicatorView.stopAnimating()
                 }

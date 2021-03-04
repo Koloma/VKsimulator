@@ -131,14 +131,14 @@ class MyFrendsViewController: UIViewController {
                 self.friends = users
                 self.filteredFriendsForTable = self.prepareFrendsData(self.friends)
                 DispatchQueue.main.async {
-                    RealmService.shared.saveUsers(users)
+                    RealmService.shared?.saveUsers(users)
                     self.tableView.reloadData()
                     self.tableView.refreshControl?.endRefreshing()
                 }
             case .failure(let error):
                 print(error)
                 DispatchQueue.main.async {
-                    self.friends = RealmService.shared.loadUsers()
+                    self.friends = RealmService.shared?.loadUsers() ?? []
                     self.filteredFriendsForTable = self.prepareFrendsData(self.friends)
                     self.tableView.reloadData()
                     self.tableView.refreshControl?.endRefreshing()
