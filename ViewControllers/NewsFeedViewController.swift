@@ -17,7 +17,7 @@ class NewsFeedViewController: UIViewController {
     "Начало ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Конец"
     ]
     
-    var userNewsFeed: VKUser.User?{
+    var userNewsFeed: VKUser?{
         didSet{
             
         }
@@ -50,14 +50,14 @@ extension NewsFeedViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = newsTableView.dequeueReusableCell(withIdentifier: NewsFeedTableViewCell.identifier, for: indexPath) as? NewsFeedTableViewCell,
            let vkUser = userNewsFeed{
-            cell.configur(vkUser: vkUser, newsText: arrayNews[indexPath.row], newsImage: [UIImage(named: "pic1")!,UIImage(named: "pic2")!], imageTapFunc: imageViewTap)
+            cell.configur(vkUser: vkUser, imageTapFunc: imageViewTap)
 
             return cell
         }
         return UITableViewCell()
     }
     
-    func imageViewTap(_ vkUser: VKUser.User){
+    func imageViewTap(_ vkUser: VKUser){
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         if  let ImageGalleryVC = storyBoard.instantiateViewController(withIdentifier: "ImageGalleryCollectionViewController") as? ImageGalleryCollectionViewController{
             //Здесь передаем данные в NewsFeedViewController

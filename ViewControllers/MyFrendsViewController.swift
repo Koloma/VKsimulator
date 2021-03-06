@@ -11,7 +11,7 @@ class MyFrendsViewController: UIViewController {
 
     private struct FriendsForTable{
         var firstLetter:[String] = []
-        var friends:[[VKUser.User]] = [[]]
+        var friends:[[VKUser]] = [[]]
     }
     
     @IBOutlet weak var searchView: UIView!
@@ -21,7 +21,7 @@ class MyFrendsViewController: UIViewController {
     @IBOutlet weak var searchTextField: UITextField!
     
     
-    private var friends:[VKUser.User] = []
+    private var friends:[VKUser] = []
     private var filteredFriendsForTable = FriendsForTable()
     
     func logOut() {
@@ -32,12 +32,19 @@ class MyFrendsViewController: UIViewController {
         super.viewDidLoad()
         
         setupView();
-        loadUsersData()
         let sbAnimation = SBAnimationFactory.prepearSearchBar()
         let sbAnimator = SBAnimator(animation: sbAnimation)
         sbAnimator.animate(searchImage: searchImageView, textField: searchTextField, cancelImage: cancelImageView, in: searchView)
         
+        loadUsersData()
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+        
+    }
+    
     @IBAction func searchTapped(_ sender: UITapGestureRecognizer) {
         let sbAnimation = SBAnimationFactory.makeAnimation()
         let sbAnimator = SBAnimator(animation: sbAnimation)
@@ -59,9 +66,7 @@ class MyFrendsViewController: UIViewController {
     @objc func textFieldDidChange(_ textField: UITextField) {
         filteringTableData(by: textField.text!)
     }
-    override func viewWillAppear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
+
     override func viewWillDisappear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
@@ -72,7 +77,7 @@ class MyFrendsViewController: UIViewController {
     }
     
     func filteringTableData(by filterText : String){
-        let filteredData = filterText.isEmpty ? friends : friends.filter({(friend: VKUser.User) -> Bool in
+        let filteredData = filterText.isEmpty ? friends : friends.filter({(friend: VKUser) -> Bool in
             return friend.firstName.range(of: filterText, options: .caseInsensitive) != nil
             
         })
@@ -118,14 +123,26 @@ class MyFrendsViewController: UIViewController {
     private func loadUsersData() {
         tableView.refreshControl?.myBeginRefreshing(in: tableView)
 
-        NetService.shared.loadUsers(token: Session.shared.token){[weak self] users in
+        NetService.shared.loadUsers(token: Session.shared.token){[weak self] results in
             guard let self = self else { return }
-            self.friends = users
-            self.filteredFriendsForTable = self.prepareFrendsData(self.friends)
-
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-                self.tableView.refreshControl?.endRefreshing()
+            
+            switch results{
+            case .success(let users):
+                self.friends = users
+                self.filteredFriendsForTable = self.prepareFrendsData(self.friends)
+                DispatchQueue.main.async {
+                    RealmService.shared?.saveUsers(users)
+                    self.tableView.reloadData()
+                    self.tableView.refreshControl?.endRefreshing()
+                }
+            case .failure(let error):
+                print(error)
+                DispatchQueue.main.async {
+                    self.friends = RealmService.shared?.loadUsers() ?? []
+                    self.filteredFriendsForTable = self.prepareFrendsData(self.friends)
+                    self.tableView.reloadData()
+                    self.tableView.refreshControl?.endRefreshing()
+                }         
             }
         }
     }
@@ -133,9 +150,9 @@ class MyFrendsViewController: UIViewController {
     /// Подготавливает данные для отображения в таблице (разбивка на секции, сортировка)
     /// - Parameter data: Исходные данные
     /// - Returns: Данные для отображения в таблице
-    private func prepareFrendsData(_ data:[VKUser.User]) -> FriendsForTable{
+    private func prepareFrendsData(_ data:[VKUser]) -> FriendsForTable{
         var friendsForTable:FriendsForTable = FriendsForTable()
-        friendsForTable.firstLetter = data.map( {String($0.firstName.uppercased().prefix(1)) }).unique.sorted()
+        friendsForTable.firstLetter = data.map( {String(($0.firstName.uppercased().prefix(1))) }).unique.sorted()
         friendsForTable.friends = Array(Dictionary(grouping:data){$0.firstName.uppercased().prefix(1)}.values)
         friendsForTable.friends.sort{ $0[0].firstName.uppercased().prefix(1) < $1[0].firstName.uppercased().prefix(1)}
         return friendsForTable
@@ -163,13 +180,21 @@ extension MyFrendsViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+        return VKUserTableViewCell.cellHeight
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: VKUserTableViewCell.identifier, for: indexPath) as? VKUserTableViewCell{
             let friend = filteredFriendsForTable.friends[indexPath.section][indexPath.row]
-            cell.configur(user: friend)
+            cell.configur(user: friend){
+               
+                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+                if  let userProperty = storyBoard.instantiateViewController(withIdentifier: "UserPropertyVeiwController") as? UserPropertyVeiwController{
+                    userProperty.vkUser = friend
+                    self.navigationController!.pushViewController(userProperty, animated: true)
+                }
+              
+            }
             return cell
         }
         return UITableViewCell()

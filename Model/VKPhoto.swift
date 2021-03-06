@@ -6,119 +6,35 @@
 //
 
 import UIKit
-
-class VKPhoto{
-    
-    struct Photo {
-        var isLikeSet = false
-        
-        var likesCount = 0
-        let albumID, date, id, ownerID: Int
-        var sizes: [Size]
-        let text: String
-        let repostsCount: Int
-        let realOffset: Int
-        
-        
-        init(item: Item) {
-            self.albumID = item.albumID ?? -1
-            self.date = item.date ?? 0
-            self.id = item.id ?? -1
-            self.ownerID = item.ownerID ?? -1
-            self.text = item.text ?? ""
-            self.repostsCount = item.reposts?.count ?? 0
-            self.realOffset = item.realOffset ?? -1
-            self.likesCount = item.likes?.count ?? 0
-            
-            self.sizes = []
-            if let sizes  = item.sizes{
-                var mySizes : [Size] = []
-                for size in sizes{
-                    mySizes.append(Size(height: size.height ?? 0,
-                                           url: size.url ?? "",
-                                           type: size.type ?? "",
-                                           width: size.width ?? 0)
-                    )
-                    self.sizes = mySizes
-                }
-            }
-            
-        }
-        
-        enum ImageType{
-            case s75px
-            case m130px
-            case x604px
-            case z1080
-            case w2560
-        }
-               
-        func getImage(imageType: ImageType, completion: @escaping (UIImage) -> ()){
-            var url:URL?
-            switch imageType {
-            case .s75px:
-                if let index = sizes.firstIndex(where: { $0.type == "s" }){
-                    url = URL(string: sizes[index].url)
-                }
-            case .m130px:
-                if let index = sizes.firstIndex(where: { $0.type == "m" }){
-                    url = URL(string: sizes[index].url)
-                }
-            case .x604px:
-                if let index = sizes.firstIndex(where: { $0.type == "x" }){
-                    url = URL(string: sizes[index].url)
-                }
-            case .z1080:
-                if let index = sizes.firstIndex(where: { $0.type == "z" }){
-                    url = URL(string: sizes[index].url)
-                }
-            case .w2560:
-                if let index = sizes.firstIndex(where: { $0.type == "w" }){
-                    url = URL(string: sizes[index].url)
-                }
-            }
-            
-            if let url = url {
-                ImageCache.shared.load(url: url as NSURL){ image in
-                    completion(image)
-                }
-            }else{
-                completion(ImageCache.placeholderImage)
-            }
-        }
-        
-        struct Reposts {
-            let count: Int
-        }
-
-        struct Size {
-            let height: Int
-            let url: String
-            let type: String
-            let width: Int
-        }
-    }
+import RealmSwift
 
     struct PhotoRAW: Codable {
-        let response: Response
+        let response: ResponsePhoto
     }
 
     // MARK: - Response
-    struct Response: Codable {
+    struct ResponsePhoto: Codable {
         let count: Int?
-        let items: [Item]?
+        let items: [VKPhoto]?
         let more: Int?
     }
 
     // MARK: - Item
-    struct Item: Codable {
-        let albumID, date, id, ownerID: Int?
-        let sizes: [Size]?
-        let text: String?
-        let likes: Likes?
-        let reposts: Reposts?
-        let realOffset: Int?
+    class VKPhoto: Object, Codable {
+        @objc dynamic var id = -1
+        @objc dynamic var albumID = -1
+        @objc dynamic var date = 0
+        @objc dynamic var ownerID = -1
+        @objc dynamic var text: String = ""
+        @objc dynamic var realOffset: Int = 0
+        @objc dynamic var likes: Likes?
+        @objc dynamic var reposts: Reposts?
+        let sizes = List<Size>()
 
+        override class func indexedProperties() -> [String] {
+            ["id"]
+        }
+        
         enum CodingKeys: String, CodingKey {
             case albumID = "album_id"
             case date, id
@@ -126,11 +42,32 @@ class VKPhoto{
             case sizes, text, likes, reposts
             case realOffset = "real_offset"
         }
+        
+        enum ImageType: String{
+            case s75px = "s"
+            case m130px = "m"
+            case x604px = "x"
+            case z1080 = "z"
+            case w2560 = "w"
+        }
+               
+        func getImage(imageType: ImageType, completion: @escaping (UIImage) -> ()){
+            if let index = sizes.firstIndex(where: {$0.type == imageType.rawValue}) {
+                if let url = URL(string: sizes[index].url){
+                    ImageCache.shared.load(url: url as NSURL){ image in
+                        completion(image)
+                    }
+                } else{
+                    completion(ImageCache.placeholderImage)
+                }
+                
+            }
+        }
     }
-
     // MARK: - Likes
-    struct Likes: Codable {
-        let userLikes, count: Int?
+    class Likes: Object, Codable {
+        @objc dynamic var userLikes: Int = 0
+        @objc dynamic var count: Int = 0
 
         enum CodingKeys: String, CodingKey {
             case userLikes = "user_likes"
@@ -139,15 +76,16 @@ class VKPhoto{
     }
 
     // MARK: - Reposts
-    struct Reposts: Codable {
-        let count: Int?
+    class Reposts: Object, Codable {
+        @objc dynamic var count: Int = 0
     }
 
     // MARK: - Size
-    struct Size: Codable {
-        let height: Int?
-        let url: String?
-        let type: String?
-        let width: Int?
+    class Size: Object, Codable {
+        @objc dynamic var height: Int = 0
+        @objc dynamic var url: String = ""
+        @objc dynamic var type: String = ""
+        @objc dynamic var width: Int = 0
     }
-}
+
+

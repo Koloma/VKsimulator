@@ -9,7 +9,7 @@ import UIKit
     
 class MyGroupsTableViewController: UITableViewController {
 
-    private var myGroups:[VKGroup.Group] = []
+    private var myGroups:[VKGroup] = []
     
     @IBAction private func logOutButton(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
@@ -18,12 +18,22 @@ class MyGroupsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(VKGroupTableViewCell.nib, forCellReuseIdentifier: VKGroupTableViewCell.identifier)
-        NetService.shared.loadGroups(token: Session.shared.token){[weak self] groups in
+        NetService.shared.loadGroups(token: Session.shared.token){[weak self] result in
             guard let self = self else { return }
-            self.myGroups = groups
             
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
+            switch result{
+            case .success(let groups):
+                self.myGroups = groups
+                DispatchQueue.main.async {
+                    RealmService.shared?.saveGroups(groups)
+                    self.tableView.reloadData()
+                }
+            case .failure(let error):
+                print(error)
+                DispatchQueue.main.async {
+                    self.myGroups = RealmService.shared?.loadGroups() ?? []
+                    self.tableView.reloadData()
+                }
             }
         }
     }
@@ -50,6 +60,7 @@ class MyGroupsTableViewController: UITableViewController {
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
+    
     @IBAction func unwindFromTableViewController(_ segue: UIStoryboardSegue){
         guard let tableVC = segue.source as? GroupsTableViewController,
               let index = tableVC.tableView.indexPathForSelectedRow else { return }
@@ -60,7 +71,6 @@ class MyGroupsTableViewController: UITableViewController {
             myGroups.sort()
             tableView.reloadData()
         }
-
     }
 
 }

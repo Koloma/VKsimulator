@@ -14,7 +14,7 @@ class NetService{
     private init(){
     }
     
-    func loadGroups(token: String, completion: @escaping ([VKGroup.Group]) -> () ) {
+    func loadGroups(token: String, completion: ((Result<[VKGroup],Error>) -> Void)? = nil) {
         let baseURL = K.ApiVK.baseUrl
         let path = K.ApiVK.pathGetGroups
         
@@ -30,22 +30,18 @@ class NetService{
         sharedDataTask(url: url){ data in
             let decoder = JSONDecoder()
             do{
-                let responce = try decoder.decode(VKGroup.GroupRAW.self,from: data)
+                let responce = try decoder.decode(GroupRAW.self,from: data)
                 if let groups = responce.response.items{
-                    var groupsClear : [VKGroup.Group] = []
-                    for group in groups {
-                        groupsClear.append(VKGroup.Group(item: group))
-                    }
-                    completion(groupsClear)
+                    completion?(.success(groups))
                 }
 
             }catch(let error){
-                print(error)
+                completion?(.failure(error))
             }
         }
     }
     
-    func loadUsers(token: String, completion: @escaping ([VKUser.User]) -> () ) {
+    func loadUsers(token: String, completion: ((Result<[VKUser],Error>) -> Void)? = nil) {
         let baseURL = K.ApiVK.baseUrl
         let path = K.ApiVK.pathGetFriends
                
@@ -61,23 +57,19 @@ class NetService{
         sharedDataTask(url: url){ data in
             let decoder = JSONDecoder()
             do{
-                let responce = try decoder.decode(VKUser.UserRAW.self,from: data)
+                let responce = try decoder.decode(UserRAW.self,from: data)
                 if let friends = responce.response.items{
-                    var groupsClear : [VKUser.User] = []
-                    for friend in friends {
-                        groupsClear.append(VKUser.User(item: friend))
-                    }
-                    completion(groupsClear)
+                    completion?(.success(friends))
                 }
 
             }catch(let error){
-                print(error)
+                completion?(.failure(error))
             }
         }
     }
 //    verified,photo_50, photo_100, photo_200_orig, photo_200, photo_400_orig,last_seen, followers_count, common_count, occupation, nickname
 
-    func groupsSearch(token: String, textQuery:String, completion: @escaping ([VKGroup.Group]) -> () ) {
+    func groupsSearch(token: String, textQuery:String, completion: ((Result<[VKGroup],Error>) -> Void)? = nil) {
         let baseURL = K.ApiVK.baseUrl
         let path = K.ApiVK.pathGroupsSearch
         
@@ -95,22 +87,18 @@ class NetService{
         sharedDataTask(url: url){ data in
             let decoder = JSONDecoder()
             do{
-                let responce = try decoder.decode(VKGroup.GroupRAW.self,from: data)
+                let responce = try decoder.decode(GroupRAW.self,from: data)
                 if let groups = responce.response.items{
-                    var groupsClear : [VKGroup.Group] = []
-                    for group in groups {
-                        groupsClear.append(VKGroup.Group(item: group))
-                    }
-                    completion(groupsClear)
+                   completion?(.success(groups))
                 }
 
             }catch(let error){
-                print(error)
+                completion?(.failure(error))
             }
         }
     }
     
-    func loadUserImages(token: String, userId: Int, completion: @escaping ([VKPhoto.Photo]) -> () ) {
+    func loadUserImages(token: String, userId: Int, completion: ((Result<[VKPhoto],Error>) -> Void)? = nil) {
         let baseURL = K.ApiVK.baseUrl
         let path = K.ApiVK.pathGetUserAllPhotos
         
@@ -130,17 +118,13 @@ class NetService{
         sharedDataTask(url: url){ data in
             let decoder = JSONDecoder()
             do{
-                let responce = try decoder.decode(VKPhoto.PhotoRAW.self,from: data)
-                if let photos = responce.response.items{
-                    var photosClear : [VKPhoto.Photo] = []
-                    for photo in photos {
-                        photosClear.append(VKPhoto.Photo(item: photo))
-                    }
-                    completion(photosClear)
+                let response = try decoder.decode(PhotoRAW.self, from: data)
+                if let photos = response.response.items {
+                    completion?(.success(photos))
                 }
 
             }catch(let error){
-                print(error)
+                completion?(.failure(error))
             }
         }
     }
@@ -150,11 +134,11 @@ class NetService{
             if let error = error {
                 print(error)
             }
-            if let response = response{
-                if let httpResponse = response as? HTTPURLResponse {
-                    print("httpResponse.statusCode: \(httpResponse.statusCode)")
-                }
-            }
+//            if let response = response{
+//                if let httpResponse = response as? HTTPURLResponse {
+//                    //print("httpResponse.statusCode: \(httpResponse.statusCode)")
+//                }
+//            }
             if let data = data{
                 completion(data)
             }

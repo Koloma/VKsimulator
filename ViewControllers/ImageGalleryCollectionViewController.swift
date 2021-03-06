@@ -11,7 +11,7 @@ private let cellIdentifier = "Cell"
 
 class ImageGalleryCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
-    private var images:[VKPhoto.Photo] = []
+    private var images:[VKPhoto] = []
 
     private var actiIndicatorView = UIActivityIndicatorView()
     //private var myWaitIndicatorView = MyWaitIndicatorView()
@@ -26,14 +26,26 @@ class ImageGalleryCollectionViewController: UICollectionViewController, UICollec
     private func loadImages() {
         showIndicator()
 
-        NetService.shared.loadUserImages(token: Session.shared.token, userId: Session.shared.userId){[weak self] photos in
+        NetService.shared.loadUserImages(token: Session.shared.token, userId: Session.shared.userId){[weak self] results in
             guard let self = self else { return }
-            self.images = photos
-
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-                self.actiIndicatorView.stopAnimating()
+            
+            switch results {
+            case .success(let photos):
+                self.images = photos
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                    RealmService.shared?.savePhotos(photos)
+                    self.actiIndicatorView.stopAnimating()
+                }
+            case .failure(let error):
+                print(error)
+                DispatchQueue.main.async {
+                    self.images = RealmService.shared?.loadPhotos() ?? []
+                    self.collectionView.reloadData()
+                    self.actiIndicatorView.stopAnimating()
+                }
             }
+
         }
     }
     
@@ -91,13 +103,13 @@ class ImageGalleryCollectionViewController: UICollectionViewController, UICollec
     }
 
     func didTouchHeart(indexPath : IndexPath){
-            if !images[indexPath.row].isLikeSet{
-                images[indexPath.row].isLikeSet = true;
-                images[indexPath.row].likesCount += 1
+        if images[indexPath.row].likes?.userLikes == 0{
+                images[indexPath.row].likes?.userLikes = 1;
+                images[indexPath.row].likes?.count += 1
             }
             else{
-                images[indexPath.row].isLikeSet = false;
-                images[indexPath.row].likesCount -= 1
+                images[indexPath.row].likes?.userLikes = 0;
+                images[indexPath.row].likes?.count -= 1
             }
             self.collectionView.reloadItems(at: [indexPath])
     }

@@ -9,5 +9,6 @@ target 'VKsimulator' do
 
 #  pod 'Alamofire', '~> 5.4.1'
 #  pod 'SwiftyJSON', '~> 5.0'
+  pod 'RealmSwift', '~> 10.7.1'
 
 end

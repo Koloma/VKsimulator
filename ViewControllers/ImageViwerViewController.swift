@@ -13,7 +13,7 @@ class ImageViwerViewController: UIViewController {
    
     var interactiveAnimator: UIViewPropertyAnimator!
    
-    var imageArray:[VKPhoto.Photo] = []
+    var imageArray:[VKPhoto] = []
     var currentImageIndex = 0
     
     override func viewDidLoad() {
@@ -22,13 +22,19 @@ class ImageViwerViewController: UIViewController {
         let panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(imageOnPan(_:)))
         self.view.addGestureRecognizer(panRecognizer)
       
-        NetService.shared.loadUserImages(token: Session.shared.token, userId: Session.shared.userId){photos in
-            self.imageArray = photos
+        NetService.shared.loadUserImages(token: Session.shared.token, userId: Session.shared.userId){results in
             
-            self.imageArray[self.currentImageIndex].getImage(imageType: .x604px){ image in
-                DispatchQueue.main.async {
-                    self.imageView.image = image
+            switch results{
+            case .success(let photos):
+                self.imageArray = photos
+                
+                self.imageArray[self.currentImageIndex].getImage(imageType: .x604px){ image in
+                    DispatchQueue.main.async {
+                        self.imageView.image = image
+                    }
                 }
+            case .failure(let error):
+                print(error)
             }
         }
     }

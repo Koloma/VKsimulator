@@ -9,20 +9,26 @@ import UIKit
 
 class GroupsTableViewController: UITableViewController {
 
-    var groups:[VKGroup.Group] = []
+    var groups:[VKGroup] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(VKGroupTableViewCell.nib, forCellReuseIdentifier: VKGroupTableViewCell.identifier)
         tableView.register(UINib(nibName: "HeaderTableView", bundle: nil), forHeaderFooterViewReuseIdentifier: "HeaderTableView")
         
-        NetService.shared.groupsSearch(token: Session.shared.token, textQuery:"GeekBrains"){[weak self] groups in
+        NetService.shared.groupsSearch(token: Session.shared.token, textQuery:"GeekBrains"){[weak self] results in
             guard let self = self else { return }
-            self.groups = groups
             
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
+            switch results{            
+            case .success(let groups):
+                self.groups = groups
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            case .failure(let error):
+                print(error)
             }
+
         }
     }
 

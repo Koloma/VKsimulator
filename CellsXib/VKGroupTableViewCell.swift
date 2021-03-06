@@ -16,7 +16,7 @@ class VKGroupTableViewCell: UITableViewCell {
     @IBOutlet weak var groupImageView: UIImageView!
     @IBOutlet weak var groupNameLable: UILabel!
     
-    func configur(group : VKGroup.Group){
+    func configur(group : VKGroup){
         groupNameLable.text = group.name
         group.getImage(imageType: .image50){ image in
             DispatchQueue.main.async {
