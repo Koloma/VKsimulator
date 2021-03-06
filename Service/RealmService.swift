@@ -24,12 +24,9 @@ class RealmService{
         #endif
     }
     
-    func saveGroups(_ groups: [VKGroup]){
+    func saveGroups(_ elements: [VKGroup]){
         do {
-            realm.beginWrite()
-            realm.deleteAll()
-            realm.add(groups)
-            try realm.commitWrite()
+            try add(objects: elements)
         } catch {
             print(error)
         }
@@ -47,14 +44,11 @@ class RealmService{
     }
     
     func savePhotos(_ elements: [VKPhoto]){
-//        do {
-//            realm.beginWrite()
-//            realm.deleteAll()
-//            realm.add(elements)
-//            try realm.commitWrite()
-//        } catch {
-//            print(error)
-//        }
+        do {
+            try add(objects: elements)
+        } catch {
+            print(error)
+        }
         #if DEBUG
         print("\(type(of: elements)) saved to realm")
         #endif
@@ -64,8 +58,7 @@ class RealmService{
         #if DEBUG
             print("Photos loaded from realm")
         #endif
-       // return Array(realm.objects(VKPhoto.self))
-        return []
+        return Array(realm.objects(VKPhoto.self))
     }
     
     func saveUsers(_ elements: [VKUser]){
@@ -84,21 +77,6 @@ class RealmService{
             print("Groups loaded from realm")
         #endif
         return Array(realm.objects(VKUser.self))
-    }
-    
-    func save<T1:Object,T2:ConvertToRealm>(typeRealm: T1, _ elements: [T2]){
-        var arrayRealm : [T1] = []
-        for element in elements{
-            arrayRealm.append(element.convertToRealm() as! T1)
-        }
-        do {
-            try add(objects: arrayRealm)
-        } catch {
-            print(error)
-        }
-        #if DEBUG
-        print("\(type(of: elements)) saved to realm")
-        #endif
     }
     
     

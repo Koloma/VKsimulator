@@ -18,7 +18,6 @@ class VKWebViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(MyAppURLs.shared.filePath ?? "filePath error")
         goToVKautorize()
     }
     
