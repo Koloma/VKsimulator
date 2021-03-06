@@ -25,7 +25,7 @@ struct ResponseGroup: Codable {
 // MARK: - Group
 class VKGroup: Object, Codable, Comparable {
 
-    @objc dynamic var id: Int = 0
+    @objc dynamic var id: Int = -1
     @objc dynamic var name: String = ""
     @objc dynamic var screenName: String = ""
     @objc dynamic var isClosed: Int = 0

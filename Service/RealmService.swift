@@ -46,35 +46,26 @@ class RealmService{
         return groups
     }
     
-    func savePhotos(_ elements: [VKPhoto.Photo]){
-        var arrayRealm : [RealmPhoto] = []
-        for element in elements{
-            arrayRealm.append(element.convertToRealm())
-        }
-            
-        do {
-            realm.beginWrite()
-            realm.deleteAll()
-            realm.add(arrayRealm)
-            try realm.commitWrite()
-        } catch {
-            print(error)
-        }
+    func savePhotos(_ elements: [VKPhoto]){
+//        do {
+//            realm.beginWrite()
+//            realm.deleteAll()
+//            realm.add(elements)
+//            try realm.commitWrite()
+//        } catch {
+//            print(error)
+//        }
         #if DEBUG
         print("\(type(of: elements)) saved to realm")
         #endif
     }
     
-    func loadPhotos()->[VKPhoto.Photo]{
-        let realmArray = realm.objects(RealmPhoto.self)
-        var clearArray : [VKPhoto.Photo] = []
-        for item in realmArray{
-            clearArray.append(item.convertToClear())
-        }
+    func loadPhotos()->[VKPhoto]{
         #if DEBUG
-            print("Groups loaded from realm")
+            print("Photos loaded from realm")
         #endif
-        return clearArray
+       // return Array(realm.objects(VKPhoto.self))
+        return []
     }
     
     func saveUsers(_ elements: [VKUser]){

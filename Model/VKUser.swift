@@ -114,7 +114,7 @@ struct ResponseUser: Codable {
 
 // MARK: - VKUser
 class VKUser: Object, Codable {
-    @objc dynamic var id: Int = 0
+    @objc dynamic var id: Int = -1
     @objc dynamic var domain: String? = ""
     @objc dynamic var firstName: String = ""
     @objc dynamic var lastName: String = ""

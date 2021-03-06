@@ -98,7 +98,7 @@ class NetService{
         }
     }
     
-    func loadUserImages(token: String, userId: Int, completion: ((Result<[VKPhoto.Photo],Error>) -> Void)? = nil) {
+    func loadUserImages(token: String, userId: Int, completion: ((Result<[VKPhoto],Error>) -> Void)? = nil) {
         let baseURL = K.ApiVK.baseUrl
         let path = K.ApiVK.pathGetUserAllPhotos
         
@@ -118,13 +118,9 @@ class NetService{
         sharedDataTask(url: url){ data in
             let decoder = JSONDecoder()
             do{
-                let responce = try decoder.decode(VKPhoto.PhotoRAW.self,from: data)
-                if let photos = responce.response.items{
-                    var photosClear : [VKPhoto.Photo] = []
-                    for photo in photos {
-                        photosClear.append(VKPhoto.Photo(item: photo))
-                    }
-                    completion?(.success(photosClear))
+                let response = try decoder.decode(PhotoRAW.self, from: data)
+                if let photos = response.response.items {
+                    completion?(.success(photos))
                 }
 
             }catch(let error){

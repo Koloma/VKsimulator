@@ -50,7 +50,6 @@
 		84A256D225C462E800F372A0 /* View+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A256D125C462E800F372A0 /* View+ext.swift */; };
 		84A26E7E2596EBBA00299CCA /* GroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A26E7D2596EBBA00299CCA /* GroupsTableViewController.swift */; };
 		84A3334025978CE800E7424E /* ImageGalleryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A3333F25978CE800E7424E /* ImageGalleryCollectionViewController.swift */; };
-		84C8919A25DD4B8900F2EB63 /* RealmPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8919925DD4B8900F2EB63 /* RealmPhoto.swift */; };
 		84C891A025DD606800F2EB63 /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8919F25DD606800F2EB63 /* RealmService.swift */; };
 		84CFD10C259747E0007C99FC /* MyGroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CFD10B259747E0007C99FC /* MyGroupsTableViewController.swift */; };
 		84D4756825B446EC00A4705A /* ImageViwerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D4756725B446EC00A4705A /* ImageViwerViewController.swift */; };
@@ -114,7 +113,6 @@
 		84A256D125C462E800F372A0 /* View+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+ext.swift"; sourceTree = "<group>"; };
 		84A26E7D2596EBBA00299CCA /* GroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsTableViewController.swift; sourceTree = "<group>"; };
 		84A3333F25978CE800E7424E /* ImageGalleryCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageGalleryCollectionViewController.swift; sourceTree = "<group>"; };
-		84C8919925DD4B8900F2EB63 /* RealmPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmPhoto.swift; sourceTree = "<group>"; };
 		84C8919F25DD606800F2EB63 /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
 		84CFD10B259747E0007C99FC /* MyGroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupsTableViewController.swift; sourceTree = "<group>"; };
 		84D4756725B446EC00A4705A /* ImageViwerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViwerViewController.swift; sourceTree = "<group>"; };
@@ -194,7 +192,6 @@
 		844A5CA2258FAF7300DB145E = {
 			isa = PBXGroup;
 			children = (
-				84C8919425DD45E500F2EB63 /* Realm */,
 				843D1F7725C1B37700437D18 /* Helper */,
 				843D1F6825C1994700437D18 /* Animators */,
 				84A26E812596F06B00299CCA /* Cells */,
@@ -285,14 +282,6 @@
 				84F28F5725E3A75D001FEBE6 /* ImageWithLikeCounterCollectionViewCell.swift */,
 			);
 			path = Cells;
-			sourceTree = "<group>";
-		};
-		84C8919425DD45E500F2EB63 /* Realm */ = {
-			isa = PBXGroup;
-			children = (
-				84C8919925DD4B8900F2EB63 /* RealmPhoto.swift */,
-			);
-			path = Realm;
 			sourceTree = "<group>";
 		};
 		84D4755E25B40B2C00A4705A /* CustomViewXIB */ = {
@@ -511,7 +500,6 @@
 				844815C925DB6CF000C66398 /* ImageCache.swift in Sources */,
 				848FDAA725A6B886001A6ABE /* ControlView+ext.swift in Sources */,
 				84D4756825B446EC00A4705A /* ImageViwerViewController.swift in Sources */,
-				84C8919A25DD4B8900F2EB63 /* RealmPhoto.swift in Sources */,
 				8448263A25B917DC00425D5A /* DelllNews.swift in Sources */,
 				84F28F5825E3A75D001FEBE6 /* ImageWithLikeCounterCollectionViewCell.swift in Sources */,
 				843D1F7425C1A6DB00437D18 /* CustomSegue.swift in Sources */,

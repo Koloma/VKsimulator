@@ -13,7 +13,7 @@ class ImageViwerViewController: UIViewController {
    
     var interactiveAnimator: UIViewPropertyAnimator!
    
-    var imageArray:[VKPhoto.Photo] = []
+    var imageArray:[VKPhoto] = []
     var currentImageIndex = 0
     
     override func viewDidLoad() {

@@ -11,7 +11,7 @@ private let cellIdentifier = "Cell"
 
 class ImageGalleryCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
-    private var images:[VKPhoto.Photo] = []
+    private var images:[VKPhoto] = []
 
     private var actiIndicatorView = UIActivityIndicatorView()
     //private var myWaitIndicatorView = MyWaitIndicatorView()
@@ -103,13 +103,13 @@ class ImageGalleryCollectionViewController: UICollectionViewController, UICollec
     }
 
     func didTouchHeart(indexPath : IndexPath){
-            if !images[indexPath.row].isLikeSet{
-                images[indexPath.row].isLikeSet = true;
-                images[indexPath.row].likesCount += 1
+        if images[indexPath.row].likes?.userLikes == 0{
+                images[indexPath.row].likes?.userLikes = 1;
+                images[indexPath.row].likes?.count += 1
             }
             else{
-                images[indexPath.row].isLikeSet = false;
-                images[indexPath.row].likesCount -= 1
+                images[indexPath.row].likes?.userLikes = 0;
+                images[indexPath.row].likes?.count -= 1
             }
             self.collectionView.reloadItems(at: [indexPath])
     }
