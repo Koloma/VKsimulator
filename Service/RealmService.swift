@@ -118,25 +118,4 @@ class RealmService{
         }
     }
     
-//    func save<T1,T2>(_ groups: [T1],_ type2: T2.Type) where T2:Object {
-//
-//        guard let realm = realm else { return }
-//
-//        var realmGroups : [T2] = []
-//        for group in groups{
-//            realmGroups.append(group.convertToRealm())
-//        }
-//
-//        do {
-//            realm.beginWrite()
-//            realm.add(realmGroups)
-//            try realm.commitWrite()
-//        } catch {
-//            print(error)
-//        }
-//        #if DEBUG
-//            print("Groups saved to realm")
-//        #endif
-//    }
-    
 }
