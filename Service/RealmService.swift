@@ -35,12 +35,8 @@ class RealmService{
         #endif
     }
     
-    func loadGroups()->[VKGroup]{
-        let groups = Array(realm.objects(VKGroup.self))
-        #if DEBUG
-            print("Groups loaded from realm")
-        #endif
-        return groups
+    func loadGroups()->Results<VKGroup>{
+        return realm.objects(VKGroup.self)
     }
     
     func savePhotos(_ elements: [VKPhoto]){
@@ -55,9 +51,6 @@ class RealmService{
     }
     
     func loadPhotos()->[VKPhoto]{
-        #if DEBUG
-            print("Photos loaded from realm")
-        #endif
         return Array(realm.objects(VKPhoto.self))
     }
     
@@ -73,16 +66,13 @@ class RealmService{
     }
     
     func loadUsers()->[VKUser]{
-        #if DEBUG
-            print("Groups loaded from realm")
-        #endif
         return Array(realm.objects(VKUser.self))
     }
     
     
     func add<T: Object>(objects:[T]) throws{
         try realm.write{
-            realm.add(objects)
+            realm.add(objects,update: .all)
         }
     }
     
@@ -95,5 +85,4 @@ class RealmService{
             realm.delete(object)
         }
     }
-    
 }

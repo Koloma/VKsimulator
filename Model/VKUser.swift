@@ -135,8 +135,8 @@ class VKUser: Object, Codable {
         return "\(firstName) \(lastName)"
     }
     
-    override class func indexedProperties() -> [String] {
-        ["id"]
+    override class func primaryKey() -> String? {
+        "id"
     }
     
     enum CodingKeys: String, CodingKey {
@@ -202,14 +202,3 @@ class LastSeen: Object, Codable {
     @objc dynamic var time: Double = 0
 }
 
-
-//
-//extension VKUser.User{
-//    func convertToRealm() -> RealmUser{
-//        return RealmUser(id: self.id, domain: self.domain, firstName: self.firstName, lastName: self.lastName, sex: self.sex, photo50: self.photo50, photo100: self.photo100, photo200: self.photo200, online: self.online, nickname: self.nickname, country: self.country, status: self.status, lastSeen: Double(self.lastSeen.timeIntervalSince1970), birthdayDate: self.birthdayDate, city: self.city, followersCount: self.followersCount )
-//    }
-//
-//    func convertToRealm() -> Object {
-//        return RealmUser(id: self.id, domain: self.domain, firstName: self.firstName, lastName: self.lastName, sex: self.sex, photo50: self.photo50, photo100: self.photo100, photo200: self.photo200, online: self.online, nickname: self.nickname, country: self.country, status: self.status, lastSeen: Double(self.lastSeen.timeIntervalSince1970), birthdayDate: self.birthdayDate, city: self.city, followersCount: self.followersCount)
-//    }
-//}

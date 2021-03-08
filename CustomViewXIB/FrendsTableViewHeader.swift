@@ -9,9 +9,9 @@ import UIKit
 
 class FrendsTableViewHeader: UITableViewHeaderFooterView {
 
-    var textL: String? {
+    var text: String? {
         didSet {
-            label.text = textL
+            label.text = text
         }
     }
     

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -54,8 +54,6 @@
 		84AA526825F3D459004D5466 /* UserPropertyVeiwController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA526725F3D459004D5466 /* UserPropertyVeiwController.swift */; };
 		84CFD10C259747E0007C99FC /* MyGroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CFD10B259747E0007C99FC /* MyGroupsTableViewController.swift */; };
 		84D4756825B446EC00A4705A /* ImageViwerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D4756725B446EC00A4705A /* ImageViwerViewController.swift */; };
-		84D4756B25B4757100A4705A /* HeaderTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D4756A25B4757100A4705A /* HeaderTableView.swift */; };
-		84D4756E25B475AE00A4705A /* HeaderTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D4756D25B475AE00A4705A /* HeaderTableView.xib */; };
 		84DCF44925D3931D006B3DCB /* NetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DCF44825D3931D006B3DCB /* NetService.swift */; };
 		84EF01A325BE78CD00F49415 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EF01A225BE78CD00F49415 /* Animator.swift */; };
 		84EF01A625BEB9FD00F49415 /* SearchBarAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EF01A525BEB9FD00F49415 /* SearchBarAnimator.swift */; };
@@ -115,8 +113,6 @@
 		84AA526725F3D459004D5466 /* UserPropertyVeiwController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPropertyVeiwController.swift; sourceTree = "<group>"; };
 		84CFD10B259747E0007C99FC /* MyGroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupsTableViewController.swift; sourceTree = "<group>"; };
 		84D4756725B446EC00A4705A /* ImageViwerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViwerViewController.swift; sourceTree = "<group>"; };
-		84D4756A25B4757100A4705A /* HeaderTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTableView.swift; sourceTree = "<group>"; };
-		84D4756D25B475AE00A4705A /* HeaderTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderTableView.xib; sourceTree = "<group>"; };
 		84DCF44825D3931D006B3DCB /* NetService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetService.swift; sourceTree = "<group>"; };
 		84EF01A225BE78CD00F49415 /* Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
 		84EF01A525BEB9FD00F49415 /* SearchBarAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarAnimator.swift; sourceTree = "<group>"; };
@@ -281,8 +277,6 @@
 		84D4755E25B40B2C00A4705A /* CustomViewXIB */ = {
 			isa = PBXGroup;
 			children = (
-				84D4756A25B4757100A4705A /* HeaderTableView.swift */,
-				84D4756D25B475AE00A4705A /* HeaderTableView.xib */,
 				84547F8F25B5C0C500B67D86 /* CollectionHeaderView.swift */,
 				84547F8C25B5C08B00B67D86 /* CollectionHeaderView.xib */,
 				849F10AB25BA87D400CF9B38 /* FrendsTableViewHeader.swift */,
@@ -383,7 +377,6 @@
 				84547F8D25B5C08B00B67D86 /* CollectionHeaderView.xib in Resources */,
 				8448264425B9318800425D5A /* VKUserTableViewCell.xib in Resources */,
 				846E01AA259849F5007554E0 /* VKGroupTableViewCell.xib in Resources */,
-				84D4756E25B475AE00A4705A /* HeaderTableView.xib in Resources */,
 				844A5CB6258FAF7300DB145E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -423,7 +416,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "TAGS=\"TODO|FIXME\"\nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.swift\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\"\n";
+			shellScript = "TAGS=\"TODO\"\nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.swift\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\"\n";
 		};
 		BD67FBB5C224A490DEA16EB6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -458,7 +451,6 @@
 				843D1F6E25C19BFE00437D18 /* AnimatorVC.swift in Sources */,
 				84A3334325978FAD00E7424E /* ImageWithLikeCounterCollectionViewCell.swift in Sources */,
 				84A3334025978CE800E7424E /* ImageGalleryCollectionViewController.swift in Sources */,
-				84D4756B25B4757100A4705A /* HeaderTableView.swift in Sources */,
 				8446CA4325C5A35000FC62F2 /* String+ext.swift in Sources */,
 				84F099B125C26909000300A6 /* MyIteractiveTransition.swift in Sources */,
 				843D9A1225B95EE8007F0B1F /* RefreshControl+ext.swift in Sources */,

@@ -249,7 +249,7 @@ extension MyFrendsViewController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: FrendsTableViewHeader.identifier) as? FrendsTableViewHeader{
-            header.textL = filteredFriendsForTable.firstLetter[section]
+            header.text = filteredFriendsForTable.firstLetter[section]
             return header
         }
         return nil

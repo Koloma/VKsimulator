@@ -31,8 +31,8 @@ import RealmSwift
         @objc dynamic var reposts: Reposts?
         let sizes = List<Size>()
 
-        override class func indexedProperties() -> [String] {
-            ["id"]
+        override class func primaryKey() -> String? {
+            "id"
         }
         
         enum CodingKeys: String, CodingKey {

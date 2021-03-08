@@ -9,30 +9,42 @@ import UIKit
 
 class GroupsTableViewController: UITableViewController {
 
-    var groups:[VKGroup] = []
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    var groups:[VKGroup] = []{
+        didSet{
+            self.tableView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(VKGroupTableViewCell.nib, forCellReuseIdentifier: VKGroupTableViewCell.identifier)
-        tableView.register(UINib(nibName: "HeaderTableView", bundle: nil), forHeaderFooterViewReuseIdentifier: "HeaderTableView")
         
-        NetService.shared.groupsSearch(token: Session.shared.token, textQuery:"GeekBrains"){[weak self] results in
-            guard let self = self else { return }
-            
-            switch results{            
+        tableView.register(VKGroupTableViewCell.nib, forCellReuseIdentifier: VKGroupTableViewCell.identifier)
+        searchBar.delegate = self
+        
+    }
+
+    func searchGroup(searchText : String){
+        NetService.shared.groupsSearch(token: Session.shared.token, textQuery:searchText ){[weak self] results in
+           
+            switch results{
             case .success(let groups):
-                self.groups = groups
+                
                 DispatchQueue.main.async {
-                    self.tableView.reloadData()
+                    self?.groups = groups
+                    //self?.tableView.reloadData()
                 }
             case .failure(let error):
                 print(error)
             }
-
         }
     }
-
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let group = groups[indexPath.row]
+        try? RealmService.shared?.add(objects: [group])
+        
         self.performSegue(withIdentifier: "unwindFromTableViewController", sender: self)
     }
     
@@ -55,13 +67,17 @@ class GroupsTableViewController: UITableViewController {
         }
         return UITableViewCell()
     }
+}
 
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "HeaderTableView") as? HeaderTableView{
-            header.text = "Header View TEXT"
-            return header
+extension GroupsTableViewController: UISearchBarDelegate{
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if !searchText.isEmpty{
+            searchGroup(searchText: searchText)
+        }else{
+            groups = []
         }
-        return nil
+        
     }
-
+    
 }
