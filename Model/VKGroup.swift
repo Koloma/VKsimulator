@@ -44,8 +44,8 @@ class VKGroup: Object, Codable, Comparable {
     }
  
    
-    override class func indexedProperties() -> [String] {
-        ["id"]
+    override class func primaryKey() -> String? {
+        "id"
     }
     
     static func == (lhs: VKGroup, rhs: VKGroup) -> Bool {
