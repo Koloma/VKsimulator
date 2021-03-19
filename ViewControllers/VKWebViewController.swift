@@ -7,20 +7,32 @@
 
 import UIKit
 import WebKit
+import FirebaseAuth
 
 class VKWebViewController: UIViewController {
 
+    static let segueIdentifier = "to_first_screen"
+    private var listener: AuthStateDidChangeListenerHandle?
+    
     @IBOutlet weak var webView: WKWebView!{
         didSet{
             webView.navigationDelegate = self
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        listener = Auth.auth().addStateDidChangeListener({ [weak self] (auth, user) in
+            guard user != nil else { return }
+            self?.performSegue(withIdentifier: VKWebViewController.segueIdentifier, sender: self)
+        })
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         goToVKautorize()
     }
-    
     
     func goToVKautorize(){
         var urlComponents = URLComponents()
@@ -42,8 +54,6 @@ class VKWebViewController: UIViewController {
         }else{
             print ("Wron URL conversion")
         }
-        
-        
     }
 }
 
@@ -56,7 +66,6 @@ extension VKWebViewController: WKNavigationDelegate{
             decisionHandler(.allow)
             return
         }
-        //print("fragment \(fragment)")
         
         let params = fragment
             .components(separatedBy: "&")
@@ -65,11 +74,10 @@ extension VKWebViewController: WKNavigationDelegate{
                 var dict = result
                 let key = param[0]
                 let value = param[1]
-                //print("\(key)  \(value)")
                 dict[key] = value
                 return dict
             }
-        //print("params: \(params)")
+
         guard let token = params["access_token"]
               ,let userId = params["user_id"]
         else {
@@ -79,18 +87,26 @@ extension VKWebViewController: WKNavigationDelegate{
         
         Session.shared.token = token
         Session.shared.userId = Int.init(userId)!
-        performSegue(withIdentifier: "to_first_screen", sender: self)
-        //VKNetService.shared.loadFriends(token: token)
-//        VKNetService.shared.loadFriends(token: token){ friends in
-//
-//        }
+        let userEmail = "any@user.com"
+        let password = "123456"
+        Auth.auth().signIn(withEmail: userEmail, password: password) { (result, error) in
+            if let error = error{
+                print(error)
+                Auth.auth().createUser(withEmail: userEmail, password: password) { (result, error) in
+                    if let error = error{
+                        print(error)
+                    }else{
+                        print("Create new User: \(userEmail)")
+//                        self?.performSegue(withIdentifier: VKWebViewController.segueIdentifier, sender: self)
+                    }
+                }
+            }else{
+                print("Auth success")
+//                self?.performSegue(withIdentifier: VKWebViewController.segueIdentifier, sender: self)
+            }
+        }
+        
         decisionHandler(.cancel)
-        
-
-        //VKNetService.shared.loadUserImages(token: token, userId: Session.shared.userId )
-        //VKNetService.shared.groupsSearch(token: token, textQuery: "GeekBrains")
-        
-        //decisionHandler(.cancel)
         
     }
 }

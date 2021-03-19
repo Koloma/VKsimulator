@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2022EF8625FE659C00B1671F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2022EF8525FE659C00B1671F /* GoogleService-Info.plist */; };
+		20769AEF26048C9200BE1D3A /* FirebaseGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20769AEE26048C9200BE1D3A /* FirebaseGroup.swift */; };
 		840C11E025D0199300E7BE7B /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840C11DF25D0199300E7BE7B /* Session.swift */; };
 		843D1F6E25C19BFE00437D18 /* AnimatorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843D1F6D25C19BFE00437D18 /* AnimatorVC.swift */; };
 		843D1F7425C1A6DB00437D18 /* CustomSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843D1F7325C1A6DB00437D18 /* CustomSegue.swift */; };
@@ -65,6 +66,7 @@
 
 /* Begin PBXFileReference section */
 		2022EF8525FE659C00B1671F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		20769AEE26048C9200BE1D3A /* FirebaseGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseGroup.swift; sourceTree = "<group>"; };
 		754C11B25A0C95C9CD13E0A7 /* Pods_VKsimulator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VKsimulator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		840C11DF25D0199300E7BE7B /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		843D1F6D25C19BFE00437D18 /* AnimatorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatorVC.swift; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 		846E01AD25985BC4007554E0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				20769AEE26048C9200BE1D3A /* FirebaseGroup.swift */,
 				8449A33725DA489400639315 /* VKGroup.swift */,
 				8449A33A25DA48AE00639315 /* VKPhoto.swift */,
 				8449A33D25DA74C900639315 /* VKUser.swift */,
@@ -467,6 +470,7 @@
 				846E01A9259849F5007554E0 /* VKGroupTableViewCell.swift in Sources */,
 				8448264325B9318800425D5A /* VKUserTableViewCell.swift in Sources */,
 				8448263F25B921FC00425D5A /* MyFrendsViewController.swift in Sources */,
+				20769AEF26048C9200BE1D3A /* FirebaseGroup.swift in Sources */,
 				849F10AC25BA87D400CF9B38 /* FrendsTableViewHeader.swift in Sources */,
 				844A5CC9258FB1BC00DB145E /* LoginViewController.swift in Sources */,
 				8449A33E25DA74C900639315 /* VKUser.swift in Sources */,

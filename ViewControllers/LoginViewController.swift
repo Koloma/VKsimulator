@@ -11,8 +11,6 @@ class LoginViewController: UIViewController{
     @IBOutlet weak var loginStackView: UIStackView!
     
     var alertControler: UIAlertController!
- 
-    //var myWaitIndicatorView = MyWaitIndicatorView()
     
     override func viewDidLoad() {
         super .viewDidLoad()
@@ -28,9 +26,6 @@ class LoginViewController: UIViewController{
         let hideKeyboardGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         scrollView?.addGestureRecognizer(hideKeyboardGesture)
         
-                
-//        myWaitIndicatorView.createIndicatorWait(ownerView: self.view)
-//        myWaitIndicatorView.isHidden = false
     }
     
     @IBAction func registerButtonTap ( _ sender : UIButton){
