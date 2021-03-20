@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "A104F0C3-CD94-4B5E-84EF-8FD6BA81F05F"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5B602380-DF02-495F-9734-E91861A0E5D3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ViewControllers/GroupsTableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "addNewGroupToFirebase(group:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "5B602380-DF02-495F-9734-E91861A0E5D3 - 63eb373cdbe2f64b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "VKsimulator.GroupsTableViewController.(loadData in _68A09FBE04D14CEF0EAEC208E7CC57F9)(complition: Swift.Optional&lt;() -&gt; ()&gt;) -&gt; ()"
+                  moduleName = "VKsimulator"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/koloma/Documents/VKsimulator/ViewControllers/GroupsTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "48">
+               </Location>
+               <Location
+                  uuid = "5B602380-DF02-495F-9734-E91861A0E5D3 - ea85553dbb44f285"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.Array&lt;VKsimulator.VKGroup&gt;, Swift.Error&gt;) -&gt; () in VKsimulator.GroupsTableViewController.(loadData in _68A09FBE04D14CEF0EAEC208E7CC57F9)(complition: Swift.Optional&lt;() -&gt; ()&gt;) -&gt; ()"
+                  moduleName = "VKsimulator"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/koloma/Documents/VKsimulator/ViewControllers/GroupsTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "241">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D78EBDE7-44E7-487E-AEE2-6483712C09EB"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ViewControllers/MyGroupsTableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
+            landmarkName = "tableView(_:heightForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C41B874E-D4F8-4D5F-9ECC-0AC47D880AB3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ViewControllers/VKWebViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
+            landmarkName = "webView(_:decidePolicyFor:decisionHandler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4995187A-0E5B-4A62-BC75-60D06E24C7F9"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ViewControllers/MyGroupsTableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "MyGroupsTableViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "4995187A-0E5B-4A62-BC75-60D06E24C7F9 - e303e026767de1e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "VKsimulator.MyGroupsTableViewController.groupRef.getter : __C.FIRDatabaseReference"
+                  moduleName = "VKsimulator"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/koloma/Documents/VKsimulator/ViewControllers/MyGroupsTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "126">
+               </Location>
+               <Location
+                  uuid = "4995187A-0E5B-4A62-BC75-60D06E24C7F9 - 4e9b7acd0cd65e0a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "VKsimulator.MyGroupsTableViewController.groupRef.setter : __C.FIRDatabaseReference"
+                  moduleName = "VKsimulator"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/koloma/Documents/VKsimulator/ViewControllers/MyGroupsTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "164">
+               </Location>
+               <Location
+                  uuid = "4995187A-0E5B-4A62-BC75-60D06E24C7F9 - c7a49dff0c196c36"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "VKsimulator.MyGroupsTableViewController.groupRef.modify : __C.FIRDatabaseReference"
+                  moduleName = "VKsimulator"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/koloma/Documents/VKsimulator/ViewControllers/MyGroupsTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "18">
+               </Location>
+               <Location
+                  uuid = "4995187A-0E5B-4A62-BC75-60D06E24C7F9 - 4e4a6ff07d982629"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "VKsimulator.MyGroupsTableViewController.groupRef.modify : __C.FIRDatabaseReference with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "VKsimulator"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/koloma/Documents/VKsimulator/ViewControllers/MyGroupsTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  uuid = "4995187A-0E5B-4A62-BC75-60D06E24C7F9 - ca2014956d269044"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "VKsimulator.MyGroupsTableViewController.init(style: __C.UITableViewStyle) -&gt; VKsimulator.MyGroupsTableViewController"
+                  moduleName = "VKsimulator"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/koloma/Documents/VKsimulator/ViewControllers/MyGroupsTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "260">
+               </Location>
+               <Location
+                  uuid = "4995187A-0E5B-4A62-BC75-60D06E24C7F9 - 230067fdb8919a22"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "VKsimulator.MyGroupsTableViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; VKsimulator.MyGroupsTableViewController"
+                  moduleName = "VKsimulator"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/koloma/Documents/VKsimulator/ViewControllers/MyGroupsTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "324">
+               </Location>
+               <Location
+                  uuid = "4995187A-0E5B-4A62-BC75-60D06E24C7F9 - 6165276e8beaca74"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "VKsimulator.MyGroupsTableViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;VKsimulator.MyGroupsTableViewController&gt;"
+                  moduleName = "VKsimulator"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/koloma/Documents/VKsimulator/ViewControllers/MyGroupsTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "265">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "86586EFA-972B-41FD-8A7F-5CC795310677"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ViewControllers/MyGroupsTableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "loadGroupsData(complition:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "75BAA42C-7C30-4DF2-B24C-4F727C6B2651"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ViewControllers/MyGroupsTableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "notification()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

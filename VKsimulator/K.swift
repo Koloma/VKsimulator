@@ -28,5 +28,8 @@ struct K {
         static let pathGetFriends = "/method/friends.get"
         static let pathGetUserAllPhotos = "/method/photos.getAll"
     }
-
+    
+    struct FireBase{
+        static let pathGroups = "groups"
+    }
 }

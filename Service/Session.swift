@@ -12,7 +12,12 @@ class Session{
     static let shared = Session()
     
     var token: String = ""
-    var userId: Int = Int()
+    var userId: Int = -1{
+        didSet{
+            print("Did set UserId: \(userId)")
+        }
+    }
+    
 
    
     private init() {

@@ -6,16 +6,35 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class GroupsTableViewController: UITableViewController {
 
     @IBOutlet weak var searchBar: UISearchBar!
+    
+    private lazy var groupRef = Database.database().reference(withPath: "\(Session.shared.userId)").child(K.FireBase.pathGroups)
     
     var groups:[VKGroup] = []{
         didSet{
             self.tableView.reloadData()
         }
     }
+    
+    private func addNewGroupToFirebase(group: VKGroup){
+        
+        let firebaseGroup = FirebaseGroup(from: group)
+
+        print("New group add to Firebase: \(group.name) Id: \(group.id)")
+
+            switch Config.dataBaseType {
+            case .database:
+                groupRef.child("\(firebaseGroup.id)").setValue(firebaseGroup.toAnyObject())
+                break
+            case .firestore:
+                break
+            }
+    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +63,7 @@ class GroupsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let group = groups[indexPath.row]
         try? RealmService.shared?.add(objects: [group])
-        
+        addNewGroupToFirebase(group: group)
         self.performSegue(withIdentifier: "unwindFromTableViewController", sender: self)
     }
     

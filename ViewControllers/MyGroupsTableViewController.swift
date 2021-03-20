@@ -7,10 +7,12 @@
 
 import UIKit
 import RealmSwift
+import FirebaseDatabase
     
 class MyGroupsTableViewController: UITableViewController {
 
     private var myGroupsNotificationToken: NotificationToken?
+    private lazy var groupRef = Database.database().reference(withPath: "\(Session.shared.userId)").child(K.FireBase.pathGroups)
     
     private var myGroups:Results<VKGroup>?{
         let groups: Results<VKGroup>? = RealmService.shared?.loadGroups()
@@ -90,6 +92,19 @@ class MyGroupsTableViewController: UITableViewController {
             case .success(let groups):
                 DispatchQueue.main.async {
                     RealmService.shared?.saveGroups(groups)
+                    
+                    let firebaseGroups = groups.map{FirebaseGroup(from: $0) }
+                    print("Groups saved to Firebase")
+                    for group in firebaseGroups{
+                        switch Config.dataBaseType {
+                        case .database:
+                            self?.groupRef.child("\(group.id)").setValue(group.toAnyObject())
+                            break
+                        case .firestore:
+                            break
+                        }
+                    }
+                        
                     self?.tableView.reloadData()
                 }
             case .failure(let error):
@@ -127,7 +142,9 @@ class MyGroupsTableViewController: UITableViewController {
                 tableView.deselectRow(at: indexPath, animated: true)
                 return
             }
-            try? RealmService.shared?.delete(object: group)
+            //try? RealmService.shared?.delete(object: group)
+            print("VKGroup removed from Firebase: \(group.name) Id: \(group.id)")
+            groupRef.child("\(group.id)").removeValue()
         }
     }
     
