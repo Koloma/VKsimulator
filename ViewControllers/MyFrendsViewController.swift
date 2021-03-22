@@ -216,12 +216,13 @@ extension MyFrendsViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
         let vkUser = filteredFriendsForTable.friends[indexPath.section][indexPath.row]
+        
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        if  let newsFeed = storyBoard.instantiateViewController(withIdentifier: "NewsFeedViewController") as? NewsFeedViewController{
-            //Здесь передаем данные в NewsFeedViewController
-            newsFeed.userNewsFeed = vkUser
-            navigationController!.pushViewController(newsFeed, animated: true)
+        if  let imageGallery = storyBoard.instantiateViewController(withIdentifier: "ImageGalleryCollectionViewController") as? ImageGalleryCollectionViewController{
+            imageGallery.user = vkUser
+            navigationController!.pushViewController(imageGallery, animated: true)
         }
     }
     

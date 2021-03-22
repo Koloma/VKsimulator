@@ -27,6 +27,7 @@ struct K {
         static let pathGroupsSearch = "/method/groups.search"
         static let pathGetFriends = "/method/friends.get"
         static let pathGetUserAllPhotos = "/method/photos.getAll"
+        static let pathGetUserNewsfeed = "/method/newsfeed.get"
     }
 
 }
