@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CustomSegue: UIStoryboardSegue {
+final class CustomSegue: UIStoryboardSegue {
     
     override func perform() {
         guard let containerView = source.view.superview else { return }

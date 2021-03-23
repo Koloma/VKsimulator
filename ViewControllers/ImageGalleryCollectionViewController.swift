@@ -6,29 +6,31 @@
 //
 
 import UIKit
+import RealmSwift
 
 private let cellIdentifier = "Cell"
 
-class ImageGalleryCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+final class ImageGalleryCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
+    var user:VKUser!
+    
     private var images:[VKPhoto] = []
-
     private var actiIndicatorView = UIActivityIndicatorView()
     //private var myWaitIndicatorView = MyWaitIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.register(UINib(nibName: "CollectionHeaderView", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "CollectionHeaderView")
-        loadImages()
+        loadImages(vkUser:user)
     }
 
     
-    private func loadImages() {
+    private func loadImages(vkUser:VKUser) {
         showIndicator()
-
-        NetService.shared.loadUserImages(token: Session.shared.token, userId: Session.shared.userId){[weak self] results in
+        
+        NetService.shared.loadUserImages(token: Session.shared.token, userId: vkUser.id){[weak self] results in
             guard let self = self else { return }
-            
+
             switch results {
             case .success(let photos):
                 self.images = photos
@@ -103,7 +105,8 @@ class ImageGalleryCollectionViewController: UICollectionViewController, UICollec
     }
 
     func didTouchHeart(indexPath : IndexPath){
-        if images[indexPath.row].likes?.userLikes == 0{
+        try? RealmService.shared?.myRealm.write({
+            if images[indexPath.row].likes?.userLikes == 0{
                 images[indexPath.row].likes?.userLikes = 1;
                 images[indexPath.row].likes?.count += 1
             }
@@ -111,7 +114,9 @@ class ImageGalleryCollectionViewController: UICollectionViewController, UICollec
                 images[indexPath.row].likes?.userLikes = 0;
                 images[indexPath.row].likes?.count -= 1
             }
-            self.collectionView.reloadItems(at: [indexPath])
+        })
+
+        self.collectionView.reloadItems(at: [indexPath])
     }
     
     func didImageTap(indexPath : IndexPath){
@@ -132,7 +137,7 @@ class ImageGalleryCollectionViewController: UICollectionViewController, UICollec
             
             let imageView = UIImageView(frame: cell.imageView.frame)
             let imagePosition = cell.imageView.positionIn(view: view)
-            print("imagePosition \(imagePosition)")
+            //print("imagePosition \(imagePosition)")
             view.addSubview(imageView)
             imageView.frame = imagePosition
             images[indexPath.row].getImage(imageType: .x604px){ image in
@@ -156,7 +161,14 @@ class ImageGalleryCollectionViewController: UICollectionViewController, UICollec
                 imageView.center = self.view.frame.center
             },completion: { _ in
                 imageView.removeFromSuperview()
-                self.performSegue(withIdentifier: "toImageViewer", sender: self)
+                
+                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+                if  let imageViwer = storyBoard.instantiateViewController(withIdentifier: "ImageViwerViewController") as? ImageViwerViewController{
+                    imageViwer.vkUser = self.user
+                    self.navigationController!.pushViewController(imageViwer, animated: true)
+                }
+                
+//                self.performSegue(withIdentifier: "toImageViewer", sender: self.images[indexPath.row])
             })
             
         }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GroupsTableViewController: UITableViewController {
+final class GroupsTableViewController: UITableViewController {
 
     @IBOutlet weak var searchBar: UISearchBar!
     

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NetService{
+final class NetService{
     
     static let shared = NetService()
     
@@ -102,6 +102,7 @@ class NetService{
         let baseURL = K.ApiVK.baseUrl
         let path = K.ApiVK.pathGetUserAllPhotos
         
+        print(#function + " UserId \(userId)")
         let queryItems = [
             URLQueryItem(name: "access_token", value: token),
             URLQueryItem(name: "owner_id", value: "\(userId)"),
@@ -128,6 +129,45 @@ class NetService{
             }
         }
     }
+    
+    func loadUserNewsfeed(token: String, userId: Int, completion: ((Result<[VKNews],Error>) -> Void)? = nil) {
+        let baseURL = K.ApiVK.baseUrl
+        let path = K.ApiVK.pathGetUserNewsfeed
+        
+        //print(#function + " UserId \(userId)")
+        let queryItems = [
+            URLQueryItem(name: "access_token", value: token),
+            URLQueryItem(name: "owner_id", value: "\(userId)"),
+            URLQueryItem(name: "filters", value: "post"),
+            URLQueryItem(name: "count", value: "10"),
+            URLQueryItem(name: "v", value: K.ApiVK.v)]
+        
+        guard var urlComps = URLComponents(string: baseURL + path) else { return }
+        urlComps.queryItems = queryItems
+        guard let url = urlComps.url else { return }
+        print(url)
+        sharedDataTask(url: url){ data in
+            let decoder = JSONDecoder()
+            do{
+                let response = try decoder.decode(VKNewsRAW.self, from: data)
+                if let news = response.response.items {
+                    completion?(.success(news))
+                }
+                
+            }catch(let error){
+                do{
+                    let eror = try decoder.decode(VKErrorRAW.self, from: data)
+                    print(eror.error.errorMsg)
+                }catch(let err){
+                    print(err)
+                }
+                
+                completion?(.failure(error))
+            }
+        }
+    }
+    
+    
     
     func sharedDataTask(url: URL, completion: @escaping (Data) -> () ) {
         URLSession.shared.dataTask(with: url){ data, response, error in

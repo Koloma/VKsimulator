@@ -7,7 +7,7 @@
 
 import UIKit
 
-class VKUserTableViewCell: UITableViewCell {
+final class VKUserTableViewCell: UITableViewCell {
 
     
     static let cellHeight: CGFloat = 60

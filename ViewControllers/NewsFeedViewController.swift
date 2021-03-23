@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NewsFeedViewController: UIViewController {
+final class NewsFeedViewController: UIViewController {
 
     @IBOutlet weak var newsTableView: UITableView!
     

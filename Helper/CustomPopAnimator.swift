@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CustomPopAnimator: NSObject, UIViewControllerAnimatedTransitioning {
+final class CustomPopAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     internal init(animationType: CustomPushAnimator.AnimationType) {
         self.animationType = animationType
     }

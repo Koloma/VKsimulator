@@ -9,10 +9,14 @@ import Foundation
 import RealmSwift
 
 
-class RealmService{
+final class RealmService{
     
     static let shared = RealmService()
     private let realm : Realm
+    
+    public var myRealm: Realm {
+            return realm
+    }
     
     private init?() {
         let confgurator = Realm.Configuration(schemaVersion: 1, deleteRealmIfMigrationNeeded: true)

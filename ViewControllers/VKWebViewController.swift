@@ -8,7 +8,7 @@
 import UIKit
 import WebKit
 
-class VKWebViewController: UIViewController {
+final class VKWebViewController: UIViewController {
 
     @IBOutlet weak var webView: WKWebView!{
         didSet{
@@ -31,7 +31,9 @@ class VKWebViewController: UIViewController {
             URLQueryItem(name: "client_id", value: "7757926"),
             URLQueryItem(name: "display", value: "mobile"),
             URLQueryItem(name: "redirect_uri", value: "https://oauth.vk.com/blank.html"),
-            URLQueryItem(name: "scope", value: "262150"),
+            //URLQueryItem(name: "scope", value: "262150"),
+            URLQueryItem(name: "scope", value: "270342"),
+            
             URLQueryItem(name: "response_type", value: "token"),
             URLQueryItem(name: "v", value: K.ApiVK.v)
         ]

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ImageWithLikeCounterCollectionViewCell: UICollectionViewCell {
+final class ImageWithLikeCounterCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet private weak var labelTop: UILabel!
     @IBOutlet weak var imageView: UIImageView!
@@ -18,7 +18,8 @@ class ImageWithLikeCounterCollectionViewCell: UICollectionViewCell {
  
     
     func configur(photo: VKPhoto){
-        
+    
+        imageView.image = nil
         photo.getImage(imageType: .x604px) { image in
             DispatchQueue.main.async {
                 self.imageView.image = image

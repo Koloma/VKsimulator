@@ -81,7 +81,7 @@ class VKGroup: Object, Codable, Comparable {
                 completion(image)
             }
         }else{
-            completion(ImageCache.placeholderImage)
+            //completion(ImageCache.placeholderImage)
         }
     }
     

@@ -29,7 +29,7 @@ import RealmSwift
         @objc dynamic var realOffset: Int = 0
         @objc dynamic var likes: Likes?
         @objc dynamic var reposts: Reposts?
-        let sizes = List<Size>()
+        let sizes:[Size]
 
         override class func primaryKey() -> String? {
             "id"
@@ -61,31 +61,8 @@ import RealmSwift
                     completion(ImageCache.placeholderImage)
                 }
                 
+            }else{
+                completion(ImageCache.placeholderImage)
             }
         }
     }
-    // MARK: - Likes
-    class Likes: Object, Codable {
-        @objc dynamic var userLikes: Int = 0
-        @objc dynamic var count: Int = 0
-
-        enum CodingKeys: String, CodingKey {
-            case userLikes = "user_likes"
-            case count
-        }
-    }
-
-    // MARK: - Reposts
-    class Reposts: Object, Codable {
-        @objc dynamic var count: Int = 0
-    }
-
-    // MARK: - Size
-    class Size: Object, Codable {
-        @objc dynamic var height: Int = 0
-        @objc dynamic var url: String = ""
-        @objc dynamic var type: String = ""
-        @objc dynamic var width: Int = 0
-    }
-
-

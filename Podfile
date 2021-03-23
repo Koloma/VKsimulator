@@ -10,11 +10,11 @@ target 'VKsimulator' do
 
 #  pod 'Alamofire', '~> 5.4.1'
 #  pod 'SwiftyJSON', '~> 5.0'
+#  pod 'Firebase/Core', '~> 7.8.1'
+#  pod 'Firebase/Auth', '~> 7.8.1'
+#  pod 'Firebase/Database', '~> 7.8.1'
+#  pod 'Firebase/Firestore', '~> 7.8.1'
   pod 'RealmSwift', '~> 10.7.2'
-  pod 'Firebase/Core', '~> 7.8.1'
-  pod 'Firebase/Auth', '~> 7.8.1'
-  pod 'Firebase/Database', '~> 7.8.1'
-  pod 'Firebase/Firestore', '~> 7.8.1'
   
   post_install do |installer|
     installer.pods_project.targets.each do |target|
