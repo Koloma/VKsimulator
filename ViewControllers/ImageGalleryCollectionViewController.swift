@@ -10,7 +10,7 @@ import RealmSwift
 
 private let cellIdentifier = "Cell"
 
-class ImageGalleryCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+final class ImageGalleryCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
     var user:VKUser!
     

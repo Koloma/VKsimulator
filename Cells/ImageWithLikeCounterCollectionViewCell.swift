@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ImageWithLikeCounterCollectionViewCell: UICollectionViewCell {
+final class ImageWithLikeCounterCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet private weak var labelTop: UILabel!
     @IBOutlet weak var imageView: UIImageView!

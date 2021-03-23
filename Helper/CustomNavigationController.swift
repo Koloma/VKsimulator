@@ -7,7 +7,7 @@
 
 import UIKit
 //L9 01:25:00
-class CustomNavigationController: UINavigationController, UINavigationControllerDelegate {
+final class CustomNavigationController: UINavigationController, UINavigationControllerDelegate {
 
     let interactiveTransition = MyIteractiveTransition()
     

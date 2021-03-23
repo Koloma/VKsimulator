@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MyFrendsViewController: UIViewController {
+final class MyFrendsViewController: UIViewController {
 
     private struct FriendsForTable{
         var firstLetter:[String] = []

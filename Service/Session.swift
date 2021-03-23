@@ -7,7 +7,7 @@
 
 import UIKit
 
-class Session{
+final class Session{
     
     static let shared = Session()
     

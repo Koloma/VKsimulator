@@ -7,7 +7,7 @@
 
 import UIKit
 
-class VKGroupTableViewCell: UITableViewCell {
+final class VKGroupTableViewCell: UITableViewCell {
 
     static let nib = UINib(nibName: "VKGroupTableViewCell", bundle: nil)
     static let identifier = "CellGroup"

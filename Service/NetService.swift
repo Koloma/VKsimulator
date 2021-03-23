@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NetService{
+final class NetService{
     
     static let shared = NetService()
     
@@ -134,7 +134,7 @@ class NetService{
         let baseURL = K.ApiVK.baseUrl
         let path = K.ApiVK.pathGetUserNewsfeed
         
-        print(#function + " UserId \(userId)")
+        //print(#function + " UserId \(userId)")
         let queryItems = [
             URLQueryItem(name: "access_token", value: token),
             URLQueryItem(name: "owner_id", value: "\(userId)"),
@@ -145,7 +145,7 @@ class NetService{
         guard var urlComps = URLComponents(string: baseURL + path) else { return }
         urlComps.queryItems = queryItems
         guard let url = urlComps.url else { return }
-        
+        print(url)
         sharedDataTask(url: url){ data in
             let decoder = JSONDecoder()
             do{
@@ -153,8 +153,15 @@ class NetService{
                 if let news = response.response.items {
                     completion?(.success(news))
                 }
-
+                
             }catch(let error){
+                do{
+                    let eror = try decoder.decode(VKErrorRAW.self, from: data)
+                    print(eror.error.errorMsg)
+                }catch(let err){
+                    print(err)
+                }
+                
                 completion?(.failure(error))
             }
         }

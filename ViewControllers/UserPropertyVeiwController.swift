@@ -7,7 +7,7 @@
 
 import UIKit
 
-class UserPropertyVeiwController: UIViewController{
+final class UserPropertyVeiwController: UIViewController{
     
     @IBOutlet weak var userImageVew: UIImageView!
     @IBOutlet weak var userFio: UILabel!

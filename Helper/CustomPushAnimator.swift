@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CustomPushAnimator: NSObject, UIViewControllerAnimatedTransitioning {
+final class CustomPushAnimator: NSObject, UIViewControllerAnimatedTransitioning {
 
     internal init(animationType: CustomPushAnimator.AnimationType) {
         self.animationType = animationType

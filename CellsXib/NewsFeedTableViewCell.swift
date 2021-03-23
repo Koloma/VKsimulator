@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NewsFeedTableViewCell: UITableViewCell {
+final class NewsFeedTableViewCell: UITableViewCell {
     
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var userNicLable: UILabel!

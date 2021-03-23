@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2022EF8625FE659C00B1671F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2022EF8525FE659C00B1671F /* GoogleService-Info.plist */; };
 		2058EAD72608F50100BEECA3 /* VKNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2058EAD62608F50100BEECA3 /* VKNews.swift */; };
 		2058EADB2608F62C00BEECA3 /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2058EADA2608F62C00BEECA3 /* Size.swift */; };
 		2058EADE2608F68200BEECA3 /* Likes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2058EADD2608F68200BEECA3 /* Likes.swift */; };
 		2058EAE12608F6E400BEECA3 /* Reposts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2058EAE02608F6E400BEECA3 /* Reposts.swift */; };
+		2069AC45260A287B008928F9 /* VKError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2069AC44260A287B008928F9 /* VKError.swift */; };
 		20C1A11F26077E6E00B37868 /* NewsFeed2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C1A11E26077E6E00B37868 /* NewsFeed2ViewController.swift */; };
 		840C11E025D0199300E7BE7B /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840C11DF25D0199300E7BE7B /* Session.swift */; };
 		843D1F6E25C19BFE00437D18 /* AnimatorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843D1F6D25C19BFE00437D18 /* AnimatorVC.swift */; };
@@ -68,11 +68,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2022EF8525FE659C00B1671F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2058EAD62608F50100BEECA3 /* VKNews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKNews.swift; sourceTree = "<group>"; };
 		2058EADA2608F62C00BEECA3 /* Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; };
 		2058EADD2608F68200BEECA3 /* Likes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Likes.swift; sourceTree = "<group>"; };
 		2058EAE02608F6E400BEECA3 /* Reposts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reposts.swift; sourceTree = "<group>"; };
+		2069AC44260A287B008928F9 /* VKError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKError.swift; sourceTree = "<group>"; };
 		20C1A11D2607756B00B37868 /* VKsimulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VKsimulator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20C1A11E26077E6E00B37868 /* NewsFeed2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeed2ViewController.swift; sourceTree = "<group>"; };
 		754C11B25A0C95C9CD13E0A7 /* Pods_VKsimulator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VKsimulator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -216,7 +216,6 @@
 				844A5CB4258FAF7300DB145E /* Main.storyboard */,
 				844A5CB7258FAF7400DB145E /* Assets.xcassets */,
 				844A5CBC258FAF7400DB145E /* Info.plist */,
-				2022EF8525FE659C00B1671F /* GoogleService-Info.plist */,
 			);
 			path = VKsimulator;
 			sourceTree = "<group>";
@@ -268,6 +267,7 @@
 				2058EADA2608F62C00BEECA3 /* Size.swift */,
 				2058EADD2608F68200BEECA3 /* Likes.swift */,
 				2058EAE02608F6E400BEECA3 /* Reposts.swift */,
+				2069AC44260A287B008928F9 /* VKError.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -379,7 +379,6 @@
 			files = (
 				844A5CBB258FAF7400DB145E /* LaunchScreen.storyboard in Resources */,
 				8446CA3725C56DC000FC62F2 /* NewsFeedTableViewCell.xib in Resources */,
-				2022EF8625FE659C00B1671F /* GoogleService-Info.plist in Resources */,
 				844A5CB8258FAF7400DB145E /* Assets.xcassets in Resources */,
 				849F10A925BA87B500CF9B38 /* FrendsTableViewHeader.xib in Resources */,
 				84547F8D25B5C08B00B67D86 /* CollectionHeaderView.xib in Resources */,
@@ -494,6 +493,7 @@
 				84A256D225C462E800F372A0 /* View+ext.swift in Sources */,
 				84DCF44925D3931D006B3DCB /* NetService.swift in Sources */,
 				84547F9025B5C0C500B67D86 /* CollectionHeaderView.swift in Sources */,
+				2069AC45260A287B008928F9 /* VKError.swift in Sources */,
 				844815C925DB6CF000C66398 /* ImageCache.swift in Sources */,
 				848FDAA725A6B886001A6ABE /* ControlView+ext.swift in Sources */,
 				2058EADE2608F68200BEECA3 /* Likes.swift in Sources */,

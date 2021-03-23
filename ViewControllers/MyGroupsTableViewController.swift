@@ -8,7 +8,7 @@
 import UIKit
 import RealmSwift
     
-class MyGroupsTableViewController: UITableViewController {
+final class MyGroupsTableViewController: UITableViewController {
 
     private var myGroupsNotificationToken: NotificationToken?
     

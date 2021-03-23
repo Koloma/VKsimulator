@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BezierViewController: UIViewController {
+final class BezierViewController: UIViewController {
 
     
     @IBOutlet weak var greenView: UIView!
