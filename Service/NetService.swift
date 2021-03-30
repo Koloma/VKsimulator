@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 final class NetService{
     
@@ -133,8 +134,7 @@ final class NetService{
     func loadUserNewsfeed(token: String, userId: Int, completion: ((Result<[VKNews],Error>) -> Void)? = nil) {
         let baseURL = K.ApiVK.baseUrl
         let path = K.ApiVK.pathGetUserNewsfeed
-        
-        //print(#function + " UserId \(userId)")
+
         let queryItems = [
             URLQueryItem(name: "access_token", value: token),
             URLQueryItem(name: "owner_id", value: "\(userId)"),
@@ -147,26 +147,30 @@ final class NetService{
         guard let url = urlComps.url else { return }
         print(url)
         sharedDataTask(url: url){ data in
+            
             let decoder = JSONDecoder()
-            do{
-                let response = try decoder.decode(VKNewsRAW.self, from: data)
-                if let news = response.response.items {
-                    completion?(.success(news))
+            let json = JSON(data)
+            let vkNewsJSONArr = json["response"]["items"].arrayValue
+            let dispatchGroup = DispatchGroup()
+            var vkNewsArray:[VKNews] = []
+            for (index, news) in vkNewsJSONArr.enumerated() {
+                DispatchQueue.global(qos: .userInteractive).async(group: dispatchGroup) {
+                    do{
+                        let decodeVKNews = try decoder.decode(VKNews.self, from: news.rawData())
+                        print ("Decode news at index: \(index)")
+                        vkNewsArray.append(decodeVKNews)
+                    }catch(let errorDecode){
+                        print("Decode error it index \(index): \(errorDecode)")
+                        //completion?(.failure(errorDecode))
+                    }
                 }
-                
-            }catch(let error){
-                do{
-                    let eror = try decoder.decode(VKErrorRAW.self, from: data)
-                    print(eror.error.errorMsg)
-                }catch(let err){
-                    print(err)
-                }
-                
-                completion?(.failure(error))
+            }
+            
+            dispatchGroup.notify(queue: DispatchQueue.main) {
+                completion?(.success(vkNewsArray))
             }
         }
     }
-    
     
     
     func sharedDataTask(url: URL, completion: @escaping (Data) -> () ) {

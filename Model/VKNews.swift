@@ -8,42 +8,19 @@
 import UIKit
 
 struct VKNewsRAW: Codable {
-    let response: Response
+    let response: ResponseNews
 }
 
 // MARK: - Response
-struct Response: Codable {
+struct ResponseNews: Codable {
     let items: [VKNews]?
-    let profiles: [Profile]?
-    let groups: [Group]?
+    let profiles: [VKProfile]?
+    let groups: [VKGroup]?
     let nextFrom: String?
 
     enum CodingKeys: String, CodingKey {
         case items, profiles, groups
         case nextFrom = "next_from"
-    }
-}
-
-// MARK: - Group
-struct Group: Codable {
-    let id: Int?
-    let name, screenName: String?
-    let isClosed: Int?
-    let type: String?
-    let isAdmin, isMember, isAdvertiser: Int?
-    let photo50, photo100, photo200: String?
-
-    enum CodingKeys: String, CodingKey {
-        case id, name
-        case screenName = "screen_name"
-        case isClosed = "is_closed"
-        case type
-        case isAdmin = "is_admin"
-        case isMember = "is_member"
-        case isAdvertiser = "is_advertiser"
-        case photo50 = "photo_50"
-        case photo100 = "photo_100"
-        case photo200 = "photo_200"
     }
 }
 
@@ -87,27 +64,7 @@ struct VKNews: Codable {
 // MARK: - Attachment
 struct Attachment: Codable {
     let type: String?
-    let photo: Photo?
-}
-
-// MARK: - Photo
-struct Photo: Codable {
-    let albumID, date, id, ownerID: Int?
-    let hasTags: Bool?
-    let accessKey: String?
-    let sizes: [Size]?
-    let text: String?
-    let userID: Int?
-
-    enum CodingKeys: String, CodingKey {
-        case albumID = "album_id"
-        case date, id
-        case ownerID = "owner_id"
-        case hasTags = "has_tags"
-        case accessKey = "access_key"
-        case sizes, text
-        case userID = "user_id"
-    }
+    let photo: VKPhoto?
 }
 
 // MARK: - Comments
@@ -128,42 +85,4 @@ struct PostSource: Codable {
 // MARK: - Views
 struct Views: Codable {
     let count: Int?
-}
-
-// MARK: - Profile
-struct Profile: Codable {
-    let firstName: String?
-    let id: Int?
-    let lastName: String?
-    let canAccessClosed, isClosed: Bool?
-    let sex: Int?
-    let screenName: String?
-    let photo50, photo100: String?
-    let onlineInfo: OnlineInfo?
-    let online: Int?
-
-    enum CodingKeys: String, CodingKey {
-        case firstName = "first_name"
-        case id
-        case lastName = "last_name"
-        case canAccessClosed = "can_access_closed"
-        case isClosed = "is_closed"
-        case sex
-        case screenName = "screen_name"
-        case photo50 = "photo_50"
-        case photo100 = "photo_100"
-        case onlineInfo = "online_info"
-        case online
-    }
-}
-
-// MARK: - OnlineInfo
-struct OnlineInfo: Codable {
-    let visible, isOnline, isMobile: Bool?
-
-    enum CodingKeys: String, CodingKey {
-        case visible
-        case isOnline = "is_online"
-        case isMobile = "is_mobile"
-    }
 }

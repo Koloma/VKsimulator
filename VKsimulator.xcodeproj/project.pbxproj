@@ -11,8 +11,10 @@
 		2058EADB2608F62C00BEECA3 /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2058EADA2608F62C00BEECA3 /* Size.swift */; };
 		2058EADE2608F68200BEECA3 /* Likes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2058EADD2608F68200BEECA3 /* Likes.swift */; };
 		2058EAE12608F6E400BEECA3 /* Reposts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2058EAE02608F6E400BEECA3 /* Reposts.swift */; };
+		205CA78B261226C000162F84 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205CA78A261226C000162F84 /* Response.swift */; };
 		2069AC45260A287B008928F9 /* VKError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2069AC44260A287B008928F9 /* VKError.swift */; };
 		20C1A11F26077E6E00B37868 /* NewsFeed2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C1A11E26077E6E00B37868 /* NewsFeed2ViewController.swift */; };
+		20ED452D2610D7350043AA58 /* VKProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED452C2610D7350043AA58 /* VKProfile.swift */; };
 		840C11E025D0199300E7BE7B /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840C11DF25D0199300E7BE7B /* Session.swift */; };
 		843D1F6E25C19BFE00437D18 /* AnimatorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843D1F6D25C19BFE00437D18 /* AnimatorVC.swift */; };
 		843D1F7425C1A6DB00437D18 /* CustomSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843D1F7325C1A6DB00437D18 /* CustomSegue.swift */; };
@@ -72,9 +74,11 @@
 		2058EADA2608F62C00BEECA3 /* Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; };
 		2058EADD2608F68200BEECA3 /* Likes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Likes.swift; sourceTree = "<group>"; };
 		2058EAE02608F6E400BEECA3 /* Reposts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reposts.swift; sourceTree = "<group>"; };
+		205CA78A261226C000162F84 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		2069AC44260A287B008928F9 /* VKError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKError.swift; sourceTree = "<group>"; };
 		20C1A11D2607756B00B37868 /* VKsimulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VKsimulator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20C1A11E26077E6E00B37868 /* NewsFeed2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeed2ViewController.swift; sourceTree = "<group>"; };
+		20ED452C2610D7350043AA58 /* VKProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKProfile.swift; sourceTree = "<group>"; };
 		754C11B25A0C95C9CD13E0A7 /* Pods_VKsimulator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VKsimulator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		840C11DF25D0199300E7BE7B /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		843D1F6D25C19BFE00437D18 /* AnimatorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatorVC.swift; sourceTree = "<group>"; };
@@ -268,6 +272,8 @@
 				2058EADD2608F68200BEECA3 /* Likes.swift */,
 				2058EAE02608F6E400BEECA3 /* Reposts.swift */,
 				2069AC44260A287B008928F9 /* VKError.swift */,
+				20ED452C2610D7350043AA58 /* VKProfile.swift */,
+				205CA78A261226C000162F84 /* Response.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -478,10 +484,12 @@
 				8449A33E25DA74C900639315 /* VKUser.swift in Sources */,
 				84AA526825F3D459004D5466 /* UserPropertyVeiwController.swift in Sources */,
 				8446CA0325C5069200FC62F2 /* ImageTransitionAnimator.swift in Sources */,
+				205CA78B261226C000162F84 /* Response.swift in Sources */,
 				8450262125C008FA0026B63F /* BezierViewController.swift in Sources */,
 				8449A33B25DA48AE00639315 /* VKPhoto.swift in Sources */,
 				84F099AE25C26355000300A6 /* CustomPopAnimator.swift in Sources */,
 				843D1F7C25C1B4A900437D18 /* CustomPushAnimator.swift in Sources */,
+				20ED452D2610D7350043AA58 /* VKProfile.swift in Sources */,
 				844A5CAF258FAF7300DB145E /* AppDelegate.swift in Sources */,
 				844A5CB1258FAF7300DB145E /* SceneDelegate.swift in Sources */,
 				8461A28C25A2F7510080C9CF /* ImageView+ext.swift in Sources */,

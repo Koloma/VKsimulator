@@ -26,6 +26,7 @@ final class NewsFeed2ViewController: UIViewController {
             switch result{
             case .success(let news):
                 DispatchQueue.main.async {
+                    print("News count: \(news.count)")
                     _ = news.map{ print($0.text as Any)}
                 }
             case .failure(let error):

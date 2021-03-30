@@ -15,6 +15,7 @@ target 'VKsimulator' do
 #  pod 'Firebase/Database', '~> 7.8.1'
 #  pod 'Firebase/Firestore', '~> 7.8.1'
   pod 'RealmSwift', '~> 10.7.2'
+  pod 'SwiftyJSON', '~> 5.0.1'
   
   post_install do |installer|
     installer.pods_project.targets.each do |target|
