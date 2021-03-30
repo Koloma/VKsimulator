@@ -13,7 +13,7 @@ struct UserRAW: Codable {
     let response: ResponseUser
 }
 
-// MARK: - Response
+// MARK: - ResponseUser
 struct ResponseUser: Codable {
     let count: Int?
     let items: [VKUser]?

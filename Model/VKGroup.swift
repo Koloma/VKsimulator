@@ -15,7 +15,7 @@ struct GroupRAW: Codable {
     let response: ResponseGroup
 }
 
-// MARK: - Response
+// MARK: - ResponseGroup
 struct ResponseGroup: Codable {
     let count: Int?
     let items: [VKGroup]?

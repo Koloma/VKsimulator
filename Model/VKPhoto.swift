@@ -26,7 +26,7 @@ import RealmSwift
         @objc dynamic var date = 0
         @objc dynamic var ownerID = -1
         @objc dynamic var text: String = ""
-        @objc dynamic var realOffset: Int = 0
+        //@objc dynamic var realOffset: Int = 0
         @objc dynamic var likes: Likes?
         @objc dynamic var reposts: Reposts?
         let sizes:[Size]
@@ -40,7 +40,7 @@ import RealmSwift
             case date, id
             case ownerID = "owner_id"
             case sizes, text, likes, reposts
-            case realOffset = "real_offset"
+           // case realOffset = "real_offset"
         }
         
         enum ImageType: String{
