@@ -31,7 +31,7 @@ final class MyFrendsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupView();
+        setupViewController();
         let sbAnimation = SBAnimationFactory.prepearSearchBar()
         let sbAnimator = SBAnimator(animation: sbAnimation)
         sbAnimator.animate(searchImage: searchImageView, textField: searchTextField, cancelImage: cancelImageView, in: searchView)
@@ -42,7 +42,6 @@ final class MyFrendsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
-        
     }
     
     @IBAction func searchTapped(_ sender: UITapGestureRecognizer) {
@@ -95,7 +94,7 @@ final class MyFrendsViewController: UIViewController {
         searchView.layer.insertSublayer(gradientLayer, at: 0)
     }
     
-    private func setupView(){
+    private func setupViewController(){
         
         searchTextField.delegate = self
         searchTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
@@ -118,12 +117,34 @@ final class MyFrendsViewController: UIViewController {
 
     @objc func refreshTableView(_ sender: AnyObject){
         loadUsersData()
+        
     }
  
+    private func loadDataOperation(){
+        let OPQ = OperationQueue()
+        //OPQ.maxConcurrentOperationCount = 1
+        let request = NetService.shared.getUsersRequest()
+        let getaDataOp = GetDataOperation(request: request)
+        
+        let parseData = ParseDataUserOperation()
+        parseData.addDependency(getaDataOp)
+        
+        let reloadTbaleOp = ReloadTableControllerOperation(controller: tableView)
+        reloadTbaleOp.addDependency(parseData)
+        
+        OPQ.addOperations([getaDataOp,parseData, reloadTbaleOp], waitUntilFinished: false)
+        
+        //            self.friends = users
+        //            self.filteredFriendsForTable = self.prepareFrendsData(self.friends)
+        
+    }
+    
     private func loadUsersData() {
         tableView.refreshControl?.myBeginRefreshing(in: tableView)
-
-        NetService.shared.loadUsers(token: Session.shared.token){[weak self] results in
+ 
+        loadDataOperation()
+        
+        NetService.shared.loadUsers(){[weak self] results in
             guard let self = self else { return }
             
             switch results{

@@ -28,46 +28,35 @@ final class NewsFeedTableViewCell: UITableViewCell {
     static let identifier = "CellNews"
     
     
-    var numberOfLike = 99
-    var numberOfViews = 32
-    
-    typealias ImageViewTapFunc =  (VKUser) -> Void
+    typealias ImageViewTapFunc =  (VKNews) -> Void
     private var newsImageViewTap : ImageViewTapFunc?
-    private var vkUser: VKUser?
+    private var numberOfLike = 0
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
-    func configur(vkUser: VKUser, imageTapFunc: @escaping ImageViewTapFunc){
+    func configur(vkNews: VKNews, imageTapFunc: @escaping ImageViewTapFunc){
         newsImageViewTap = imageTapFunc
-        self.vkUser = vkUser
-        userNicLable.text = vkUser.fio
-        vkUser.getImage(imageType: .image50){ image in
+        userNicLable.text = "vkUser.fio"
+        vkNews.getImage(){ image in
             DispatchQueue.main.async {
-                self.userImageView.image = image
+                self.newsImageView.image = image
             }
         }
+        
+        numberOfLike = vkNews.likes?.count ?? 0
         numberOfLikeLable.text = String(numberOfLike)
-        numberOfViewsLable.text = String(numberOfViews)
-        let date = Date()
+        numberOfViewsLable.text = String(vkNews.views?.count ?? 0)
+        
+        let date = Date(timeIntervalSince1970: vkNews.date)
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
         dateLable.text = dateFormatter.string(from: date)
-        newsTextView.text = "news Text"
-        newsImageView.image = UIImage(named: "pic1")
+        newsTextView.text = vkNews.text ??  "News not loaded"
         
         contentView.layer.borderWidth = 1
         contentView.layer.borderColor = UIColor.lightGray.cgColor
-        //newsTextView.adjustHeight()
-        
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(likeTapped))
         let tapGesture2 = UITapGestureRecognizer(target: self, action: #selector(likeTapped))
@@ -87,14 +76,13 @@ final class NewsFeedTableViewCell: UITableViewCell {
     }
     
     @objc func newsImageViewTaped(){
-        guard let vkUser = vkUser else { return }
-        newsImageViewTap?(vkUser)
+//        guard let vkUser = vkUser else { return }
+//        newsImageViewTap?(vkUser)
     }
     
     @objc func likeTapped(_ sender: UIView) {
-        numberOfLike += 1
         UIView.transition(with: numberOfLikeLable, duration: 0.5, options: [.transitionFlipFromLeft], animations: {
-            self.numberOfLikeLable.text = String(self.numberOfLike)
+            self.numberOfLikeLable.text = String(self.numberOfLike + 1)
         })
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1.0, options: [], animations: {
             self.likeViewImage.bounds.size = CGSize(width: self.likeViewImage.bounds.width / 2, height: self.likeViewImage.bounds.height / 2)
