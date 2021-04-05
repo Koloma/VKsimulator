@@ -128,7 +128,7 @@ final class MyFrendsViewController: UIViewController {
     }
  
     private func loadDataOperation(){
-        let OPQ = OperationQueue()
+        let opq = OperationQueue()
         //OPQ.maxConcurrentOperationCount = 1
         let request = NetService.shared.getUsersRequest()
         let getaDataOp = GetDataOperation(request: request)
@@ -136,13 +136,14 @@ final class MyFrendsViewController: UIViewController {
         let parseData = ParseDataUserOperation()
         parseData.addDependency(getaDataOp)
         
+        let saveRealOp = SaveRealOperation()
+        saveRealOp.addDependency(parseData)
+        
         let reloadTbaleOp = ReloadTableControllerOperation(controller: self)
         reloadTbaleOp.addDependency(parseData)
         
-        OPQ.addOperations([getaDataOp,parseData, reloadTbaleOp], waitUntilFinished: false)
-        
-        //            self.friends = users
-        //            self.filteredFriendsForTable = self.prepareFrendsData(self.friends)
+        opq.addOperations([getaDataOp,parseData, reloadTbaleOp, saveRealOp], waitUntilFinished: false)
+
         
     }
     
