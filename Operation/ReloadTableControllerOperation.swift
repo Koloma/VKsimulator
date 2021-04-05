@@ -8,18 +8,20 @@
 import UIKit
 
 class ReloadTableControllerOperation: AsyncOperation {
-    var controller: UITableView
+    var controller: MyFrendsViewController
     
-    init(controller: UITableView) {
+    init(controller: MyFrendsViewController) {
         self.controller = controller
     }
     override func main() {
         guard let parseData = dependencies.first as? ParseDataUserOperation else { return }
         
         //controller.posts = parseData.outputData
-        print(parseData)
+        //print(parseData)
         DispatchQueue.main.async {
-            self.controller.reloadData()
+            self.controller.myFriends = parseData.outputData
+            self.controller.tableView.reloadData()
+            self.controller.tableView.refreshControl?.endRefreshing()
             print("ReloadTableControllerOperation complite")
         }
 

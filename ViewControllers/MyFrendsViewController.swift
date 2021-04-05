@@ -20,9 +20,16 @@ final class MyFrendsViewController: UIViewController {
     @IBOutlet weak var cancelImageView: UIImageView!
     @IBOutlet weak var searchTextField: UITextField!
     
+    var myFriends:[VKUser] = []
+    {
+        didSet{
+            friends = myFriends
+            filteredFriendsForTable = prepareFrendsData(friends)
+        }
+    }
     
     private var friends:[VKUser] = []
-    private var filteredFriendsForTable = FriendsForTable()
+    private var filteredFriendsForTable:FriendsForTable = FriendsForTable()
     
     func logOut() {
         self.dismiss(animated: true, completion: nil)
@@ -129,7 +136,7 @@ final class MyFrendsViewController: UIViewController {
         let parseData = ParseDataUserOperation()
         parseData.addDependency(getaDataOp)
         
-        let reloadTbaleOp = ReloadTableControllerOperation(controller: tableView)
+        let reloadTbaleOp = ReloadTableControllerOperation(controller: self)
         reloadTbaleOp.addDependency(parseData)
         
         OPQ.addOperations([getaDataOp,parseData, reloadTbaleOp], waitUntilFinished: false)
@@ -144,28 +151,30 @@ final class MyFrendsViewController: UIViewController {
  
         loadDataOperation()
         
-        NetService.shared.loadUsers(){[weak self] results in
-            guard let self = self else { return }
-            
-            switch results{
-            case .success(let users):
-                self.friends = users
-                self.filteredFriendsForTable = self.prepareFrendsData(self.friends)
-                DispatchQueue.main.async {
-                    RealmService.shared?.saveUsers(users)
-                    self.tableView.reloadData()
-                    self.tableView.refreshControl?.endRefreshing()
-                }
-            case .failure(let error):
-                print(error)
-                DispatchQueue.main.async {
-                    self.friends = RealmService.shared?.loadUsers() ?? []
-                    self.filteredFriendsForTable = self.prepareFrendsData(self.friends)
-                    self.tableView.reloadData()
-                    self.tableView.refreshControl?.endRefreshing()
-                }         
-            }
-        }
+//        NetService.shared.loadUsers(){[weak self] results in
+//            guard let self = self else { return }
+//
+//            switch results{
+//            case .success(let users):
+//                self.myFriends = users
+//                //self.friends = users
+//                //self.filteredFriendsForTable = self.prepareFrendsData(self.friends)
+//                DispatchQueue.main.async {
+//                    RealmService.shared?.saveUsers(users)
+//                    self.tableView.reloadData()
+//                    self.tableView.refreshControl?.endRefreshing()
+//                }
+//            case .failure(let error):
+//                print(error)
+//                DispatchQueue.main.async {
+//                    self.myFriends = RealmService.shared?.loadUsers() ?? []
+//                    //self.friends = RealmService.shared?.loadUsers() ?? []
+//                    //self.filteredFriendsForTable = self.prepareFrendsData(self.friends)
+//                    self.tableView.reloadData()
+//                    self.tableView.refreshControl?.endRefreshing()
+//                }
+//            }
+//        }
     }
     
     /// Подготавливает данные для отображения в таблице (разбивка на секции, сортировка)
