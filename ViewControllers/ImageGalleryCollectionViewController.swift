@@ -28,7 +28,7 @@ final class ImageGalleryCollectionViewController: UICollectionViewController, UI
     private func loadImages(vkUser:VKUser) {
         showIndicator()
         
-        NetService.shared.loadUserImages(token: Session.shared.token, userId: vkUser.id){[weak self] results in
+        NetService.shared.loadUserImages(userId: vkUser.id){[weak self] results in
             guard let self = self else { return }
 
             switch results {

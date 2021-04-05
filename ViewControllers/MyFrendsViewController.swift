@@ -20,9 +20,16 @@ final class MyFrendsViewController: UIViewController {
     @IBOutlet weak var cancelImageView: UIImageView!
     @IBOutlet weak var searchTextField: UITextField!
     
+    var myFriends:[VKUser] = []
+    {
+        didSet{
+            friends = myFriends
+            filteredFriendsForTable = prepareFrendsData(friends)
+        }
+    }
     
     private var friends:[VKUser] = []
-    private var filteredFriendsForTable = FriendsForTable()
+    private var filteredFriendsForTable:FriendsForTable = FriendsForTable()
     
     func logOut() {
         self.dismiss(animated: true, completion: nil)
@@ -31,7 +38,7 @@ final class MyFrendsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupView();
+        setupViewController();
         let sbAnimation = SBAnimationFactory.prepearSearchBar()
         let sbAnimator = SBAnimator(animation: sbAnimation)
         sbAnimator.animate(searchImage: searchImageView, textField: searchTextField, cancelImage: cancelImageView, in: searchView)
@@ -42,7 +49,6 @@ final class MyFrendsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
-        
     }
     
     @IBAction func searchTapped(_ sender: UITapGestureRecognizer) {
@@ -95,7 +101,7 @@ final class MyFrendsViewController: UIViewController {
         searchView.layer.insertSublayer(gradientLayer, at: 0)
     }
     
-    private func setupView(){
+    private func setupViewController(){
         
         searchTextField.delegate = self
         searchTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
@@ -118,33 +124,58 @@ final class MyFrendsViewController: UIViewController {
 
     @objc func refreshTableView(_ sender: AnyObject){
         loadUsersData()
+        
     }
  
+    private func loadDataOperation(){
+        let opq = OperationQueue()
+        //OPQ.maxConcurrentOperationCount = 1
+        let request = NetService.shared.getUsersRequest()
+        let getaDataOp = GetDataOperation(request: request)
+        
+        let parseData = ParseDataUserOperation()
+        parseData.addDependency(getaDataOp)
+        
+        let saveRealOp = SaveRealOperation()
+        saveRealOp.addDependency(parseData)
+        
+        let reloadTbaleOp = ReloadTableControllerOperation(controller: self)
+        reloadTbaleOp.addDependency(parseData)
+        
+        opq.addOperations([getaDataOp,parseData, reloadTbaleOp, saveRealOp], waitUntilFinished: false)
+
+        
+    }
+    
     private func loadUsersData() {
         tableView.refreshControl?.myBeginRefreshing(in: tableView)
-
-        NetService.shared.loadUsers(token: Session.shared.token){[weak self] results in
-            guard let self = self else { return }
-            
-            switch results{
-            case .success(let users):
-                self.friends = users
-                self.filteredFriendsForTable = self.prepareFrendsData(self.friends)
-                DispatchQueue.main.async {
-                    RealmService.shared?.saveUsers(users)
-                    self.tableView.reloadData()
-                    self.tableView.refreshControl?.endRefreshing()
-                }
-            case .failure(let error):
-                print(error)
-                DispatchQueue.main.async {
-                    self.friends = RealmService.shared?.loadUsers() ?? []
-                    self.filteredFriendsForTable = self.prepareFrendsData(self.friends)
-                    self.tableView.reloadData()
-                    self.tableView.refreshControl?.endRefreshing()
-                }         
-            }
-        }
+ 
+        loadDataOperation()
+        
+//        NetService.shared.loadUsers(){[weak self] results in
+//            guard let self = self else { return }
+//
+//            switch results{
+//            case .success(let users):
+//                self.myFriends = users
+//                //self.friends = users
+//                //self.filteredFriendsForTable = self.prepareFrendsData(self.friends)
+//                DispatchQueue.main.async {
+//                    RealmService.shared?.saveUsers(users)
+//                    self.tableView.reloadData()
+//                    self.tableView.refreshControl?.endRefreshing()
+//                }
+//            case .failure(let error):
+//                print(error)
+//                DispatchQueue.main.async {
+//                    self.myFriends = RealmService.shared?.loadUsers() ?? []
+//                    //self.friends = RealmService.shared?.loadUsers() ?? []
+//                    //self.filteredFriendsForTable = self.prepareFrendsData(self.friends)
+//                    self.tableView.reloadData()
+//                    self.tableView.refreshControl?.endRefreshing()
+//                }
+//            }
+//        }
     }
     
     /// Подготавливает данные для отображения в таблице (разбивка на секции, сортировка)

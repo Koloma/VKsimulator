@@ -26,7 +26,8 @@ struct ResponseNews: Codable {
 
 // MARK: - Item
 struct VKNews: Codable {
-    let sourceID, date: Int?
+    let sourceID: Int
+    let date: Double
     let canDoubtCategory, canSetCategory: Bool?
     let postType, text: String?
     let markedAsAds: Int?
@@ -59,7 +60,21 @@ struct VKNews: Codable {
         case postID = "post_id"
         case type
     }
+    
+    func getImage(completion: @escaping (UIImage) -> ()){
+        guard let attachments = attachments else { return }
+        let vkPhotos = attachments.map{ (attachment)-> VKPhoto? in
+            if let vkPhoto = attachment.photo{
+                return vkPhoto
+            }
+            else { return nil }
+        }        
+        vkPhotos[0]?.getImage(imageType: .y, completion: completion)
+    }
+    
 }
+
+
 
 // MARK: - Attachment
 struct Attachment: Codable {

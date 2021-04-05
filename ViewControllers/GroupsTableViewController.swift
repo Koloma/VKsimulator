@@ -26,7 +26,7 @@ final class GroupsTableViewController: UITableViewController {
     }
 
     func searchGroup(searchText : String){
-        NetService.shared.groupsSearch(token: Session.shared.token, textQuery:searchText ){[weak self] results in
+        NetService.shared.groupsSearch(textQuery:searchText ){[weak self] results in
            
             switch results{
             case .success(let groups):

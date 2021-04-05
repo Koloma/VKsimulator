@@ -85,7 +85,7 @@ final class MyGroupsTableViewController: UITableViewController {
     }
     
     private func loadGroupsData(complition: (() -> Void)? = nil){
-        NetService.shared.loadGroups(token: Session.shared.token){[weak self] result in
+        NetService.shared.loadGroups(){[weak self] result in
             switch result{
             case .success(let groups):
                 DispatchQueue.main.async {

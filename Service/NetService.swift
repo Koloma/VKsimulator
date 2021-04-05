@@ -7,6 +7,7 @@
 
 import UIKit
 import SwiftyJSON
+import Alamofire
 
 final class NetService{
     
@@ -15,12 +16,12 @@ final class NetService{
     private init(){
     }
     
-    func loadGroups(token: String, completion: ((Result<[VKGroup],Error>) -> Void)? = nil) {
+    func loadGroups(completion: ((Result<[VKGroup],Error>) -> Void)? = nil) {
         let baseURL = K.ApiVK.baseUrl
         let path = K.ApiVK.pathGetGroups
         
         let queryItems = [
-            URLQueryItem(name: "access_token", value: token),
+            URLQueryItem(name: "access_token", value: Session.shared.token),
             URLQueryItem(name: "extended", value: "1"),
             URLQueryItem(name: "v", value: K.ApiVK.v)]
         
@@ -42,12 +43,27 @@ final class NetService{
         }
     }
     
-    func loadUsers(token: String, completion: ((Result<[VKUser],Error>) -> Void)? = nil) {
+    func getUsersRequest() -> DataRequest{
         let baseURL = K.ApiVK.baseUrl
         let path = K.ApiVK.pathGetFriends
                
         let queryItems = [
-            URLQueryItem(name: "access_token", value: token),
+            URLQueryItem(name: "access_token", value: Session.shared.token),
+            URLQueryItem(name: "fields", value: "nickname, domain, sex, bdate, city, country, timezone, photo_50, photo_100, photo_200_orig, has_mobile, contacts, education, online, relation, last_seen, status, can_write_private_message, can_see_all_posts, can_post, universities"),
+            URLQueryItem(name: "v", value: K.ApiVK.v)]
+        
+        var urlComps = URLComponents(string: baseURL + path)
+        urlComps?.queryItems = queryItems
+        
+        return AF.request(urlComps?.url ?? "")
+    }
+    
+    func loadUsers(completion: ((Result<[VKUser],Error>) -> Void)? = nil) {
+        let baseURL = K.ApiVK.baseUrl
+        let path = K.ApiVK.pathGetFriends
+               
+        let queryItems = [
+            URLQueryItem(name: "access_token", value: Session.shared.token),
             URLQueryItem(name: "fields", value: "nickname, domain, sex, bdate, city, country, timezone, photo_50, photo_100, photo_200_orig, has_mobile, contacts, education, online, relation, last_seen, status, can_write_private_message, can_see_all_posts, can_post, universities"),
             URLQueryItem(name: "v", value: K.ApiVK.v)]
         
@@ -70,12 +86,12 @@ final class NetService{
     }
 //    verified,photo_50, photo_100, photo_200_orig, photo_200, photo_400_orig,last_seen, followers_count, common_count, occupation, nickname
 
-    func groupsSearch(token: String, textQuery:String, completion: ((Result<[VKGroup],Error>) -> Void)? = nil) {
+    func groupsSearch(textQuery:String, completion: ((Result<[VKGroup],Error>) -> Void)? = nil) {
         let baseURL = K.ApiVK.baseUrl
         let path = K.ApiVK.pathGroupsSearch
         
         let queryItems = [
-            URLQueryItem(name: "access_token", value: token),
+            URLQueryItem(name: "access_token", value: Session.shared.token),
             URLQueryItem(name: "q", value: textQuery),
             URLQueryItem(name: "type", value: "group"),
             URLQueryItem(name: "v", value: K.ApiVK.v)]
@@ -99,13 +115,13 @@ final class NetService{
         }
     }
     
-    func loadUserImages(token: String, userId: Int, completion: ((Result<[VKPhoto],Error>) -> Void)? = nil) {
+    func loadUserImages(userId: Int, completion: ((Result<[VKPhoto],Error>) -> Void)? = nil) {
         let baseURL = K.ApiVK.baseUrl
         let path = K.ApiVK.pathGetUserAllPhotos
         
         print(#function + " UserId \(userId)")
         let queryItems = [
-            URLQueryItem(name: "access_token", value: token),
+            URLQueryItem(name: "access_token", value: Session.shared.token),
             URLQueryItem(name: "owner_id", value: "\(userId)"),
             URLQueryItem(name: "extended", value: "1"),
             URLQueryItem(name: "count", value: "100"),

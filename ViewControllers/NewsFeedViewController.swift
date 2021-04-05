@@ -10,16 +10,10 @@ import UIKit
 final class NewsFeedViewController: UIViewController {
 
     @IBOutlet weak var newsTableView: UITableView!
-    
-    let arrayNews: [String] = [
-    "Начало Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda. Конец",
-    "Начало Small News Конец",
-    "Начало ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Конец"
-    ]
-    
-    var userNewsFeed: VKUser?{
+       
+    private var vkNewsArray = [VKNews](){
         didSet{
-            
+            self.newsTableView.reloadData()
         }
     }
     
@@ -29,43 +23,63 @@ final class NewsFeedViewController: UIViewController {
         newsTableView.delegate = self
         newsTableView.dataSource = self
         newsTableView.register(NewsFeedTableViewCell.nib, forCellReuseIdentifier: NewsFeedTableViewCell.identifier)
-       
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        loadNewsData()
+    }
+    
+    private func loadNewsData(complition: (() -> Void)? = nil){
+        NetService.shared.loadUserNewsfeed(token: Session.shared.token, userId: Session.shared.userId){ [weak self] (result) in
+            switch result{
+            case .success(let news):
+                DispatchQueue.main.async {
+                    print("News count: \(news.count)")
+                    self?.vkNewsArray = news
+                }
+            case .failure(let error):
+                print(error)
+            }
+            complition?()
+       }
+    }
 }
+
+
 
 extension NewsFeedViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        arrayNews.count
+        vkNewsArray.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        //TOD доделать расчет высоты ячейки, перенести логику расчета внутрь класса ячейки
-        let heightForRowAt = 550 + arrayNews[indexPath.row].height(withConstrainedWidth: newsTableView.frame.width - 20, font: UIFont.systemFont(ofSize: 14.0))
-        //print ("\(indexPath)  \(heightForRowAt)")
-        return heightForRowAt
-        
+        if let newsText = vkNewsArray[indexPath.row].text{
+            let heightForRowAt = 550 + newsText.height(withConstrainedWidth: newsTableView.frame.width - 20, font: UIFont.systemFont(ofSize: 14.0))
+            return heightForRowAt
+        }
+        else {
+            return 550
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = newsTableView.dequeueReusableCell(withIdentifier: NewsFeedTableViewCell.identifier, for: indexPath) as? NewsFeedTableViewCell,
-           let vkUser = userNewsFeed{
-            cell.configur(vkUser: vkUser, imageTapFunc: imageViewTap)
-
+        if let cell = newsTableView.dequeueReusableCell(withIdentifier: NewsFeedTableViewCell.identifier, for: indexPath) as? NewsFeedTableViewCell{
+            cell.configur(vkNews: vkNewsArray[indexPath.row], imageTapFunc: imageViewTap)
             return cell
         }
         return UITableViewCell()
     }
     
-    func imageViewTap(_ vkUser: VKUser){
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        if  let ImageGalleryVC = storyBoard.instantiateViewController(withIdentifier: "ImageGalleryCollectionViewController") as? ImageGalleryCollectionViewController{
-            //Здесь передаем данные в NewsFeedViewController
-            //ImageGalleryVC.vkUser = vkUser
-            navigationController!.pushViewController(ImageGalleryVC, animated: true)
-            
-        }
+    func imageViewTap(_ vkNews: VKNews){
+//        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+//        if  let ImageGalleryVC = storyBoard.instantiateViewController(withIdentifier: "ImageGalleryCollectionViewController") as? ImageGalleryCollectionViewController{
+//            navigationController!.pushViewController(ImageGalleryVC, animated: true)
+//
+//        }
     }
+    
 }
 
 

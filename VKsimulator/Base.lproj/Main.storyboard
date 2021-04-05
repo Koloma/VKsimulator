@@ -661,7 +661,6 @@ simulator</string>
                         <segue destination="QOe-j9-0aC" kind="relationship" relationship="viewControllers" id="1yA-IR-Hll"/>
                         <segue destination="x1e-hR-e0H" kind="relationship" relationship="viewControllers" id="Sun-O1-kSU"/>
                         <segue destination="yCN-bB-ST4" kind="relationship" relationship="viewControllers" id="ur3-9w-UUi"/>
-                        <segue destination="ZSc-BN-oPh" kind="relationship" relationship="viewControllers" id="YiD-r8-Jqw"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="99F-cr-ahO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -738,34 +737,6 @@ simulator</string>
             </objects>
             <point key="canvasLocation" x="-242" y="-304"/>
         </scene>
-        <!--News Feed2 View Controller-->
-        <scene sceneID="OhC-h8-UCZ">
-            <objects>
-                <viewController id="hkd-ph-UD5" customClass="NewsFeed2ViewController" customModule="VKsimulator" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="SSg-Jb-VFV">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zw6-Ul-MeF">
-                                <rect key="frame" x="0.0" y="56" width="414" height="611"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="OBM-LQ-D0Y"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="OBM-LQ-D0Y" firstAttribute="bottom" secondItem="zw6-Ul-MeF" secondAttribute="bottom" id="56n-U1-01M"/>
-                            <constraint firstItem="zw6-Ul-MeF" firstAttribute="top" secondItem="OBM-LQ-D0Y" secondAttribute="top" id="VM2-Sk-Ku3"/>
-                            <constraint firstItem="zw6-Ul-MeF" firstAttribute="leading" secondItem="OBM-LQ-D0Y" secondAttribute="leading" id="ola-Ws-Tz4"/>
-                            <constraint firstItem="OBM-LQ-D0Y" firstAttribute="trailing" secondItem="zw6-Ul-MeF" secondAttribute="trailing" id="rZz-WM-onp"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="w9J-t5-83p"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="avl-ce-Cg3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="665.21739130434787" y="1197.554347826087"/>
-        </scene>
         <!--Лента новостей-->
         <scene sceneID="79z-wa-tI0">
             <objects>
@@ -785,25 +756,6 @@ simulator</string>
             </objects>
             <point key="canvasLocation" x="-242.0289855072464" y="450.81521739130437"/>
         </scene>
-        <!--News Feed v2.0 -->
-        <scene sceneID="4sK-5d-HOR">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ZSc-BN-oPh" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="News Feed v2.0 " image="newspaper.fill" catalog="system" id="1Rd-6i-qgo"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="aAK-Q7-R9V">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="hkd-ph-UD5" kind="relationship" relationship="rootViewController" id="wNI-kX-aBO"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QF0-ip-OZD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-242.0289855072464" y="1197.554347826087"/>
-        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="mMz-8K-kE3"/>
@@ -816,7 +768,6 @@ simulator</string>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="multiply.circle" catalog="system" width="128" height="121"/>
         <image name="newspaper" catalog="system" width="128" height="108"/>
-        <image name="newspaper.fill" catalog="system" width="128" height="111"/>
         <image name="person.3" catalog="system" width="128" height="62"/>
         <image name="person.circle" catalog="system" width="128" height="121"/>
         <image name="phone.circle" catalog="system" width="128" height="121"/>

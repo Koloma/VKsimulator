@@ -23,7 +23,7 @@ final class ImageViwerViewController: UIViewController {
         let panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(imageOnPan(_:)))
         self.view.addGestureRecognizer(panRecognizer)
       
-        NetService.shared.loadUserImages(token: Session.shared.token, userId: vkUser.id){results in
+        NetService.shared.loadUserImages(userId: vkUser.id){results in
             
             switch results{
             case .success(let photos):

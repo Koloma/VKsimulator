@@ -7,13 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		202F93222618A7C70000C21B /* ParseDataUserOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202F93212618A7C70000C21B /* ParseDataUserOperation.swift */; };
+		202F93262618A8BA0000C21B /* GetDataOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202F93252618A8BA0000C21B /* GetDataOperation.swift */; };
+		202F932F2618AE740000C21B /* SaveRealOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202F932E2618AE740000C21B /* SaveRealOperation.swift */; };
+		202F93342618B03A0000C21B /* ReloadTableControllerOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202F93332618B03A0000C21B /* ReloadTableControllerOperation.swift */; };
 		2058EAD72608F50100BEECA3 /* VKNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2058EAD62608F50100BEECA3 /* VKNews.swift */; };
 		2058EADB2608F62C00BEECA3 /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2058EADA2608F62C00BEECA3 /* Size.swift */; };
 		2058EADE2608F68200BEECA3 /* Likes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2058EADD2608F68200BEECA3 /* Likes.swift */; };
 		2058EAE12608F6E400BEECA3 /* Reposts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2058EAE02608F6E400BEECA3 /* Reposts.swift */; };
+		205B9792261A211400349B72 /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205B9791261A211400349B72 /* AsyncOperation.swift */; };
 		205CA78B261226C000162F84 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205CA78A261226C000162F84 /* Response.swift */; };
 		2069AC45260A287B008928F9 /* VKError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2069AC44260A287B008928F9 /* VKError.swift */; };
-		20C1A11F26077E6E00B37868 /* NewsFeed2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C1A11E26077E6E00B37868 /* NewsFeed2ViewController.swift */; };
 		20ED452D2610D7350043AA58 /* VKProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED452C2610D7350043AA58 /* VKProfile.swift */; };
 		840C11E025D0199300E7BE7B /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840C11DF25D0199300E7BE7B /* Session.swift */; };
 		843D1F6E25C19BFE00437D18 /* AnimatorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843D1F6D25C19BFE00437D18 /* AnimatorVC.swift */; };
@@ -70,14 +74,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		202F93212618A7C70000C21B /* ParseDataUserOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseDataUserOperation.swift; sourceTree = "<group>"; };
+		202F93252618A8BA0000C21B /* GetDataOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDataOperation.swift; sourceTree = "<group>"; };
+		202F932E2618AE740000C21B /* SaveRealOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveRealOperation.swift; sourceTree = "<group>"; };
+		202F93332618B03A0000C21B /* ReloadTableControllerOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReloadTableControllerOperation.swift; sourceTree = "<group>"; };
 		2058EAD62608F50100BEECA3 /* VKNews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKNews.swift; sourceTree = "<group>"; };
 		2058EADA2608F62C00BEECA3 /* Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; };
 		2058EADD2608F68200BEECA3 /* Likes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Likes.swift; sourceTree = "<group>"; };
 		2058EAE02608F6E400BEECA3 /* Reposts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reposts.swift; sourceTree = "<group>"; };
+		205B9791261A211400349B72 /* AsyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
 		205CA78A261226C000162F84 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		2069AC44260A287B008928F9 /* VKError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKError.swift; sourceTree = "<group>"; };
 		20C1A11D2607756B00B37868 /* VKsimulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VKsimulator.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		20C1A11E26077E6E00B37868 /* NewsFeed2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeed2ViewController.swift; sourceTree = "<group>"; };
 		20ED452C2610D7350043AA58 /* VKProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKProfile.swift; sourceTree = "<group>"; };
 		754C11B25A0C95C9CD13E0A7 /* Pods_VKsimulator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VKsimulator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		840C11DF25D0199300E7BE7B /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
@@ -149,6 +157,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		202F93202618A7790000C21B /* Operation */ = {
+			isa = PBXGroup;
+			children = (
+				202F93252618A8BA0000C21B /* GetDataOperation.swift */,
+				202F93212618A7C70000C21B /* ParseDataUserOperation.swift */,
+				202F93332618B03A0000C21B /* ReloadTableControllerOperation.swift */,
+				202F932E2618AE740000C21B /* SaveRealOperation.swift */,
+				205B9791261A211400349B72 /* AsyncOperation.swift */,
+			);
+			path = Operation;
+			sourceTree = "<group>";
+		};
 		2D24CB49CF3AB2A7B071BE58 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,6 +216,7 @@
 		844A5CA2258FAF7300DB145E = {
 			isa = PBXGroup;
 			children = (
+				202F93202618A7790000C21B /* Operation */,
 				843D1F7725C1B37700437D18 /* Helper */,
 				843D1F6825C1994700437D18 /* Animators */,
 				84A26E812596F06B00299CCA /* Cells */,
@@ -307,7 +328,6 @@
 				84CFD10B259747E0007C99FC /* MyGroupsTableViewController.swift */,
 				84A3333F25978CE800E7424E /* ImageGalleryCollectionViewController.swift */,
 				84A18BF825B7240100063FA7 /* NewsFeedViewController.swift */,
-				20C1A11E26077E6E00B37868 /* NewsFeed2ViewController.swift */,
 				8448263E25B921FC00425D5A /* MyFrendsViewController.swift */,
 				8453618C25D4CFD900AC609C /* VKWebViewController.swift */,
 			);
@@ -460,6 +480,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				202F93222618A7C70000C21B /* ParseDataUserOperation.swift in Sources */,
 				84EF01A325BE78CD00F49415 /* Animator.swift in Sources */,
 				843D1F6E25C19BFE00437D18 /* AnimatorVC.swift in Sources */,
 				84A3334325978FAD00E7424E /* ImageWithLikeCounterCollectionViewCell.swift in Sources */,
@@ -472,12 +493,13 @@
 				8453618D25D4CFD900AC609C /* VKWebViewController.swift in Sources */,
 				2058EAD72608F50100BEECA3 /* VKNews.swift in Sources */,
 				84A26E7E2596EBBA00299CCA /* GroupsTableViewController.swift in Sources */,
-				20C1A11F26077E6E00B37868 /* NewsFeed2ViewController.swift in Sources */,
 				8446CA3B25C5893A00FC62F2 /* TextView+ext.swift in Sources */,
 				843D1F7925C1B3AB00437D18 /* CustomNavigationController.swift in Sources */,
 				8446CA3625C56DC000FC62F2 /* NewsFeedTableViewCell.swift in Sources */,
+				205B9792261A211400349B72 /* AsyncOperation.swift in Sources */,
 				846E01A9259849F5007554E0 /* VKGroupTableViewCell.swift in Sources */,
 				8448264325B9318800425D5A /* VKUserTableViewCell.swift in Sources */,
+				202F93342618B03A0000C21B /* ReloadTableControllerOperation.swift in Sources */,
 				8448263F25B921FC00425D5A /* MyFrendsViewController.swift in Sources */,
 				849F10AC25BA87D400CF9B38 /* FrendsTableViewHeader.swift in Sources */,
 				844A5CC9258FB1BC00DB145E /* LoginViewController.swift in Sources */,
@@ -498,6 +520,7 @@
 				84AA526525F3D399004D5466 /* RealmService.swift in Sources */,
 				84EF01A625BEB9FD00F49415 /* SearchBarAnimator.swift in Sources */,
 				840C11E025D0199300E7BE7B /* Session.swift in Sources */,
+				202F932F2618AE740000C21B /* SaveRealOperation.swift in Sources */,
 				84A256D225C462E800F372A0 /* View+ext.swift in Sources */,
 				84DCF44925D3931D006B3DCB /* NetService.swift in Sources */,
 				84547F9025B5C0C500B67D86 /* CollectionHeaderView.swift in Sources */,
@@ -509,6 +532,7 @@
 				843D1F7425C1A6DB00437D18 /* CustomSegue.swift in Sources */,
 				849F10A525BA819900CF9B38 /* K.swift in Sources */,
 				8449A33825DA489400639315 /* VKGroup.swift in Sources */,
+				202F93262618A8BA0000C21B /* GetDataOperation.swift in Sources */,
 				84A18BF925B7240100063FA7 /* NewsFeedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

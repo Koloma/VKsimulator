@@ -47,11 +47,12 @@ import RealmSwift
             case s75px = "s"
             case m130px = "m"
             case x604px = "x"
-            case z1080 = "z"
-            case w2560 = "w"
+            case z = "z"
+            case y = "y"
         }
                
         func getImage(imageType: ImageType, completion: @escaping (UIImage) -> ()){
+
             if let index = sizes.firstIndex(where: {$0.type == imageType.rawValue}) {
                 if let url = URL(string: sizes[index].url){
                     ImageCache.shared.load(url: url as NSURL){ image in
