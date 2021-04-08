@@ -7,13 +7,8 @@
 
 import Foundation
 
-struct ResponseRAW: Codable {
-    let response: Response
+struct ResponseUserRAW: Codable {
+    let response: [VKUser]?
 }
 
-// MARK: - Response
-struct Response: Codable {
-    let count: Int?
-    let items: [VKPhoto]?
-    let more: Int?
-}
+

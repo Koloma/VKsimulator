@@ -37,11 +37,29 @@ final class NewsFeedTableViewCell: UITableViewCell {
     }
 
     func configur(vkNews: VKNews, imageTapFunc: @escaping ImageViewTapFunc){
+        
+        NetService.shared.loadUser(userId: vkNews.sourceID){ results in
+            switch results{
+            case .success(let user):
+                DispatchQueue.main.async {
+                    self.userNicLable.text = user.fio
+                }
+                user.getImage(imageType: .image50, completion: { [weak self] (image) in
+                    DispatchQueue.main.async {
+                        self?.userImageView.image = image
+                    }
+                })
+            case .failure(let error):
+                print(error)
+                
+            }
+        }
+        
         newsImageViewTap = imageTapFunc
-        userNicLable.text = "vkUser.fio"
-        vkNews.getImage(){ image in
+ 
+        vkNews.getImage(){ images in
             DispatchQueue.main.async {
-                self.newsImageView.image = image
+                self.newsImageView.image = images[0]
             }
         }
         

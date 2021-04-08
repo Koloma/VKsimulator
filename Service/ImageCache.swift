@@ -46,7 +46,24 @@ final class ImageCache {
             
         }.resume()
     }
+    
+    func load(url: NSURL) -> UIImage {
+        if let cachedImage = image(url: url) {
+            return cachedImage
+        }
         
+        do {
+            let data = try Data(contentsOf: url as URL)
+            if let image = UIImage(data: data){
+                cache.setObject(image, forKey: url)
+                return image
+            }
+        }
+        catch{
+            print(error)
+        }
+        return ImageCache.placeholderImage
+    }
 //
 //    private func getImage(fromURL: String)->UIImage?{
 //        guard let data = getData(url: fromURL) else { print ("Error getData(url: fromURL): \(fromURL)"); return nil }

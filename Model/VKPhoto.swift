@@ -66,4 +66,15 @@ import RealmSwift
                 completion(ImageCache.placeholderImage)
             }
         }
+        
+        func getImage(imageType: ImageType) -> UIImage {
+            
+            if let index = sizes.firstIndex(where: {$0.type == imageType.rawValue}) {
+                if let url = URL(string: sizes[index].url){
+                    return ImageCache.shared.load(url: url as NSURL)
+                }
+            }
+            return ImageCache.placeholderImage
+            
+        }
     }

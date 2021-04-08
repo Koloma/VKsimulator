@@ -16,6 +16,7 @@ target 'VKsimulator' do
   pod 'RealmSwift', '~> 10.7.2'
   pod 'SwiftyJSON', '~> 5.0.1'
   pod 'Alamofire', '~> 5.4.1'
+  pod "PromiseKit", "~> 6.13.1"
   
   post_install do |installer|
     installer.pods_project.targets.each do |target|
