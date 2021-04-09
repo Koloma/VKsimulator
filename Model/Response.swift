@@ -11,4 +11,6 @@ struct ResponseUserRAW: Codable {
     let response: [VKUser]?
 }
 
-
+struct ResponseGroupRAW: Codable {
+    let response: [VKGroup]?
+}

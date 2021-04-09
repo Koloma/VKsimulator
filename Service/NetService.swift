@@ -88,7 +88,7 @@ final class NetService{
         }
     }
     
-    func loadUser(userId: Int, completion: ((Swift.Result<VKUser,Error>) -> Void)? = nil) {
+    func loadUser(by userId: Int, completion: ((Swift.Result<VKUser,Error>) -> Void)? = nil) {
         let baseURL = K.ApiVK.baseUrl
         let path = K.ApiVK.pathGetUsers
         
@@ -104,29 +104,29 @@ final class NetService{
         urlComps.queryItems = queryItems
         guard let url = urlComps.url else { return }
         
-        let request = AF.request(url)
-        
-        
-        request.responseJSON { (response) in
-            if let error = response.error{
-                print(error)
-            }
-            if let data = response.data{
-                print(data)
-                fdgfdg
-//                do {
-//                    let userRaw = try JSONDecoder().decode(UserRAW.self, from: data)
-//                    if let users = userRaw.response.items{
-//                        resolver.fulfill(users)
-//                    }else{
-//                        resolver.reject(MyErrors.noData)
-//                    }
-//                } catch {
-//                    resolver.reject(error)
-//                }
-            }
-        }
-        
+ //       let request = AF.request(url)
+//        request.responseJSON { (response) in
+//            switch response.result{
+//
+//            case .success(let json):
+//                print(json)
+//            case .failure(let error):
+//                print(error)
+//            }
+//
+//              //  fdgfdg
+////                do {
+////                    let userRaw = try JSONDecoder().decode(UserRAW.self, from: data)
+////                    if let users = userRaw.response.items{
+////                        resolver.fulfill(users)
+////                    }else{
+////                        resolver.reject(MyErrors.noData)
+////                    }
+////                } catch {
+////                    resolver.reject(error)
+////                }
+            
+ //       }
         sharedDataTask(url: url){ data in
             let decoder = JSONDecoder()
             do{
@@ -138,6 +138,33 @@ final class NetService{
                 }else{
                     completion?(.failure(MyErrors.userCouldNotBeParsed))
                 }
+            }catch(let error){
+                completion?(.failure(error))
+            }
+        }
+    }
+    
+    func loadGroup(by groupId: Int, completion: ((Swift.Result<VKGroup,Error>) -> Void)? = nil) {
+        let baseURL = K.ApiVK.baseUrl
+        let path = K.ApiVK.pathGetGroupsById
+        
+        let queryItems = [
+            URLQueryItem(name: "access_token", value: Session.shared.token),
+            URLQueryItem(name: "group_id", value: "\(abs(groupId))"),
+            URLQueryItem(name: "v", value: K.ApiVK.v)]
+        
+        guard var urlComps = URLComponents(string: baseURL + path) else { return }
+        urlComps.queryItems = queryItems
+        guard let url = urlComps.url else { return }
+        
+        sharedDataTask(url: url){ data in
+            let decoder = JSONDecoder()
+            do{
+                let responce = try decoder.decode(ResponseGroupRAW.self,from: data)
+                if let group = responce.response?.first {
+                    completion?(.success(group))
+                }
+
             }catch(let error){
                 completion?(.failure(error))
             }

@@ -24,6 +24,7 @@ struct K {
         static let v = "5.130"
         static let baseUrl = "https://api.vk.com"
         static let pathGetGroups = "/method/groups.get"
+        static let pathGetGroupsById = "/method/groups.getById"
         static let pathGroupsSearch = "/method/groups.search"
         static let pathGetFriends = "/method/friends.get"
         static let pathGetUsers = "/method/users.get"
