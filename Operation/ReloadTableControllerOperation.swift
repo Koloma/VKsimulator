@@ -20,8 +20,6 @@ class ReloadTableControllerOperation: AsyncOperation {
         //print(parseData)
         DispatchQueue.main.async {
             self.controller.myFriends = parseData.outputData
-            self.controller.tableView.reloadData()
-            self.controller.tableView.refreshControl?.endRefreshing()
             print("ReloadTableControllerOperation complite")
         }
 

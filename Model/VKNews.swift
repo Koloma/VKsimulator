@@ -42,7 +42,7 @@ struct VKNews: Codable {
     let carouselOffset: Int?
     let postID: Int?
     let type: String?
-
+    
     enum CodingKeys: String, CodingKey {
         case sourceID = "source_id"
         case date
@@ -61,15 +61,26 @@ struct VKNews: Codable {
         case type
     }
     
-    func getImage(completion: @escaping (UIImage) -> ()){
+    
+    func getImage(completion: @escaping ([UIImage]) -> ()){
         guard let attachments = attachments else { return }
         let vkPhotos = attachments.map{ (attachment)-> VKPhoto? in
             if let vkPhoto = attachment.photo{
                 return vkPhoto
             }
             else { return nil }
-        }        
-        vkPhotos[0]?.getImage(imageType: .y, completion: completion)
+        }
+        let dispatchGroup = DispatchGroup()
+        var images = [UIImage]()
+        vkPhotos.forEach({ (vkPhoto) in
+            DispatchQueue.global(qos: .userInteractive).async(group: dispatchGroup) {
+                images.append(vkPhoto?.getImage(imageType: .y) ?? ImageCache.placeholderImage)
+            }
+        })
+        //TODO: приходится ждать пока все фотографии загрузятся
+        dispatchGroup.notify(queue: DispatchQueue.main) {
+            completion(images)
+        }
     }
     
 }

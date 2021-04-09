@@ -8,6 +8,7 @@
 import UIKit
 import SwiftyJSON
 import Alamofire
+import PromiseKit
 
 final class NetService{
     
@@ -16,7 +17,7 @@ final class NetService{
     private init(){
     }
     
-    func loadGroups(completion: ((Result<[VKGroup],Error>) -> Void)? = nil) {
+    func loadGroups(completion: ((Swift.Result<[VKGroup],Error>) -> Void)? = nil) {
         let baseURL = K.ApiVK.baseUrl
         let path = K.ApiVK.pathGetGroups
         
@@ -43,6 +44,8 @@ final class NetService{
         }
     }
     
+
+    
     func getUsersRequest() -> DataRequest{
         let baseURL = K.ApiVK.baseUrl
         let path = K.ApiVK.pathGetFriends
@@ -58,7 +61,7 @@ final class NetService{
         return AF.request(urlComps?.url ?? "")
     }
     
-    func loadUsers(completion: ((Result<[VKUser],Error>) -> Void)? = nil) {
+    func loadUsers(completion: ((Swift.Result<[VKUser],Error>) -> Void)? = nil) {
         let baseURL = K.ApiVK.baseUrl
         let path = K.ApiVK.pathGetFriends
                
@@ -84,9 +87,93 @@ final class NetService{
             }
         }
     }
+    
+    func loadUser(by userId: Int, completion: ((Swift.Result<VKUser,Error>) -> Void)? = nil) {
+        let baseURL = K.ApiVK.baseUrl
+        let path = K.ApiVK.pathGetUsers
+        
+        //print("\(#function) \(userId)")
+        
+        let queryItems = [
+            URLQueryItem(name: "access_token", value: Session.shared.token),
+            URLQueryItem(name: "user_ids", value: "\(userId)"),
+            URLQueryItem(name: "fields", value: "nickname, domain, sex, bdate, city, country, timezone, photo_50, photo_100, photo_200_orig, has_mobile, contacts, education, online, relation, last_seen, status, can_write_private_message, can_see_all_posts, can_post, universities"),
+            URLQueryItem(name: "v", value: K.ApiVK.v)]
+        
+        guard var urlComps = URLComponents(string: baseURL + path) else { return }
+        urlComps.queryItems = queryItems
+        guard let url = urlComps.url else { return }
+        
+ //       let request = AF.request(url)
+//        request.responseJSON { (response) in
+//            switch response.result{
+//
+//            case .success(let json):
+//                print(json)
+//            case .failure(let error):
+//                print(error)
+//            }
+//
+//              //  fdgfdg
+////                do {
+////                    let userRaw = try JSONDecoder().decode(UserRAW.self, from: data)
+////                    if let users = userRaw.response.items{
+////                        resolver.fulfill(users)
+////                    }else{
+////                        resolver.reject(MyErrors.noData)
+////                    }
+////                } catch {
+////                    resolver.reject(error)
+////                }
+            
+ //       }
+        sharedDataTask(url: url){ data in
+            let decoder = JSONDecoder()
+            do{
+                let responce = try decoder.decode(ResponseUserRAW.self,from: data)
+                print(responce)
+                if let friends = responce.response,
+                   let friend = friends.first{
+                    completion?(.success(friend))
+                }else{
+                    completion?(.failure(MyErrors.userCouldNotBeParsed))
+                }
+            }catch(let error){
+                completion?(.failure(error))
+            }
+        }
+    }
+    
+    func loadGroup(by groupId: Int, completion: ((Swift.Result<VKGroup,Error>) -> Void)? = nil) {
+        let baseURL = K.ApiVK.baseUrl
+        let path = K.ApiVK.pathGetGroupsById
+        
+        let queryItems = [
+            URLQueryItem(name: "access_token", value: Session.shared.token),
+            URLQueryItem(name: "group_id", value: "\(abs(groupId))"),
+            URLQueryItem(name: "v", value: K.ApiVK.v)]
+        
+        guard var urlComps = URLComponents(string: baseURL + path) else { return }
+        urlComps.queryItems = queryItems
+        guard let url = urlComps.url else { return }
+        
+        sharedDataTask(url: url){ data in
+            let decoder = JSONDecoder()
+            do{
+                let responce = try decoder.decode(ResponseGroupRAW.self,from: data)
+                if let group = responce.response?.first {
+                    completion?(.success(group))
+                }
+
+            }catch(let error){
+                completion?(.failure(error))
+            }
+        }
+    }
+    
 //    verified,photo_50, photo_100, photo_200_orig, photo_200, photo_400_orig,last_seen, followers_count, common_count, occupation, nickname
 
-    func groupsSearch(textQuery:String, completion: ((Result<[VKGroup],Error>) -> Void)? = nil) {
+    func groupsSearch(textQuery:String, completion: ((Swift.Result<[VKGroup],Error>) -> Void)? = nil) {
         let baseURL = K.ApiVK.baseUrl
         let path = K.ApiVK.pathGroupsSearch
         
@@ -115,7 +202,7 @@ final class NetService{
         }
     }
     
-    func loadUserImages(userId: Int, completion: ((Result<[VKPhoto],Error>) -> Void)? = nil) {
+    func loadUserImages(userId: Int, completion: ((Swift.Result<[VKPhoto],Error>) -> Void)? = nil) {
         let baseURL = K.ApiVK.baseUrl
         let path = K.ApiVK.pathGetUserAllPhotos
         
@@ -147,7 +234,7 @@ final class NetService{
         }
     }
     
-    func loadUserNewsfeed(token: String, userId: Int, completion: ((Result<[VKNews],Error>) -> Void)? = nil) {
+    func loadUserNewsfeed(token: String, userId: Int, completion: ((Swift.Result<[VKNews],Error>) -> Void)? = nil) {
         let baseURL = K.ApiVK.baseUrl
         let path = K.ApiVK.pathGetUserNewsfeed
 
@@ -205,4 +292,28 @@ final class NetService{
         }.resume()
     }
     
+    
+    func getUsersPromise() -> Promise<[VKUser]>{
+        let (promise, resolver) = Promise<[VKUser]>.pending()
+      
+        let request = getUsersRequest()
+        request.responseJSON { (response) in
+            if let error = response.error{
+                resolver.reject(error)
+            }
+            if let data = response.data{
+                do {
+                    let userRaw = try JSONDecoder().decode(UserRAW.self, from: data)
+                    if let users = userRaw.response.items{
+                        resolver.fulfill(users)
+                    }else{
+                        resolver.reject(MyErrors.noData)
+                    }
+                } catch {
+                    resolver.reject(error)
+                }
+            }
+        }
+        return promise
+    }
 }

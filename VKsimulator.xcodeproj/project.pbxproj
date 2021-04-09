@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		20291F92261F57680060D73D /* MyErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20291F91261F57680060D73D /* MyErrors.swift */; };
 		202F93222618A7C70000C21B /* ParseDataUserOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202F93212618A7C70000C21B /* ParseDataUserOperation.swift */; };
 		202F93262618A8BA0000C21B /* GetDataOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202F93252618A8BA0000C21B /* GetDataOperation.swift */; };
 		202F932F2618AE740000C21B /* SaveRealOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202F932E2618AE740000C21B /* SaveRealOperation.swift */; };
@@ -74,6 +75,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		20291F91261F57680060D73D /* MyErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyErrors.swift; sourceTree = "<group>"; };
 		202F93212618A7C70000C21B /* ParseDataUserOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseDataUserOperation.swift; sourceTree = "<group>"; };
 		202F93252618A8BA0000C21B /* GetDataOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDataOperation.swift; sourceTree = "<group>"; };
 		202F932E2618AE740000C21B /* SaveRealOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveRealOperation.swift; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 				843D1F7B25C1B4A900437D18 /* CustomPushAnimator.swift */,
 				84F099AD25C26355000300A6 /* CustomPopAnimator.swift */,
 				84F099B025C26909000300A6 /* MyIteractiveTransition.swift */,
+				20291F91261F57680060D73D /* MyErrors.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -530,6 +533,7 @@
 				2058EADE2608F68200BEECA3 /* Likes.swift in Sources */,
 				84D4756825B446EC00A4705A /* ImageViwerViewController.swift in Sources */,
 				843D1F7425C1A6DB00437D18 /* CustomSegue.swift in Sources */,
+				20291F92261F57680060D73D /* MyErrors.swift in Sources */,
 				849F10A525BA819900CF9B38 /* K.swift in Sources */,
 				8449A33825DA489400639315 /* VKGroup.swift in Sources */,
 				202F93262618A8BA0000C21B /* GetDataOperation.swift in Sources */,

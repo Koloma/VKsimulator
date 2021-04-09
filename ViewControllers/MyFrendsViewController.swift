@@ -25,6 +25,8 @@ final class MyFrendsViewController: UIViewController {
         didSet{
             friends = myFriends
             filteredFriendsForTable = prepareFrendsData(friends)
+            tableView.reloadData()
+            tableView.refreshControl?.endRefreshing()
         }
     }
     
@@ -143,14 +145,26 @@ final class MyFrendsViewController: UIViewController {
         reloadTbaleOp.addDependency(parseData)
         
         opq.addOperations([getaDataOp,parseData, reloadTbaleOp, saveRealOp], waitUntilFinished: false)
-
         
+    }
+    
+    private func loadUsersWithPromise(){
+        NetService.shared.getUsersPromise()
+            .done { (users) in
+                DispatchQueue.main.async {
+                    self.myFriends = users
+                }
+            }
+            .catch { (error) in
+                print(error)
+            }
     }
     
     private func loadUsersData() {
         tableView.refreshControl?.myBeginRefreshing(in: tableView)
  
-        loadDataOperation()
+        //loadDataOperation()
+        loadUsersWithPromise()
         
 //        NetService.shared.loadUsers(){[weak self] results in
 //            guard let self = self else { return }
