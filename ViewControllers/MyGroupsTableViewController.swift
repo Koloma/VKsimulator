@@ -11,6 +11,7 @@ import RealmSwift
 final class MyGroupsTableViewController: UITableViewController {
 
     private var myGroupsNotificationToken: NotificationToken?
+    private lazy var cacheService = CacheService(container: tableView)
     
     private var myGroups:Results<VKGroup>?{
         let groups: Results<VKGroup>? = RealmService.shared?.loadGroups()
@@ -44,6 +45,11 @@ final class MyGroupsTableViewController: UITableViewController {
         tableView.register(VKGroupTableViewCell.nib, forCellReuseIdentifier: VKGroupTableViewCell.identifier)
         tableView.refreshControl = myRefreshControl
         notification()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super .viewWillAppear(animated)
+
         loadGroupsData()
     }
     
@@ -109,8 +115,9 @@ final class MyGroupsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: VKGroupTableViewCell.identifier, for: indexPath) as? VKGroupTableViewCell{
-            let group = myGroups?[indexPath.row]
-            cell.configur(group: group!)
+            guard let group = myGroups?[indexPath.row] else { return UITableViewCell() }
+            let image = cacheService.photo(atIndexpath: indexPath, byUrl: group.photo50)
+            cell.configur(group: group, image: image)
             return cell
         }
         return UITableViewCell()

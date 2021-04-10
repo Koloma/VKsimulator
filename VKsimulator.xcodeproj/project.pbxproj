@@ -16,9 +16,11 @@
 		2058EADB2608F62C00BEECA3 /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2058EADA2608F62C00BEECA3 /* Size.swift */; };
 		2058EADE2608F68200BEECA3 /* Likes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2058EADD2608F68200BEECA3 /* Likes.swift */; };
 		2058EAE12608F6E400BEECA3 /* Reposts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2058EAE02608F6E400BEECA3 /* Reposts.swift */; };
+		205A614D2621E98F00180553 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205A614C2621E98F00180553 /* ImageCache.swift */; };
 		205B9792261A211400349B72 /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205B9791261A211400349B72 /* AsyncOperation.swift */; };
 		205CA78B261226C000162F84 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205CA78A261226C000162F84 /* Response.swift */; };
 		2069AC45260A287B008928F9 /* VKError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2069AC44260A287B008928F9 /* VKError.swift */; };
+		2088101026209A9A00CC644A /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2088100F26209A9A00CC644A /* CacheService.swift */; };
 		20ED452D2610D7350043AA58 /* VKProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED452C2610D7350043AA58 /* VKProfile.swift */; };
 		840C11E025D0199300E7BE7B /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840C11DF25D0199300E7BE7B /* Session.swift */; };
 		843D1F6E25C19BFE00437D18 /* AnimatorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843D1F6D25C19BFE00437D18 /* AnimatorVC.swift */; };
@@ -31,7 +33,6 @@
 		8446CA3725C56DC000FC62F2 /* NewsFeedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8446CA3525C56DC000FC62F2 /* NewsFeedTableViewCell.xib */; };
 		8446CA3B25C5893A00FC62F2 /* TextView+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8446CA3A25C5893A00FC62F2 /* TextView+ext.swift */; };
 		8446CA4325C5A35000FC62F2 /* String+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8446CA4225C5A35000FC62F2 /* String+ext.swift */; };
-		844815C925DB6CF000C66398 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844815C825DB6CF000C66398 /* ImageCache.swift */; };
 		8448263F25B921FC00425D5A /* MyFrendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448263E25B921FC00425D5A /* MyFrendsViewController.swift */; };
 		8448264325B9318800425D5A /* VKUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448264125B9318800425D5A /* VKUserTableViewCell.swift */; };
 		8448264425B9318800425D5A /* VKUserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8448264225B9318800425D5A /* VKUserTableViewCell.xib */; };
@@ -84,9 +85,11 @@
 		2058EADA2608F62C00BEECA3 /* Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; };
 		2058EADD2608F68200BEECA3 /* Likes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Likes.swift; sourceTree = "<group>"; };
 		2058EAE02608F6E400BEECA3 /* Reposts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reposts.swift; sourceTree = "<group>"; };
+		205A614C2621E98F00180553 /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		205B9791261A211400349B72 /* AsyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
 		205CA78A261226C000162F84 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		2069AC44260A287B008928F9 /* VKError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKError.swift; sourceTree = "<group>"; };
+		2088100F26209A9A00CC644A /* CacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheService.swift; sourceTree = "<group>"; };
 		20C1A11D2607756B00B37868 /* VKsimulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VKsimulator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20ED452C2610D7350043AA58 /* VKProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKProfile.swift; sourceTree = "<group>"; };
 		754C11B25A0C95C9CD13E0A7 /* Pods_VKsimulator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VKsimulator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,7 +104,6 @@
 		8446CA3525C56DC000FC62F2 /* NewsFeedTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsFeedTableViewCell.xib; sourceTree = "<group>"; };
 		8446CA3A25C5893A00FC62F2 /* TextView+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextView+ext.swift"; sourceTree = "<group>"; };
 		8446CA4225C5A35000FC62F2 /* String+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+ext.swift"; sourceTree = "<group>"; };
-		844815C825DB6CF000C66398 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		8448263E25B921FC00425D5A /* MyFrendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFrendsViewController.swift; sourceTree = "<group>"; };
 		8448264125B9318800425D5A /* VKUserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKUserTableViewCell.swift; sourceTree = "<group>"; };
 		8448264225B9318800425D5A /* VKUserTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VKUserTableViewCell.xib; sourceTree = "<group>"; };
@@ -211,7 +213,8 @@
 				84AA526425F3D38E004D5466 /* RealmService.swift */,
 				840C11DF25D0199300E7BE7B /* Session.swift */,
 				84DCF44825D3931D006B3DCB /* NetService.swift */,
-				844815C825DB6CF000C66398 /* ImageCache.swift */,
+				205A614C2621E98F00180553 /* ImageCache.swift */,
+				2088100F26209A9A00CC644A /* CacheService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -509,6 +512,8 @@
 				8449A33E25DA74C900639315 /* VKUser.swift in Sources */,
 				84AA526825F3D459004D5466 /* UserPropertyVeiwController.swift in Sources */,
 				8446CA0325C5069200FC62F2 /* ImageTransitionAnimator.swift in Sources */,
+				205A614D2621E98F00180553 /* ImageCache.swift in Sources */,
+				2088101026209A9A00CC644A /* CacheService.swift in Sources */,
 				205CA78B261226C000162F84 /* Response.swift in Sources */,
 				8450262125C008FA0026B63F /* BezierViewController.swift in Sources */,
 				8449A33B25DA48AE00639315 /* VKPhoto.swift in Sources */,
@@ -528,7 +533,6 @@
 				84DCF44925D3931D006B3DCB /* NetService.swift in Sources */,
 				84547F9025B5C0C500B67D86 /* CollectionHeaderView.swift in Sources */,
 				2069AC45260A287B008928F9 /* VKError.swift in Sources */,
-				844815C925DB6CF000C66398 /* ImageCache.swift in Sources */,
 				848FDAA725A6B886001A6ABE /* ControlView+ext.swift in Sources */,
 				2058EADE2608F68200BEECA3 /* Likes.swift in Sources */,
 				84D4756825B446EC00A4705A /* ImageViwerViewController.swift in Sources */,

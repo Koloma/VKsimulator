@@ -12,10 +12,10 @@ final class ImageCache {
     static let shared = ImageCache()
     private init(){
     }
-    
+
     private let cache = NSCache<NSURL, UIImage>()
     static let placeholderImage = UIImage(systemName: "rectangle.slash")!
-    
+
     private func image(url: NSURL) -> UIImage? {
         return cache.object(forKey: url)
     }
@@ -24,18 +24,18 @@ final class ImageCache {
         if let cachedImage = image(url: url) {
             completion(cachedImage)
         }
-        
+
         URLSession.shared.dataTask(with: url as URL) { (data, responce, error) in
             if let error = error{
                 print(error)
                 completion(ImageCache.placeholderImage)
             }
-            
+
             guard let data = data else {
                 completion(ImageCache.placeholderImage)
                 return
             }
-            
+
             guard let image = UIImage(data: data) else {
                 print ("Error UIImage(data: data)");
                 completion(ImageCache.placeholderImage)
@@ -43,15 +43,15 @@ final class ImageCache {
             }
             self.cache.setObject(image, forKey: url)
             completion(image)
-            
+
         }.resume()
     }
-    
+
     func load(url: NSURL) -> UIImage {
         if let cachedImage = image(url: url) {
             return cachedImage
         }
-        
+
         do {
             let data = try Data(contentsOf: url as URL)
             if let image = UIImage(data: data){

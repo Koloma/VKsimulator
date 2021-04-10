@@ -44,13 +44,21 @@ import RealmSwift
         }
         
         enum ImageType: String{
-            case s75px = "s"
-            case m130px = "m"
-            case x604px = "x"
+            case s = "s"
+            case m = "m"
+            case x = "x"
             case z = "z"
             case y = "y"
         }
-               
+        
+        func getUrl(imageType: ImageType) -> String{
+            if let index = sizes.firstIndex(where: {$0.type == imageType.rawValue}){
+                return sizes[index].url
+            } else{
+                return sizes[0].url
+            }
+        }
+        
         func getImage(imageType: ImageType, completion: @escaping (UIImage) -> ()){
 
             if let index = sizes.firstIndex(where: {$0.type == imageType.rawValue}) {

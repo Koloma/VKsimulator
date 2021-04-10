@@ -32,6 +32,7 @@ final class MyFrendsViewController: UIViewController {
     
     private var friends:[VKUser] = []
     private var filteredFriendsForTable:FriendsForTable = FriendsForTable()
+    private lazy var cacheService = CacheService(container: tableView)
     
     func logOut() {
         self.dismiss(animated: true, completion: nil)
@@ -231,7 +232,8 @@ extension MyFrendsViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: VKUserTableViewCell.identifier, for: indexPath) as? VKUserTableViewCell{
             let friend = filteredFriendsForTable.friends[indexPath.section][indexPath.row]
-            cell.configur(user: friend){
+            let image = cacheService.photo(atIndexpath: indexPath, byUrl: friend.photo50!)
+            cell.configur(user: friend, image: image){
                
                 let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
                 if  let userProperty = storyBoard.instantiateViewController(withIdentifier: "UserPropertyVeiwController") as? UserPropertyVeiwController{

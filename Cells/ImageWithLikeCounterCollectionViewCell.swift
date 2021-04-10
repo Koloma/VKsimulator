@@ -17,18 +17,14 @@ final class ImageWithLikeCounterCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var imageLikeHeart: UIImageView!
  
     
-    func configur(photo: VKPhoto){
+    func configur(vkPhoto: VKPhoto, image: UIImage?){
     
         imageView.image = nil
-        photo.getImage(imageType: .x604px) { image in
-            DispatchQueue.main.async {
-                self.imageView.image = image
-            }
-        }
-        labelTop.text = photo.text
-        labelLikeCount.text = "\(photo.likes?.count ?? 0)"
+        imageView.image = image
+        labelTop.text = vkPhoto.text
+        labelLikeCount.text = "\(vkPhoto.likes?.count ?? 0)"
         
-        if  photo.likes?.userLikes == 1 {
+        if  vkPhoto.likes?.userLikes == 1 {
             imageLikeHeart.image = UIImage(systemName: "heart.fill")
             imageLikeHeart.tintColor = UIColor.red
         }
