@@ -11,4 +11,5 @@ enum MyErrors: Error{
     case noData
     case loginError
     case userCouldNotBeParsed
+    case newsfeed(msg: String)
 }

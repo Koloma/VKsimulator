@@ -116,7 +116,7 @@ final class MyFrendsViewController: UIViewController {
         tableView.refreshControl?.attributedTitle = NSAttributedString(string: "Loading frends...")
         tableView.refreshControl?.addTarget(self, action: #selector(refreshTableView), for: UIControl.Event.valueChanged)
         
-        tableView.register(VKUserTableViewCell.nib, forCellReuseIdentifier: VKUserTableViewCell.identifier)
+        tableView.register(VKUserTableViewCell.nib, forCellReuseIdentifier: VKUserTableViewCell.reuseCellID)
         tableView.register(FrendsTableViewHeader.nib, forHeaderFooterViewReuseIdentifier: FrendsTableViewHeader.identifier)
         
         tableView.sectionIndexColor = UIColor.black
@@ -230,7 +230,7 @@ extension MyFrendsViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: VKUserTableViewCell.identifier, for: indexPath) as? VKUserTableViewCell{
+        if let cell = tableView.dequeueReusableCell(withIdentifier: VKUserTableViewCell.reuseCellID, for: indexPath) as? VKUserTableViewCell{
             let friend = filteredFriendsForTable.friends[indexPath.section][indexPath.row]
             let image = cacheService.photo(atIndexpath: indexPath, byUrl: friend.photo50!)
             cell.configur(user: friend, image: image){

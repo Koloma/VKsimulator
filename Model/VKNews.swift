@@ -70,15 +70,13 @@ struct VKNews: Codable {
             }
             else { return nil }
         }
-        let dispatchGroup = DispatchGroup()
+        
         var images = [UIImage]()
-        vkPhotos.forEach({ (vkPhoto) in
-            DispatchQueue.global(qos: .userInteractive).async(group: dispatchGroup) {
-                images.append(vkPhoto?.getImage(imageType: .y) ?? ImageCache.placeholderImage)
-            }
-        })
-        //TODO: приходится ждать пока все фотографии загрузятся
-        dispatchGroup.notify(queue: DispatchQueue.main) {
+        if let vkPhoto = vkPhotos.first,
+           let image = vkPhoto?.getImage(imageType: .y){
+            images.append(image)
+            completion(images)
+        }else{
             completion(images)
         }
     }

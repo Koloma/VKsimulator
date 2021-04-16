@@ -14,9 +14,121 @@
             filePath = "Service/NetService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "163"
-            endingLineNumber = "163"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
             landmarkName = "loadGroup(by:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "858ECD6B-CB4D-416F-8117-7553875C8A31"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Model/VKNews.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "getImage(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "60AC1FC8-D604-4B05-851D-240B0B690C28"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Model/VKNews.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "getImage(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D7490F20-F60C-478D-9A0D-87BCD2FE8CD4"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CellsXib/NewsFeedTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
+            landmarkName = "configur(vkNews:dateFormatter:imageTapFunc:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D79F9EA8-373F-4748-BD1B-C643D26114FA"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ViewControllers/NewsFeedViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
+            landmarkName = "tableView(_:prefetchRowsAt:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D79F9EA8-373F-4748-BD1B-C643D26114FA - f0a39fb546b72dbf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "VKsimulator.NewsFeedViewController.tableView(_: __C.UITableView, prefetchRowsAt: Swift.Array&lt;Foundation.IndexPath&gt;) -&gt; ()"
+                  moduleName = "VKsimulator"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/koloma/Documents/VKsimulator/ViewControllers/NewsFeedViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "129"
+                  endingLineNumber = "129"
+                  offsetFromSymbolStart = "64">
+               </Location>
+               <Location
+                  uuid = "D79F9EA8-373F-4748-BD1B-C643D26114FA - 8f2370a41dce31da"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Foundation.IndexPath) -&gt; Swift.Int in VKsimulator.NewsFeedViewController.tableView(_: __C.UITableView, prefetchRowsAt: Swift.Array&lt;Foundation.IndexPath&gt;) -&gt; ()"
+                  moduleName = "VKsimulator"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/koloma/Documents/VKsimulator/ViewControllers/NewsFeedViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "129"
+                  endingLineNumber = "129"
+                  offsetFromSymbolStart = "67">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E5F6CBC6-C22F-44CE-842F-C06B3C07B69E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ViewControllers/NewsFeedViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
+            landmarkName = "tableView(_:prefetchRowsAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

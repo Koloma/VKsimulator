@@ -12,6 +12,8 @@ final class CacheService {
     
     private let cacheLifeTime: TimeInterval = 30 * 24 * 60 * 60
     
+    public static let shared = CacheService()
+    
     private static let pathName: String = {
         let pathName = "images"
         guard let cachesDirectory = FileManager.default.urls(for: .cachesDirectory, in:.userDomainMask).first
@@ -68,7 +70,23 @@ final class CacheService {
             }
             self?.saveImageToCache(url: url, image: image)
             DispatchQueue.main.async {
-                self?.container.reloadRow(atIndexpath: indexPath)
+                self?.container?.reloadRow(atIndexpath: indexPath)
+            }
+        }
+    }
+
+    private func loadPhoto(byUrl url: String,complition: @escaping((UIImage?)-> Void)) {
+        AF.request(url).responseData(queue: DispatchQueue.global()) { [weak self] response in
+            guard let data = response.data,
+                  let image = UIImage(data: data)
+            else { return }
+            
+            DispatchQueue.main.async {
+                self?.images[url] = image
+            }
+            self?.saveImageToCache(url: url, image: image)
+            DispatchQueue.main.async {
+                complition(image)
             }
         }
     }
@@ -84,8 +102,23 @@ final class CacheService {
         }
         return image
     }
+
+    func photo(byUrl url: String, complition: ((UIImage?)-> Void)? = nil )->UIImage? {
+        var image: UIImage?
+        if let photo = images[url] {
+            image = photo
+        } else if let photo = getImageFromCache(url: url) {
+            image = photo
+        } else {
+            loadPhoto(byUrl: url){ (image) in
+                complition?(image)
+            }
+        }
+        return image
+    }
     
-private let container: DataReloadable
+    
+private let container: DataReloadable?
     
     init(container: UITableView) {
         self.container = Table(table: container)
@@ -94,6 +127,11 @@ private let container: DataReloadable
     init(container: UICollectionView) {
         self.container = Collection(collection: container)
     }
+    
+    init() {
+        self.container = nil
+    }
+
 }
 
 fileprivate protocol DataReloadable {
@@ -101,8 +139,10 @@ fileprivate protocol DataReloadable {
 }
 
 extension CacheService {
+    
     private class Table: DataReloadable {
         let table: UITableView
+        
         init(table: UITableView) {
             self.table = table
         }
@@ -110,8 +150,10 @@ extension CacheService {
             table.reloadRows(at: [indexPath], with: .none)
         }
     }
+    
     private class Collection: DataReloadable {
         let collection: UICollectionView
+        
         init(collection: UICollectionView) {
             self.collection = collection
         }

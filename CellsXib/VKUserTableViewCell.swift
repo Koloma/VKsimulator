@@ -21,8 +21,9 @@ final class VKUserTableViewCell: UITableViewCell {
     typealias ImageTapClosure = (() -> ())?
     var imageTapClosure: ImageTapClosure = nil
     
-    static let nib = UINib(nibName: "VKUserTableViewCell", bundle: nil)
-    static let identifier = "CellUser"
+    static let reuseCellID = String(describing: VKUserTableViewCell.self)
+    static let nib = UINib(nibName: reuseCellID, bundle: nil)
+    
     
     
     func configur(user: VKUser, image: UIImage?, imageTapClosure: ImageTapClosure = nil){

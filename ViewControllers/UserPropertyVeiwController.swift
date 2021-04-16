@@ -32,11 +32,12 @@ final class UserPropertyVeiwController: UIViewController{
     
     private func setUser(user: VKUser?){
         guard let user = vkUser else { return }
-        user.getImage(imageType: .image100){[weak self] image in
-            DispatchQueue.main.async {
-                self?.userImageVew.image = image
+        self.userImageVew.image =
+            user.getImage(imageType: .image100){[weak self] image in
+                DispatchQueue.main.async {
+                    self?.userImageVew.image = image
+                }
             }
-        }
         userFio.text = user.fio
         userDescription.text = "\(user.domain ?? "")"
         userOnLineStatus.tintColor = user.online == 1 ? UIColor.green: UIColor.gray

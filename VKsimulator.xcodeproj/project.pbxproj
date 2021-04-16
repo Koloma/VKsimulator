@@ -19,6 +19,7 @@
 		205A614D2621E98F00180553 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205A614C2621E98F00180553 /* ImageCache.swift */; };
 		205B9792261A211400349B72 /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205B9791261A211400349B72 /* AsyncOperation.swift */; };
 		205CA78B261226C000162F84 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205CA78A261226C000162F84 /* Response.swift */; };
+		205E15082629DEA3008791D3 /* UITableView+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205E15072629DEA3008791D3 /* UITableView+ext.swift */; };
 		2069AC45260A287B008928F9 /* VKError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2069AC44260A287B008928F9 /* VKError.swift */; };
 		2088101026209A9A00CC644A /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2088100F26209A9A00CC644A /* CacheService.swift */; };
 		20ED452D2610D7350043AA58 /* VKProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED452C2610D7350043AA58 /* VKProfile.swift */; };
@@ -88,6 +89,7 @@
 		205A614C2621E98F00180553 /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		205B9791261A211400349B72 /* AsyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
 		205CA78A261226C000162F84 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		205E15072629DEA3008791D3 /* UITableView+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+ext.swift"; sourceTree = "<group>"; };
 		2069AC44260A287B008928F9 /* VKError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKError.swift; sourceTree = "<group>"; };
 		2088100F26209A9A00CC644A /* CacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheService.swift; sourceTree = "<group>"; };
 		20C1A11D2607756B00B37868 /* VKsimulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VKsimulator.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -271,6 +273,7 @@
 				84A256D125C462E800F372A0 /* View+ext.swift */,
 				8446CA3A25C5893A00FC62F2 /* TextView+ext.swift */,
 				8446CA4225C5A35000FC62F2 /* String+ext.swift */,
+				205E15072629DEA3008791D3 /* UITableView+ext.swift */,
 			);
 			path = Extrensions;
 			sourceTree = "<group>";
@@ -488,6 +491,7 @@
 			files = (
 				202F93222618A7C70000C21B /* ParseDataUserOperation.swift in Sources */,
 				84EF01A325BE78CD00F49415 /* Animator.swift in Sources */,
+				205E15082629DEA3008791D3 /* UITableView+ext.swift in Sources */,
 				843D1F6E25C19BFE00437D18 /* AnimatorVC.swift in Sources */,
 				84A3334325978FAD00E7424E /* ImageWithLikeCounterCollectionViewCell.swift in Sources */,
 				84A3334025978CE800E7424E /* ImageGalleryCollectionViewController.swift in Sources */,

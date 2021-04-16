@@ -9,8 +9,9 @@ import UIKit
 
 final class VKGroupTableViewCell: UITableViewCell {
 
-    static let nib = UINib(nibName: "VKGroupTableViewCell", bundle: nil)
-    static let identifier = "CellGroup"
+    static let reuseCellID = String(describing: VKGroupTableViewCell.self)
+    static let nib = UINib(nibName: reuseCellID, bundle: nil)
+    
     static let height : CGFloat = 60
     
     @IBOutlet weak var groupImageView: UIImageView!

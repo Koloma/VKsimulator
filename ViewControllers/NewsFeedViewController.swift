@@ -9,11 +9,34 @@ import UIKit
 
 final class NewsFeedViewController: UIViewController {
 
-    @IBOutlet weak var newsTableView: UITableView!
+    @IBOutlet private weak var newsTableView: UITableView!
        
-    private var vkNewsArray = [VKNews](){
-        didSet{
-            self.newsTableView.reloadData()
+    private var vkNewsArray = [VKNews]()
+    private var nextNewsItemId = ""
+    private var isLoading = false
+    private let newsCount = 5
+    private let nextNewsLoadBeforeEnd = 2
+    
+    private lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.tintColor = .blue
+        refreshControl.attributedTitle = NSAttributedString(string: "Load Data", attributes: [.font: UIFont.systemFont(ofSize: 12)])
+        refreshControl.addTarget(self, action: #selector(refreshNews(_:)), for: .valueChanged)
+        return refreshControl
+    }()
+    
+    private lazy var dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy HH:mm"
+        return dateFormatter
+    }()
+    
+    @objc private func refreshNews(_ sender: UIRefreshControl) {
+        loadNewsData(from: "") {
+            DispatchQueue.main.async {
+                self.refreshControl.endRefreshing()
+                self.newsTableView.reloadData()
+            }
         }
     }
     
@@ -22,21 +45,32 @@ final class NewsFeedViewController: UIViewController {
 
         newsTableView.delegate = self
         newsTableView.dataSource = self
-        newsTableView.register(NewsFeedTableViewCell.nib, forCellReuseIdentifier: NewsFeedTableViewCell.identifier)
+        newsTableView.register(NewsFeedTableViewCell.nib,
+                               forCellReuseIdentifier: NewsFeedTableViewCell.reuseCellID)
+        newsTableView.refreshControl = refreshControl
+        newsTableView.tableFooterView = UIView()
+        newsTableView.prefetchDataSource = self
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        loadNewsData()
+        loadNewsData(from: "") {
+            DispatchQueue.main.async {
+                self.refreshControl.endRefreshing()
+                self.newsTableView.reloadData()
+            }
+        }
     }
     
-    private func loadNewsData(complition: (() -> Void)? = nil){
-        NetService.shared.loadUserNewsfeed(token: Session.shared.token, userId: Session.shared.userId){ [weak self] (result) in
+    private func loadNewsData(from: String, complition: (() -> Void)? = nil){
+       
+        NetService.shared.loadUserNewsfeed(newsCount: newsCount,
+                                           from: from){ [weak self] (result) in
             switch result{
-            case .success(let news):
+            case .success((let news, let nextFrom)):
                 DispatchQueue.main.async {
                     print("News count: \(news.count)")
+                    self?.nextNewsItemId = nextFrom
                     self?.vkNewsArray = news
                 }
             case .failure(let error):
@@ -47,11 +81,16 @@ final class NewsFeedViewController: UIViewController {
     }
 }
 
-
-
-extension NewsFeedViewController: UITableViewDelegate, UITableViewDataSource{
+extension NewsFeedViewController: UITableViewDelegate, UITableViewDataSource {
+  
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        vkNewsArray.count
+        if vkNewsArray.isEmpty {
+            tableView.showEmptyMessage("Загружаю новости...")
+        } else {
+            tableView.hideEmptyMessage()
+        }
+        return vkNewsArray.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -65,8 +104,10 @@ extension NewsFeedViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = newsTableView.dequeueReusableCell(withIdentifier: NewsFeedTableViewCell.identifier, for: indexPath) as? NewsFeedTableViewCell{
-            cell.configur(vkNews: vkNewsArray[indexPath.row], imageTapFunc: imageViewTap)
+        if let cell = newsTableView.dequeueReusableCell(withIdentifier: NewsFeedTableViewCell.reuseCellID, for: indexPath) as? NewsFeedTableViewCell{
+            cell.configur(vkNews: vkNewsArray[indexPath.row],
+                          dateFormatter: dateFormatter,
+                          imageTapFunc: imageViewTap)
             return cell
         }
         return UITableViewCell()
@@ -82,6 +123,44 @@ extension NewsFeedViewController: UITableViewDelegate, UITableViewDataSource{
     
 }
 
+extension NewsFeedViewController: UITableViewDataSourcePrefetching{
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        
+        guard
+            let maxRow = indexPaths.map({ $0.row }).max(),
+            maxRow > vkNewsArray.count - nextNewsLoadBeforeEnd,
+            isLoading == false
+        else { return }
+        
+        print("Max row: \(maxRow)")
+        
+        isLoading = true
+        NetService.shared.loadUserNewsfeed(newsCount: newsCount,
+                                           from: nextNewsItemId) { [weak self] (result) in
+            guard let self = self else { return }
+            
+            switch result{
+            case .success((let news, let nextFrom)):
+                let newsCount = self.vkNewsArray.count
+                
+                DispatchQueue.main.async {
+                    self.nextNewsItemId = nextFrom
+                    self.vkNewsArray.append(contentsOf: news)
+                    let indexPaths = (newsCount..<(newsCount+news.count)).map { IndexPath(row: $0, section: 0) }
+                    self.newsTableView.beginUpdates()
+                    self.newsTableView.insertRows(at: indexPaths, with: .automatic)
+                    self.newsTableView.endUpdates()
+                    self.isLoading = false
+                }
+                
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    
+}
 
     
 
