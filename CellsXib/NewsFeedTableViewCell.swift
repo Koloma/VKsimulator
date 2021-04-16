@@ -64,14 +64,13 @@ final class NewsFeedTableViewCell: UITableViewCell {
                 case .success(let group):
                     DispatchQueue.main.async {
                         self.userNicLable.text = group.name
+                        self.userImageView.image =
+                            group.getImage(imageType: .image50, completion: { [weak self] (image) in
+                                DispatchQueue.main.async {
+                                    self?.userImageView.image = image
+                                }
+                            })
                     }
-                    self.userImageView.image =
-                        group.getImage(imageType: .image50, completion: { [weak self] (image) in
-                            DispatchQueue.main.async {
-                                self?.userImageView.image = image
-                            }
-                        })
-                    
                 case .failure(let error):
                     print(error)
 
@@ -85,13 +84,13 @@ final class NewsFeedTableViewCell: UITableViewCell {
             DispatchQueue.main.async {
                 if (images.count > 0){
                     self.newsImageView.image = images[0]
-                    self.imageViewConstraintHeiht.constant = 400
+                    //self.imageViewConstraintHeiht.constant = 400
                     self.newsImageView.isHidden = false
                     self.newsImageView.layoutIfNeeded()
                 }
                 else {
                     //self.newsImageView.image = ImageCache.placeholderImage
-                    self.imageViewConstraintHeiht.constant = 0
+                    //self.imageViewConstraintHeiht.constant = 0
                     self.newsImageView.isHidden = true
                     self.newsImageView.layoutIfNeeded()
                 }
