@@ -13,6 +13,7 @@ private let cellIdentifier = "Cell"
 final class ImageGalleryCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
     var user:VKUser!
+    private lazy var cacheService = CacheService(container: collectionView)
     
     private var images:[VKPhoto] = []
     private var actiIndicatorView = UIActivityIndicatorView()
@@ -83,7 +84,9 @@ final class ImageGalleryCollectionViewController: UICollectionViewController, UI
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? ImageWithLikeCounterCollectionViewCell{
-            cell.configur(photo: images[indexPath.row])
+            
+            let image = cacheService.photo(atIndexpath: indexPath, byUrl: images[indexPath.row].getUrl(imageType: .x))
+            cell.configur(vkPhoto: images[indexPath.row], image: image)
             
             let imageGesture = CustomTapGestureRecognizer(indexPath: indexPath, callback: didImageTap)
             cell.imageView.addGestureRecognizer(imageGesture)
@@ -140,7 +143,7 @@ final class ImageGalleryCollectionViewController: UICollectionViewController, UI
             //print("imagePosition \(imagePosition)")
             view.addSubview(imageView)
             imageView.frame = imagePosition
-            images[indexPath.row].getImage(imageType: .x604px){ image in
+            images[indexPath.row].getImage(imageType: .x){ image in
                 DispatchQueue.main.async {
                     imageView.image = image
                 }

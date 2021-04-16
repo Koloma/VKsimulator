@@ -66,23 +66,20 @@ class VKGroup: Object, Codable, Comparable {
         case image200
     }
     
-    func getImage(imageType: ImageType, completion: @escaping (UIImage) -> ()){
-        var url:URL?
+    func getImage(imageType: ImageType, completion: @escaping (UIImage?) -> ())-> UIImage?{
+        var url:String
         switch imageType {
         case .image50:
-            url = URL(string: photo50)
+            url = photo50
         case .image100:
-            url = URL(string: photo100)
+            url = photo100
         case .image200:
-            url = URL(string: photo200)
+            url = photo200
         }
-        if let url = url {
-            ImageCache.shared.load(url: url as NSURL){ image in
-                completion(image)
-            }
-        }else{
-            //completion(ImageCache.placeholderImage)
+        let image = CacheService.shared.photo(byUrl: url){ image in
+            completion(image)
         }
+        return image
     }
     
 }

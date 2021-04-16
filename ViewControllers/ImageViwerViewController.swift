@@ -29,7 +29,7 @@ final class ImageViwerViewController: UIViewController {
             case .success(let photos):
                 self.imageArray = photos
                 
-                self.imageArray[self.currentImageIndex].getImage(imageType: .x604px){ image in
+                self.imageArray[self.currentImageIndex].getImage(imageType: .x){ image in
                     DispatchQueue.main.async {
                         self.imageView.image = image
                     }
@@ -95,7 +95,7 @@ final class ImageViwerViewController: UIViewController {
                     UIView.addKeyframe(withRelativeStartTime: 0.61, relativeDuration: 0.5){
                         self.view.layoutIfNeeded()
                         self.imageView.transform = .identity
-                        self.imageArray[self.currentImageIndex].getImage(imageType: .x604px){ image in
+                        self.imageArray[self.currentImageIndex].getImage(imageType: .x){ image in
                             DispatchQueue.main.async {
                                 self.imageView.image = image
                             }
@@ -112,7 +112,7 @@ final class ImageViwerViewController: UIViewController {
                 animation.fromValue = imageView.layer.position.x + CGFloat(mult) * 500
                 animation.duration = 1
                 imageView.layer.add(animation, forKey: nil)
-                self.imageArray[self.currentImageIndex].getImage(imageType: .x604px){ image in
+                self.imageArray[self.currentImageIndex].getImage(imageType: .x){ image in
                     DispatchQueue.main.async {
                         self.imageView.image = image
                     }
@@ -121,7 +121,7 @@ final class ImageViwerViewController: UIViewController {
             
             func animate(){
 
-                self.imageArray[self.currentImageIndex].getImage(imageType: .x604px){ image in
+                self.imageArray[self.currentImageIndex].getImage(imageType: .x){ image in
                     DispatchQueue.main.async {
                         self.imageView.image = image
                     }

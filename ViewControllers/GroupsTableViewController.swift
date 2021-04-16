@@ -11,6 +11,8 @@ final class GroupsTableViewController: UITableViewController {
 
     @IBOutlet weak var searchBar: UISearchBar!
     
+    private lazy var cacheService = CacheService(container: tableView)
+    
     var groups:[VKGroup] = []{
         didSet{
             self.tableView.reloadData()
@@ -20,9 +22,8 @@ final class GroupsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.register(VKGroupTableViewCell.nib, forCellReuseIdentifier: VKGroupTableViewCell.identifier)
+        tableView.register(VKGroupTableViewCell.nib, forCellReuseIdentifier: VKGroupTableViewCell.reuseCellID)
         searchBar.delegate = self
-        
     }
 
     func searchGroup(searchText : String){
@@ -61,8 +62,9 @@ final class GroupsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: VKGroupTableViewCell.identifier, for: indexPath) as? VKGroupTableViewCell {
-            cell.configur(group: groups[indexPath.row])
+        if let cell = tableView.dequeueReusableCell(withIdentifier: VKGroupTableViewCell.reuseCellID, for: indexPath) as? VKGroupTableViewCell {
+            let image = cacheService.photo(atIndexpath: indexPath, byUrl: groups[indexPath.row].photo50)
+            cell.configur(group: groups[indexPath.row], image: image)
             return cell
         }
         return UITableViewCell()

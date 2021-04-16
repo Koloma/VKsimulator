@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SwiftyJSON
 import Alamofire
 import PromiseKit
 
@@ -234,43 +233,51 @@ final class NetService{
         }
     }
     
-    func loadUserNewsfeed(token: String, userId: Int, completion: ((Swift.Result<[VKNews],Error>) -> Void)? = nil) {
+    func loadUserNewsfeed(newsCount: Int,
+                          from item: String = "",
+                          completion: ((Swift.Result<([VKNews],String),Error>) -> Void)? = nil) {
         let baseURL = K.ApiVK.baseUrl
         let path = K.ApiVK.pathGetUserNewsfeed
 
         let queryItems = [
-            URLQueryItem(name: "access_token", value: token),
-            URLQueryItem(name: "owner_id", value: "\(userId)"),
+            URLQueryItem(name: "access_token", value: Session.shared.token),
+            URLQueryItem(name: "owner_id", value: "\(Session.shared.userId)"),
             URLQueryItem(name: "filters", value: "post"),
-            URLQueryItem(name: "count", value: "10"),
+            URLQueryItem(name: "count", value: "\(newsCount)"),
+            URLQueryItem(name: "start_from", value: item),
             URLQueryItem(name: "v", value: K.ApiVK.v)]
         
         guard var urlComps = URLComponents(string: baseURL + path) else { return }
         urlComps.queryItems = queryItems
         guard let url = urlComps.url else { return }
-        print(url)
+        
         sharedDataTask(url: url){ data in
-            
             let decoder = JSONDecoder()
-            let json = JSON(data)
-            let vkNewsJSONArr = json["response"]["items"].arrayValue
-            let dispatchGroup = DispatchGroup()
-            var vkNewsArray:[VKNews] = []
-            for (index, news) in vkNewsJSONArr.enumerated() {
-                DispatchQueue.global(qos: .userInteractive).async(group: dispatchGroup) {
-                    do{
-                        let decodeVKNews = try decoder.decode(VKNews.self, from: news.rawData())
-                        print ("Decode news at index: \(index)")
-                        vkNewsArray.append(decodeVKNews)
-                    }catch(let errorDecode){
-                        print("Decode error it index \(index): \(errorDecode)")
-                        //completion?(.failure(errorDecode))
-                    }
-                }
-            }
             
-            dispatchGroup.notify(queue: DispatchQueue.main) {
-                completion?(.success(vkNewsArray))
+            do{
+                let response = try decoder.decode(VKNewsRAW.self, from: data)
+                
+                guard let news = response.response.items,
+                      let nextFrom = response.response.nextFrom
+                else {
+                    print("Error Response or nextFrom")
+                    completion?(.failure(MyErrors.newsfeed(msg: "Response or nextFrom")))
+                    return }
+                
+                completion?(.success((news,nextFrom)))
+                
+                
+            }catch(let error){
+                do{
+                    let eror = try decoder.decode(VKErrorRAW.self, from: data)
+                    print(eror.error.errorMsg)
+                }catch(let err){
+                    print(err)
+                    
+                    completion?(.failure(error))
+                }
+
+                
             }
         }
     }

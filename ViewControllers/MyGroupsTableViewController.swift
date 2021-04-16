@@ -11,6 +11,7 @@ import RealmSwift
 final class MyGroupsTableViewController: UITableViewController {
 
     private var myGroupsNotificationToken: NotificationToken?
+    private lazy var cacheService = CacheService(container: tableView)
     
     private var myGroups:Results<VKGroup>?{
         let groups: Results<VKGroup>? = RealmService.shared?.loadGroups()
@@ -41,9 +42,14 @@ final class MyGroupsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(VKGroupTableViewCell.nib, forCellReuseIdentifier: VKGroupTableViewCell.identifier)
+        tableView.register(VKGroupTableViewCell.nib, forCellReuseIdentifier: VKGroupTableViewCell.reuseCellID)
         tableView.refreshControl = myRefreshControl
         notification()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super .viewWillAppear(animated)
+
         loadGroupsData()
     }
     
@@ -54,13 +60,13 @@ final class MyGroupsTableViewController: UITableViewController {
                 print("Initialize \(group.count)")
                 break
             case .update(let group, deletions: let deletions, insertions: let insertions, modifications: let modifications):
-                print("""
-                    New count \(group.count)
-                    Deletions \(deletions)
-                    Insertions \(insertions)
-                    Modifications \(modifications)
-                    """
-                    )
+//                print("""
+//                    New count \(group.count)
+//                    Deletions \(deletions)
+//                    Insertions \(insertions)
+//                    Modifications \(modifications)
+//                    """
+//                    )
                 self?.tableView.beginUpdates()
                 let deletionIndexPaths = deletions.map { IndexPath(item: $0, section: 0) }
                 self?.tableView.deleteRows(at: deletionIndexPaths, with: .automatic)
@@ -108,9 +114,10 @@ final class MyGroupsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: VKGroupTableViewCell.identifier, for: indexPath) as? VKGroupTableViewCell{
-            let group = myGroups?[indexPath.row]
-            cell.configur(group: group!)
+        if let cell = tableView.dequeueReusableCell(withIdentifier: VKGroupTableViewCell.reuseCellID, for: indexPath) as? VKGroupTableViewCell{
+            guard let group = myGroups?[indexPath.row] else { return UITableViewCell() }
+            let image = cacheService.photo(atIndexpath: indexPath, byUrl: group.photo50)
+            cell.configur(group: group, image: image)
             return cell
         }
         return UITableViewCell()

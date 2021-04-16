@@ -21,19 +21,17 @@ final class VKUserTableViewCell: UITableViewCell {
     typealias ImageTapClosure = (() -> ())?
     var imageTapClosure: ImageTapClosure = nil
     
-    static let nib = UINib(nibName: "VKUserTableViewCell", bundle: nil)
-    static let identifier = "CellUser"
+    static let reuseCellID = String(describing: VKUserTableViewCell.self)
+    static let nib = UINib(nibName: reuseCellID, bundle: nil)
     
-    func configur(user: VKUser, imageTapClosure: ImageTapClosure = nil){
+    
+    
+    func configur(user: VKUser, image: UIImage?, imageTapClosure: ImageTapClosure = nil){
         self.imageTapClosure = imageTapClosure
         userNicLable.text = user.nickname
         userDescrLabel.text = user.fio
         userOnline.tintColor = user.online == 1 ? UIColor.green : UIColor.gray
-        user.getImage(imageType: .image50){ image in
-            DispatchQueue.main.async {
-                self.userImageView.image = image
-            }
-        }
+        userImageView.image = image
         userImageView.rounded()
         backgroundColor = UIColor.clear
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped))

@@ -13,6 +13,7 @@ final class NewsFeedTableViewCell: UITableViewCell {
     @IBOutlet weak var userNicLable: UILabel!
     @IBOutlet weak var dateLable: UILabel!
     
+    @IBOutlet weak var imageViewConstraintHeiht: NSLayoutConstraint!
     
     @IBOutlet weak var newsTextView: UITextView!
     @IBOutlet weak var newsImageView: UIImageView!
@@ -24,8 +25,9 @@ final class NewsFeedTableViewCell: UITableViewCell {
     @IBOutlet weak var numberOfLikeLable: UILabel!
     @IBOutlet weak var likeViewImage: UIImageView!
     
-    static let nib = UINib(nibName: "NewsFeedTableViewCell", bundle: nil)
-    static let identifier = "CellNews"
+    static let reuseCellID = String(describing: NewsFeedTableViewCell.self)
+    static let nib = UINib(nibName: reuseCellID, bundle: nil)
+    
     
     
     typealias ImageViewTapFunc =  (VKNews) -> Void
@@ -36,7 +38,7 @@ final class NewsFeedTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
 
-    func configur(vkNews: VKNews, imageTapFunc: @escaping ImageViewTapFunc){
+    func configur(vkNews: VKNews, dateFormatter : Formatter, imageTapFunc: @escaping ImageViewTapFunc){
         
         if vkNews.sourceID > 0{
             NetService.shared.loadUser(by: vkNews.sourceID){ results in
@@ -45,11 +47,12 @@ final class NewsFeedTableViewCell: UITableViewCell {
                     DispatchQueue.main.async {
                         self.userNicLable.text = user.fio
                     }
-                    user.getImage(imageType: .image50, completion: { [weak self] (image) in
-                        DispatchQueue.main.async {
-                            self?.userImageView.image = image
-                        }
-                    })
+                    self.userImageView.image =
+                        user.getImage(imageType: .image50, completion: { [weak self] (image) in
+                            DispatchQueue.main.async {
+                                self?.userImageView.image = image
+                            }
+                        })
                 case .failure(let error):
                     print(error)
                     
@@ -60,28 +63,39 @@ final class NewsFeedTableViewCell: UITableViewCell {
                 switch results{
                 case .success(let group):
                     DispatchQueue.main.async {
-                        self.userNicLable.text = group.screenName
+                        self.userNicLable.text = group.name
                     }
-                    group.getImage(imageType: .image50, completion: { [weak self] (image) in
-                        DispatchQueue.main.async {
-                            self?.userImageView.image = image
-                        }
-                    })
+                    self.userImageView.image =
+                        group.getImage(imageType: .image50, completion: { [weak self] (image) in
+                            DispatchQueue.main.async {
+                                self?.userImageView.image = image
+                            }
+                        })
+                    
                 case .failure(let error):
                     print(error)
-                    
-                    
+
                 }
             }
         }
-        
-  
         
         newsImageViewTap = imageTapFunc
  
         vkNews.getImage(){ images in
             DispatchQueue.main.async {
-                self.newsImageView.image = images[0]
+                if (images.count > 0){
+                    self.newsImageView.image = images[0]
+                    self.imageViewConstraintHeiht.constant = 400
+                    self.newsImageView.isHidden = false
+                    self.newsImageView.layoutIfNeeded()
+                }
+                else {
+                    //self.newsImageView.image = ImageCache.placeholderImage
+                    self.imageViewConstraintHeiht.constant = 0
+                    self.newsImageView.isHidden = true
+                    self.newsImageView.layoutIfNeeded()
+                }
+                
             }
         }
         
@@ -90,9 +104,7 @@ final class NewsFeedTableViewCell: UITableViewCell {
         numberOfViewsLable.text = String(vkNews.views?.count ?? 0)
         
         let date = Date(timeIntervalSince1970: vkNews.date)
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .short
-        dateLable.text = dateFormatter.string(from: date)
+        dateLable.text = dateFormatter.string(for: date)
         newsTextView.text = vkNews.text ??  "News not loaded"
         
         contentView.layer.borderWidth = 1
