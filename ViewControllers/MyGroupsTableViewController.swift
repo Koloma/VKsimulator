@@ -59,7 +59,8 @@ final class MyGroupsTableViewController: UITableViewController {
             case .initial(let group):
                 print("Initialize \(group.count)")
                 break
-            case .update(let group, deletions: let deletions, insertions: let insertions, modifications: let modifications):
+            case .update(_, deletions: let deletions, insertions: let insertions, modifications: let modifications):
+//            case .update(let group, deletions: let deletions, insertions: let insertions, modifications: let modifications):
 //                print("""
 //                    New count \(group.count)
 //                    Deletions \(deletions)

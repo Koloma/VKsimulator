@@ -62,8 +62,8 @@ struct VKNews: Codable {
     }
     
     
-    func getImage(completion: @escaping ([UIImage]) -> ()){
-        guard let attachments = attachments else { return }
+    func getImageUrl(imageType: VKPhoto.ImageType) -> String?{
+        guard let attachments = attachments else { return nil }
         let vkPhotos = attachments.map{ (attachment)-> VKPhoto? in
             if let vkPhoto = attachment.photo{
                 return vkPhoto
@@ -71,17 +71,16 @@ struct VKNews: Codable {
             else { return nil }
         }
         
-        var images = [UIImage]()
         if let vkPhoto = vkPhotos.first,
-           let image = vkPhoto?.getImage(imageType: .y){
-            images.append(image)
-            completion(images)
-        }else{
-            completion(images)
+           let stringUrl = vkPhoto?.getUrl(imageType: .y){
+            return stringUrl
+        } else {
+            return nil
         }
+        
     }
-    
 }
+
 
 
 

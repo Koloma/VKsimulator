@@ -28,8 +28,6 @@ final class NewsFeedTableViewCell: UITableViewCell {
     static let reuseCellID = String(describing: NewsFeedTableViewCell.self)
     static let nib = UINib(nibName: reuseCellID, bundle: nil)
     
-    
-    
     typealias ImageViewTapFunc =  (VKNews) -> Void
     private var newsImageViewTap : ImageViewTapFunc?
     private var numberOfLike = 0
@@ -38,7 +36,8 @@ final class NewsFeedTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
 
-    func configur(vkNews: VKNews, dateFormatter : Formatter, imageTapFunc: @escaping ImageViewTapFunc){
+    func configur(indexPath: IndexPath, cacheService: CacheService, vkNews: VKNews, dateFormatter : Formatter, imageTapFunc: @escaping ImageViewTapFunc){
+        
         
         if vkNews.sourceID > 0{
             NetService.shared.loadUser(by: vkNews.sourceID){ results in
@@ -46,16 +45,10 @@ final class NewsFeedTableViewCell: UITableViewCell {
                 case .success(let user):
                     DispatchQueue.main.async {
                         self.userNicLable.text = user.fio
+                        self.userImageView.image = cacheService.photo(atIndexpath: indexPath, byUrl: user.photo50!)
                     }
-                    self.userImageView.image =
-                        user.getImage(imageType: .image50, completion: { [weak self] (image) in
-                            DispatchQueue.main.async {
-                                self?.userImageView.image = image
-                            }
-                        })
                 case .failure(let error):
                     print(error)
-                    
                 }
             }
         }else{
@@ -64,12 +57,7 @@ final class NewsFeedTableViewCell: UITableViewCell {
                 case .success(let group):
                     DispatchQueue.main.async {
                         self.userNicLable.text = group.name
-                        self.userImageView.image =
-                            group.getImage(imageType: .image50, completion: { [weak self] (image) in
-                                DispatchQueue.main.async {
-                                    self?.userImageView.image = image
-                                }
-                            })
+                        self.userImageView.image = cacheService.photo(atIndexpath: indexPath, byUrl: group.photo50)
                     }
                 case .failure(let error):
                     print(error)
@@ -80,24 +68,18 @@ final class NewsFeedTableViewCell: UITableViewCell {
         
         newsImageViewTap = imageTapFunc
  
-        vkNews.getImage(){ images in
+        if let imageUrl = vkNews.getImageUrl(imageType: .y){
             DispatchQueue.main.async {
-                if (images.count > 0){
-                    self.newsImageView.image = images[0]
-                    //self.imageViewConstraintHeiht.constant = 400
-                    self.newsImageView.isHidden = false
-                    self.newsImageView.layoutIfNeeded()
-                }
-                else {
-                    //self.newsImageView.image = ImageCache.placeholderImage
-                    //self.imageViewConstraintHeiht.constant = 0
-                    self.newsImageView.isHidden = true
-                    self.newsImageView.layoutIfNeeded()
-                }
-                
+                self.newsImageView.image = cacheService.photo(atIndexpath: indexPath, byUrl: imageUrl)
+                self.newsImageView.isHidden = false
+                self.newsImageView.layoutIfNeeded()
             }
+        }else {
+            self.newsImageView.isHidden = true
+            self.newsImageView.layoutIfNeeded()
         }
         
+
         numberOfLike = vkNews.likes?.count ?? 0
         numberOfLikeLable.text = String(numberOfLike)
         numberOfViewsLable.text = String(vkNews.views?.count ?? 0)

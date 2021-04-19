@@ -31,6 +31,8 @@ final class NewsFeedViewController: UIViewController {
         return dateFormatter
     }()
     
+    private lazy var cacheService = CacheService(container: newsTableView)
+    
     @objc private func refreshNews(_ sender: UIRefreshControl) {
         loadNewsData(from: "") {
             DispatchQueue.main.async {
@@ -106,7 +108,9 @@ extension NewsFeedViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = newsTableView.dequeueReusableCell(withIdentifier: NewsFeedTableViewCell.reuseCellID, for: indexPath) as? NewsFeedTableViewCell{
-            cell.configur(vkNews: vkNewsArray[indexPath.row],
+            cell.configur(indexPath: indexPath,
+                          cacheService: cacheService,
+                          vkNews: vkNewsArray[indexPath.row],
                           dateFormatter: dateFormatter,
                           imageTapFunc: imageViewTap)
             return cell
