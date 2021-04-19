@@ -53,6 +53,9 @@ final class NewsFeedViewController: UIViewController {
         newsTableView.refreshControl = refreshControl
         newsTableView.tableFooterView = UIView()
         newsTableView.prefetchDataSource = self
+        
+        newsTableView.rowHeight = UITableView.automaticDimension
+        newsTableView.estimatedRowHeight = UITableView.automaticDimension
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -104,6 +107,7 @@ extension NewsFeedViewController: UITableViewDelegate, UITableViewDataSource {
         else {
             return 400
         }
+
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
