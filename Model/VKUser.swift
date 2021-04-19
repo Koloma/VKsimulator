@@ -81,6 +81,7 @@ class VKUser: Object, Codable {
         case .image200:
             url = photo200 ?? ""
         }
+        
         let image = CacheService.shared.photo(byUrl: url){ image in
             completion(image)
         }

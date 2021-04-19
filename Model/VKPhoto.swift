@@ -59,30 +59,18 @@ import RealmSwift
             }
         }
         
-        func getImage(imageType: ImageType, completion: @escaping (UIImage) -> ()){
-
+        func getImage(imageType: ImageType, completion: @escaping (UIImage?) -> ()) -> UIImage? {
+            
             if let index = sizes.firstIndex(where: {$0.type == imageType.rawValue}) {
                 if let url = URL(string: sizes[index].url){
-                    ImageCache.shared.load(url: url as NSURL){ image in
-                        completion(image)
+                    let imageCache = CacheService.shared.photo(byUrl: url.absoluteString){ image in
+                        completion(image)        
                     }
-                } else{
-                    completion(ImageCache.placeholderImage)
+                    return imageCache
                 }
-                
-            }else{
-                completion(ImageCache.placeholderImage)
             }
+                
+            return nil
         }
         
-        func getImage(imageType: ImageType) -> UIImage {
-            
-            if let index = sizes.firstIndex(where: {$0.type == imageType.rawValue}) {
-                if let url = URL(string: sizes[index].url){
-                    return ImageCache.shared.load(url: url as NSURL)
-                }
-            }
-            return ImageCache.placeholderImage
-            
-        }
     }

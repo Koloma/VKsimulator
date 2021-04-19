@@ -31,6 +31,8 @@ final class NewsFeedViewController: UIViewController {
         return dateFormatter
     }()
     
+    private lazy var cacheService = CacheService(container: newsTableView)
+    
     @objc private func refreshNews(_ sender: UIRefreshControl) {
         loadNewsData(from: "") {
             DispatchQueue.main.async {
@@ -43,6 +45,7 @@ final class NewsFeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        newsTableView.rowHeight = UITableView.automaticDimension
         newsTableView.delegate = self
         newsTableView.dataSource = self
         newsTableView.register(NewsFeedTableViewCell.nib,
@@ -50,6 +53,9 @@ final class NewsFeedViewController: UIViewController {
         newsTableView.refreshControl = refreshControl
         newsTableView.tableFooterView = UIView()
         newsTableView.prefetchDataSource = self
+        
+        newsTableView.rowHeight = UITableView.automaticDimension
+        newsTableView.estimatedRowHeight = UITableView.automaticDimension
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -95,17 +101,20 @@ extension NewsFeedViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if let newsText = vkNewsArray[indexPath.row].text{
-            let heightForRowAt = 550 + newsText.height(withConstrainedWidth: newsTableView.frame.width - 20, font: UIFont.systemFont(ofSize: 14.0))
+            let heightForRowAt = 400 + newsText.height(withConstrainedWidth: newsTableView.frame.width - 20, font: UIFont.systemFont(ofSize: 14.0))
             return heightForRowAt
         }
         else {
-            return 550
+            return 400
         }
+
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = newsTableView.dequeueReusableCell(withIdentifier: NewsFeedTableViewCell.reuseCellID, for: indexPath) as? NewsFeedTableViewCell{
-            cell.configur(vkNews: vkNewsArray[indexPath.row],
+            cell.configur(indexPath: indexPath,
+                          cacheService: cacheService,
+                          vkNews: vkNewsArray[indexPath.row],
                           dateFormatter: dateFormatter,
                           imageTapFunc: imageViewTap)
             return cell

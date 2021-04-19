@@ -143,7 +143,7 @@ final class ImageGalleryCollectionViewController: UICollectionViewController, UI
             //print("imagePosition \(imagePosition)")
             view.addSubview(imageView)
             imageView.frame = imagePosition
-            images[indexPath.row].getImage(imageType: .x){ image in
+            imageView.image = images[indexPath.row].getImage(imageType: .x){ image in
                 DispatchQueue.main.async {
                     imageView.image = image
                 }

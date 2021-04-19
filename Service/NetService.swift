@@ -130,7 +130,7 @@ final class NetService{
             let decoder = JSONDecoder()
             do{
                 let responce = try decoder.decode(ResponseUserRAW.self,from: data)
-                print(responce)
+                //print(responce)
                 if let friends = responce.response,
                    let friend = friends.first{
                     completion?(.success(friend))
