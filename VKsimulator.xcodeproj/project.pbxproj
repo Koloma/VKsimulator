@@ -24,6 +24,8 @@
 		2067F6BB262F1E43006FF204 /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2067F6BA262F1E43006FF204 /* AsyncImageView.swift */; };
 		2069AC45260A287B008928F9 /* VKError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2069AC44260A287B008928F9 /* VKError.swift */; };
 		2088101026209A9A00CC644A /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2088100F26209A9A00CC644A /* CacheService.swift */; };
+		20CDF27D263083F1003712E6 /* ASPhotosCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CDF27C263083F1003712E6 /* ASPhotosCollectionController.swift */; };
+		20CDF28026308723003712E6 /* MosaicCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CDF27F26308723003712E6 /* MosaicCollectionViewLayout.swift */; };
 		20ED452D2610D7350043AA58 /* VKProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED452C2610D7350043AA58 /* VKProfile.swift */; };
 		840C11E025D0199300E7BE7B /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840C11DF25D0199300E7BE7B /* Session.swift */; };
 		843D1F6E25C19BFE00437D18 /* AnimatorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843D1F6D25C19BFE00437D18 /* AnimatorVC.swift */; };
@@ -97,6 +99,8 @@
 		2069AC44260A287B008928F9 /* VKError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKError.swift; sourceTree = "<group>"; };
 		2088100F26209A9A00CC644A /* CacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheService.swift; sourceTree = "<group>"; };
 		20C1A11D2607756B00B37868 /* VKsimulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VKsimulator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		20CDF27C263083F1003712E6 /* ASPhotosCollectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASPhotosCollectionController.swift; sourceTree = "<group>"; };
+		20CDF27F26308723003712E6 /* MosaicCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MosaicCollectionViewLayout.swift; sourceTree = "<group>"; };
 		20ED452C2610D7350043AA58 /* VKProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKProfile.swift; sourceTree = "<group>"; };
 		754C11B25A0C95C9CD13E0A7 /* Pods_VKsimulator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VKsimulator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		840C11DF25D0199300E7BE7B /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
@@ -184,6 +188,8 @@
 			children = (
 				2059FFB026306FB3003A5E5D /* AsyncPhotosConroller.swift */,
 				2059FFB326307318003A5E5D /* PhotoCellNode.swift */,
+				20CDF27C263083F1003712E6 /* ASPhotosCollectionController.swift */,
+				20CDF27F26308723003712E6 /* MosaicCollectionViewLayout.swift */,
 			);
 			path = AsyncGroups;
 			sourceTree = "<group>";
@@ -529,6 +535,7 @@
 				844A5CC9258FB1BC00DB145E /* LoginViewController.swift in Sources */,
 				8449A33E25DA74C900639315 /* VKUser.swift in Sources */,
 				84AA526825F3D459004D5466 /* UserPropertyVeiwController.swift in Sources */,
+				20CDF27D263083F1003712E6 /* ASPhotosCollectionController.swift in Sources */,
 				8446CA0325C5069200FC62F2 /* ImageTransitionAnimator.swift in Sources */,
 				2088101026209A9A00CC644A /* CacheService.swift in Sources */,
 				205CA78B261226C000162F84 /* Response.swift in Sources */,
@@ -554,6 +561,7 @@
 				848FDAA725A6B886001A6ABE /* ControlView+ext.swift in Sources */,
 				2058EADE2608F68200BEECA3 /* Likes.swift in Sources */,
 				84D4756825B446EC00A4705A /* ImageViwerViewController.swift in Sources */,
+				20CDF28026308723003712E6 /* MosaicCollectionViewLayout.swift in Sources */,
 				843D1F7425C1A6DB00437D18 /* CustomSegue.swift in Sources */,
 				20291F92261F57680060D73D /* MyErrors.swift in Sources */,
 				849F10A525BA819900CF9B38 /* K.swift in Sources */,

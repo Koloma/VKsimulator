@@ -116,5 +116,53 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "14E50F3D-2EB7-42A0-84D4-4F4C10683CEE"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AsyncGroups/ASPhotosCollectionController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "14E50F3D-2EB7-42A0-84D4-4F4C10683CEE - 1016d47a733b0379"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "VKsimulator.ASPhotosCollectionController.viewDidLoad() -&gt; ()"
+                  moduleName = "VKsimulator"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/koloma/Documents/VKsimulator/AsyncGroups/ASPhotosCollectionController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "114">
+               </Location>
+               <Location
+                  uuid = "14E50F3D-2EB7-42A0-84D4-4F4C10683CEE - fde567669b982aa9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.Array&lt;VKsimulator.VKPhoto&gt;, Swift.Error&gt;) -&gt; () in VKsimulator.ASPhotosCollectionController.viewDidLoad() -&gt; ()"
+                  moduleName = "VKsimulator"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/koloma/Documents/VKsimulator/AsyncGroups/ASPhotosCollectionController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "265">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

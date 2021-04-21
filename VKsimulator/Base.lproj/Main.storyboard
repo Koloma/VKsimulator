@@ -497,12 +497,21 @@ simulator</string>
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rnd-lL-PPw">
-                                <rect key="frame" x="122.66666666666669" y="325" width="169" height="44"/>
+                                <rect key="frame" x="105" y="325" width="204" height="44"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <inset key="contentEdgeInsets" minX="20" minY="10" maxX="20" maxY="10"/>
-                                <state key="normal" title="Show all photo"/>
+                                <state key="normal" title="All photos ASTable"/>
                                 <connections>
                                     <action selector="tapShowAllPhoto:" destination="4B3-3B-lXI" eventType="touchUpInside" id="brf-nh-2CZ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="adL-vj-sFV">
+                                <rect key="frame" x="84.666666666666686" y="399" width="245" height="44"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <inset key="contentEdgeInsets" minX="20" minY="10" maxX="20" maxY="10"/>
+                                <state key="normal" title="All photos ASCollection"/>
+                                <connections>
+                                    <action selector="tapShowCollectionPhotos:" destination="4B3-3B-lXI" eventType="touchUpInside" id="lpQ-zs-bkN"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -513,9 +522,11 @@ simulator</string>
                             <constraint firstItem="ej8-lQ-gOK" firstAttribute="trailing" secondItem="Fa2-Hm-kTb" secondAttribute="trailing" id="Hk6-0q-6Rv"/>
                             <constraint firstItem="ej8-lQ-gOK" firstAttribute="trailing" secondItem="ydU-5a-P9s" secondAttribute="trailing" id="VB6-Ev-QCL"/>
                             <constraint firstItem="rnd-lL-PPw" firstAttribute="centerX" secondItem="29j-Zv-ldZ" secondAttribute="centerX" id="W9M-ry-u5n"/>
+                            <constraint firstItem="adL-vj-sFV" firstAttribute="top" secondItem="rnd-lL-PPw" secondAttribute="bottom" constant="30" id="Zrm-Hc-b4u"/>
                             <constraint firstItem="ydU-5a-P9s" firstAttribute="top" secondItem="Fa2-Hm-kTb" secondAttribute="bottom" constant="5" id="cPE-VR-a2i"/>
                             <constraint firstItem="Fa2-Hm-kTb" firstAttribute="top" secondItem="ej8-lQ-gOK" secondAttribute="top" id="cvE-IA-biF"/>
                             <constraint firstItem="ydU-5a-P9s" firstAttribute="leading" secondItem="ej8-lQ-gOK" secondAttribute="leading" id="gzr-Un-6xN"/>
+                            <constraint firstItem="adL-vj-sFV" firstAttribute="centerX" secondItem="29j-Zv-ldZ" secondAttribute="centerX" id="ona-3m-LqA"/>
                             <constraint firstItem="Fa2-Hm-kTb" firstAttribute="leading" secondItem="ej8-lQ-gOK" secondAttribute="leading" id="qu6-Ju-5PK"/>
                         </constraints>
                     </view>

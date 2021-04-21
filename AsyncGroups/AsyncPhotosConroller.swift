@@ -54,7 +54,7 @@ final class AsyncPhotosConroller: ASDKViewController<ASDisplayNode>, ASTableDele
     
     func tableNode(_ tableNode: ASTableNode, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
         let photo = photos[indexPath.row]
-        let cellBlock = { () -> ASCellNode in
+        let cellBlock = { () -> PhotoCellNode in
             return PhotoCellNode(photo: photo)
         }
         return cellBlock
