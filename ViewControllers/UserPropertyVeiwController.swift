@@ -30,6 +30,13 @@ final class UserPropertyVeiwController: UIViewController{
         setUser(user: vkUser)
     }
     
+    @IBAction func tapShowAllPhoto(_ sender: UIButton) {
+        let controller = AsyncPhotosConroller()
+        guard let userId = vkUser?.id else { return }
+        controller.userId = userId
+        present(controller, animated: true, completion: nil)
+    }
+    
     private func setUser(user: VKUser?){
         guard let user = vkUser else { return }
         self.userImageVew.image =
