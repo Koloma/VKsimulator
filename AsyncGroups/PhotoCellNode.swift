@@ -13,10 +13,13 @@ class PhotoCellNode: ASCellNode{
     private var photo: VKPhoto
     private var imageNode = ASNetworkImageNode()
     private var textNode = ASTextNode()
+    private let imageType: VKPhoto.ImageType
     private let imageHieght: CGFloat = 200
     
-    init(photo: VKPhoto) {
+    init(photo: VKPhoto,
+         imageType: VKPhoto.ImageType) {
         self.photo = photo
+        self.imageType = imageType
         
         super.init()
         
@@ -29,7 +32,7 @@ class PhotoCellNode: ASCellNode{
         textNode.attributedText = NSAttributedString(string: photo.text, attributes: [.font: UIFont.systemFont(ofSize: 14)])
         addSubnode(textNode)
         
-        imageNode.url = URL(string: photo.getUrl(imageType: .x))
+        imageNode.url = URL(string: photo.getUrl(imageType: imageType))
         imageNode.contentMode = .scaleAspectFit
         addSubnode(imageNode)
     }

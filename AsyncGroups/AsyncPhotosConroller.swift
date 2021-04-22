@@ -13,6 +13,7 @@ final class AsyncPhotosConroller: ASDKViewController<ASDisplayNode>, ASTableDele
     lazy var userId = Session.shared.userId
     
     private let service = NetService.shared
+    private let imageType: VKPhoto.ImageType = .y
     private var photos: [VKPhoto] = []
     private var tableNode: ASTableNode{
         return node as! ASTableNode
@@ -55,7 +56,7 @@ final class AsyncPhotosConroller: ASDKViewController<ASDisplayNode>, ASTableDele
     func tableNode(_ tableNode: ASTableNode, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
         let photo = photos[indexPath.row]
         let cellBlock = { () -> PhotoCellNode in
-            return PhotoCellNode(photo: photo)
+            return PhotoCellNode(photo: photo, imageType: self.imageType)
         }
         return cellBlock
     }

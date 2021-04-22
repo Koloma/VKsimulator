@@ -511,7 +511,7 @@ simulator</string>
                                 <inset key="contentEdgeInsets" minX="20" minY="10" maxX="20" maxY="10"/>
                                 <state key="normal" title="All photos ASCollection"/>
                                 <connections>
-                                    <action selector="tapShowCollectionPhotos:" destination="4B3-3B-lXI" eventType="touchUpInside" id="lpQ-zs-bkN"/>
+                                    <action selector="tapShowCollectionPhotos:" destination="4B3-3B-lXI" eventType="touchUpInside" id="Qlr-dB-VDk"/>
                                 </connections>
                             </button>
                         </subviews>

@@ -10,20 +10,20 @@ import AsyncDisplayKit
 
 final class ASPhotosCollectionController: ASDKViewController<ASCollectionNode>,MosaicCollectionViewLayoutDelegate, ASCollectionDelegate, ASCollectionDataSource {
     
-    lazy var userId = Session.shared.userId
+    private var userId: Int
     
     private let service = NetService.shared
     private var photos: [VKPhoto] = []
     private let collectionNode: ASCollectionNode
     private let layoutInspector = MosaicCollectionViewLayoutInspector()
+    private let imageType: VKPhoto.ImageType = .x
 
     private var sections = [[VKPhoto]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //TODO UserId не инициализируется, все время 0
         service.loadUserImages(userId: userId) { [weak self] (result) in
-            self?.userId
             switch result{
             case .success(let photos):
                 print("\(photos.count)")
@@ -49,12 +49,18 @@ final class ASPhotosCollectionController: ASDKViewController<ASCollectionNode>,M
         collectionNode.view.isScrollEnabled = true
     }
     
-    override init() {
+//    convenience init(userId: Int){
+//        self.userId = userId
+//    }
+    
+    init(userId: Int) {
         let layout = MosaicCollectionViewLayout()
         layout.numberOfColumns = 3;
-        layout.headerHeight = 44;
-        collectionNode = ASCollectionNode(collectionViewLayout: layout)
-
+        layout.headerHeight = 14;
+        collectionNode = ASCollectionNode(frame: CGRect.zero, collectionViewLayout: layout)
+        
+        self.userId = userId
+        
         super.init(node: collectionNode)
         layout.delegate = self
         
@@ -75,9 +81,20 @@ final class ASPhotosCollectionController: ASDKViewController<ASCollectionNode>,M
     func collectionNode(_ collectionNode: ASCollectionNode, nodeBlockForItemAt indexPath: IndexPath) -> ASCellNodeBlock {
         let photo = sections[indexPath.section][indexPath.item]
         let cellBlock = { () -> PhotoCellNode in
-            return PhotoCellNode(photo: photo)
+            return PhotoCellNode(photo: photo, imageType: self.imageType)
         }
         return cellBlock
+    }
+    
+    func collectionNode(_ collectionNode: ASCollectionNode, nodeForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> ASCellNode {
+      let textAttributes : NSDictionary = [
+        convertFromNSAttributedStringKey(NSAttributedString.Key.font): UIFont.preferredFont(forTextStyle: UIFont.TextStyle.headline),
+        convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor): UIColor.gray
+      ]
+      let textInsets = UIEdgeInsets(top: 11, left: 0, bottom: 11, right: 0)
+      let textCellNode = ASTextCellNode(attributes: textAttributes as! [AnyHashable : Any], insets: textInsets)
+      textCellNode.text = String(format: "Section %zd", indexPath.section + 1)
+      return textCellNode
     }
     
     func collectionNode(_ collectionNode: ASCollectionNode, numberOfItemsInSection section: Int) -> Int {
@@ -85,7 +102,7 @@ final class ASPhotosCollectionController: ASDKViewController<ASCollectionNode>,M
     }
     
     func collectionView(_ collectionView: UICollectionView, layout: MosaicCollectionViewLayout, originalItemSizeAtIndexPath: IndexPath) -> CGSize {
-        return CGSize(width: 100,height: 200)//sections[originalItemSizeAtIndexPath.section][originalItemSizeAtIndexPath.item].size
+        return sections[originalItemSizeAtIndexPath.section][originalItemSizeAtIndexPath.item].getSize(imageType: imageType)
     }
     
     func numberOfSections(in collectionNode: ASCollectionNode) -> Int {
@@ -93,3 +110,6 @@ final class ASPhotosCollectionController: ASDKViewController<ASCollectionNode>,M
     }
 }
 
+fileprivate func convertFromNSAttributedStringKey(_ input: NSAttributedString.Key) -> String {
+    return input.rawValue
+}

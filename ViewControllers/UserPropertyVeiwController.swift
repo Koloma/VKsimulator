@@ -31,17 +31,20 @@ final class UserPropertyVeiwController: UIViewController{
     }
     
     @IBAction func tapShowAllPhoto(_ sender: UIButton) {
-        let controller = AsyncPhotosConroller()
+        
+        print(#function)
         guard let userId = vkUser?.id else { return }
-        controller.userId = userId
-        present(controller, animated: true, completion: nil)
+        let controllerTable = AsyncPhotosConroller()
+        controllerTable.userId = userId
+        present(controllerTable, animated: true, completion: nil)
     }
     
     @IBAction func tapShowCollectionPhotos(_ sender: UIButton) {
-        let controller = ASPhotosCollectionController()
+
+        print(#function)
         guard let userId = vkUser?.id else { return }
-        controller.userId = userId
-        present(controller, animated: true, completion: nil)
+        let controllerCollection = ASPhotosCollectionController(userId: userId)
+        present(controllerCollection, animated: true, completion: nil)
     }
     
     private func setUser(user: VKUser?){
