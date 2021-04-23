@@ -58,6 +58,14 @@ import RealmSwift
                 return sizes[0].url
             }
         }
+
+        func getSize(imageType: ImageType) -> CGSize{
+            if let index = sizes.firstIndex(where: {$0.type == imageType.rawValue}){
+                return CGSize(width: sizes[index].width, height: sizes[index].height)
+            } else{
+                return CGSize(width: 50, height: 50)
+            }
+        }
         
         func getImage(imageType: ImageType, completion: @escaping (UIImage?) -> ()) -> UIImage? {
             

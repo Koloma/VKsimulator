@@ -10,7 +10,7 @@ import UIKit
 final class ImageWithLikeCounterCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet private weak var labelTop: UILabel!
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var imageView: AsyncImageView!
     
     @IBOutlet weak var stackViewLike: UIStackView!
     @IBOutlet private weak var labelLikeCount: UILabel!
