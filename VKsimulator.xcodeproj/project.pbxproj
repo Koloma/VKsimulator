@@ -20,6 +20,8 @@
 		2059FFB426307318003A5E5D /* PhotoCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2059FFB326307318003A5E5D /* PhotoCellNode.swift */; };
 		205B9792261A211400349B72 /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205B9791261A211400349B72 /* AsyncOperation.swift */; };
 		205CA78B261226C000162F84 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205CA78A261226C000162F84 /* Response.swift */; };
+		205D3DB82631CD1500710F6B /* NewsFeedV2TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205D3DB62631CD1500710F6B /* NewsFeedV2TableViewCell.swift */; };
+		205D3DB92631CD1500710F6B /* NewsFeedV2TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 205D3DB72631CD1500710F6B /* NewsFeedV2TableViewCell.xib */; };
 		205E15082629DEA3008791D3 /* UITableView+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205E15072629DEA3008791D3 /* UITableView+ext.swift */; };
 		2067F6BB262F1E43006FF204 /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2067F6BA262F1E43006FF204 /* AsyncImageView.swift */; };
 		2069AC45260A287B008928F9 /* VKError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2069AC44260A287B008928F9 /* VKError.swift */; };
@@ -94,6 +96,8 @@
 		2059FFB326307318003A5E5D /* PhotoCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCellNode.swift; sourceTree = "<group>"; };
 		205B9791261A211400349B72 /* AsyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
 		205CA78A261226C000162F84 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		205D3DB62631CD1500710F6B /* NewsFeedV2TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedV2TableViewCell.swift; sourceTree = "<group>"; };
+		205D3DB72631CD1500710F6B /* NewsFeedV2TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsFeedV2TableViewCell.xib; sourceTree = "<group>"; };
 		205E15072629DEA3008791D3 /* UITableView+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+ext.swift"; sourceTree = "<group>"; };
 		2067F6BA262F1E43006FF204 /* AsyncImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
 		2069AC44260A287B008928F9 /* VKError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKError.swift; sourceTree = "<group>"; };
@@ -307,6 +311,8 @@
 				8448264225B9318800425D5A /* VKUserTableViewCell.xib */,
 				8446CA3425C56DC000FC62F2 /* NewsFeedTableViewCell.swift */,
 				8446CA3525C56DC000FC62F2 /* NewsFeedTableViewCell.xib */,
+				205D3DB62631CD1500710F6B /* NewsFeedV2TableViewCell.swift */,
+				205D3DB72631CD1500710F6B /* NewsFeedV2TableViewCell.xib */,
 			);
 			path = CellsXib;
 			sourceTree = "<group>";
@@ -433,6 +439,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				844A5CBB258FAF7400DB145E /* LaunchScreen.storyboard in Resources */,
+				205D3DB92631CD1500710F6B /* NewsFeedV2TableViewCell.xib in Resources */,
 				8446CA3725C56DC000FC62F2 /* NewsFeedTableViewCell.xib in Resources */,
 				844A5CB8258FAF7400DB145E /* Assets.xcassets in Resources */,
 				849F10A925BA87B500CF9B38 /* FrendsTableViewHeader.xib in Resources */,
@@ -527,6 +534,7 @@
 				843D1F7925C1B3AB00437D18 /* CustomNavigationController.swift in Sources */,
 				8446CA3625C56DC000FC62F2 /* NewsFeedTableViewCell.swift in Sources */,
 				205B9792261A211400349B72 /* AsyncOperation.swift in Sources */,
+				205D3DB82631CD1500710F6B /* NewsFeedV2TableViewCell.swift in Sources */,
 				846E01A9259849F5007554E0 /* VKGroupTableViewCell.swift in Sources */,
 				8448264325B9318800425D5A /* VKUserTableViewCell.swift in Sources */,
 				202F93342618B03A0000C21B /* ReloadTableControllerOperation.swift in Sources */,

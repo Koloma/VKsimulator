@@ -22,7 +22,6 @@ final class ASPhotosCollectionController: ASDKViewController<ASCollectionNode>,M
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //TODO UserId не инициализируется, все время 0
         service.loadUserImages(userId: userId) { [weak self] (result) in
             switch result{
             case .success(let photos):
@@ -48,10 +47,6 @@ final class ASPhotosCollectionController: ASDKViewController<ASCollectionNode>,M
         }
         collectionNode.view.isScrollEnabled = true
     }
-    
-//    convenience init(userId: Int){
-//        self.userId = userId
-//    }
     
     init(userId: Int) {
         let layout = MosaicCollectionViewLayout()
@@ -85,18 +80,7 @@ final class ASPhotosCollectionController: ASDKViewController<ASCollectionNode>,M
         }
         return cellBlock
     }
-    
-    func collectionNode(_ collectionNode: ASCollectionNode, nodeForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> ASCellNode {
-      let textAttributes : NSDictionary = [
-        convertFromNSAttributedStringKey(NSAttributedString.Key.font): UIFont.preferredFont(forTextStyle: UIFont.TextStyle.headline),
-        convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor): UIColor.gray
-      ]
-      let textInsets = UIEdgeInsets(top: 11, left: 0, bottom: 11, right: 0)
-      let textCellNode = ASTextCellNode(attributes: textAttributes as! [AnyHashable : Any], insets: textInsets)
-      textCellNode.text = String(format: "Section %zd", indexPath.section + 1)
-      return textCellNode
-    }
-    
+       
     func collectionNode(_ collectionNode: ASCollectionNode, numberOfItemsInSection section: Int) -> Int {
       return sections[section].count
     }
@@ -108,8 +92,4 @@ final class ASPhotosCollectionController: ASDKViewController<ASCollectionNode>,M
     func numberOfSections(in collectionNode: ASCollectionNode) -> Int {
       return sections.count
     }
-}
-
-fileprivate func convertFromNSAttributedStringKey(_ input: NSAttributedString.Key) -> String {
-    return input.rawValue
 }
