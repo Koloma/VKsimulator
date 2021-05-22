@@ -24,13 +24,7 @@ final class NewsFeedViewController: UIViewController {
         refreshControl.addTarget(self, action: #selector(refreshNews(_:)), for: .valueChanged)
         return refreshControl
     }()
-    
-    private lazy var dateFormatter: DateFormatter = {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd.MM.yyyy HH:mm"
-        return dateFormatter
-    }()
-    
+       
     private lazy var cacheService = CacheService(container: newsTableView)
     
     @objc private func refreshNews(_ sender: UIRefreshControl) {
@@ -115,7 +109,6 @@ extension NewsFeedViewController: UITableViewDelegate, UITableViewDataSource {
             cell.configur(indexPath: indexPath,
                           cacheService: cacheService,
                           vkNews: vkNewsArray[indexPath.row],
-                          dateFormatter: dateFormatter,
                           imageTapFunc: imageViewTap)
             return cell
         }

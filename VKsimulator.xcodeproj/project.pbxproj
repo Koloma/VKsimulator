@@ -12,6 +12,8 @@
 		202F93262618A8BA0000C21B /* GetDataOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202F93252618A8BA0000C21B /* GetDataOperation.swift */; };
 		202F932F2618AE740000C21B /* SaveRealOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202F932E2618AE740000C21B /* SaveRealOperation.swift */; };
 		202F93342618B03A0000C21B /* ReloadTableControllerOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202F93332618B03A0000C21B /* ReloadTableControllerOperation.swift */; };
+		205465F12658AEAD00F9898F /* DateFormatter+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205465F02658AEAD00F9898F /* DateFormatter+ext.swift */; };
+		205465F32658B13500F9898F /* Color+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205465F22658B13500F9898F /* Color+ext.swift */; };
 		2058EAD72608F50100BEECA3 /* VKNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2058EAD62608F50100BEECA3 /* VKNews.swift */; };
 		2058EADB2608F62C00BEECA3 /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2058EADA2608F62C00BEECA3 /* Size.swift */; };
 		2058EADE2608F68200BEECA3 /* Likes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2058EADD2608F68200BEECA3 /* Likes.swift */; };
@@ -88,6 +90,8 @@
 		202F93252618A8BA0000C21B /* GetDataOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDataOperation.swift; sourceTree = "<group>"; };
 		202F932E2618AE740000C21B /* SaveRealOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveRealOperation.swift; sourceTree = "<group>"; };
 		202F93332618B03A0000C21B /* ReloadTableControllerOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReloadTableControllerOperation.swift; sourceTree = "<group>"; };
+		205465F02658AEAD00F9898F /* DateFormatter+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+ext.swift"; sourceTree = "<group>"; };
+		205465F22658B13500F9898F /* Color+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+ext.swift"; sourceTree = "<group>"; };
 		2058EAD62608F50100BEECA3 /* VKNews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKNews.swift; sourceTree = "<group>"; };
 		2058EADA2608F62C00BEECA3 /* Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; };
 		2058EADD2608F68200BEECA3 /* Likes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Likes.swift; sourceTree = "<group>"; };
@@ -187,6 +191,15 @@
 			path = Operation;
 			sourceTree = "<group>";
 		};
+		205465EF2658AE4F00F9898F /* FlyWeight */ = {
+			isa = PBXGroup;
+			children = (
+				205465F02658AEAD00F9898F /* DateFormatter+ext.swift */,
+				205465F22658B13500F9898F /* Color+ext.swift */,
+			);
+			path = FlyWeight;
+			sourceTree = "<group>";
+		};
 		2059FFAF26306F88003A5E5D /* AsyncGroups */ = {
 			isa = PBXGroup;
 			children = (
@@ -247,6 +260,7 @@
 		844A5CA2258FAF7300DB145E = {
 			isa = PBXGroup;
 			children = (
+				205465EF2658AE4F00F9898F /* FlyWeight */,
 				2059FFAF26306F88003A5E5D /* AsyncGroups */,
 				202F93202618A7790000C21B /* Operation */,
 				843D1F7725C1B37700437D18 /* Helper */,
@@ -553,6 +567,7 @@
 				843D1F7C25C1B4A900437D18 /* CustomPushAnimator.swift in Sources */,
 				20ED452D2610D7350043AA58 /* VKProfile.swift in Sources */,
 				844A5CAF258FAF7300DB145E /* AppDelegate.swift in Sources */,
+				205465F32658B13500F9898F /* Color+ext.swift in Sources */,
 				844A5CB1258FAF7300DB145E /* SceneDelegate.swift in Sources */,
 				8461A28C25A2F7510080C9CF /* ImageView+ext.swift in Sources */,
 				848FDABA25A761AB001A6ABE /* Array+ext.swift in Sources */,
@@ -574,6 +589,7 @@
 				20291F92261F57680060D73D /* MyErrors.swift in Sources */,
 				849F10A525BA819900CF9B38 /* K.swift in Sources */,
 				2067F6BB262F1E43006FF204 /* AsyncImageView.swift in Sources */,
+				205465F12658AEAD00F9898F /* DateFormatter+ext.swift in Sources */,
 				8449A33825DA489400639315 /* VKGroup.swift in Sources */,
 				2059FFB126306FB3003A5E5D /* AsyncPhotosConroller.swift in Sources */,
 				202F93262618A8BA0000C21B /* GetDataOperation.swift in Sources */,

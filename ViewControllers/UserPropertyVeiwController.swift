@@ -59,11 +59,9 @@ final class UserPropertyVeiwController: UIViewController{
         userDescription.text = "\(user.domain ?? "")"
         userOnLineStatus.tintColor = user.online == 1 ? UIColor.green: UIColor.gray
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd.MM.yyyy HH:mm:ss"
-        dateFormatter.timeZone = .current
+
         let time = Date.init(timeIntervalSince1970: user.lastSeen?.time ?? 0.0)
-        let lastSeen = dateFormatter.string(from: time)
+        let lastSeen = DateFormatter.ruFormat.string(from: time)
         
         lastSeenLable.text = "Last seen: \(lastSeen)"
         

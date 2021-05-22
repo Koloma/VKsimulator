@@ -36,8 +36,7 @@ final class NewsFeedTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
 
-    func configur(indexPath: IndexPath, cacheService: CacheService, vkNews: VKNews, dateFormatter : Formatter, imageTapFunc: @escaping ImageViewTapFunc){
-        
+    func configur(indexPath: IndexPath, cacheService: CacheService, vkNews: VKNews,  imageTapFunc: @escaping ImageViewTapFunc){
         
         if vkNews.sourceID > 0{
             NetService.shared.loadUser(by: vkNews.sourceID){ results in
@@ -85,7 +84,7 @@ final class NewsFeedTableViewCell: UITableViewCell {
         numberOfViewsLable.text = String(vkNews.views?.count ?? 0)
         
         let date = Date(timeIntervalSince1970: vkNews.date)
-        dateLable.text = dateFormatter.string(for: date)
+        dateLable.text = DateFormatter.ruFormat.string(for: date)
         newsTextView.text = vkNews.text ??  "News not loaded"
         
         contentView.layer.borderWidth = 1
