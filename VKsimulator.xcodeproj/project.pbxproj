@@ -22,6 +22,8 @@
 		2059FFB426307318003A5E5D /* PhotoCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2059FFB326307318003A5E5D /* PhotoCellNode.swift */; };
 		205B9792261A211400349B72 /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205B9791261A211400349B72 /* AsyncOperation.swift */; };
 		205CA78B261226C000162F84 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205CA78A261226C000162F84 /* Response.swift */; };
+		205CFB10265BCCDF00673513 /* VKUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205CFB0F265BCCDF00673513 /* VKUserViewModel.swift */; };
+		205CFB13265BCE1F00673513 /* UserViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205CFB12265BCE1F00673513 /* UserViewModelFactory.swift */; };
 		205D3DB82631CD1500710F6B /* NewsFeedV2TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205D3DB62631CD1500710F6B /* NewsFeedV2TableViewCell.swift */; };
 		205D3DB92631CD1500710F6B /* NewsFeedV2TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 205D3DB72631CD1500710F6B /* NewsFeedV2TableViewCell.xib */; };
 		205E15082629DEA3008791D3 /* UITableView+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205E15072629DEA3008791D3 /* UITableView+ext.swift */; };
@@ -100,6 +102,8 @@
 		2059FFB326307318003A5E5D /* PhotoCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCellNode.swift; sourceTree = "<group>"; };
 		205B9791261A211400349B72 /* AsyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
 		205CA78A261226C000162F84 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		205CFB0F265BCCDF00673513 /* VKUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKUserViewModel.swift; sourceTree = "<group>"; };
+		205CFB12265BCE1F00673513 /* UserViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModelFactory.swift; sourceTree = "<group>"; };
 		205D3DB62631CD1500710F6B /* NewsFeedV2TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedV2TableViewCell.swift; sourceTree = "<group>"; };
 		205D3DB72631CD1500710F6B /* NewsFeedV2TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsFeedV2TableViewCell.xib; sourceTree = "<group>"; };
 		205E15072629DEA3008791D3 /* UITableView+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+ext.swift"; sourceTree = "<group>"; };
@@ -209,6 +213,22 @@
 				20CDF27F26308723003712E6 /* MosaicCollectionViewLayout.swift */,
 			);
 			path = AsyncGroups;
+			sourceTree = "<group>";
+		};
+		205CFB0E265BCCBB00673513 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				205CFB0F265BCCDF00673513 /* VKUserViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		205CFB11265BCE0700673513 /* ViewModelFactory */ = {
+			isa = PBXGroup;
+			children = (
+				205CFB12265BCE1F00673513 /* UserViewModelFactory.swift */,
+			);
+			path = ViewModelFactory;
 			sourceTree = "<group>";
 		};
 		2D24CB49CF3AB2A7B071BE58 /* Pods */ = {
@@ -334,6 +354,8 @@
 		846E01AD25985BC4007554E0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				205CFB11265BCE0700673513 /* ViewModelFactory */,
+				205CFB0E265BCCBB00673513 /* ViewModel */,
 				8449A33725DA489400639315 /* VKGroup.swift */,
 				8449A33A25DA48AE00639315 /* VKPhoto.swift */,
 				8449A33D25DA74C900639315 /* VKUser.swift */,
@@ -574,6 +596,7 @@
 				2058EADB2608F62C00BEECA3 /* Size.swift in Sources */,
 				84AA526525F3D399004D5466 /* RealmService.swift in Sources */,
 				2059FFB426307318003A5E5D /* PhotoCellNode.swift in Sources */,
+				205CFB13265BCE1F00673513 /* UserViewModelFactory.swift in Sources */,
 				84EF01A625BEB9FD00F49415 /* SearchBarAnimator.swift in Sources */,
 				840C11E025D0199300E7BE7B /* Session.swift in Sources */,
 				202F932F2618AE740000C21B /* SaveRealOperation.swift in Sources */,
@@ -589,6 +612,7 @@
 				20291F92261F57680060D73D /* MyErrors.swift in Sources */,
 				849F10A525BA819900CF9B38 /* K.swift in Sources */,
 				2067F6BB262F1E43006FF204 /* AsyncImageView.swift in Sources */,
+				205CFB10265BCCDF00673513 /* VKUserViewModel.swift in Sources */,
 				205465F12658AEAD00F9898F /* DateFormatter+ext.swift in Sources */,
 				8449A33825DA489400639315 /* VKGroup.swift in Sources */,
 				2059FFB126306FB3003A5E5D /* AsyncPhotosConroller.swift in Sources */,

@@ -20,6 +20,9 @@ final class MyFrendsViewController: UIViewController {
     @IBOutlet weak var cancelImageView: UIImageView!
     @IBOutlet weak var searchTextField: UITextField!
     
+    
+    private let viewModelFactory = UserViewModelFactory()
+    
     var myFriends:[VKUser] = []
     {
         didSet{
@@ -237,7 +240,8 @@ extension MyFrendsViewController: UITableViewDataSource, UITableViewDelegate{
                
                 let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
                 if  let userProperty = storyBoard.instantiateViewController(withIdentifier: "UserPropertyVeiwController") as? UserPropertyVeiwController{
-                    userProperty.vkUser = friend
+                    let userViewModel = self.viewModelFactory.constructViewModel(from: [friend])
+                    userProperty.configure(with: userViewModel.first!)
                     self.navigationController!.pushViewController(userProperty, animated: true)
                 }
               

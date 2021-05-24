@@ -71,7 +71,7 @@ class VKUser: Object, Codable {
         case image200
     }
 
-    func getImage(imageType: ImageType, completion: @escaping (UIImage?) -> ())-> UIImage?{
+    func getImage(imageType: ImageType, completion: ((UIImage?) -> ())? = nil)-> UIImage?{
         var url:String
         switch imageType {
         case .image50:
@@ -83,7 +83,7 @@ class VKUser: Object, Codable {
         }
         
         let image = CacheService.shared.photo(byUrl: url){ image in
-            completion(image)
+            completion?(image)
         }
         return image
     }
