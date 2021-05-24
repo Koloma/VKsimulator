@@ -19,7 +19,11 @@ final class UserPropertyVeiwController: UIViewController{
     @IBOutlet weak var followersCountLable: UILabel!
     
     
-    var viewModel: UserViewModel!
+    var viewModel: UserViewModel!//{
+//        didSet{
+//            configure(with: viewModel)
+//        }
+//    }
     
     override func viewDidLoad(){
         super.viewDidLoad()
@@ -44,14 +48,14 @@ final class UserPropertyVeiwController: UIViewController{
     
     func configure(with viewModel: UserViewModel) {
         self.viewModel = viewModel
-        userImageVew.image = viewModel.userImage
-        userFio.text = viewModel.fio
-        userDescription.text = viewModel.descripton
-        userOnLineStatus.tintColor = viewModel.onLineColor
-        lastSeenLable.text = viewModel.lastSeen
-        cityLabel.text = viewModel.city
-        obrazovaneLable.text = viewModel.obrazovanie
-        followersCountLable.text = viewModel.followersCount
+        self.userImageVew.image = viewModel.userImage
+        self.userFio.text = viewModel.fio
+        self.userDescription.text = viewModel.descripton
+        self.userOnLineStatus.tintColor = viewModel.onLineColor
+        self.lastSeenLable.text = viewModel.lastSeen
+        self.cityLabel.text = viewModel.city
+        self.obrazovaneLable.text = viewModel.obrazovanie
+        self.followersCountLable.text = viewModel.followersCount
     }
     
 }

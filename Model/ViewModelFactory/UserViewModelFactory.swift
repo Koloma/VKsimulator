@@ -17,7 +17,7 @@ final class UserViewModelFactory{
         
         let userId = user.id
         
-        let userImage = user.getImage(imageType: .image100)
+        let userImage = user.getImage(imageType: .image50)
         let fio = user.fio
         let descripton = "\(user.domain ?? "")"
         let onLineColor = user.online == 1 ? UIColor.green: UIColor.gray

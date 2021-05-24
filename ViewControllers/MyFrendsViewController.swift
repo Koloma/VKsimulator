@@ -240,9 +240,9 @@ extension MyFrendsViewController: UITableViewDataSource, UITableViewDelegate{
                
                 let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
                 if  let userProperty = storyBoard.instantiateViewController(withIdentifier: "UserPropertyVeiwController") as? UserPropertyVeiwController{
-                    let userViewModel = self.viewModelFactory.constructViewModel(from: [friend])
-                    userProperty.configure(with: userViewModel.first!)
+                    let userViewModel = self.viewModelFactory.constructViewModel(from: [friend])                    
                     self.navigationController!.pushViewController(userProperty, animated: true)
+                    userProperty.configure(with: userViewModel.first!)
                 }
               
             }
