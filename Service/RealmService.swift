@@ -57,7 +57,7 @@ final class RealmService{
     func loadPhotos()->[VKPhoto]{
         return Array(realm.objects(VKPhoto.self))
     }
-    
+
     func saveUsers(_ elements: [VKUser]){
         do {
             try add(objects: elements)
@@ -69,9 +69,9 @@ final class RealmService{
         #endif
     }
     
-    func loadUsers()->[VKUser]{
-        return Array(realm.objects(VKUser.self))
-    }
+//    func loadUsers()->[VKUser]{
+//        return Array(realm.objects(VKUser.self))
+//    }
     
     
     func add<T: Object>(objects:[T]) throws{

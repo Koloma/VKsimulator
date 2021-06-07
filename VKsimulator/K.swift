@@ -9,11 +9,11 @@ import UIKit
 
 struct K {
     struct Gradient {
-        static let colorTop = UIColor(red: 1, green: 94.0/255.0, blue: 58.0/255.0, alpha: 1.0).cgColor
-        static let colorBottom = UIColor(red: 1, green: 149.0/255.0, blue: 0.0/255.0, alpha: 1.0).cgColor
+        static let colorTop = UIColor.rgba(1.0, 94.0, 58.0, a: 1.0).cgColor
+        static let colorBottom = UIColor.rgba(1.0, 149.0, 0, a: 1.0).cgColor
         
-        static let colorTopAlpha = UIColor(red: 1, green: 94.0/255.0, blue: 58.0/255.0, alpha: 0.5).cgColor
-        static let colorBottomAlpha = UIColor(red: 1, green: 149.0/255.0, blue: 0.0/255.0, alpha: 0.5).cgColor
+        static let colorTopAlpha = UIColor.rgba(1.0, 94.0, 58.0, a: 1.0).cgColor
+        static let colorBottomAlpha = UIColor.rgba(1.0, 149.0, 0, a: 1.0).cgColor
     }
     
     struct Colors{
